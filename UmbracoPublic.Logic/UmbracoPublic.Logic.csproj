@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UmbracoPublic.Logic</RootNamespace>
+    <AssemblyName>UmbracoPublic.Logic</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="businesslogic">
+      <HintPath>..\Repository\businesslogic.dll</HintPath>
+    </Reference>
+    <Reference Include="cms">
+      <HintPath>..\Repository\cms.dll</HintPath>
+    </Reference>
+    <Reference Include="interfaces">
+      <HintPath>..\Min.WebSite\bin\interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Cms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Cms.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Components, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Parsing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Parsing.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Search, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="umbraco">
+      <HintPath>..\Repository\umbraco.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BackgroundWork\SearchBackgroundCrawler.cs" />
+    <Compile Include="Controllers\Paging\AdvancedPagingController.cs" />
+    <Compile Include="Controllers\Paging\CenteredPagingController.cs" />
+    <Compile Include="Controllers\Paging\DefaultPagingController.cs" />
+    <Compile Include="Controllers\Paging\PagerAlignedPagingController.cs" />
+    <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
+    <Compile Include="Controllers\Paging\PagingController.cs" />
+    <Compile Include="Entities\AccordionModule.cs" />
+    <Compile Include="Entities\Configuration\VimeoConfiguration.cs" />
+    <Compile Include="Entities\Configuration\YouTubeConfiguration.cs" />
+    <Compile Include="Entities\ContactModule.cs" />
+    <Compile Include="Entities\DisqusConfiguration.cs" />
+    <Compile Include="Entities\DisqusModule.cs" />
+    <Compile Include="Entities\GridModule.cs" />
+    <Compile Include="Entities\HeroModule.cs" />
+    <Compile Include="Entities\IFrameModule.cs" />
+    <Compile Include="Entities\LinkListModule.cs" />
+    <Compile Include="Entities\MenuItem.cs" />
+    <Compile Include="Entities\MultiBoxModule.cs" />
+    <Compile Include="Entities\NewsListModule.cs" />
+    <Compile Include="Entities\NewsPage.cs" />
+    <Compile Include="Entities\SearchFilter.cs" />
+    <Compile Include="Entities\VideoModule.cs" />
+    <Compile Include="Entities\WebPage.cs" />
+    <Compile Include="Events\RichTextProcessor.cs" />
+    <Compile Include="Events\SiteIndexer.cs" />
+    <Compile Include="Extensions\HttpRequestExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Providers\SubjectProvider.cs" />
+    <Compile Include="Providers\VideoProvider.cs" />
+    <Compile Include="Providers\VimeoVideo.cs" />
+    <Compile Include="Providers\VimeoVideoProvider.cs" />
+    <Compile Include="Providers\YouTubeVideo.cs" />
+    <Compile Include="Providers\YouTubeVideoProvider.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Utilities\HtmlContent.cs" />
+    <Compile Include="Utilities\HtmlWriterExtensions.cs" />
+    <Compile Include="Utilities\ModuleHelper.cs" />
+    <Compile Include="Utilities\ModuleScripts.cs" />
+    <Compile Include="Utilities\QueryStringKey.cs" />
+    <Compile Include="Utilities\Urls.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UmbracoPublic.Interfaces\UmbracoPublic.Interfaces.csproj">
+      <Project>{2624EC11-AD5F-47C9-93A0-7366744F8C03}</Project>
+      <Name>UmbracoPublic.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModuleAscxTemplate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModuleCodeTemplate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModuleDesignerTemplate.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
