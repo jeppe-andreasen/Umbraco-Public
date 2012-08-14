@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="GeneralContentPart.ascx.cs" Inherits="UmbracoPublic.WebSite.usercontrols.Parts.GeneralContentPart" %>
+<asp:PlaceHolder ID="plhOutput" runat="server"></asp:PlaceHolder>

@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="GeneralPage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.GeneralPage, UmbracoPublic.WebSite" %>
+<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
+<%@ Register src="../usercontrols/Parts/SideNavigation.ascx" tagname="SideNavigation" tagprefix="uc1" %>
+<%@ Register src="../usercontrols/Parts/GeneralContentPart.ascx" tagname="GeneralContentPart" tagprefix="uc2" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+    <div class="row">
+        <div class="span3">
+            <uc1:SideNavigation ID="sideNavigation" runat="server" />
+            <!-- After Side Navigation -->
+        </div>
+        <div class="span9">
+            <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
+            <div class="row">
+                <div class="span6">
+                    <uc2:GeneralContentPart ID="generalContent" runat="server" />
+                    <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+                </div>
+                <div class="span3"> 
+                    <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
+                </div>
+            </div>
+            <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
+        </div>
+    </div>
+</asp:Content>

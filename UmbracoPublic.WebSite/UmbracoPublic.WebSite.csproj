@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5BC453FB-3F73-4D24-8E0E-C6085FCF770A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UmbracoPublic.WebSite</RootNamespace>
+    <AssemblyName>UmbracoPublic.WebSite</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabases>false</PublishDatabases>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="businesslogic, Version=1.0.4498.19835, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ClientDependency.Core, Version=1.0.2.37148, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="cms, Version=1.0.4498.19837, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="controls, Version=1.0.4498.19839, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="interfaces, Version=1.0.4497.23945, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="LinqIt.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Ajax.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Cms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Cms.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Components, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Search, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqIt.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="umbraco, Version=1.0.4500.21031, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="umbraco.editorControls, Version=1.0.4500.21038, Culture=neutral, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\accordioneditor.css" />
+    <Content Include="assets\css\bootstrap-responsive.css" />
+    <Content Include="assets\css\bootstrap-responsive.min.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\datepicker.css" />
+    <Content Include="assets\css\grideditor.css" />
+    <Content Include="assets\css\jquery.alerts.css" />
+    <EmbeddedResource Include="assets\css\treeview.css" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-icons_222222_256x240.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-icons_a83300_256x240.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="assets\css\ui-darkness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\css\ui-darkness\jquery-ui-1.8.20.custom.css" />
+    <Content Include="assets\img\alerts\help.gif" />
+    <Content Include="assets\img\alerts\important.gif" />
+    <Content Include="assets\img\alerts\info.gif" />
+    <Content Include="assets\img\alerts\title.gif" />
+    <Content Include="assets\img\Billede 104.jpg" />
+    <Content Include="assets\img\Billede059.jpg" />
+    <Content Include="assets\img\custom\move_down.png" />
+    <Content Include="assets\img\custom\move_left.png" />
+    <Content Include="assets\img\custom\move_right.png" />
+    <Content Include="assets\img\custom\move_up.png" />
+    <Content Include="assets\img\DSC00826.jpg" />
+    <Content Include="assets\img\glyphicons-halflings-white.png" />
+    <Content Include="assets\img\glyphicons-halflings.png" />
+    <Content Include="assets\img\grideditor\delete.png" />
+    <Content Include="assets\img\grideditor\delete2.png" />
+    <Content Include="assets\img\grideditor\delete_off.png" />
+    <Content Include="assets\img\grideditor\delete_on.png" />
+    <Content Include="assets\img\grideditor\edit_off.png" />
+    <Content Include="assets\img\grideditor\edit_on.png" />
+    <Content Include="assets\img\grideditor\module-bg.png" />
+    <Content Include="assets\img\grideditor\module-sel-bg.png" />
+    <Content Include="assets\img\linkedin.jpg" />
+    <Content Include="assets\img\Margrethe-kjole2-original.jpg" />
+    <Content Include="assets\img\MargretheVestager_09.jpg" />
+    <Content Include="assets\img\treeview\collapse.png" />
+    <Content Include="assets\img\treeview\expand.png" />
+    <Content Include="assets\img\treeview\folder.png" />
+    <Content Include="assets\img\treeview\page.png" />
+    <Content Include="assets\js\bootstrap-alert.js" />
+    <Content Include="assets\js\bootstrap-button.js" />
+    <Content Include="assets\js\bootstrap-carousel.js" />
+    <Content Include="assets\js\bootstrap-collapse.js" />
+    <Content Include="assets\js\bootstrap-datepicker.js" />
+    <Content Include="assets\js\bootstrap-dropdown.js" />
+    <Content Include="assets\js\bootstrap-modal.js" />
+    <Content Include="assets\js\bootstrap-popover.js" />
+    <Content Include="assets\js\bootstrap-scrollspy.js" />
+    <Content Include="assets\js\bootstrap-tab.js" />
+    <Content Include="assets\js\bootstrap-tooltip.js" />
+    <Content Include="assets\js\bootstrap-transition.js" />
+    <Content Include="assets\js\bootstrap-typeahead.js" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <EmbeddedResource Include="assets\js\versus-ajax.js" />
+    <Content Include="assets\js\grideditor.js" />
+    <Content Include="assets\js\IFramedEditorFunctions.js" />
+    <Content Include="assets\js\jquery-1.7.2.min.js" />
+    <Content Include="assets\js\jquery-ui-1.8.20.custom.min.js" />
+    <Content Include="assets\js\jquery-v1.7.1.js" />
+    <Content Include="assets\js\jquery.alerts.js" />
+    <Content Include="assets\js\multilisteditor.js" />
+    <Content Include="assets\js\multitreelisteditor.js" />
+    <Content Include="assets\js\script.js" />
+    <Content Include="assets\js\treeview.js" />
+    <Content Include="config\splashes\booting.aspx" />
+    <Content Include="config\splashes\noNodes.aspx" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\custom-controls.css" />
+    <Content Include="assets\css\styles.css" />
+    <Content Include="css\TinyMCE.css" />
+    <Content Include="handlers\AccordionEditorHandler.aspx" />
+    <Content Include="handlers\Controls\MultiListControl.ascx" />
+    <Content Include="handlers\CreateModuleDialog.aspx" />
+    <Content Include="handlers\Dialogs\CreateModuleDialog.aspx" />
+    <Content Include="handlers\Dialogs\ShareModuleDialog.aspx" />
+    <Content Include="handlers\FixGridLayoutHandler.aspx" />
+    <Content Include="handlers\GridEditorHandler.aspx" />
+    <Content Include="handlers\ItemEditor.aspx" />
+    <Content Include="handlers\MultiListEditorHandler.aspx" />
+    <Content Include="handlers\MultiTreeList\Handler.aspx" />
+    <Content Include="handlers\TinyMCEditorHandler.aspx" />
+    <Content Include="modules\AccordionModuleRendering.ascx" />
+    <Content Include="modules\ContactModuleRendering.ascx" />
+    <Content Include="modules\DisqusModuleRendering.ascx" />
+    <Content Include="modules\HeroModuleRendering.ascx" />
+    <Content Include="modules\IFrameModuleRendering.ascx" />
+    <Content Include="modules\LinkListModuleRendering.ascx" />
+    <Content Include="modules\MultiBoxModuleRendering.ascx" />
+    <Content Include="modules\NewsListModuleRendering.ascx" />
+    <Content Include="modules\VideoModuleRendering.ascx" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="test\CreateModule.aspx" />
+    <Content Include="test\FrameTest.aspx" />
+    <Content Include="test\GridEditorTest2.aspx" />
+    <Content Include="test\GridSizeTest.aspx" />
+    <Content Include="test\IndexDetails.aspx" />
+    <Content Include="test\IndexViewer.aspx" />
+    <Content Include="test\MultiListTest.aspx" />
+    <Content Include="test\MultiTreeListTest.aspx" />
+    <Content Include="test\SearchResult.aspx" />
+    <Content Include="test\ShadowTest.aspx" />
+    <Content Include="test\TableTest.aspx" />
+    <Content Include="test\TestDatabase.aspx" />
+    <Content Include="test\WebForm1.aspx" />
+    <Content Include="umbracoextensions\ChangeTemplateButton.ascx" />
+    <Content Include="umbraco\CustomContentEditor.aspx" />
+    <Content Include="umbraco\images\umbraco\accordion.png" />
+    <Content Include="umbraco\images\umbraco\disqus.png" />
+    <Content Include="umbraco\images\umbraco\flexibox.png" />
+    <Content Include="umbraco\images\umbraco\headings.png" />
+    <Content Include="umbraco\images\umbraco\iframe.png" />
+    <Content Include="umbraco\images\umbraco\link.png" />
+    <Content Include="umbraco\images\umbraco\linklist.png" />
+    <Content Include="umbraco\images\umbraco\site.png" />
+    <Content Include="umbraco\images\umbraco\sitemap.png" />
+    <Content Include="umbraco\images\umbraco\sitew.png" />
+    <Content Include="umbraco\images\umbraco\superman.png" />
+    <Content Include="umbraco\plugins\tinymce3\insertMacro.aspx" />
+    <Content Include="umbraco_client\propertypane\style.css" />
+    <Content Include="usercontrols\AccordionWrapper.ascx" />
+    <Content Include="usercontrols\EditorWrappers\MultiTreeListWrapper.ascx" />
+    <Content Include="usercontrols\LayoutGridWrapper.ascx" />
+    <Content Include="usercontrols\Macros\AlertMacro.ascx" />
+    <Content Include="usercontrols\Macros\BlockQuoteMacro.ascx" />
+    <Content Include="usercontrols\Macros\FactsBoxMacro.ascx" />
+    <Content Include="usercontrols\Macros\ModuleMacro.ascx" />
+    <Content Include="usercontrols\Macros\NewsListMacro.ascx" />
+    <Content Include="usercontrols\MultiListWrapper.ascx" />
+    <Content Include="usercontrols\NewsListMacro2.ascx" />
+    <Content Include="usercontrols\Parts\GeneralContentPart.ascx" />
+    <Content Include="usercontrols\Parts\NavigationBar.ascx" />
+    <Content Include="usercontrols\Parts\NewsSearchResultPart.ascx" />
+    <Content Include="usercontrols\Parts\NewsSearchFilterPart.ascx" />
+    <Content Include="usercontrols\Parts\Pager.ascx" />
+    <Content Include="usercontrols\Parts\SideNavigation.ascx" />
+    <Content Include="usercontrols\Parts\SiteSearchResult.ascx" />
+    <Content Include="usercontrols\Parts\SubNavigationBar.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="handlers\AccordionEditorHandler.aspx.cs">
+      <DependentUpon>AccordionEditorHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\AccordionEditorHandler.aspx.designer.cs">
+      <DependentUpon>AccordionEditorHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\Controls\MultiListControl.ascx.cs">
+      <DependentUpon>MultiListControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\Controls\MultiListControl.ascx.designer.cs">
+      <DependentUpon>MultiListControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\CreateModuleDialog.aspx.cs">
+      <DependentUpon>CreateModuleDialog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\CreateModuleDialog.aspx.designer.cs">
+      <DependentUpon>CreateModuleDialog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\DialogHandler.ashx.cs">
+      <DependentUpon>DialogHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\Dialogs\CreateModuleDialog.aspx.cs">
+      <DependentUpon>CreateModuleDialog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\Dialogs\CreateModuleDialog.aspx.designer.cs">
+      <DependentUpon>CreateModuleDialog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\Dialogs\DialogPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\Dialogs\DialogResponse.cs" />
+    <Compile Include="handlers\Dialogs\MasterDialog.Master.cs">
+      <DependentUpon>MasterDialog.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\Dialogs\MasterDialog.Master.designer.cs">
+      <DependentUpon>MasterDialog.Master</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\Dialogs\ShareModuleDialog.aspx.cs">
+      <DependentUpon>ShareModuleDialog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\Dialogs\ShareModuleDialog.aspx.designer.cs">
+      <DependentUpon>ShareModuleDialog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\FixGridLayoutHandler.aspx.cs">
+      <DependentUpon>FixGridLayoutHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\FixGridLayoutHandler.aspx.designer.cs">
+      <DependentUpon>FixGridLayoutHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\ItemEditor.aspx.cs">
+      <DependentUpon>ItemEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\ItemEditor.aspx.designer.cs">
+      <DependentUpon>ItemEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\MultiListEditorHandler.aspx.cs">
+      <DependentUpon>MultiListEditorHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\MultiListEditorHandler.aspx.designer.cs">
+      <DependentUpon>MultiListEditorHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\MultiTreeList\Handler.aspx.cs">
+      <DependentUpon>Handler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\MultiTreeList\Handler.aspx.designer.cs">
+      <DependentUpon>Handler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\SnapShot.ashx.cs">
+      <DependentUpon>SnapShot.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\TinyMCEditorHandler.aspx.cs">
+      <DependentUpon>TinyMCEditorHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\TinyMCEditorHandler.aspx.designer.cs">
+      <DependentUpon>TinyMCEditorHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\GeneralPage.master.cs">
+      <DependentUpon>GeneralPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\GeneralPage.master.designer.cs">
+      <DependentUpon>GeneralPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\NewsListPage.master.cs">
+      <DependentUpon>NewsListPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\NewsListPage.master.designer.cs">
+      <DependentUpon>NewsListPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\NewsPage.master.cs">
+      <DependentUpon>NewsPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\NewsPage.master.designer.cs">
+      <DependentUpon>NewsPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\OneColumnWidePage.master.cs">
+      <DependentUpon>OneColumnWidePage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\OneColumnWidePage.master.designer.cs">
+      <DependentUpon>OneColumnWidePage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\ThreeColumnWidePage.master.cs">
+      <DependentUpon>ThreeColumnWidePage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\ThreeColumnWidePage.master.designer.cs">
+      <DependentUpon>ThreeColumnWidePage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\TwoColumnWidePage.master.cs">
+      <DependentUpon>TwoColumnWidePage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\TwoColumnWidePage.master.designer.cs">
+      <DependentUpon>TwoColumnWidePage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\WidePageWithLeftMenu.master.cs">
+      <DependentUpon>WidePageWithLeftMenu.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\WidePageWithLeftMenu.master.designer.cs">
+      <DependentUpon>WidePageWithLeftMenu.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\WidePageWithRightColumn.master.cs">
+      <DependentUpon>WidePageWithRightColumn.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\WidePageWithRightColumn.master.designer.cs">
+      <DependentUpon>WidePageWithRightColumn.master</DependentUpon>
+    </Compile>
+    <Compile Include="modules\AccordionModuleRendering.ascx.cs">
+      <DependentUpon>AccordionModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\AccordionModuleRendering.ascx.designer.cs">
+      <DependentUpon>AccordionModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\BaseModule.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\ContactModuleRendering.ascx.cs">
+      <DependentUpon>ContactModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\ContactModuleRendering.ascx.designer.cs">
+      <DependentUpon>ContactModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\DisqusModuleRendering.ascx.cs">
+      <DependentUpon>DisqusModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\DisqusModuleRendering.ascx.designer.cs">
+      <DependentUpon>DisqusModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\HeroModuleRendering.ascx.cs">
+      <DependentUpon>HeroModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\HeroModuleRendering.ascx.designer.cs">
+      <DependentUpon>HeroModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\IFrameModuleRendering.ascx.cs">
+      <DependentUpon>IFrameModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\IFrameModuleRendering.ascx.designer.cs">
+      <DependentUpon>IFrameModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\LinkListModuleRendering.ascx.cs">
+      <DependentUpon>LinkListModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\LinkListModuleRendering.ascx.designer.cs">
+      <DependentUpon>LinkListModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\MultiBoxModuleRendering.ascx.cs">
+      <DependentUpon>MultiBoxModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\MultiBoxModuleRendering.ascx.designer.cs">
+      <DependentUpon>MultiBoxModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\NewsListModuleRendering.ascx.cs">
+      <DependentUpon>NewsListModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\NewsListModuleRendering.ascx.designer.cs">
+      <DependentUpon>NewsListModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="modules\VideoModuleRendering.ascx.cs">
+      <DependentUpon>VideoModuleRendering.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modules\VideoModuleRendering.ascx.designer.cs">
+      <DependentUpon>VideoModuleRendering.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test\CreateModule.aspx.cs">
+      <DependentUpon>CreateModule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\CreateModule.aspx.designer.cs">
+      <DependentUpon>CreateModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\FrameTest.aspx.cs">
+      <DependentUpon>FrameTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\FrameTest.aspx.designer.cs">
+      <DependentUpon>FrameTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\GridEditorTest2.aspx.cs">
+      <DependentUpon>GridEditorTest2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\GridEditorTest2.aspx.designer.cs">
+      <DependentUpon>GridEditorTest2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\GridSizeTest.aspx.cs">
+      <DependentUpon>GridSizeTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\GridSizeTest.aspx.designer.cs">
+      <DependentUpon>GridSizeTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\IndexDetails.aspx.cs">
+      <DependentUpon>IndexDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\IndexDetails.aspx.designer.cs">
+      <DependentUpon>IndexDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\IndexViewer.aspx.cs">
+      <DependentUpon>IndexViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\IndexViewer.aspx.designer.cs">
+      <DependentUpon>IndexViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\MultiListTest.aspx.cs">
+      <DependentUpon>MultiListTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\MultiListTest.aspx.designer.cs">
+      <DependentUpon>MultiListTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\MultiTreeListTest.aspx.cs">
+      <DependentUpon>MultiTreeListTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\MultiTreeListTest.aspx.designer.cs">
+      <DependentUpon>MultiTreeListTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\SearchResult.aspx.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\SearchResult.aspx.designer.cs">
+      <DependentUpon>SearchResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\ShadowTest.aspx.cs">
+      <DependentUpon>ShadowTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\ShadowTest.aspx.designer.cs">
+      <DependentUpon>ShadowTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\TableTest.aspx.cs">
+      <DependentUpon>TableTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\TableTest.aspx.designer.cs">
+      <DependentUpon>TableTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\TestDatabase.aspx.cs">
+      <DependentUpon>TestDatabase.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\TestDatabase.aspx.designer.cs">
+      <DependentUpon>TestDatabase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="umbracoextensions\ChangeTemplateButton.ascx.cs">
+      <DependentUpon>ChangeTemplateButton.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="umbracoextensions\ChangeTemplateButton.ascx.designer.cs">
+      <DependentUpon>ChangeTemplateButton.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="umbraco\CustomContentControl.cs" />
+    <Compile Include="umbraco\CustomContentEditor.aspx.cs">
+      <DependentUpon>CustomContentEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="umbraco\CustomContentEditor.aspx.designer.cs">
+      <DependentUpon>CustomContentEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="umbraco\masterpages\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="umbraco\masterpages\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\AccordionWrapper.ascx.cs">
+      <DependentUpon>AccordionWrapper.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\AccordionWrapper.ascx.designer.cs">
+      <DependentUpon>AccordionWrapper.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\EditorWrappers\MultiTreeListWrapper.ascx.cs">
+      <DependentUpon>MultiTreeListWrapper.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\EditorWrappers\MultiTreeListWrapper.ascx.designer.cs">
+      <DependentUpon>MultiTreeListWrapper.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\LayoutGridWrapper.ascx.cs">
+      <DependentUpon>LayoutGridWrapper.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\LayoutGridWrapper.ascx.designer.cs">
+      <DependentUpon>LayoutGridWrapper.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Macros\AlertMacro.ascx.cs">
+      <DependentUpon>AlertMacro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Macros\AlertMacro.ascx.designer.cs">
+      <DependentUpon>AlertMacro.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Macros\BlockQuoteMacro.ascx.cs">
+      <DependentUpon>BlockQuoteMacro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Macros\BlockQuoteMacro.ascx.designer.cs">
+      <DependentUpon>BlockQuoteMacro.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Macros\FactsBoxMacro.ascx.cs">
+      <DependentUpon>FactsBoxMacro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Macros\FactsBoxMacro.ascx.designer.cs">
+      <DependentUpon>FactsBoxMacro.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Macros\ModuleMacro.ascx.cs">
+      <DependentUpon>ModuleMacro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Macros\ModuleMacro.ascx.designer.cs">
+      <DependentUpon>ModuleMacro.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Macros\NewsListMacro.ascx.cs">
+      <DependentUpon>NewsListMacro.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Macros\NewsListMacro.ascx.designer.cs">
+      <DependentUpon>NewsListMacro.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\MultiListWrapper.ascx.cs">
+      <DependentUpon>MultiListWrapper.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\MultiListWrapper.ascx.designer.cs">
+      <DependentUpon>MultiListWrapper.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\NewsListMacro2.ascx.cs">
+      <DependentUpon>NewsListMacro2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\NewsListMacro2.ascx.designer.cs">
+      <DependentUpon>NewsListMacro2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\BasePart.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\GeneralContentPart.ascx.cs">
+      <DependentUpon>GeneralContentPart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\GeneralContentPart.ascx.designer.cs">
+      <DependentUpon>GeneralContentPart.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\NavigationBar.ascx.cs">
+      <DependentUpon>NavigationBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\NavigationBar.ascx.designer.cs">
+      <DependentUpon>NavigationBar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\NewsSearchResultPart.ascx.cs">
+      <DependentUpon>NewsSearchResultPart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\NewsSearchResultPart.ascx.designer.cs">
+      <DependentUpon>NewsSearchResultPart.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\NewsSearchFilterPart.ascx.cs">
+      <DependentUpon>NewsSearchFilterPart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\NewsSearchFilterPart.ascx.designer.cs">
+      <DependentUpon>NewsSearchFilterPart.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\Pager.ascx.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\Pager.ascx.designer.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\SideNavigation.ascx.cs">
+      <DependentUpon>SideNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\SideNavigation.ascx.designer.cs">
+      <DependentUpon>SideNavigation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\SiteSearchResult.ascx.cs">
+      <DependentUpon>SiteSearchResult.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\SiteSearchResult.ascx.designer.cs">
+      <DependentUpon>SiteSearchResult.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Parts\SubNavigationBar.ascx.cs">
+      <DependentUpon>SubNavigationBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Parts\SubNavigationBar.ascx.designer.cs">
+      <DependentUpon>SubNavigationBar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\PageLayouts.cs" />
+    <Compile Include="Utilities\Snippets.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config\404handlers.config" />
+    <Content Include="config\ClientDependency.config" />
+    <Content Include="config\Dashboard.config" />
+    <Content Include="config\ExamineIndex.config" />
+    <Content Include="config\ExamineSettings.config" />
+    <Content Include="config\feedProxy.config" />
+    <Content Include="config\formHandlers.config" />
+    <Content Include="config\metablogConfig.config" />
+    <Content Include="config\restExtensions.config" />
+    <Content Include="config\scripting.config" />
+    <Content Include="config\Skinning.config" />
+    <Content Include="config\tinyMceConfig.config" />
+    <Content Include="config\umbracoSettings.config" />
+    <Content Include="config\UrlRewriting.config" />
+    <Content Include="config\xsltExtensions.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LinqIt.UmbracoCustomFieldTypes\LinqIt.UmbracoCustomFieldTypes.csproj">
+      <Project>{14FC4A72-1668-4F13-8C4B-1DA0F3BBE2C6}</Project>
+      <Name>LinqIt.UmbracoCustomFieldTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UmbracoPublic.Logic\UmbracoPublic.Logic.csproj">
+      <Project>{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}</Project>
+      <Name>UmbracoPublic.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="umbraco\masterpages\default.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="masterpages\GeneralPage.master" />
+    <Content Include="handlers\DialogHandler.ashx" />
+    <Content Include="handlers\Dialogs\MasterDialog.Master" />
+    <Content Include="masterpages\TwoColumnWidePage.master" />
+    <Content Include="masterpages\OneColumnWidePage.master" />
+    <Content Include="masterpages\ThreeColumnWidePage.master" />
+    <Content Include="masterpages\WidePageWithLeftMenu.master" />
+    <Content Include="masterpages\WidePageWithRightColumn.master" />
+    <Content Include="masterpages\NewsListPage.master" />
+    <Content Include="umbraco\masterpages\umbracoPage.Master" />
+    <Content Include="umbraco\masterpages\Site.Master" />
+    <Content Include="masterpages\NewsPage.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\lib\" />
+    <Folder Include="usercontrols\Navigation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="handlers\SnapShot.ashx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3288</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://dev.fm.dk</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="WidePageWithRightColumn.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.WidePageWithRightColumn, UmbracoPublic.WebSite" %>
+<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
+<%@ Register src="../usercontrols/Parts/SubNavigationBar.ascx" tagname="SubNavigationBar" tagprefix="uc1" %>
+<%@ Register src="~/usercontrols/Parts/GeneralContentPart.ascx" tagname="GeneralContentPart" tagprefix="part" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+    <uc1:SubNavigationBar ID="SubNavigationBar1" runat="server" />
+    <div class="row">
+        <div class="span12">
+            <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span9">
+            <asp:ContentPlaceHolder ID="plhBeforeMain" runat="server"></asp:ContentPlaceHolder>
+            <part:GeneralContentPart ID="generalContent" runat="server" />
+            <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+            <asp:ContentPlaceHolder ID="plhAfterMain" runat="server"></asp:ContentPlaceHolder>
+        </div>
+        <div class="span3">
+            <asp:ContentPlaceHolder ID="plhBeforeRight" runat="server" />
+            <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
+            <asp:ContentPlaceHolder ID="plhAfterRight" runat="server" />
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
+        </div>
+    </div>
+</asp:Content>

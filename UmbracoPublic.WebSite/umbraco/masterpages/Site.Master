@@ -1,0 +1,150 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UmbracoPublic.WebSite.umbraco.masterpages.Site" %>
+<%@ Register src="~/usercontrols/Parts/NavigationBar.ascx" tagname="NavigationBar" tagprefix="uc2" %>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="utf-8">
+	<title>Økonomi- og Indenrigsministeriet</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <asp:Literal ID="litDynamicMetaTags" runat="server"></asp:Literal> 
+
+	<!-- Le styles -->
+	<link href="/assets/css/bootstrap.css" rel="stylesheet">
+	<style type="text/css">
+		body {
+		padding-top: 20px;
+		padding-bottom: 40px;
+		}
+	</style>
+	<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" href="/assets/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+
+    <script src="/assets/js/jquery-1.7.2.min.js"></script>
+</head>
+  <body>
+		<form id="form1" runat="server">
+		<div class="container">
+            <!--googleoff: index-->
+			<div class="section">
+				<ul class="nav nav-pills pull-right">
+					<li><a href="#">Sitemap / A-Å</a></li>
+					<li><a href="#">Presserum</a></li>
+					<li><a href="#">Publikationer</a></li>
+					<li><a href="#">Abonner</a></li>
+					<li><a href="#">Jobs</a></li>
+					<li><a href="#">Læs højt</a></li>
+					<li><a href="#">Om oim.dk</a></li>
+					<li><a href="#">Kontakt</a></li>
+				</ul>
+			</div>
+	
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>
+						<a class="brand" href="/">Økonomi- og Indenrigsministeriet</a>
+						<div class="nav-collapse">
+							<uc2:NavigationBar ID="NavigationBar1" runat="server" />
+							<div class="navbar-search pull-right" action="Søg">
+							    <input type="text" class="search-query span2" placeholder="Søg">
+						    </div>
+
+						</div><!-- /.nav-collapse -->
+					</div>
+				</div><!-- /navbar-inner -->
+		    </div><!-- /navbar -->
+            <!--googleon: index-->
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderDefault" runat="server"> 
+
+        </asp:ContentPlaceHolder>
+        <hr />
+         <!--googleoff: index-->
+		<footer>
+	    <div class="row">    
+		    <div class="span9">
+		    <h3>Økonomi- og Indenrigsministeriet</h3>
+		    <p>Slotsholmsgade 10-12
+		    <br>1216 København K
+		    <br>Telefon: 72 28 24 00 
+		    <br>Fax: 72 28 24 01        
+		    <br>Generelle henvendelser: oim@oim.dk 
+		    <br>Henvendelser fra borgere: borger@oim.dk 
+		    <br>CVR-nr.: 33 96 24 52 
+		    <br>EAN-nr.: 5798009814128
+		    </p>
+		    </div>  
+		
+		    <div class="span3">
+		     <div class="btn-toolbar pull-right" style="margin-top: 18px;">
+		    <div class="btn-group">
+			    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Institutioner under ministeriet <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			    <li><a href="#">AKF</a></li>
+			    <li><a href="#">CPR</a></li>
+			    <li><a href="#">Danmarks Statistik</a></li>
+			    <li><a href="#">Dansk Sundhedsinstitut</a></li>
+			    <li><a href="#">De Økonomiske Råd</a></li>
+			    <li><a href="#">KREVI</a></li> 
+			    <li><a href="#">Statsforvaltningerne</a></li>
+			    </ul>
+		    </div>
+		     </div>
+		     <br>
+		     <div class="btn-toolbar pull-right" style="margin-top: 18px;">
+		    <div class="btn-group">
+			    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Websites fra ØIM <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			    <li><a href="#">Valgsite</a></li>
+			    <li><a href="#">Election site (in english)</a></li>
+			    <li><a href="#">Budget- og regnskabssystem</a></li>
+			    <li><a href="#">Brugerinformation.dk</a></li>
+			    <li><a href="#">Indtast.dk</a></li>
+			    <li><a href="#">Nøgletal.dk</a></li> 
+			    </ul>
+		    </div>
+		     </div>
+		    </div>
+
+		    </div>    
+		</footer>
+        <!--googleon: index-->
+	</div>
+    
+	 <!-- /container -->
+	
+	    <script src="/assets/js/bootstrap-transition.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-alert.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-modal.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-dropdown.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-scrollspy.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-tab.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-tooltip.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-popover.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-button.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-collapse.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-carousel.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-typeahead.js" type="text/javascript"></script>
+	    <script src="/assets/js/bootstrap-datepicker.js" type="text/javascript"></script>    
+        <script src="/assets/js/script.js" type="text/javascript"></script>
+
+        <asp:Literal ID="litInitializationScript" runat="server"></asp:Literal>
+    </form>
+  </body>
+</html>
+

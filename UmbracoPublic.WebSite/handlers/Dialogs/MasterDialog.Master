@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterDialog.master.cs" Inherits="UmbracoPublic.WebSite.handlers.Dialogs.MasterDialog" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    
+    <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function closedialog(response) {
+            var dlg = window.parent.jQuery("#grid-dialog");
+            dlg[0].response = response;
+            dlg.dialog('close');        
+        }
+    </script>
+    <style type="text/css">
+         html, body, form {
+	        padding : 0;
+	        margin : 0;
+	        height : 100%;
+	        width : 100%;
+	        font-family:Tahoma;
+	        font-size:11.5px;
+	        color:White;
+        }
+
+        .fields label, .fields .label
+        {
+            display:block;
+            color:White;
+            margin-bottom:2px;
+        }
+        .fields input, select
+        {
+            display:block;
+        }
+        .fields input.textbox
+        {
+            width:260px;
+        }
+        .fields select 
+        {
+            width:266px;
+        }
+
+        .field 
+        {
+            margin-bottom:10px;
+        }
+
+        .checkbox input 
+        {
+            width:auto;
+            margin:0 3px 0 0;
+            display:inline;
+            vertical-align:middle;
+        }
+        .checkbox label {
+            display:inline;
+
+        }
+        .dialog p 
+        {
+            padding:0;
+            margin:0 0 10px 0;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="plhHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="dialog">
+        <asp:ContentPlaceHolder ID="plhForm" runat="server">
+        </asp:ContentPlaceHolder>
+        <div class="buttons">
+            <asp:Button ID="btnOk" runat="server" CssClass="button ok" OnClick="OnOkClicked" Text="Ok" />
+            <asp:ContentPlaceHolder ID="plhButtons" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:Button ID="btnCancel" runat="server" CssClass="button cancel" Text="Cancel" UseSubmitBehavior="false" OnClientClick="closedialog();" />
+        </div>
+    </div>
+    </form>
+</body>
+</html>
