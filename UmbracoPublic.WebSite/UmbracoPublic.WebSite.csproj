@@ -39,7 +39,13 @@
     <Reference Include="ClientDependency.Core, Version=1.0.2.37148, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="cms, Version=1.0.4498.19837, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="controls, Version=1.0.4498.19839, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Examine">
+      <HintPath>..\Repository\Umbraco\Examine.dll</HintPath>
+    </Reference>
     <Reference Include="interfaces, Version=1.0.4497.23945, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\Repository\Ionic\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="LinqIt.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Repository\LinqIt\LinqIt.Ajax.dll</HintPath>
@@ -61,6 +67,12 @@
       <HintPath>..\Repository\LinqIt\LinqIt.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ShellIconHandler">
+      <HintPath>..\Repository\ShellIcons\ShellIconHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="ShellIcons">
+      <HintPath>..\Repository\ShellIcons\ShellIcons.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -77,9 +89,21 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="umbraco, Version=1.0.4500.21031, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="umbraco.DataLayer">
+      <HintPath>..\Repository\Umbraco\umbraco.DataLayer.dll</HintPath>
+    </Reference>
     <Reference Include="umbraco.editorControls, Version=1.0.4500.21038, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="umbraco.providers">
+      <HintPath>..\Repository\Umbraco\umbraco.providers.dll</HintPath>
+    </Reference>
+    <Reference Include="UmbracoExamine">
+      <HintPath>..\Repository\Umbraco\UmbracoExamine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SnapShot.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="assets\css\accordioneditor.css" />
     <Content Include="assets\css\bootstrap-responsive.css" />
     <Content Include="assets\css\bootstrap-responsive.min.css" />
@@ -89,6 +113,10 @@
     <Content Include="assets\css\grideditor.css" />
     <Content Include="assets\css\jquery.alerts.css" />
     <EmbeddedResource Include="assets\css\treeview.css" />
+    <Content Include="assets\lib\JQueryUI\datetimepicker.js" />
+    <Content Include="handlers\BuildPackage.aspx" />
+    <Content Include="handlers\InstallPackage.aspx" />
+    <Content Include="themes\Amelia\amelia.min.css" />
     <Content Include="assets\css\ui-darkness\images\ui-bg_flat_30_cccccc_40x100.png" />
     <Content Include="assets\css\ui-darkness\images\ui-bg_flat_50_5c5c5c_40x100.png" />
     <Content Include="assets\css\ui-darkness\images\ui-bg_glass_20_555555_1x400.png" />
@@ -202,7 +230,17 @@
     <Content Include="test\TableTest.aspx" />
     <Content Include="test\TestDatabase.aspx" />
     <Content Include="test\WebForm1.aspx" />
+    <Content Include="themes\Cyborg\StyleSheet1.css" />
+    <Content Include="themes\Default\bootstrap.min.css" />
+    <Content Include="themes\Readable\Readable.css" />
+    <Content Include="themes\Superhero\style.css" />
     <Content Include="umbracoextensions\ChangeTemplateButton.ascx" />
+    <Content Include="umbraco\config\create\UI.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="umbraco\config\lang\da.xml" />
+    <Content Include="umbraco\config\lang\en.xml" />
+    <Content Include="umbraco\css\umbracoGui.css" />
     <Content Include="umbraco\CustomContentEditor.aspx" />
     <Content Include="umbraco\images\umbraco\accordion.png" />
     <Content Include="umbraco\images\umbraco\disqus.png" />
@@ -253,6 +291,13 @@
     <Compile Include="handlers\AccordionEditorHandler.aspx.designer.cs">
       <DependentUpon>AccordionEditorHandler.aspx</DependentUpon>
     </Compile>
+    <Compile Include="handlers\BuildPackage.aspx.cs">
+      <DependentUpon>BuildPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\BuildPackage.aspx.designer.cs">
+      <DependentUpon>BuildPackage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="handlers\Controls\MultiListControl.ascx.cs">
       <DependentUpon>MultiListControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -267,6 +312,7 @@
     <Compile Include="handlers\CreateModuleDialog.aspx.designer.cs">
       <DependentUpon>CreateModuleDialog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="handlers\DeploymentLoader.cs" />
     <Compile Include="handlers\DialogHandler.ashx.cs">
       <DependentUpon>DialogHandler.ashx</DependentUpon>
     </Compile>
@@ -302,6 +348,13 @@
     <Compile Include="handlers\FixGridLayoutHandler.aspx.designer.cs">
       <DependentUpon>FixGridLayoutHandler.aspx</DependentUpon>
     </Compile>
+    <Compile Include="handlers\InstallPackage.aspx.cs">
+      <DependentUpon>InstallPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="handlers\InstallPackage.aspx.designer.cs">
+      <DependentUpon>InstallPackage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="handlers\ItemEditor.aspx.cs">
       <DependentUpon>ItemEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -323,6 +376,7 @@
     <Compile Include="handlers\MultiTreeList\Handler.aspx.designer.cs">
       <DependentUpon>Handler.aspx</DependentUpon>
     </Compile>
+    <Compile Include="handlers\PackagePreferences.cs" />
     <Compile Include="handlers\SnapShot.ashx.cs">
       <DependentUpon>SnapShot.ashx</DependentUpon>
     </Compile>
@@ -723,6 +777,10 @@
       <Project>{14FC4A72-1668-4F13-8C4B-1DA0F3BBE2C6}</Project>
       <Name>LinqIt.UmbracoCustomFieldTypes</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LinqIt.UmbracoServices\LinqIt.UmbracoServices.csproj">
+      <Project>{BFD16E8B-0DD3-466A-8271-F943AA8354B0}</Project>
+      <Name>LinqIt.UmbracoServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UmbracoPublic.Logic\UmbracoPublic.Logic.csproj">
       <Project>{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}</Project>
       <Name>UmbracoPublic.Logic</Name>
@@ -746,7 +804,6 @@
     <Content Include="masterpages\NewsPage.master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\lib\" />
     <Folder Include="usercontrols\Navigation\" />
   </ItemGroup>
   <ItemGroup>
@@ -762,7 +819,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>3288</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://dev.fm.dk</IISUrl>
+          <IISUrl>http://dev.oim.dk</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -772,6 +829,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
