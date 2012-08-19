@@ -32,13 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="businesslogic">
-      <HintPath>..\Min.WebSite\Bin\businesslogic.dll</HintPath>
+      <HintPath>..\Repository\Umbraco\businesslogic.dll</HintPath>
     </Reference>
     <Reference Include="cms">
-      <HintPath>..\Min.WebSite\Bin\cms.dll</HintPath>
+      <HintPath>..\Repository\Umbraco\cms.dll</HintPath>
     </Reference>
     <Reference Include="interfaces">
-      <HintPath>..\Min.WebSite\Bin\interfaces.dll</HintPath>
+      <HintPath>..\Repository\Umbraco\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="LinqIt.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -66,10 +66,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="umbraco">
-      <HintPath>..\Min.WebSite\Bin\umbraco.dll</HintPath>
-    </Reference>
-    <Reference Include="umbraco.editorControls">
-      <HintPath>..\Repository\umbraco.editorControls.dll</HintPath>
+      <HintPath>..\Repository\Umbraco\umbraco.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
