@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Umbraco">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 12.25" name="Umbraco">
   <DataContextMoniker Name="/UmbracoDataContext" />
   <nestedChildShapes>
     <classShape Id="ce7c81fc-b9aa-435a-ad2c-de529d173335" absoluteBounds="4.875, 1.625, 2, 1.3862939453125">
@@ -8,24 +8,130 @@
         <elementListCompartment Id="b38a49cc-74cc-4ee8-932f-bde9c5ea48c4" absoluteBounds="4.89, 2.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="41c3c616-e2ef-4fb2-8add-2efcdab76d4b" absoluteBounds="4.75, 3.75, 2, 1.1939925130208333">
+    <classShape Id="41c3c616-e2ef-4fb2-8add-2efcdab76d4b" absoluteBounds="5.125, 3.75, 2, 1.1939925130208333">
       <DataClassMoniker Name="/UmbracoDataContext/cmsContentXml" />
       <nestedChildShapes>
-        <elementListCompartment Id="d57faa1e-065e-4acd-ba80-83feda396378" absoluteBounds="4.765, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d57faa1e-065e-4acd-ba80-83feda396378" absoluteBounds="5.14, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.8125 : 3.0112939453125); (5.8125 : 3.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6 : 3.0112939453125); (6 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/UmbracoDataContext/cmsContent/cmsContent_cmsContentXml" />
       <nodes>
         <classShapeMoniker Id="ce7c81fc-b9aa-435a-ad2c-de529d173335" />
         <classShapeMoniker Id="41c3c616-e2ef-4fb2-8add-2efcdab76d4b" />
       </nodes>
     </associationConnector>
-    <classShape Id="344e2f43-2375-4628-a97f-ef1e323c9e5a" absoluteBounds="2.375, 1.625, 2, 2.3478011067708335">
+    <classShape Id="344e2f43-2375-4628-a97f-ef1e323c9e5a" absoluteBounds="2.75, 1.125, 2, 2.3478011067708335">
       <DataClassMoniker Name="/UmbracoDataContext/cmsPropertyData" />
       <nestedChildShapes>
-        <elementListCompartment Id="1dca6af2-7df7-4014-8dde-6edbabb12b9d" absoluteBounds="2.39, 2.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1dca6af2-7df7-4014-8dde-6edbabb12b9d" absoluteBounds="2.765, 1.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="6359c9e5-974b-459a-b43e-d6af0ab09eca" absoluteBounds="2.75, 3.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/UmbracoDataContext/cmsDataTypePreValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1e8bf5d9-24d3-4059-8c44-bc10504e5679" absoluteBounds="2.765, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ddba62fb-7c96-4737-8976-b93fb917a93c" absoluteBounds="0.5, 1.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/UmbracoDataContext/cmsContentType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e2177afe-7ee0-4966-91aa-2e2cf506c944" absoluteBounds="0.515, 1.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1f553c6a-32e4-4729-8f57-bee0eeb06973" absoluteBounds="0.5, 4.375, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/UmbracoDataContext/cmsContentTypeAllowedContentType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="455d092b-676e-4186-bd4a-3646efdec8b4" absoluteBounds="0.515, 4.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 3.65549967447917); (1.5 : 4.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/cmsContentType/cmsContentType_cmsContentTypeAllowedContentType" />
+      <nodes>
+        <classShapeMoniker Id="ddba62fb-7c96-4737-8976-b93fb917a93c" />
+        <classShapeMoniker Id="1f553c6a-32e4-4729-8f57-bee0eeb06973" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.0625 : 3.65549967447917); (2.0625 : 4.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/cmsContentType/cmsContentType_cmsContentTypeAllowedContentType1" />
+      <nodes>
+        <classShapeMoniker Id="ddba62fb-7c96-4737-8976-b93fb917a93c" />
+        <classShapeMoniker Id="1f553c6a-32e4-4729-8f57-bee0eeb06973" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="0e0f0376-7a02-412d-8413-ae38efa73462" absoluteBounds="1.625, 6.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/UmbracoDataContext/cmsTab" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc9ddc28-606e-48f2-8322-e4ce6a80e992" absoluteBounds="1.6400000000000001, 6.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 2.5164481953125); (2.6562515 : 2.5164481953125); (2.6562515 : 6.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/cmsContentType/cmsContentType_cmsTab" />
+      <nodes>
+        <classShapeMoniker Id="ddba62fb-7c96-4737-8976-b93fb917a93c" />
+        <classShapeMoniker Id="0e0f0376-7a02-412d-8413-ae38efa73462" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9ae377f2-bd7b-4e9b-8881-28bc9f38e9e6" absoluteBounds="5.625, 6.25, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/UmbracoDataContext/cmsPropertyType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f2a9ceb-53bc-4e61-8078-6383ff41e266" absoluteBounds="5.64, 6.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.40625 : 6.25); (7.40625 : 1.34375); (4.75 : 1.34375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/cmsPropertyType/cmsPropertyType_cmsPropertyData" />
+      <nodes>
+        <classShapeMoniker Id="9ae377f2-bd7b-4e9b-8881-28bc9f38e9e6" />
+        <classShapeMoniker Id="344e2f43-2375-4628-a97f-ef1e323c9e5a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 3.595400390625); (2.57291816666667 : 3.595400390625 : JumpStart); (2.73958483333333 : 3.595400390625 : JumpEnd); (4.88541666666667 : 3.595400390625 : JumpStart); (5.05208333333333 : 3.595400390625 : JumpEnd); (5.91666666666667 : 3.595400390625 : JumpStart); (6.08333333333333 : 3.595400390625 : JumpEnd); (7.2656225 : 3.595400390625); (7.2656225 : 6.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/cmsContentType/cmsContentType_cmsPropertyType" />
+      <nodes>
+        <classShapeMoniker Id="ddba62fb-7c96-4737-8976-b93fb917a93c" />
+        <classShapeMoniker Id="9ae377f2-bd7b-4e9b-8881-28bc9f38e9e6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.625 : 7.28929768880208); (3.66666666666667 : 7.28929768880208 : JumpStart); (3.83333333333333 : 7.28929768880208 : JumpEnd); (4.88541666666667 : 7.28929768880208 : JumpStart); (5.05208333333333 : 7.28929768880208 : JumpEnd); (5.625 : 7.28929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/cmsTab/cmsTab_cmsPropertyType" />
+      <nodes>
+        <classShapeMoniker Id="0e0f0376-7a02-412d-8413-ae38efa73462" />
+        <classShapeMoniker Id="9ae377f2-bd7b-4e9b-8881-28bc9f38e9e6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9fed0213-0651-4232-a8ff-58801ec268c8" absoluteBounds="0.625, 8.625, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/UmbracoDataContext/umbracoNode" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5c1b58e3-071a-49c4-9e1d-dd7ebc5a9604" absoluteBounds="0.64, 9.085, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 10.3934554036458); (4.96875 : 10.3934554036458); (4.96875 : 3.0112939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/umbracoNode/umbracoNode_cmsContent" />
+      <nodes>
+        <classShapeMoniker Id="9fed0213-0651-4232-a8ff-58801ec268c8" />
+        <classShapeMoniker Id="ce7c81fc-b9aa-435a-ad2c-de529d173335" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.625 : 9.47797570182292); (3.75 : 9.47797570182292); (3.75 : 5.70839680989583); (2.73958483333333 : 5.70839680989583 : JumpStart); (2.57291816666667 : 5.70839680989583 : JumpEnd); (2.5625 : 5.70839680989583); (2.5625 : 3.56655110677083); (2.57291816666667 : 3.56655110677083 : JumpStart); (2.73958483333333 : 3.56655110677083 : JumpEnd); (3.75 : 3.56655110677083); (3.75 : 3.47280110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/UmbracoDataContext/umbracoNode/umbracoNode_cmsPropertyData" />
+      <nodes>
+        <classShapeMoniker Id="9fed0213-0651-4232-a8ff-58801ec268c8" />
+        <classShapeMoniker Id="344e2f43-2375-4628-a97f-ef1e323c9e5a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(0.626537461538462 : 8.625); (0.251537461538462 : 8.25); (0.125 : 8.25); (0.125 : 4.03049967447917); (0.5 : 3.65549967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/UmbracoDataContext/umbracoNode/umbracoNode_cmsContentType" />
+      <nodes>
+        <classShapeMoniker Id="9fed0213-0651-4232-a8ff-58801ec268c8" />
+        <classShapeMoniker Id="ddba62fb-7c96-4737-8976-b93fb917a93c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.33423076923077 : 11.5497054036458); (1.33423076923077 : 11.7997054036458); (1.92961538461538 : 11.7997054036458); (1.92961538461538 : 11.5497054036458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/UmbracoDataContext/umbracoNode/umbracoNode_umbracoNode" />
+      <nodes>
+        <classShapeMoniker Id="9fed0213-0651-4232-a8ff-58801ec268c8" />
+        <classShapeMoniker Id="9fed0213-0651-4232-a8ff-58801ec268c8" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

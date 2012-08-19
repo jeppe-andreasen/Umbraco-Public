@@ -76,7 +76,7 @@ namespace LinqIt.UmbracoServices.Data
                     field.Name = propertyType.Alias;
                     var tab = _documentType.getVirtualTabs.Where(t => t.Id == propertyType.TabId).FirstOrDefault();
                     field.Section = tab != null ? tab.Caption : string.Empty;
-                    field.Type = propertyType.DataTypeDefinition.DataType.DataTypeName;
+                    field.Type = propertyType.DataTypeDefinition.Text;
                     result.Add(field);
                 }
                 return result.ToArray();

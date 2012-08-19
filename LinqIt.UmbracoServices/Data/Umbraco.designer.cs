@@ -22,7 +22,7 @@ namespace LinqIt.UmbracoServices.Data
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="StandardSite.Umbraco")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Umbraco-Public")]
 	public partial class UmbracoDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -39,10 +39,28 @@ namespace LinqIt.UmbracoServices.Data
     partial void InsertcmsPropertyData(cmsPropertyData instance);
     partial void UpdatecmsPropertyData(cmsPropertyData instance);
     partial void DeletecmsPropertyData(cmsPropertyData instance);
+    partial void InsertcmsDataTypePreValue(cmsDataTypePreValue instance);
+    partial void UpdatecmsDataTypePreValue(cmsDataTypePreValue instance);
+    partial void DeletecmsDataTypePreValue(cmsDataTypePreValue instance);
+    partial void InsertcmsContentType(cmsContentType instance);
+    partial void UpdatecmsContentType(cmsContentType instance);
+    partial void DeletecmsContentType(cmsContentType instance);
+    partial void InsertcmsContentTypeAllowedContentType(cmsContentTypeAllowedContentType instance);
+    partial void UpdatecmsContentTypeAllowedContentType(cmsContentTypeAllowedContentType instance);
+    partial void DeletecmsContentTypeAllowedContentType(cmsContentTypeAllowedContentType instance);
+    partial void InsertcmsTab(cmsTab instance);
+    partial void UpdatecmsTab(cmsTab instance);
+    partial void DeletecmsTab(cmsTab instance);
+    partial void InsertcmsPropertyType(cmsPropertyType instance);
+    partial void UpdatecmsPropertyType(cmsPropertyType instance);
+    partial void DeletecmsPropertyType(cmsPropertyType instance);
+    partial void InsertumbracoNode(umbracoNode instance);
+    partial void UpdateumbracoNode(umbracoNode instance);
+    partial void DeleteumbracoNode(umbracoNode instance);
     #endregion
 		
 		public UmbracoDataContext() : 
-				base(global::LinqIt.UmbracoServices.Properties.Settings.Default.StandardSite_UmbracoConnectionString, mappingSource)
+				base(global::LinqIt.UmbracoServices.Properties.Settings.Default.Umbraco_PublicConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -94,6 +112,54 @@ namespace LinqIt.UmbracoServices.Data
 				return this.GetTable<cmsPropertyData>();
 			}
 		}
+		
+		public System.Data.Linq.Table<cmsDataTypePreValue> cmsDataTypePreValues
+		{
+			get
+			{
+				return this.GetTable<cmsDataTypePreValue>();
+			}
+		}
+		
+		public System.Data.Linq.Table<cmsContentType> cmsContentTypes
+		{
+			get
+			{
+				return this.GetTable<cmsContentType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<cmsContentTypeAllowedContentType> cmsContentTypeAllowedContentTypes
+		{
+			get
+			{
+				return this.GetTable<cmsContentTypeAllowedContentType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<cmsTab> cmsTabs
+		{
+			get
+			{
+				return this.GetTable<cmsTab>();
+			}
+		}
+		
+		public System.Data.Linq.Table<cmsPropertyType> cmsPropertyTypes
+		{
+			get
+			{
+				return this.GetTable<cmsPropertyType>();
+			}
+		}
+		
+		public System.Data.Linq.Table<umbracoNode> umbracoNodes
+		{
+			get
+			{
+				return this.GetTable<umbracoNode>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cmsContent")]
@@ -110,6 +176,8 @@ namespace LinqIt.UmbracoServices.Data
 		
 		private EntityRef<cmsContentXml> _cmsContentXml;
 		
+		private EntityRef<umbracoNode> _umbracoNode;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -125,6 +193,7 @@ namespace LinqIt.UmbracoServices.Data
 		public cmsContent()
 		{
 			this._cmsContentXml = default(EntityRef<cmsContentXml>);
+			this._umbracoNode = default(EntityRef<umbracoNode>);
 			OnCreated();
 		}
 		
@@ -159,6 +228,10 @@ namespace LinqIt.UmbracoServices.Data
 			{
 				if ((this._nodeId != value))
 				{
+					if (this._umbracoNode.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnnodeIdChanging(value);
 					this.SendPropertyChanging();
 					this._nodeId = value;
@@ -213,6 +286,40 @@ namespace LinqIt.UmbracoServices.Data
 						value.cmsContent = this;
 					}
 					this.SendPropertyChanged("cmsContentXml");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_cmsContent", Storage="_umbracoNode", ThisKey="nodeId", OtherKey="id", IsForeignKey=true)]
+		public umbracoNode umbracoNode
+		{
+			get
+			{
+				return this._umbracoNode.Entity;
+			}
+			set
+			{
+				umbracoNode previousValue = this._umbracoNode.Entity;
+				if (((previousValue != value) 
+							|| (this._umbracoNode.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._umbracoNode.Entity = null;
+						previousValue.cmsContents.Remove(this);
+					}
+					this._umbracoNode.Entity = value;
+					if ((value != null))
+					{
+						value.cmsContents.Add(this);
+						this._nodeId = value.id;
+					}
+					else
+					{
+						this._nodeId = default(int);
+					}
+					this.SendPropertyChanged("umbracoNode");
 				}
 			}
 		}
@@ -387,6 +494,10 @@ namespace LinqIt.UmbracoServices.Data
 		
 		private string _dataNtext;
 		
+		private EntityRef<cmsPropertyType> _cmsPropertyType;
+		
+		private EntityRef<umbracoNode> _umbracoNode;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -411,6 +522,8 @@ namespace LinqIt.UmbracoServices.Data
 		
 		public cmsPropertyData()
 		{
+			this._cmsPropertyType = default(EntityRef<cmsPropertyType>);
+			this._umbracoNode = default(EntityRef<umbracoNode>);
 			OnCreated();
 		}
 		
@@ -445,6 +558,10 @@ namespace LinqIt.UmbracoServices.Data
 			{
 				if ((this._contentNodeId != value))
 				{
+					if (this._umbracoNode.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OncontentNodeIdChanging(value);
 					this.SendPropertyChanging();
 					this._contentNodeId = value;
@@ -485,6 +602,10 @@ namespace LinqIt.UmbracoServices.Data
 			{
 				if ((this._propertytypeid != value))
 				{
+					if (this._cmsPropertyType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnpropertytypeidChanging(value);
 					this.SendPropertyChanging();
 					this._propertytypeid = value;
@@ -574,6 +695,74 @@ namespace LinqIt.UmbracoServices.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsPropertyType_cmsPropertyData", Storage="_cmsPropertyType", ThisKey="propertytypeid", OtherKey="id", IsForeignKey=true)]
+		public cmsPropertyType cmsPropertyType
+		{
+			get
+			{
+				return this._cmsPropertyType.Entity;
+			}
+			set
+			{
+				cmsPropertyType previousValue = this._cmsPropertyType.Entity;
+				if (((previousValue != value) 
+							|| (this._cmsPropertyType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._cmsPropertyType.Entity = null;
+						previousValue.cmsPropertyDatas.Remove(this);
+					}
+					this._cmsPropertyType.Entity = value;
+					if ((value != null))
+					{
+						value.cmsPropertyDatas.Add(this);
+						this._propertytypeid = value.id;
+					}
+					else
+					{
+						this._propertytypeid = default(int);
+					}
+					this.SendPropertyChanged("cmsPropertyType");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_cmsPropertyData", Storage="_umbracoNode", ThisKey="contentNodeId", OtherKey="id", IsForeignKey=true)]
+		public umbracoNode umbracoNode
+		{
+			get
+			{
+				return this._umbracoNode.Entity;
+			}
+			set
+			{
+				umbracoNode previousValue = this._umbracoNode.Entity;
+				if (((previousValue != value) 
+							|| (this._umbracoNode.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._umbracoNode.Entity = null;
+						previousValue.cmsPropertyDatas.Remove(this);
+					}
+					this._umbracoNode.Entity = value;
+					if ((value != null))
+					{
+						value.cmsPropertyDatas.Add(this);
+						this._contentNodeId = value.id;
+					}
+					else
+					{
+						this._contentNodeId = default(int);
+					}
+					this.SendPropertyChanged("umbracoNode");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -592,6 +781,1761 @@ namespace LinqIt.UmbracoServices.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cmsDataTypePreValues")]
+	public partial class cmsDataTypePreValue : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _datatypeNodeId;
+		
+		private string _value;
+		
+		private int _sortorder;
+		
+		private string _alias;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OndatatypeNodeIdChanging(int value);
+    partial void OndatatypeNodeIdChanged();
+    partial void OnvalueChanging(string value);
+    partial void OnvalueChanged();
+    partial void OnsortorderChanging(int value);
+    partial void OnsortorderChanged();
+    partial void OnaliasChanging(string value);
+    partial void OnaliasChanged();
+    #endregion
+		
+		public cmsDataTypePreValue()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_datatypeNodeId", DbType="Int NOT NULL")]
+		public int datatypeNodeId
+		{
+			get
+			{
+				return this._datatypeNodeId;
+			}
+			set
+			{
+				if ((this._datatypeNodeId != value))
+				{
+					this.OndatatypeNodeIdChanging(value);
+					this.SendPropertyChanging();
+					this._datatypeNodeId = value;
+					this.SendPropertyChanged("datatypeNodeId");
+					this.OndatatypeNodeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_value", DbType="NVarChar(2500)")]
+		public string value
+		{
+			get
+			{
+				return this._value;
+			}
+			set
+			{
+				if ((this._value != value))
+				{
+					this.OnvalueChanging(value);
+					this.SendPropertyChanging();
+					this._value = value;
+					this.SendPropertyChanged("value");
+					this.OnvalueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortorder", DbType="Int NOT NULL")]
+		public int sortorder
+		{
+			get
+			{
+				return this._sortorder;
+			}
+			set
+			{
+				if ((this._sortorder != value))
+				{
+					this.OnsortorderChanging(value);
+					this.SendPropertyChanging();
+					this._sortorder = value;
+					this.SendPropertyChanged("sortorder");
+					this.OnsortorderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alias", DbType="NVarChar(50)")]
+		public string alias
+		{
+			get
+			{
+				return this._alias;
+			}
+			set
+			{
+				if ((this._alias != value))
+				{
+					this.OnaliasChanging(value);
+					this.SendPropertyChanging();
+					this._alias = value;
+					this.SendPropertyChanged("alias");
+					this.OnaliasChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cmsContentType")]
+	public partial class cmsContentType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _pk;
+		
+		private int _nodeId;
+		
+		private string _alias;
+		
+		private string _icon;
+		
+		private string _thumbnail;
+		
+		private string _description;
+		
+		private System.Nullable<int> _masterContentType;
+		
+		private EntitySet<cmsContentTypeAllowedContentType> _cmsContentTypeAllowedContentTypes;
+		
+		private EntitySet<cmsContentTypeAllowedContentType> _cmsContentTypeAllowedContentTypes1;
+		
+		private EntitySet<cmsTab> _cmsTabs;
+		
+		private EntitySet<cmsPropertyType> _cmsPropertyTypes;
+		
+		private EntityRef<umbracoNode> _umbracoNode;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnpkChanging(int value);
+    partial void OnpkChanged();
+    partial void OnnodeIdChanging(int value);
+    partial void OnnodeIdChanged();
+    partial void OnaliasChanging(string value);
+    partial void OnaliasChanged();
+    partial void OniconChanging(string value);
+    partial void OniconChanged();
+    partial void OnthumbnailChanging(string value);
+    partial void OnthumbnailChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    partial void OnmasterContentTypeChanging(System.Nullable<int> value);
+    partial void OnmasterContentTypeChanged();
+    #endregion
+		
+		public cmsContentType()
+		{
+			this._cmsContentTypeAllowedContentTypes = new EntitySet<cmsContentTypeAllowedContentType>(new Action<cmsContentTypeAllowedContentType>(this.attach_cmsContentTypeAllowedContentTypes), new Action<cmsContentTypeAllowedContentType>(this.detach_cmsContentTypeAllowedContentTypes));
+			this._cmsContentTypeAllowedContentTypes1 = new EntitySet<cmsContentTypeAllowedContentType>(new Action<cmsContentTypeAllowedContentType>(this.attach_cmsContentTypeAllowedContentTypes1), new Action<cmsContentTypeAllowedContentType>(this.detach_cmsContentTypeAllowedContentTypes1));
+			this._cmsTabs = new EntitySet<cmsTab>(new Action<cmsTab>(this.attach_cmsTabs), new Action<cmsTab>(this.detach_cmsTabs));
+			this._cmsPropertyTypes = new EntitySet<cmsPropertyType>(new Action<cmsPropertyType>(this.attach_cmsPropertyTypes), new Action<cmsPropertyType>(this.detach_cmsPropertyTypes));
+			this._umbracoNode = default(EntityRef<umbracoNode>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pk", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int pk
+		{
+			get
+			{
+				return this._pk;
+			}
+			set
+			{
+				if ((this._pk != value))
+				{
+					this.OnpkChanging(value);
+					this.SendPropertyChanging();
+					this._pk = value;
+					this.SendPropertyChanged("pk");
+					this.OnpkChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nodeId", DbType="Int NOT NULL")]
+		public int nodeId
+		{
+			get
+			{
+				return this._nodeId;
+			}
+			set
+			{
+				if ((this._nodeId != value))
+				{
+					if (this._umbracoNode.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnnodeIdChanging(value);
+					this.SendPropertyChanging();
+					this._nodeId = value;
+					this.SendPropertyChanged("nodeId");
+					this.OnnodeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alias", DbType="NVarChar(255)")]
+		public string alias
+		{
+			get
+			{
+				return this._alias;
+			}
+			set
+			{
+				if ((this._alias != value))
+				{
+					this.OnaliasChanging(value);
+					this.SendPropertyChanging();
+					this._alias = value;
+					this.SendPropertyChanged("alias");
+					this.OnaliasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_icon", DbType="NVarChar(255)")]
+		public string icon
+		{
+			get
+			{
+				return this._icon;
+			}
+			set
+			{
+				if ((this._icon != value))
+				{
+					this.OniconChanging(value);
+					this.SendPropertyChanging();
+					this._icon = value;
+					this.SendPropertyChanged("icon");
+					this.OniconChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_thumbnail", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string thumbnail
+		{
+			get
+			{
+				return this._thumbnail;
+			}
+			set
+			{
+				if ((this._thumbnail != value))
+				{
+					this.OnthumbnailChanging(value);
+					this.SendPropertyChanging();
+					this._thumbnail = value;
+					this.SendPropertyChanged("thumbnail");
+					this.OnthumbnailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="NVarChar(1500)")]
+		public string description
+		{
+			get
+			{
+				return this._description;
+			}
+			set
+			{
+				if ((this._description != value))
+				{
+					this.OndescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._description = value;
+					this.SendPropertyChanged("description");
+					this.OndescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_masterContentType", DbType="Int")]
+		public System.Nullable<int> masterContentType
+		{
+			get
+			{
+				return this._masterContentType;
+			}
+			set
+			{
+				if ((this._masterContentType != value))
+				{
+					this.OnmasterContentTypeChanging(value);
+					this.SendPropertyChanging();
+					this._masterContentType = value;
+					this.SendPropertyChanged("masterContentType");
+					this.OnmasterContentTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsContentTypeAllowedContentType", Storage="_cmsContentTypeAllowedContentTypes", ThisKey="nodeId", OtherKey="Id")]
+		public EntitySet<cmsContentTypeAllowedContentType> cmsContentTypeAllowedContentTypes
+		{
+			get
+			{
+				return this._cmsContentTypeAllowedContentTypes;
+			}
+			set
+			{
+				this._cmsContentTypeAllowedContentTypes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsContentTypeAllowedContentType1", Storage="_cmsContentTypeAllowedContentTypes1", ThisKey="nodeId", OtherKey="AllowedId")]
+		public EntitySet<cmsContentTypeAllowedContentType> cmsContentTypeAllowedContentTypes1
+		{
+			get
+			{
+				return this._cmsContentTypeAllowedContentTypes1;
+			}
+			set
+			{
+				this._cmsContentTypeAllowedContentTypes1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsTab", Storage="_cmsTabs", ThisKey="nodeId", OtherKey="contenttypeNodeId")]
+		public EntitySet<cmsTab> cmsTabs
+		{
+			get
+			{
+				return this._cmsTabs;
+			}
+			set
+			{
+				this._cmsTabs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsPropertyType", Storage="_cmsPropertyTypes", ThisKey="nodeId", OtherKey="contentTypeId")]
+		public EntitySet<cmsPropertyType> cmsPropertyTypes
+		{
+			get
+			{
+				return this._cmsPropertyTypes;
+			}
+			set
+			{
+				this._cmsPropertyTypes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_cmsContentType", Storage="_umbracoNode", ThisKey="nodeId", OtherKey="id", IsForeignKey=true)]
+		public umbracoNode umbracoNode
+		{
+			get
+			{
+				return this._umbracoNode.Entity;
+			}
+			set
+			{
+				umbracoNode previousValue = this._umbracoNode.Entity;
+				if (((previousValue != value) 
+							|| (this._umbracoNode.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._umbracoNode.Entity = null;
+						previousValue.cmsContentTypes.Remove(this);
+					}
+					this._umbracoNode.Entity = value;
+					if ((value != null))
+					{
+						value.cmsContentTypes.Add(this);
+						this._nodeId = value.id;
+					}
+					else
+					{
+						this._nodeId = default(int);
+					}
+					this.SendPropertyChanged("umbracoNode");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_cmsContentTypeAllowedContentTypes(cmsContentTypeAllowedContentType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType = this;
+		}
+		
+		private void detach_cmsContentTypeAllowedContentTypes(cmsContentTypeAllowedContentType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType = null;
+		}
+		
+		private void attach_cmsContentTypeAllowedContentTypes1(cmsContentTypeAllowedContentType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType1 = this;
+		}
+		
+		private void detach_cmsContentTypeAllowedContentTypes1(cmsContentTypeAllowedContentType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType1 = null;
+		}
+		
+		private void attach_cmsTabs(cmsTab entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType = this;
+		}
+		
+		private void detach_cmsTabs(cmsTab entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType = null;
+		}
+		
+		private void attach_cmsPropertyTypes(cmsPropertyType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType = this;
+		}
+		
+		private void detach_cmsPropertyTypes(cmsPropertyType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsContentType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cmsContentTypeAllowedContentType")]
+	public partial class cmsContentTypeAllowedContentType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _AllowedId;
+		
+		private EntityRef<cmsContentType> _cmsContentType;
+		
+		private EntityRef<cmsContentType> _cmsContentType1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnAllowedIdChanging(int value);
+    partial void OnAllowedIdChanged();
+    #endregion
+		
+		public cmsContentTypeAllowedContentType()
+		{
+			this._cmsContentType = default(EntityRef<cmsContentType>);
+			this._cmsContentType1 = default(EntityRef<cmsContentType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					if (this._cmsContentType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AllowedId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int AllowedId
+		{
+			get
+			{
+				return this._AllowedId;
+			}
+			set
+			{
+				if ((this._AllowedId != value))
+				{
+					if (this._cmsContentType1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAllowedIdChanging(value);
+					this.SendPropertyChanging();
+					this._AllowedId = value;
+					this.SendPropertyChanged("AllowedId");
+					this.OnAllowedIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsContentTypeAllowedContentType", Storage="_cmsContentType", ThisKey="Id", OtherKey="nodeId", IsForeignKey=true)]
+		public cmsContentType cmsContentType
+		{
+			get
+			{
+				return this._cmsContentType.Entity;
+			}
+			set
+			{
+				cmsContentType previousValue = this._cmsContentType.Entity;
+				if (((previousValue != value) 
+							|| (this._cmsContentType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._cmsContentType.Entity = null;
+						previousValue.cmsContentTypeAllowedContentTypes.Remove(this);
+					}
+					this._cmsContentType.Entity = value;
+					if ((value != null))
+					{
+						value.cmsContentTypeAllowedContentTypes.Add(this);
+						this._Id = value.nodeId;
+					}
+					else
+					{
+						this._Id = default(int);
+					}
+					this.SendPropertyChanged("cmsContentType");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsContentTypeAllowedContentType1", Storage="_cmsContentType1", ThisKey="AllowedId", OtherKey="nodeId", IsForeignKey=true)]
+		public cmsContentType cmsContentType1
+		{
+			get
+			{
+				return this._cmsContentType1.Entity;
+			}
+			set
+			{
+				cmsContentType previousValue = this._cmsContentType1.Entity;
+				if (((previousValue != value) 
+							|| (this._cmsContentType1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._cmsContentType1.Entity = null;
+						previousValue.cmsContentTypeAllowedContentTypes1.Remove(this);
+					}
+					this._cmsContentType1.Entity = value;
+					if ((value != null))
+					{
+						value.cmsContentTypeAllowedContentTypes1.Add(this);
+						this._AllowedId = value.nodeId;
+					}
+					else
+					{
+						this._AllowedId = default(int);
+					}
+					this.SendPropertyChanged("cmsContentType1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cmsTab")]
+	public partial class cmsTab : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _contenttypeNodeId;
+		
+		private string _text;
+		
+		private int _sortorder;
+		
+		private EntitySet<cmsPropertyType> _cmsPropertyTypes;
+		
+		private EntityRef<cmsContentType> _cmsContentType;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OncontenttypeNodeIdChanging(int value);
+    partial void OncontenttypeNodeIdChanged();
+    partial void OntextChanging(string value);
+    partial void OntextChanged();
+    partial void OnsortorderChanging(int value);
+    partial void OnsortorderChanged();
+    #endregion
+		
+		public cmsTab()
+		{
+			this._cmsPropertyTypes = new EntitySet<cmsPropertyType>(new Action<cmsPropertyType>(this.attach_cmsPropertyTypes), new Action<cmsPropertyType>(this.detach_cmsPropertyTypes));
+			this._cmsContentType = default(EntityRef<cmsContentType>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contenttypeNodeId", DbType="Int NOT NULL")]
+		public int contenttypeNodeId
+		{
+			get
+			{
+				return this._contenttypeNodeId;
+			}
+			set
+			{
+				if ((this._contenttypeNodeId != value))
+				{
+					if (this._cmsContentType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OncontenttypeNodeIdChanging(value);
+					this.SendPropertyChanging();
+					this._contenttypeNodeId = value;
+					this.SendPropertyChanged("contenttypeNodeId");
+					this.OncontenttypeNodeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_text", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string text
+		{
+			get
+			{
+				return this._text;
+			}
+			set
+			{
+				if ((this._text != value))
+				{
+					this.OntextChanging(value);
+					this.SendPropertyChanging();
+					this._text = value;
+					this.SendPropertyChanged("text");
+					this.OntextChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortorder", DbType="Int NOT NULL")]
+		public int sortorder
+		{
+			get
+			{
+				return this._sortorder;
+			}
+			set
+			{
+				if ((this._sortorder != value))
+				{
+					this.OnsortorderChanging(value);
+					this.SendPropertyChanging();
+					this._sortorder = value;
+					this.SendPropertyChanged("sortorder");
+					this.OnsortorderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsTab_cmsPropertyType", Storage="_cmsPropertyTypes", ThisKey="id", OtherKey="tabId")]
+		public EntitySet<cmsPropertyType> cmsPropertyTypes
+		{
+			get
+			{
+				return this._cmsPropertyTypes;
+			}
+			set
+			{
+				this._cmsPropertyTypes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsTab", Storage="_cmsContentType", ThisKey="contenttypeNodeId", OtherKey="nodeId", IsForeignKey=true)]
+		public cmsContentType cmsContentType
+		{
+			get
+			{
+				return this._cmsContentType.Entity;
+			}
+			set
+			{
+				cmsContentType previousValue = this._cmsContentType.Entity;
+				if (((previousValue != value) 
+							|| (this._cmsContentType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._cmsContentType.Entity = null;
+						previousValue.cmsTabs.Remove(this);
+					}
+					this._cmsContentType.Entity = value;
+					if ((value != null))
+					{
+						value.cmsTabs.Add(this);
+						this._contenttypeNodeId = value.nodeId;
+					}
+					else
+					{
+						this._contenttypeNodeId = default(int);
+					}
+					this.SendPropertyChanged("cmsContentType");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_cmsPropertyTypes(cmsPropertyType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsTab = this;
+		}
+		
+		private void detach_cmsPropertyTypes(cmsPropertyType entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsTab = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.cmsPropertyType")]
+	public partial class cmsPropertyType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _dataTypeId;
+		
+		private int _contentTypeId;
+		
+		private System.Nullable<int> _tabId;
+		
+		private string _Alias;
+		
+		private string _Name;
+		
+		private string _helpText;
+		
+		private int _sortOrder;
+		
+		private bool _mandatory;
+		
+		private string _validationRegExp;
+		
+		private string _Description;
+		
+		private EntitySet<cmsPropertyData> _cmsPropertyDatas;
+		
+		private EntityRef<cmsContentType> _cmsContentType;
+		
+		private EntityRef<cmsTab> _cmsTab;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OndataTypeIdChanging(int value);
+    partial void OndataTypeIdChanged();
+    partial void OncontentTypeIdChanging(int value);
+    partial void OncontentTypeIdChanged();
+    partial void OntabIdChanging(System.Nullable<int> value);
+    partial void OntabIdChanged();
+    partial void OnAliasChanging(string value);
+    partial void OnAliasChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnhelpTextChanging(string value);
+    partial void OnhelpTextChanged();
+    partial void OnsortOrderChanging(int value);
+    partial void OnsortOrderChanged();
+    partial void OnmandatoryChanging(bool value);
+    partial void OnmandatoryChanged();
+    partial void OnvalidationRegExpChanging(string value);
+    partial void OnvalidationRegExpChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    #endregion
+		
+		public cmsPropertyType()
+		{
+			this._cmsPropertyDatas = new EntitySet<cmsPropertyData>(new Action<cmsPropertyData>(this.attach_cmsPropertyDatas), new Action<cmsPropertyData>(this.detach_cmsPropertyDatas));
+			this._cmsContentType = default(EntityRef<cmsContentType>);
+			this._cmsTab = default(EntityRef<cmsTab>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dataTypeId", DbType="Int NOT NULL")]
+		public int dataTypeId
+		{
+			get
+			{
+				return this._dataTypeId;
+			}
+			set
+			{
+				if ((this._dataTypeId != value))
+				{
+					this.OndataTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._dataTypeId = value;
+					this.SendPropertyChanged("dataTypeId");
+					this.OndataTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_contentTypeId", DbType="Int NOT NULL")]
+		public int contentTypeId
+		{
+			get
+			{
+				return this._contentTypeId;
+			}
+			set
+			{
+				if ((this._contentTypeId != value))
+				{
+					if (this._cmsContentType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OncontentTypeIdChanging(value);
+					this.SendPropertyChanging();
+					this._contentTypeId = value;
+					this.SendPropertyChanged("contentTypeId");
+					this.OncontentTypeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tabId", DbType="Int")]
+		public System.Nullable<int> tabId
+		{
+			get
+			{
+				return this._tabId;
+			}
+			set
+			{
+				if ((this._tabId != value))
+				{
+					if (this._cmsTab.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OntabIdChanging(value);
+					this.SendPropertyChanging();
+					this._tabId = value;
+					this.SendPropertyChanged("tabId");
+					this.OntabIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Alias", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Alias
+		{
+			get
+			{
+				return this._Alias;
+			}
+			set
+			{
+				if ((this._Alias != value))
+				{
+					this.OnAliasChanging(value);
+					this.SendPropertyChanging();
+					this._Alias = value;
+					this.SendPropertyChanged("Alias");
+					this.OnAliasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(255)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_helpText", DbType="NVarChar(1000)")]
+		public string helpText
+		{
+			get
+			{
+				return this._helpText;
+			}
+			set
+			{
+				if ((this._helpText != value))
+				{
+					this.OnhelpTextChanging(value);
+					this.SendPropertyChanging();
+					this._helpText = value;
+					this.SendPropertyChanged("helpText");
+					this.OnhelpTextChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortOrder", DbType="Int NOT NULL")]
+		public int sortOrder
+		{
+			get
+			{
+				return this._sortOrder;
+			}
+			set
+			{
+				if ((this._sortOrder != value))
+				{
+					this.OnsortOrderChanging(value);
+					this.SendPropertyChanging();
+					this._sortOrder = value;
+					this.SendPropertyChanged("sortOrder");
+					this.OnsortOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mandatory", DbType="Bit NOT NULL")]
+		public bool mandatory
+		{
+			get
+			{
+				return this._mandatory;
+			}
+			set
+			{
+				if ((this._mandatory != value))
+				{
+					this.OnmandatoryChanging(value);
+					this.SendPropertyChanging();
+					this._mandatory = value;
+					this.SendPropertyChanged("mandatory");
+					this.OnmandatoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_validationRegExp", DbType="NVarChar(255)")]
+		public string validationRegExp
+		{
+			get
+			{
+				return this._validationRegExp;
+			}
+			set
+			{
+				if ((this._validationRegExp != value))
+				{
+					this.OnvalidationRegExpChanging(value);
+					this.SendPropertyChanging();
+					this._validationRegExp = value;
+					this.SendPropertyChanged("validationRegExp");
+					this.OnvalidationRegExpChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(2000)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsPropertyType_cmsPropertyData", Storage="_cmsPropertyDatas", ThisKey="id", OtherKey="propertytypeid")]
+		public EntitySet<cmsPropertyData> cmsPropertyDatas
+		{
+			get
+			{
+				return this._cmsPropertyDatas;
+			}
+			set
+			{
+				this._cmsPropertyDatas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsContentType_cmsPropertyType", Storage="_cmsContentType", ThisKey="contentTypeId", OtherKey="nodeId", IsForeignKey=true)]
+		public cmsContentType cmsContentType
+		{
+			get
+			{
+				return this._cmsContentType.Entity;
+			}
+			set
+			{
+				cmsContentType previousValue = this._cmsContentType.Entity;
+				if (((previousValue != value) 
+							|| (this._cmsContentType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._cmsContentType.Entity = null;
+						previousValue.cmsPropertyTypes.Remove(this);
+					}
+					this._cmsContentType.Entity = value;
+					if ((value != null))
+					{
+						value.cmsPropertyTypes.Add(this);
+						this._contentTypeId = value.nodeId;
+					}
+					else
+					{
+						this._contentTypeId = default(int);
+					}
+					this.SendPropertyChanged("cmsContentType");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="cmsTab_cmsPropertyType", Storage="_cmsTab", ThisKey="tabId", OtherKey="id", IsForeignKey=true)]
+		public cmsTab cmsTab
+		{
+			get
+			{
+				return this._cmsTab.Entity;
+			}
+			set
+			{
+				cmsTab previousValue = this._cmsTab.Entity;
+				if (((previousValue != value) 
+							|| (this._cmsTab.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._cmsTab.Entity = null;
+						previousValue.cmsPropertyTypes.Remove(this);
+					}
+					this._cmsTab.Entity = value;
+					if ((value != null))
+					{
+						value.cmsPropertyTypes.Add(this);
+						this._tabId = value.id;
+					}
+					else
+					{
+						this._tabId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("cmsTab");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_cmsPropertyDatas(cmsPropertyData entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsPropertyType = this;
+		}
+		
+		private void detach_cmsPropertyDatas(cmsPropertyData entity)
+		{
+			this.SendPropertyChanging();
+			entity.cmsPropertyType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.umbracoNode")]
+	public partial class umbracoNode : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private bool _trashed;
+		
+		private int _parentID;
+		
+		private System.Nullable<int> _nodeUser;
+		
+		private short _level;
+		
+		private string _path;
+		
+		private int _sortOrder;
+		
+		private System.Nullable<System.Guid> _uniqueID;
+		
+		private string _text;
+		
+		private System.Nullable<System.Guid> _nodeObjectType;
+		
+		private System.DateTime _createDate;
+		
+		private EntitySet<cmsContent> _cmsContents;
+		
+		private EntitySet<cmsPropertyData> _cmsPropertyDatas;
+		
+		private EntitySet<cmsContentType> _cmsContentTypes;
+		
+		private EntitySet<umbracoNode> _umbracoNodes;
+		
+		private EntityRef<umbracoNode> _umbracoNode1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OntrashedChanging(bool value);
+    partial void OntrashedChanged();
+    partial void OnparentIDChanging(int value);
+    partial void OnparentIDChanged();
+    partial void OnnodeUserChanging(System.Nullable<int> value);
+    partial void OnnodeUserChanged();
+    partial void OnlevelChanging(short value);
+    partial void OnlevelChanged();
+    partial void OnpathChanging(string value);
+    partial void OnpathChanged();
+    partial void OnsortOrderChanging(int value);
+    partial void OnsortOrderChanged();
+    partial void OnuniqueIDChanging(System.Nullable<System.Guid> value);
+    partial void OnuniqueIDChanged();
+    partial void OntextChanging(string value);
+    partial void OntextChanged();
+    partial void OnnodeObjectTypeChanging(System.Nullable<System.Guid> value);
+    partial void OnnodeObjectTypeChanged();
+    partial void OncreateDateChanging(System.DateTime value);
+    partial void OncreateDateChanged();
+    #endregion
+		
+		public umbracoNode()
+		{
+			this._cmsContents = new EntitySet<cmsContent>(new Action<cmsContent>(this.attach_cmsContents), new Action<cmsContent>(this.detach_cmsContents));
+			this._cmsPropertyDatas = new EntitySet<cmsPropertyData>(new Action<cmsPropertyData>(this.attach_cmsPropertyDatas), new Action<cmsPropertyData>(this.detach_cmsPropertyDatas));
+			this._cmsContentTypes = new EntitySet<cmsContentType>(new Action<cmsContentType>(this.attach_cmsContentTypes), new Action<cmsContentType>(this.detach_cmsContentTypes));
+			this._umbracoNodes = new EntitySet<umbracoNode>(new Action<umbracoNode>(this.attach_umbracoNodes), new Action<umbracoNode>(this.detach_umbracoNodes));
+			this._umbracoNode1 = default(EntityRef<umbracoNode>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_trashed", DbType="Bit NOT NULL")]
+		public bool trashed
+		{
+			get
+			{
+				return this._trashed;
+			}
+			set
+			{
+				if ((this._trashed != value))
+				{
+					this.OntrashedChanging(value);
+					this.SendPropertyChanging();
+					this._trashed = value;
+					this.SendPropertyChanged("trashed");
+					this.OntrashedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_parentID", DbType="Int NOT NULL")]
+		public int parentID
+		{
+			get
+			{
+				return this._parentID;
+			}
+			set
+			{
+				if ((this._parentID != value))
+				{
+					if (this._umbracoNode1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnparentIDChanging(value);
+					this.SendPropertyChanging();
+					this._parentID = value;
+					this.SendPropertyChanged("parentID");
+					this.OnparentIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nodeUser", DbType="Int")]
+		public System.Nullable<int> nodeUser
+		{
+			get
+			{
+				return this._nodeUser;
+			}
+			set
+			{
+				if ((this._nodeUser != value))
+				{
+					this.OnnodeUserChanging(value);
+					this.SendPropertyChanging();
+					this._nodeUser = value;
+					this.SendPropertyChanged("nodeUser");
+					this.OnnodeUserChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[level]", Storage="_level", DbType="SmallInt NOT NULL")]
+		public short level
+		{
+			get
+			{
+				return this._level;
+			}
+			set
+			{
+				if ((this._level != value))
+				{
+					this.OnlevelChanging(value);
+					this.SendPropertyChanging();
+					this._level = value;
+					this.SendPropertyChanged("level");
+					this.OnlevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_path", DbType="NVarChar(150) NOT NULL", CanBeNull=false)]
+		public string path
+		{
+			get
+			{
+				return this._path;
+			}
+			set
+			{
+				if ((this._path != value))
+				{
+					this.OnpathChanging(value);
+					this.SendPropertyChanging();
+					this._path = value;
+					this.SendPropertyChanged("path");
+					this.OnpathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sortOrder", DbType="Int NOT NULL")]
+		public int sortOrder
+		{
+			get
+			{
+				return this._sortOrder;
+			}
+			set
+			{
+				if ((this._sortOrder != value))
+				{
+					this.OnsortOrderChanging(value);
+					this.SendPropertyChanging();
+					this._sortOrder = value;
+					this.SendPropertyChanged("sortOrder");
+					this.OnsortOrderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uniqueID", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> uniqueID
+		{
+			get
+			{
+				return this._uniqueID;
+			}
+			set
+			{
+				if ((this._uniqueID != value))
+				{
+					this.OnuniqueIDChanging(value);
+					this.SendPropertyChanging();
+					this._uniqueID = value;
+					this.SendPropertyChanged("uniqueID");
+					this.OnuniqueIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_text", DbType="NVarChar(255)")]
+		public string text
+		{
+			get
+			{
+				return this._text;
+			}
+			set
+			{
+				if ((this._text != value))
+				{
+					this.OntextChanging(value);
+					this.SendPropertyChanging();
+					this._text = value;
+					this.SendPropertyChanged("text");
+					this.OntextChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nodeObjectType", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> nodeObjectType
+		{
+			get
+			{
+				return this._nodeObjectType;
+			}
+			set
+			{
+				if ((this._nodeObjectType != value))
+				{
+					this.OnnodeObjectTypeChanging(value);
+					this.SendPropertyChanging();
+					this._nodeObjectType = value;
+					this.SendPropertyChanged("nodeObjectType");
+					this.OnnodeObjectTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_createDate", DbType="DateTime NOT NULL")]
+		public System.DateTime createDate
+		{
+			get
+			{
+				return this._createDate;
+			}
+			set
+			{
+				if ((this._createDate != value))
+				{
+					this.OncreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._createDate = value;
+					this.SendPropertyChanged("createDate");
+					this.OncreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_cmsContent", Storage="_cmsContents", ThisKey="id", OtherKey="nodeId")]
+		public EntitySet<cmsContent> cmsContents
+		{
+			get
+			{
+				return this._cmsContents;
+			}
+			set
+			{
+				this._cmsContents.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_cmsPropertyData", Storage="_cmsPropertyDatas", ThisKey="id", OtherKey="contentNodeId")]
+		public EntitySet<cmsPropertyData> cmsPropertyDatas
+		{
+			get
+			{
+				return this._cmsPropertyDatas;
+			}
+			set
+			{
+				this._cmsPropertyDatas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_cmsContentType", Storage="_cmsContentTypes", ThisKey="id", OtherKey="nodeId")]
+		public EntitySet<cmsContentType> cmsContentTypes
+		{
+			get
+			{
+				return this._cmsContentTypes;
+			}
+			set
+			{
+				this._cmsContentTypes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_umbracoNode", Storage="_umbracoNodes", ThisKey="id", OtherKey="parentID")]
+		public EntitySet<umbracoNode> umbracoNodes
+		{
+			get
+			{
+				return this._umbracoNodes;
+			}
+			set
+			{
+				this._umbracoNodes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_umbracoNode", Storage="_umbracoNode1", ThisKey="parentID", OtherKey="id", IsForeignKey=true)]
+		public umbracoNode umbracoNode1
+		{
+			get
+			{
+				return this._umbracoNode1.Entity;
+			}
+			set
+			{
+				umbracoNode previousValue = this._umbracoNode1.Entity;
+				if (((previousValue != value) 
+							|| (this._umbracoNode1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._umbracoNode1.Entity = null;
+						previousValue.umbracoNodes.Remove(this);
+					}
+					this._umbracoNode1.Entity = value;
+					if ((value != null))
+					{
+						value.umbracoNodes.Add(this);
+						this._parentID = value.id;
+					}
+					else
+					{
+						this._parentID = default(int);
+					}
+					this.SendPropertyChanged("umbracoNode1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_cmsContents(cmsContent entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = this;
+		}
+		
+		private void detach_cmsContents(cmsContent entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = null;
+		}
+		
+		private void attach_cmsPropertyDatas(cmsPropertyData entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = this;
+		}
+		
+		private void detach_cmsPropertyDatas(cmsPropertyData entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = null;
+		}
+		
+		private void attach_cmsContentTypes(cmsContentType entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = this;
+		}
+		
+		private void detach_cmsContentTypes(cmsContentType entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = null;
+		}
+		
+		private void attach_umbracoNodes(umbracoNode entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode1 = this;
+		}
+		
+		private void detach_umbracoNodes(umbracoNode entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode1 = null;
 		}
 	}
 }

@@ -31,10 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="businesslogic, Version=1.0.4498.19835, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="cms, Version=1.0.4498.19837, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="businesslogic">
+      <HintPath>..\Repository\Umbraco\businesslogic.dll</HintPath>
+    </Reference>
+    <Reference Include="cms">
+      <HintPath>..\Repository\Umbraco\cms.dll</HintPath>
+    </Reference>
     <Reference Include="interfaces">
-      <HintPath>..\Min.WebSite\Bin\interfaces.dll</HintPath>
+      <HintPath>..\Repository\Umbraco\interfaces.dll</HintPath>
     </Reference>
     <Reference Include="LinqIt.Cms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,10 +59,24 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="umbraco">
-      <HintPath>..\Min.WebSite\Bin\umbraco.dll</HintPath>
+      <HintPath>..\Repository\Umbraco\umbraco.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataInstallers\ChildStructureUpdater.cs" />
+    <Compile Include="Data\DataInstallers\DataHelper.cs" />
+    <Compile Include="Data\DataInstallers\FieldTypeInstaller.cs" />
+    <Compile Include="Data\DataInstallers\SynchronizationTask.cs" />
+    <Compile Include="Data\DataInstallers\SynchronizeAllowedChildrenTask.cs" />
+    <Compile Include="Data\DataInstallers\SynchronizeTemplateFieldsTask.cs" />
+    <Compile Include="Data\DataInstallers\SynchronizeTemplateTabsTask.cs" />
+    <Compile Include="Data\DataInstallers\SynchronizeTemplateTask.cs" />
+    <Compile Include="Data\DataInstallers\TabUpdater.cs" />
+    <Compile Include="Data\DataInstallers\TemplateCreator.cs" />
+    <Compile Include="Data\DataInstallers\TemplateInstaller.cs" />
+    <Compile Include="Data\DataInstallers\TemplateUpdater.cs" />
+    <Compile Include="Data\DataIterators\FieldTypeIterator.cs" />
+    <Compile Include="Data\DataIterators\UmbracoTemplateIterator.cs" />
     <Compile Include="Data\Umbraco.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

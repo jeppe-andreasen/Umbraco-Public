@@ -10,7 +10,11 @@ using System.Xml;
 using System.Xml.Linq;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
+using LinqIt.Cms.Data.DataInstallers;
+using LinqIt.Cms.Data.DataIterators;
 using LinqIt.UmbracoServices.Data;
+using LinqIt.UmbracoServices.Data.DataInstallers;
+using LinqIt.UmbracoServices.Data.DataIterators;
 using LinqIt.Utils;
 using LinqIt.Utils.Extensions;
 using umbraco.BusinessLogic;
@@ -544,7 +548,7 @@ namespace LinqIt.UmbracoServices
 
             // Update Type on xml content
             var xmlContent = context.cmsContentXmls.Where(c => c.nodeId == doc.Id).FirstOrDefault();
-            XmlDocument xml = new XmlDocument();
+            var xml = new XmlDocument();
             xml.LoadXml(xmlContent.xml);
             xml.DocumentElement.Attributes["nodeType"].Value = template.Id.ToString();
             xmlContent.xml = xml.OuterXml;
@@ -588,6 +592,32 @@ namespace LinqIt.UmbracoServices
             var db = GetDbContext();
             var item = db.cmsContentXmls.Where(n => n.nodeId == nodeId).FirstOrDefault();
             return item == null ? null : XDocument.Parse(item.xml);
+        }
+
+        protected override List<Cms.Data.DataIterators.DataIterator> GetDataIterators(SnapShotOptions options)
+        {
+            var datacontext = GetDbContext();
+            var result = base.GetDataIterators(options);
+
+            var invalidPaths = options.InvalidPaths ?? new string[0];
+
+            if (!invalidPaths.Contains("fieldtypes"))
+                result.Add(new FieldTypeIterator(datacontext, invalidPaths));
+
+            if (!invalidPaths.Contains("templates"))
+                result.Add(new UmbracoTemplateIterator(datacontext, invalidPaths));
+            return result;
+        }
+
+        protected override List<Cms.Data.DataInstallers.DataInstaller> GetDataInstallers()
+        {
+            var connectionString = ConfigurationManager.AppSettings["umbracoDbDSN"];
+            var context = new UmbracoDataContext(connectionString);
+
+            var result = new List<DataInstaller>();
+            result.Add(new FieldTypeInstaller(context));
+            result.Add(new TemplateInstaller(connectionString));
+            return result;
         }
     }
 }

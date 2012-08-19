@@ -1,11 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="StandardSite.Umbraco" Class="UmbracoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SqlExpress;Initial Catalog=StandardSite.Umbraco;Integrated Security=True" SettingsObjectName="LinqIt.UmbracoServices.Properties.Settings" SettingsPropertyName="StandardSite_UmbracoConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Umbraco-Public" Class="UmbracoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SqlExpress;Initial Catalog=Umbraco-Public;Integrated Security=True" SettingsObjectName="LinqIt.UmbracoServices.Properties.Settings" SettingsPropertyName="Umbraco_PublicConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.cmsContent" Member="cmsContents">
     <Type Name="cmsContent">
       <Column Name="pk" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nodeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="contentType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="cmsContent_cmsContentXml" Member="cmsContentXml" ThisKey="nodeId" OtherKey="nodeId" Type="cmsContentXml" Cardinality="One" />
+      <Association Name="umbracoNode_cmsContent" Member="umbracoNode" ThisKey="nodeId" OtherKey="id" Type="umbracoNode" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.cmsContentXml" Member="cmsContentXmls">
@@ -25,6 +26,89 @@
       <Column Name="dataDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="dataNvarchar" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="dataNtext" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="cmsPropertyType_cmsPropertyData" Member="cmsPropertyType" ThisKey="propertytypeid" OtherKey="id" Type="cmsPropertyType" IsForeignKey="true" />
+      <Association Name="umbracoNode_cmsPropertyData" Member="umbracoNode" ThisKey="contentNodeId" OtherKey="id" Type="umbracoNode" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cmsDataTypePreValues" Member="cmsDataTypePreValues">
+    <Type Name="cmsDataTypePreValue">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="datatypeNodeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="value" Type="System.String" DbType="NVarChar(2500)" CanBeNull="true" />
+      <Column Name="sortorder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="alias" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cmsContentType" Member="cmsContentTypes">
+    <Type Name="cmsContentType">
+      <Column Name="pk" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nodeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="alias" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="icon" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="thumbnail" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(1500)" CanBeNull="true" />
+      <Column Name="masterContentType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="cmsContentType_cmsContentTypeAllowedContentType" Member="cmsContentTypeAllowedContentTypes" ThisKey="nodeId" OtherKey="Id" Type="cmsContentTypeAllowedContentType" />
+      <Association Name="cmsContentType_cmsContentTypeAllowedContentType1" Member="cmsContentTypeAllowedContentTypes1" ThisKey="nodeId" OtherKey="AllowedId" Type="cmsContentTypeAllowedContentType" />
+      <Association Name="cmsContentType_cmsTab" Member="cmsTabs" ThisKey="nodeId" OtherKey="contenttypeNodeId" Type="cmsTab" />
+      <Association Name="cmsContentType_cmsPropertyType" Member="cmsPropertyTypes" ThisKey="nodeId" OtherKey="contentTypeId" Type="cmsPropertyType" />
+      <Association Name="umbracoNode_cmsContentType" Member="umbracoNode" ThisKey="nodeId" OtherKey="id" Type="umbracoNode" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cmsContentTypeAllowedContentType" Member="cmsContentTypeAllowedContentTypes">
+    <Type Name="cmsContentTypeAllowedContentType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AllowedId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="cmsContentType_cmsContentTypeAllowedContentType" Member="cmsContentType" ThisKey="Id" OtherKey="nodeId" Type="cmsContentType" IsForeignKey="true" />
+      <Association Name="cmsContentType_cmsContentTypeAllowedContentType1" Member="cmsContentType1" ThisKey="AllowedId" OtherKey="nodeId" Type="cmsContentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cmsTab" Member="cmsTabs">
+    <Type Name="cmsTab">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="contenttypeNodeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="text" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="sortorder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="cmsTab_cmsPropertyType" Member="cmsPropertyTypes" ThisKey="id" OtherKey="tabId" Type="cmsPropertyType" />
+      <Association Name="cmsContentType_cmsTab" Member="cmsContentType" ThisKey="contenttypeNodeId" OtherKey="nodeId" Type="cmsContentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.cmsPropertyType" Member="cmsPropertyTypes">
+    <Type Name="cmsPropertyType">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dataTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="contentTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tabId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Alias" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="helpText" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="sortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="mandatory" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="validationRegExp" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(2000)" CanBeNull="true" />
+      <Association Name="cmsPropertyType_cmsPropertyData" Member="cmsPropertyDatas" ThisKey="id" OtherKey="propertytypeid" Type="cmsPropertyData" />
+      <Association Name="cmsContentType_cmsPropertyType" Member="cmsContentType" ThisKey="contentTypeId" OtherKey="nodeId" Type="cmsContentType" IsForeignKey="true" />
+      <Association Name="cmsTab_cmsPropertyType" Member="cmsTab" ThisKey="tabId" OtherKey="id" Type="cmsTab" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.umbracoNode" Member="umbracoNodes">
+    <Type Name="umbracoNode">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="trashed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="parentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nodeUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[level]" Member="level" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="path" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="sortOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="uniqueID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="text" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="nodeObjectType" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="createDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="umbracoNode_cmsContent" Member="cmsContents" ThisKey="id" OtherKey="nodeId" Type="cmsContent" />
+      <Association Name="umbracoNode_cmsPropertyData" Member="cmsPropertyDatas" ThisKey="id" OtherKey="contentNodeId" Type="cmsPropertyData" />
+      <Association Name="umbracoNode_cmsContentType" Member="cmsContentTypes" ThisKey="id" OtherKey="nodeId" Type="cmsContentType" />
+      <Association Name="umbracoNode_umbracoNode" Member="umbracoNodes" ThisKey="id" OtherKey="parentID" Type="umbracoNode" />
+      <Association Name="umbracoNode_umbracoNode" Member="umbracoNode1" ThisKey="parentID" OtherKey="id" Type="umbracoNode" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

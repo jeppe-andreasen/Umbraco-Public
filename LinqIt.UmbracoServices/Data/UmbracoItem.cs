@@ -92,8 +92,6 @@ namespace LinqIt.UmbracoServices.Data
 
         internal abstract DocumentType DocumentType { get; }
 
-
-
         public abstract string Url { get; }
     }
 
