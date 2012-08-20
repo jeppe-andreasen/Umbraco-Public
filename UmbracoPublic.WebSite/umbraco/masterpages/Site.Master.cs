@@ -7,9 +7,12 @@ using System.Web.UI.WebControls;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Utils.Collections;
+using LinqIt.Utils.Extensions;
+using UmbracoPublic.Logic.Entities;
 using UmbracoPublic.Logic.Services;
 using UmbracoPublic.Logic.Utilities;
 using umbraco.cms.businesslogic.web;
+using Image = LinqIt.Cms.Data.Image;
 
 namespace UmbracoPublic.WebSite.umbraco.masterpages
 {
@@ -18,10 +21,17 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
         protected void Page_Load(object sender, EventArgs e)
         {
             var page = CmsService.Instance.GetItem<Entity>();
-
-
-            RegisterComponentInit("search", "button");
+            RegisterComponentInit("search", "button", "background");
             litDynamicMetaTags.Text = RenderMetaTags(page);
+
+            var theme = Theme.Current;
+            if (theme != null)
+            {
+                litThemeCss.Text = theme.Stylesheets.ToSeparatedString("", "<link href=\"/{0}\" rel=\"stylesheet\">");
+            }
+            var backgroundImage = page.GetValue<Image>("backgroundImage");
+            if (backgroundImage.Exists)
+                form1.Attributes.Add("data-bgimage", backgroundImage.Url);
         }
 
         private static string RenderMetaTags(Entity page)

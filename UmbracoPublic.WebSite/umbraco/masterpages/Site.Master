@@ -10,12 +10,22 @@
     <asp:Literal ID="litDynamicMetaTags" runat="server"></asp:Literal> 
 
 	<!-- Le styles -->
-	<link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <asp:Literal ID="litThemeCss" runat="server"></asp:Literal> 
+
+
 	<style type="text/css">
-		body {
-		padding-top: 20px;
-		padding-bottom: 40px;
+		body, html {
+		padding-top: 0;
+		padding-bottom: 0;
 		}
+		/*
+		.navbar .nav > li.dropdown > a {
+            margin-left: -4px;
+            margin-right: 10px;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+        */
 	</style>
 	<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -35,6 +45,7 @@
 </head>
   <body>
 		<form id="form1" runat="server">
+        <nav class="top">
 		<div class="container">
             <!--googleoff: index-->
 			<div class="section">
@@ -69,13 +80,19 @@
 					</div>
 				</div><!-- /navbar-inner -->
 		    </div><!-- /navbar -->
+            
+            <asp:ContentPlaceHolder ID="cphTop" runat="server"></asp:ContentPlaceHolder>
+            
             <!--googleon: index-->
-        <asp:ContentPlaceHolder ID="ContentPlaceHolderDefault" runat="server"> 
 
+        </div>
+        </nav>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderDefault" runat="server">
         </asp:ContentPlaceHolder>
-        <hr />
          <!--googleoff: index-->
+        
 		<footer>
+        <div class="container">
 	    <div class="row">    
 		    <div class="span9">
 		    <h3>Økonomi- og Indenrigsministeriet</h3>
@@ -91,40 +108,41 @@
 		    </div>  
 		
 		    <div class="span3">
-		     <div class="btn-toolbar pull-right" style="margin-top: 18px;">
-		    <div class="btn-group">
-			    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Institutioner under ministeriet <span class="caret"></span></button>
-			    <ul class="dropdown-menu">
-			    <li><a href="#">AKF</a></li>
-			    <li><a href="#">CPR</a></li>
-			    <li><a href="#">Danmarks Statistik</a></li>
-			    <li><a href="#">Dansk Sundhedsinstitut</a></li>
-			    <li><a href="#">De Økonomiske Råd</a></li>
-			    <li><a href="#">KREVI</a></li> 
-			    <li><a href="#">Statsforvaltningerne</a></li>
-			    </ul>
-		    </div>
-		     </div>
-		     <br>
-		     <div class="btn-toolbar pull-right" style="margin-top: 18px;">
-		    <div class="btn-group">
-			    <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Websites fra ØIM <span class="caret"></span></button>
-			    <ul class="dropdown-menu">
-			    <li><a href="#">Valgsite</a></li>
-			    <li><a href="#">Election site (in english)</a></li>
-			    <li><a href="#">Budget- og regnskabssystem</a></li>
-			    <li><a href="#">Brugerinformation.dk</a></li>
-			    <li><a href="#">Indtast.dk</a></li>
-			    <li><a href="#">Nøgletal.dk</a></li> 
-			    </ul>
-		    </div>
+		         <div class="btn-toolbar pull-right" style="margin-top: 18px;">
+		            <div class="btn-group">
+			            <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Institutioner under ministeriet <span class="caret"></span></button>
+			            <ul class="dropdown-menu">
+			            <li><a href="#">AKF</a></li>
+			            <li><a href="#">CPR</a></li>
+			            <li><a href="#">Danmarks Statistik</a></li>
+			            <li><a href="#">Dansk Sundhedsinstitut</a></li>
+			            <li><a href="#">De Økonomiske Råd</a></li>
+			            <li><a href="#">KREVI</a></li> 
+			            <li><a href="#">Statsforvaltningerne</a></li>
+			            </ul>
+		            </div>
+		         </div>
+		         <br>
+		         <div class="btn-toolbar pull-right" style="margin-top: 18px;">
+		        <div class="btn-group">
+			        <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Websites fra ØIM <span class="caret"></span></button>
+			        <ul class="dropdown-menu">
+			        <li><a href="#">Valgsite</a></li>
+			        <li><a href="#">Election site (in english)</a></li>
+			        <li><a href="#">Budget- og regnskabssystem</a></li>
+			        <li><a href="#">Brugerinformation.dk</a></li>
+			        <li><a href="#">Indtast.dk</a></li>
+			        <li><a href="#">Nøgletal.dk</a></li> 
+			        </ul>
+		        </div>
 		     </div>
 		    </div>
 
 		    </div>    
+            </div>
 		</footer>
         <!--googleon: index-->
-	</div>
+	
     
 	 <!-- /container -->
 	

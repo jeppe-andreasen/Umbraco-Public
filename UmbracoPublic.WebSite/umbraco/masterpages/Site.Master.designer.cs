@@ -22,6 +22,15 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         protected global::System.Web.UI.WebControls.Literal litDynamicMetaTags;
         
         /// <summary>
+        /// litThemeCss control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litThemeCss;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UmbracoPublic.WebSite.usercontrols.Parts.NavigationBar NavigationBar1;
+        
+        /// <summary>
+        /// cphTop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphTop;
         
         /// <summary>
         /// ContentPlaceHolderDefault control.
