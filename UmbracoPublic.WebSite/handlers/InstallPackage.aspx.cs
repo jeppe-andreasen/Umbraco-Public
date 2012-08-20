@@ -76,7 +76,7 @@ namespace UmbracoPublic.WebSite.handlers
                 var relativeFilename = "~/" + CombinePaths(relativeDir, Path.GetFileName(file)).Replace('\\', '/');
                 try
                 {
-                    //File.Copy(file, Path.Combine(absoluteDir, destinationFilename), true);
+                    File.Copy(file, Path.Combine(absoluteDir, destinationFilename), true);
                     log.AppendLine("Copied " + relativeFilename);
                     //log.AppendLine("Copied " + destinationFilename);
                 }
