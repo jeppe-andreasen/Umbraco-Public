@@ -1,5 +1,18 @@
 ﻿var application = window.application || {};
 
+
+/* Background Image */
+
+application.background = {
+    init: function () {
+        var form = $("form");
+        if (form.data("bgimage") != "") {
+            form.attr("style", "background-image:url('" + form.data("bgimage") + "');");
+        }
+    }
+}
+
+
 /* Search Box */
 
 application.search = {
