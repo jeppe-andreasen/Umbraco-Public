@@ -136,15 +136,10 @@
     <Content Include="assets\img\alerts\important.gif" />
     <Content Include="assets\img\alerts\info.gif" />
     <Content Include="assets\img\alerts\title.gif" />
-    <Content Include="assets\img\Billede 104.jpg" />
-    <Content Include="assets\img\Billede059.jpg" />
     <Content Include="assets\img\custom\move_down.png" />
     <Content Include="assets\img\custom\move_left.png" />
     <Content Include="assets\img\custom\move_right.png" />
     <Content Include="assets\img\custom\move_up.png" />
-    <Content Include="assets\img\DSC00826.jpg" />
-    <Content Include="assets\img\glyphicons-halflings-white.png" />
-    <Content Include="assets\img\glyphicons-halflings.png" />
     <Content Include="assets\img\grideditor\delete.png" />
     <Content Include="assets\img\grideditor\delete2.png" />
     <Content Include="assets\img\grideditor\delete_off.png" />
@@ -153,9 +148,6 @@
     <Content Include="assets\img\grideditor\edit_on.png" />
     <Content Include="assets\img\grideditor\module-bg.png" />
     <Content Include="assets\img\grideditor\module-sel-bg.png" />
-    <Content Include="assets\img\linkedin.jpg" />
-    <Content Include="assets\img\Margrethe-kjole2-original.jpg" />
-    <Content Include="assets\img\MargretheVestager_09.jpg" />
     <Content Include="assets\img\treeview\collapse.png" />
     <Content Include="assets\img\treeview\expand.png" />
     <Content Include="assets\img\treeview\folder.png" />
@@ -232,6 +224,7 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="themes\Cyborg\StyleSheet1.css" />
     <Content Include="themes\Default\bootstrap.min.css" />
+    <Content Include="themes\OIM\bootstrap.css" />
     <Content Include="themes\Readable\Readable.css" />
     <Content Include="themes\Superhero\style.css" />
     <Content Include="umbracoextensions\ChangeTemplateButton.ascx" />
@@ -803,9 +796,7 @@
     <Content Include="umbraco\masterpages\Site.Master" />
     <Content Include="masterpages\NewsPage.master" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="usercontrols\Navigation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="handlers\SnapShot.ashx" />
   </ItemGroup>
