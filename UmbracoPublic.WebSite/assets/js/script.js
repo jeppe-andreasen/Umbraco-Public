@@ -7,7 +7,7 @@ application.background = {
     init: function () {
         var form = $("form");
         if (form.data("bgimage") != "") {
-            form.attr("style", "background-image:url('" + form.data("bgimage") + "');");
+            form.attr("style", "background:url('" + form.data("bgimage") + "') no-repeat top center");
         }
     }
 }
