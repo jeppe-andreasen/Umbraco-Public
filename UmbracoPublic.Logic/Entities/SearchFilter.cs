@@ -20,16 +20,7 @@ namespace UmbracoPublic.Logic.Entities
                 From = DateTime.ParseExact(queryString["from"], "dd-MM-yyyy", CultureInfo.InvariantCulture);
             if (!string.IsNullOrEmpty(queryString["to"]))
                 To = DateTime.ParseExact(queryString["to"], "dd-MM-yyyy", CultureInfo.InvariantCulture);
-            var subjectName = queryString["subject"];
-            if (!string.IsNullOrEmpty(subjectName))
-            {
-                var subjects = DataService.Instance.GetSubjects();
-                foreach (var pair in subjects.Where(pair => string.Compare(pair.Value, subjectName, true) == 0))
-                {
-                    SubjectIds = new[] { pair.Key };
-                    break;
-                }
-            }
+            this.CategorizationIds = new IdList(queryString["categorizations"]).ToArray();
         }
 
         public static SearchFilter FromUrl()
@@ -45,6 +36,6 @@ namespace UmbracoPublic.Logic.Entities
 
         public DateTime? To { get; set; }
 
-        public Id[] SubjectIds { get; set; }
+        public Id[] CategorizationIds { get; set; }
     }
 }

@@ -25,8 +25,8 @@ namespace UmbracoPublic.WebSite.masterpages
                 writer.RenderFullTag(HtmlTextWriterTag.H1, page.Headline);
             if (page.Date.HasValue)
                 writer.RenderFullTag(HtmlTextWriterTag.H6, string.Format("Publiseret {0}", page.Date.Value.ToString("dd-MM-yyyy")));
-            foreach (var subject in page.Subjects)
-                writer.RenderFullTag(HtmlTextWriterTag.Span, subject, "label");
+            foreach (var categorization in page.Categorizations)
+                writer.RenderFullTag(HtmlTextWriterTag.Span, categorization, "label");
             if (!page.Intro.IsEmpty)
                 writer.RenderParagraph(page.Intro.AsHtml);
             if (!page.Body.IsEmpty)

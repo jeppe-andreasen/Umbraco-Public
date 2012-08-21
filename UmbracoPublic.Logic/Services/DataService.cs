@@ -115,22 +115,35 @@ namespace UmbracoPublic.Logic.Services
                 }
                 if (filter.From.HasValue || filter.To.HasValue)
                     query.SubQueries.Add(new DateRangeQuery("date", filter.From, filter.To));
-                if (filter.SubjectIds != null && filter.SubjectIds.Any())
+                if (filter.CategorizationIds != null && filter.CategorizationIds.Any())
                 {
-                    if (filter.SubjectIds.Length == 1)
-                        query.SubQueries.Add(new WildCardQuery("subjects", filter.SubjectIds[0].ToString()));
+                    if (filter.CategorizationIds.Length == 1)
+                        query.SubQueries.Add(new WildCardQuery("categorizations", filter.CategorizationIds[0].ToString()));
                     else
-                        query.SubQueries.Add(BooleanQuery.Or(filter.SubjectIds.Select(id => new WildCardQuery("subjects", id.ToString())).ToArray()));
+                        query.SubQueries.Add(BooleanQuery.And(filter.CategorizationIds.Select(id => new WildCardQuery("categorizations", id.ToString())).ToArray()));
+                    //{
+                    //    var categorizationFolder = CategorizationFolder.Get();
+                    //    var types = categorizationFolder.GetTypes(filter.CategorizationIds);
+                    //    var typeQueries = new List<Query>();
+                    //    foreach (var typeIds in types.Select(type => filter.CategorizationIds.Where(type.HasItem).ToArray()))
+                    //    {
+                    //        if (typeIds.Length == 1)
+                    //            typeQueries.Add(new WildCardQuery("categorizations", typeIds[0].ToString()));
+                    //        else
+                    //            typeQueries.Add(BooleanQuery.Or(typeIds.Select(id => new WildCardQuery("categorizations", id.ToString())).ToArray()));
+                    //    }
+                    //    query.SubQueries.Add(BooleanQuery.And(typeQueries.ToArray()));
+                    //}
                 }
                     
                 return service.Search(query, 0, int.MaxValue);
             }
         }
 
-        public Dictionary<Id, string> GetSubjects()
+        public Dictionary<Id, string> GetCategorizations()
         {
             var currentItem = CmsService.Instance.GetItem<Entity>();
-            var folderPath = CmsService.Instance.GetSystemPath("SubjectFolder", currentItem.Path);
+            var folderPath = CmsService.Instance.GetSystemPath("CategorizationFolder", currentItem.Path);
             var folder = CmsService.Instance.GetItem<Entity>(folderPath);
             return folder.GetChildren<Entity>().ToDictionary(item => item.Id, item => item.EntityName);
         }

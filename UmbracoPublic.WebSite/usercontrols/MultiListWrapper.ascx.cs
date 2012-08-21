@@ -13,7 +13,10 @@ namespace UmbracoPublic.WebSite.usercontrols
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            gridEditorFrame.Attributes.Add("src", "/handlers/MultiListEditorHandler.aspx?itemId=" + Request.QueryString["id"] + "&frame=" + gridEditorFrame.ClientID + "&hiddenId=" + hiddenValue.ClientID + "&provider=" + Provider + "&fieldname=" + FieldName);
+            string src = "/handlers/MultiListEditorHandler.aspx?itemId=" + Request.QueryString["id"] + "&frame=" + gridEditorFrame.ClientID + "&hiddenId=" + hiddenValue.ClientID + "&provider=" + Provider + "&fieldname=" + FieldName;
+            if (!string.IsNullOrEmpty(RootId))
+                src += "&rootId=" + RootId;
+            gridEditorFrame.Attributes.Add("src", src);
         }
 
         public object value
@@ -27,5 +30,7 @@ namespace UmbracoPublic.WebSite.usercontrols
 
         [DataEditorSetting("FieldName")]
         public string FieldName { get; set; }
+
+        public string RootId { get; set; }
     }
 }

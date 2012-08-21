@@ -14,11 +14,11 @@ namespace UmbracoPublic.Logic.Entities
             get { return GetValue<DateTime?>("date"); }
         }
 
-        public string[] Subjects
+        public string[] Categorizations
         {
             get
             {
-                var value = this["subjects"];
+                var value = this["categorizations"];
                 if (string.IsNullOrEmpty(value))
                     return new string[0];
 

@@ -7,10 +7,7 @@
             <div class="controls">
                 <asp:TextBox ID="txtQuery" runat="server" CssClass="span2" placeholder="Skriv søgeord"></asp:TextBox>
             </div>
-            <asp:Label ID="lblSubjects" runat="server" AssociatedControlID="ddlSubjects" Text="Emner" CssClass="control-label"></asp:Label>
-            <div class="controls">
-                <asp:DropDownList ID="ddlSubjects" runat="server" CssClass="span2"></asp:DropDownList>
-            </div>
+            <asp:PlaceHolder ID="plhCategorizationFilters" runat="server"></asp:PlaceHolder>
             <asp:Label ID="lblFrom" runat="server" AssociatedControlID="txtFrom" Text="Fra dato" CssClass="control-label"></asp:Label>
             <div class="controls">
                 <asp:TextBox ID="txtFrom" runat="server" CssClass="span2 datepicker" data-date-format="dd-mm-yyyy"></asp:TextBox>

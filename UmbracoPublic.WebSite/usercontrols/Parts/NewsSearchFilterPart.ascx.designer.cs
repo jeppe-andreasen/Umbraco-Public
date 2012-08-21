@@ -31,22 +31,13 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts {
         protected global::System.Web.UI.WebControls.TextBox txtQuery;
         
         /// <summary>
-        /// lblSubjects control.
+        /// plhCategorizationFilters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSubjects;
-        
-        /// <summary>
-        /// ddlSubjects control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubjects;
+        protected global::System.Web.UI.WebControls.PlaceHolder plhCategorizationFilters;
         
         /// <summary>
         /// lblFrom control.

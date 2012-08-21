@@ -18,7 +18,7 @@ namespace LinqIt.UmbracoCustomFieldTypes
             using (CmsContext.Editing)
             {
                 var currentItem = CmsService.Instance.GetItem<Entity>(new Id(_referenceId));
-                var folderPath = CmsService.Instance.GetSystemPath("SubjectFolder", currentItem.Path);
+                var folderPath = CmsService.Instance.GetSystemPath("CategorizationFolder", currentItem.Path);
                 var folder = CmsService.Instance.GetItem<Entity>(folderPath);
                 return new [] { GetNode(folder) };
             }

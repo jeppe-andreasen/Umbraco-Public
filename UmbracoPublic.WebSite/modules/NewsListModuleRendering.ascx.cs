@@ -29,7 +29,7 @@ namespace UmbracoPublic.WebSite.modules
 
             var filter = SearchFilter.FromUrl();
             filter.TemplateName = "NewsPage";
-            filter.SubjectIds = Module.SubjectIds;
+            filter.CategorizationIds = Module.CategorizationIds;
             _result = DataService.Instance.PerformSearch(filter);
             pager.Initialize(_result.TotalResults);
         }

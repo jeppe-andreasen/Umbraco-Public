@@ -92,7 +92,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
                 {
                     var newsPage = page.CastAs<NewsPage>();
                     Date = newsPage.Date;
-                    Subjects = (newsPage["subjects"]?? string.Empty).Split(',','|',';');
+                    Categorizations = (newsPage["categorizations"]?? string.Empty).Split(',','|',';');
                 }
 
                 Summary = page["metaDescription"];
@@ -114,7 +114,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
 
             public string TemplateName { get; private set; }
 
-            public string[] Subjects { get; private set; }
+            public string[] Categorizations { get; private set; }
 
             public string Summary { get; private set; }
 
@@ -133,7 +133,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
                         {
                             record.SetString("title", Title);
                             record.SetString("template", TemplateName);
-                            record.SetString("subjects", Subjects != null && Subjects.Any() ? Subjects.ToSeparatedString(",").ToLower() : string.Empty);
+                            record.SetString("categorizations", Categorizations != null && Categorizations.Any() ? Categorizations.ToSeparatedString(",").ToLower() : string.Empty);
                             record.SetString("summary", Summary);
                             record.SetDate("date", Date);
                             service.AddRecord(record);

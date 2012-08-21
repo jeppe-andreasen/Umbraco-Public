@@ -181,9 +181,7 @@
     <Content Include="assets\js\treeview.js" />
     <Content Include="config\splashes\booting.aspx" />
     <Content Include="config\splashes\noNodes.aspx" />
-    <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
-    <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\custom-controls.css" />
     <Content Include="assets\css\styles.css" />
@@ -225,7 +223,6 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="themes\Cyborg\StyleSheet1.css" />
     <Content Include="themes\Default\bootstrap.min.css" />
-    <Content Include="themes\OIM\bootstrap.css" />
     <Content Include="themes\OIM\images\Sprite.png" />
     <Content Include="themes\OIM\less\accordion.less" />
     <Content Include="themes\OIM\less\alerts.less" />
@@ -293,6 +290,7 @@
     <Content Include="umbraco\plugins\tinymce3\insertMacro.aspx" />
     <Content Include="umbraco_client\propertypane\style.css" />
     <Content Include="usercontrols\AccordionWrapper.ascx" />
+    <Content Include="usercontrols\EditorWrappers\CategorizationWrapper.ascx" />
     <Content Include="usercontrols\EditorWrappers\MultiTreeListWrapper.ascx" />
     <Content Include="usercontrols\LayoutGridWrapper.ascx" />
     <Content Include="usercontrols\Macros\AlertMacro.ascx" />
@@ -666,6 +664,13 @@
     </Compile>
     <Compile Include="usercontrols\AccordionWrapper.ascx.designer.cs">
       <DependentUpon>AccordionWrapper.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\EditorWrappers\CategorizationWrapper.ascx.cs">
+      <DependentUpon>CategorizationWrapper.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\EditorWrappers\CategorizationWrapper.ascx.designer.cs">
+      <DependentUpon>CategorizationWrapper.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\EditorWrappers\MultiTreeListWrapper.ascx.cs">
       <DependentUpon>MultiTreeListWrapper.ascx</DependentUpon>

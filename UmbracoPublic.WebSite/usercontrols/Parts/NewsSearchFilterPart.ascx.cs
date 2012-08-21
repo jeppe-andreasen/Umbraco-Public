@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Utils.Extensions;
+using UmbracoPublic.Logic.Entities;
 using UmbracoPublic.Logic.Services;
 using UmbracoPublic.Logic.Utilities;
 
@@ -16,19 +17,15 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
 {
     public partial class NewsSearchFilterPart : BasePart
     {
+        private readonly List<DropDownList> _categorizationDropdowns = new List<DropDownList>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterScriptInit("searchfilter");
+
             if (!IsPostBack)
             {
                 txtQuery.Text = Request.QueryString["query"];
-                
-                ddlSubjects.AddDefaultItem();
-                foreach (var subject in DataService.Instance.GetSubjects())
-                    ddlSubjects.Items.Add(new ListItem(subject.Value, subject.Key.ToString()));
-
-                if (!string.IsNullOrEmpty(Request.QueryString["subject"]))
-                    ddlSubjects.SelectByText(Request.QueryString["subject"]);
 
                 var page = CmsService.Instance.GetItem<Entity>();
                 DateTime? from = null;
@@ -59,6 +56,42 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
             }
         }
 
+        protected override void CreateChildControls()
+        {
+            base.CreateChildControls();
+
+            var categorizations = CategorizationFolder.Get();
+            var selectedCategorizations = new IdList(Request.QueryString["categorizations"]);
+            foreach (var type in categorizations.Types)
+            {
+                if (!type.IsNewslistFilterOption)
+                    continue;
+
+                var items = type.Items.Where(i => !i.IsHiddenFromNewslistFilter).ToArray();
+                if (!items.Any())
+                    continue;
+
+                var label = new Label();
+                label.Text = type.EntityName;
+                label.CssClass = "control-label";
+                plhCategorizationFilters.Controls.Add(label);
+                plhCategorizationFilters.Controls.Add(new LiteralControl("<div class=\"controls\">"));
+                var ddl = new DropDownList();
+                ddl.AddDefaultItem();
+                foreach (var item in items)
+                {
+                    var listItem = new ListItem(item.EntityName, item.Id.ToString()); 
+                    ddl.Items.Add(listItem);
+                    if (selectedCategorizations.Contains(item.Id))
+                        ddl.SelectedIndex = ddl.Items.IndexOf(listItem);
+                }
+                plhCategorizationFilters.Controls.Add(ddl);
+                _categorizationDropdowns.Add(ddl);
+                plhCategorizationFilters.Controls.Add(new LiteralControl("</div>"));
+            }
+        }
+
+
         protected void OnSearchClicked(object sender, EventArgs e)
         {
             var url = HttpContext.Current.Request.Url.LocalPath + "?";
@@ -69,8 +102,9 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
                 parameters.Add("from", txtFrom.Text);
             if (!string.IsNullOrEmpty(txtTo.Text))
                 parameters.Add("to", txtTo.Text);
-            if (ddlSubjects.SelectedIndex > 0)
-                parameters.Add("subject", ddlSubjects.SelectedItem.Text);
+            string categorizations = _categorizationDropdowns.Select(d => d.SelectedValue).Where(v => !string.IsNullOrEmpty(v)).ToSeparatedString(",");
+            if (!string.IsNullOrEmpty(categorizations))
+                parameters.Add("categorizations", categorizations);
             url += parameters.ToUrlParameterList();
             Response.Redirect(url);
         }

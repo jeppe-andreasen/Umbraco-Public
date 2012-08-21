@@ -28,9 +28,9 @@ namespace UmbracoPublic.Logic.Entities
             get { return GetValue<bool>("disablePaging"); }
         }
 
-        public Id[] SubjectIds
+        public Id[] CategorizationIds
         {
-             get { return GetValue<IdList>("subjects").ToArray(); }   
+             get { return GetValue<IdList>("categorizations").ToArray(); }   
         }
     }
 }

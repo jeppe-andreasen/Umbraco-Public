@@ -82,6 +82,7 @@
     <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
     <Compile Include="Controllers\Paging\PagingController.cs" />
     <Compile Include="Entities\AccordionModule.cs" />
+    <Compile Include="Entities\CategorizationFolder.cs" />
     <Compile Include="Entities\Configuration\VimeoConfiguration.cs" />
     <Compile Include="Entities\Configuration\YouTubeConfiguration.cs" />
     <Compile Include="Entities\ContactModule.cs" />
@@ -109,8 +110,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Providers\CategorizationProvider.cs" />
     <Compile Include="Providers\SubjectProvider.cs" />
     <Compile Include="Providers\ThemeProvider.cs" />
+    <Compile Include="Providers\UmbracoTreeNodeProvider.cs" />
     <Compile Include="Providers\VideoProvider.cs" />
     <Compile Include="Providers\VimeoVideo.cs" />
     <Compile Include="Providers\VimeoVideoProvider.cs" />

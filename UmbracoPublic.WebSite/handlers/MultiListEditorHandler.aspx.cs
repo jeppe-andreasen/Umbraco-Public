@@ -57,12 +57,10 @@ namespace UmbracoPublic.WebSite.handlers
         public static NodeProvider GetProvider()
         {
             var queryString = HttpContext.Current.Request.QueryString;
-            return ProviderHelper.GetProvider<NodeProvider>(queryString["provider"], queryString["itemId"]);
+            var referenceId = queryString["rootId"];
+            if (string.IsNullOrEmpty(referenceId))
+                referenceId = queryString["itemId"];
+            return ProviderHelper.GetProvider<NodeProvider>(queryString["provider"], referenceId);
         }
-
-
-
-        
-
     }
 }

@@ -8,6 +8,7 @@ using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Utils.Collections;
 using LinqIt.Utils.Extensions;
+using LinqIt.Utils.Web;
 using UmbracoPublic.Logic.Entities;
 using UmbracoPublic.Logic.Services;
 using UmbracoPublic.Logic.Utilities;
@@ -21,7 +22,7 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
         protected void Page_Load(object sender, EventArgs e)
         {
             var page = CmsService.Instance.GetItem<Entity>();
-            RegisterComponentInit("search", "button", "background");
+            RegisterComponentInit("navigation", "search", "button", "background");
             litDynamicMetaTags.Text = RenderMetaTags(page);
 
             var theme = Theme.Current;
@@ -32,6 +33,9 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
             var backgroundImage = page.GetValue<Image>("backgroundImage");
             if (backgroundImage.Exists)
                 form1.Attributes.Add("data-bgimage", backgroundImage.Url);
+
+            var logo = page.GetValue<Image>("logo");
+            litBrand.Text = logo.Exists ? HtmlWriter.Generate(w => w.RenderImageTag(logo.Url, page.EntityName, null)) : page.EntityName;
         }
 
         private static string RenderMetaTags(Entity page)

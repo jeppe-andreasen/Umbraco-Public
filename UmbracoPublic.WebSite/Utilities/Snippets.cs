@@ -16,7 +16,7 @@ namespace UmbracoPublic.WebSite.Utilities
     {
         public static void RenderNewsResults(HtmlWriter writer, SearchResult result, Pager pager)
         {
-            var subjects = DataService.Instance.GetSubjects();
+            var categorizations = DataService.Instance.GetCategorizations();
 
             foreach (var record in result.Records.OrderByDescending(r => r.GetDate("date")).Skip(pager.Skip).Take(pager.Take))
             {
@@ -24,12 +24,12 @@ namespace UmbracoPublic.WebSite.Utilities
                 writer.RenderLinkTag(record.GetString("url"), record.GetString("title"));
                 writer.RenderEndTag();
                 writer.RenderFullTag(HtmlTextWriterTag.H6, "Publiseret " + record.GetDate("date").Value.ToString("dd-MM-yyyy"));
-                var subjectList = record.GetString("subjects");
-                if (!string.IsNullOrEmpty(subjectList))
+                var categorizationList = record.GetString("categorizations");
+                if (!string.IsNullOrEmpty(categorizationList))
                 {
-                    foreach (var subjectId in subjectList.Split(',').Select(s => new Id(s.Trim())).Where(subjects.ContainsKey))
+                    foreach (var categorizationId in categorizationList.Split(',').Select(s => new Id(s.Trim())).Where(categorizations.ContainsKey))
                     {
-                        writer.RenderFullTag(HtmlTextWriterTag.Span, subjects[subjectId], "label");
+                        writer.RenderFullTag(HtmlTextWriterTag.Span, categorizations[categorizationId], "label");
                     }
                 }
 
