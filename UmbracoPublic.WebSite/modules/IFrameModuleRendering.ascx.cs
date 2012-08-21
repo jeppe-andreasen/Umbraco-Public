@@ -21,7 +21,7 @@ namespace UmbracoPublic.WebSite.modules
             if (string.IsNullOrEmpty(item.Url))
                 return;
 
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "module iframe-module");
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "iframe-module");
 
             var url = new UrlBuilder(item.Url);
             if (string.IsNullOrEmpty(url.Scheme))

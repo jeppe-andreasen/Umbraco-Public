@@ -43,7 +43,7 @@ namespace UmbracoPublic.WebSite.modules
 
         protected void RenderOutput(NewsListModule item, HtmlWriter writer)
         {
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "module news-list");
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "news-list");
 
             var renderHr = false;
             if (!string.IsNullOrEmpty(item.Headline))

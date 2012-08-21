@@ -35,19 +35,11 @@ namespace UmbracoPublic.WebSite.modules
             if (Module == null)
                 return;
             
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "module accordionModule");
-            //if (!string.IsNullOrEmpty(item.Headline))
-            //    writer.RenderFullTag(HtmlTextWriterTag.H2, item.Headline);
-            //if (!item.Content.IsEmpty)
-            //    writer.RenderParagraph(item.Content.AsHtml);
-
             RenderAccordion(writer, Module.Data.Items, this.ClientID);
-            writer.RenderEndTag();
         }
 
         private static void RenderAccordion(LinqIt.Utils.Web.HtmlWriter writer, IEnumerable<AccordionItem> items, string parentId)
         {
-            //var accordionId = parentId + "a";
             var accordionId = parentId + "acc";
 
             writer.AddAttribute(HtmlTextWriterAttribute.Id, accordionId);

@@ -18,15 +18,13 @@ namespace UmbracoPublic.WebSite.modules
 
         protected override void RenderModule(LinkListModule item, LinqIt.Utils.Web.HtmlWriter writer)
         {
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "linklist");
-            writer.RenderBeginTag(HtmlTextWriterTag.Ul);
+            writer.RenderBeginTag(HtmlTextWriterTag.Ul,  "linklist");
             foreach (var link in item.Links)
             {
                 writer.RenderBeginTag(HtmlTextWriterTag.Li);
                 writer.RenderLink(link);
                 writer.RenderEndTag();
             }
-            writer.RenderEndTag();
             writer.RenderEndTag();
         }
 

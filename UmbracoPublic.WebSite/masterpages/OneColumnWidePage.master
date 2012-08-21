@@ -1,19 +1,20 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="OneColumnWidePage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.OneColumnWidePage, UmbracoPublic.WebSite" %>
 <%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
 <%@ Register src="../usercontrols/Parts/SubNavigationBar.ascx" tagname="SubNavigationBar" tagprefix="uc1" %>
+<asp:Content ID="cntTop" runat="server" ContentPlaceHolderID="cphTop">
+    <uc1:SubNavigationBar ID="SubNavigationBar2" runat="server" />
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
-    <uc1:SubNavigationBar ID="SubNavigationBar1" runat="server" />
-    <div class="row">
-        <div class="span12">
-            <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span12">
-            <cc2:GridModulePlaceholder ID="plhCol1" runat="server" Key="Col1"></cc2:GridModulePlaceholder>
-        </div>
-    </div>
-    <div class="row">
-        <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
-    </div>
+    <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top">
+         <HeaderTemplate><div class="sectionA"><div class="container"></HeaderTemplate>
+         <FooterTemplate></div></div></FooterTemplate>
+    </cc2:GridModulePlaceholder>
+    <cc2:GridModulePlaceholder ID="plhCol1" runat="server" Key="Col1">
+          <HeaderTemplate><div class="sectionB"><div class="container"></HeaderTemplate>
+          <FooterTemplate></div></div></FooterTemplate>
+    </cc2:GridModulePlaceholder>
+    <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom">
+         <HeaderTemplate><div class="sectionC"><div class="container"></HeaderTemplate>
+         <FooterTemplate></div></div></FooterTemplate>
+    </cc2:GridModulePlaceholder>
 </asp:Content>

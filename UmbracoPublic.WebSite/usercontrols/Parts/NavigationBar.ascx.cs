@@ -25,13 +25,13 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
 
             foreach (var topItem in topMenuItems)
             {
+                if (topItem.HasChildren)
+                    writer.AddClass("dropdown");
                 writer.RenderBeginTag(HtmlTextWriterTag.Li);
                 writer.AddAttribute(HtmlTextWriterAttribute.Href, topItem.Url);
                 writer.RenderFullTag(HtmlTextWriterTag.A, topItem.DisplayName);
-                writer.RenderEndTag(); // li
                 if (topItem.HasChildren)
                 {
-                    writer.RenderBeginTag(HtmlTextWriterTag.Li, "dropdown");
                     writer.AddAttribute("data-toggle", "dropdown");
                     writer.AddAttribute(HtmlTextWriterAttribute.Href, "#");
                     writer.RenderBeginTag(HtmlTextWriterTag.A, "dropdown-toggle");
@@ -46,8 +46,8 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
                         writer.RenderEndTag(); // li
                     }
                     writer.RenderEndTag(); // ul.dropdown-menu
-                    writer.RenderEndTag(); // li.dropdown
                 }
+                writer.RenderEndTag(); // li
             }
             writer.RenderEndTag(); // ul.nav
             writer.RenderEndTag(); // div.nav-collapse

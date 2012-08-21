@@ -2,8 +2,11 @@
 <%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
 <%@ Register src="../usercontrols/Parts/SubNavigationBar.ascx" tagname="SubNavigationBar" tagprefix="uc1" %>
 <%@ Register src="~/usercontrols/Parts/GeneralContentPart.ascx" tagname="GeneralContentPart" tagprefix="part" %>
+<asp:Content ID="cntTop" runat="server" ContentPlaceHolderID="cphTop">
+    <uc1:SubNavigationBar ID="SubNavigationBar2" runat="server" />
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
-    <uc1:SubNavigationBar ID="SubNavigationBar1" runat="server" />
+    <div class="container">
     <div class="row">
         <div class="span12">
             <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
@@ -27,5 +30,6 @@
         <div class="span12">
             <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
         </div>
+    </div>
     </div>
 </asp:Content>

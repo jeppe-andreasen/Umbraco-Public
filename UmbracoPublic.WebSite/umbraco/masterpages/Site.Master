@@ -18,14 +18,10 @@
 		padding-top: 0;
 		padding-bottom: 0;
 		}
-		/*
-		.navbar .nav > li.dropdown > a {
-            margin-left: -4px;
-            margin-right: 10px;
-            padding-left: 4px;
-            padding-right: 4px;
-        }
-        */
+		.navbar .nav > li > a  
+		{
+		    float:left;
+		}
 	</style>
 	<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
 

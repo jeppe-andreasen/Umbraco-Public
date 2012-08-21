@@ -24,7 +24,7 @@ namespace UmbracoPublic.WebSite.modules
         {
             var page = CmsService.Instance.GetItem<Entity>();
             var videoProvider = new VideoProvider(page.Id.ToString());
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "module video-module");
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "video-module");
             videoProvider.RenderVideoModule(writer, module.VideoId);
             writer.RenderEndTag();
         }
