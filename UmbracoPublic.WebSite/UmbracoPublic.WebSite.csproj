@@ -113,6 +113,7 @@
     <Content Include="assets\css\grideditor.css" />
     <Content Include="assets\css\jquery.alerts.css" />
     <EmbeddedResource Include="assets\css\treeview.css" />
+    <Content Include="assets\js\navigation.js" />
     <Content Include="assets\lib\JQueryUI\datetimepicker.js" />
     <Content Include="handlers\BuildPackage.aspx" />
     <Content Include="handlers\InstallPackage.aspx" />
@@ -225,6 +226,7 @@
     <Content Include="themes\Cyborg\StyleSheet1.css" />
     <Content Include="themes\Default\bootstrap.min.css" />
     <Content Include="themes\OIM\bootstrap.css" />
+    <Content Include="themes\OIM\images\Sprite.png" />
     <Content Include="themes\OIM\less\accordion.less" />
     <Content Include="themes\OIM\less\alerts.less" />
     <Content Include="themes\OIM\less\bootstrap.less" />
