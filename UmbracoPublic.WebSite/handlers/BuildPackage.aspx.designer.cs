@@ -58,6 +58,24 @@ namespace UmbracoPublic.WebSite.handlers {
         protected global::System.Web.UI.WebControls.CheckBoxList cblExtensions;
         
         /// <summary>
+        /// lblPackageName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPackageName;
+        
+        /// <summary>
+        /// txtPackageName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPackageName;
+        
+        /// <summary>
         /// btnGeneratePreview control.
         /// </summary>
         /// <remarks>

@@ -150,7 +150,7 @@ namespace UmbracoPublic.WebSite.handlers
                 UpdateInvalidPaths(invalidPaths, node);
             preferences.InvalidPaths = invalidPaths.ToArray();
             preferences.Save();
-            Response.Redirect("/handlers/SnapShot.ashx");
+            Response.Redirect("/handlers/SnapShot.ashx?name=" + HttpUtility.UrlEncode(txtPackageName.Text));
         }
 
         private static void UpdateInvalidPaths(ICollection<string> invalidPaths, TreeNode node)

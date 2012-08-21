@@ -56,6 +56,10 @@
             </div>
         </div>
         <div class="fieldsection">
+            <asp:Label ID="lblPackageName" runat="server" AssociatedControlID="txtPackageName" Text="Package Name:"></asp:Label>
+            <asp:TextBox ID="txtPackageName" runat="server" Text="Package"></asp:TextBox>
+        </div>
+        <div class="fieldsection">
             <asp:Button ID="btnGeneratePreview" runat="server" Text="Get Snapshot" OnClick="OnGetSnapshotClicked" />
         </div>
         <div class="fieldsection">
