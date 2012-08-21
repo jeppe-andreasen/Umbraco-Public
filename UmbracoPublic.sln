@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoPublic.Interfaces", "UmbracoPublic.Interfaces\UmbracoPublic.Interfaces.csproj", "{2624EC11-AD5F-47C9-93A0-7366744F8C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoPublic.Logic", "UmbracoPublic.Logic\UmbracoPublic.Logic.csproj", "{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoPublic.WebSite", "UmbracoPublic.WebSite\UmbracoPublic.WebSite.csproj", "{5BC453FB-3F73-4D24-8E0E-C6085FCF770A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqIt.UmbracoCustomFieldTypes", "LinqIt.UmbracoCustomFieldTypes\LinqIt.UmbracoCustomFieldTypes.csproj", "{14FC4A72-1668-4F13-8C4B-1DA0F3BBE2C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqIt.UmbracoServices", "LinqIt.UmbracoServices\LinqIt.UmbracoServices.csproj", "{BFD16E8B-0DD3-466A-8271-F943AA8354B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2624EC11-AD5F-47C9-93A0-7366744F8C03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2624EC11-AD5F-47C9-93A0-7366744F8C03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2624EC11-AD5F-47C9-93A0-7366744F8C03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2624EC11-AD5F-47C9-93A0-7366744F8C03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC453FB-3F73-4D24-8E0E-C6085FCF770A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC453FB-3F73-4D24-8E0E-C6085FCF770A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC453FB-3F73-4D24-8E0E-C6085FCF770A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC453FB-3F73-4D24-8E0E-C6085FCF770A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14FC4A72-1668-4F13-8C4B-1DA0F3BBE2C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FC4A72-1668-4F13-8C4B-1DA0F3BBE2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FC4A72-1668-4F13-8C4B-1DA0F3BBE2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FC4A72-1668-4F13-8C4B-1DA0F3BBE2C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD16E8B-0DD3-466A-8271-F943AA8354B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD16E8B-0DD3-466A-8271-F943AA8354B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD16E8B-0DD3-466A-8271-F943AA8354B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD16E8B-0DD3-466A-8271-F943AA8354B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
