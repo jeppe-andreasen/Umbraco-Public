@@ -22,7 +22,9 @@ namespace UmbracoPublic.WebSite.handlers
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "application/zip";
-            context.Response.AddHeader("Content-Disposition", "attachment; filename=Package.zip");
+
+            var name = string.IsNullOrEmpty(context.Request.QueryString["name"]) ? "Package" : context.Request.QueryString["name"];
+            context.Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileNameWithoutExtension(name) + ".zip");
 
             var preferences = PackagePreferences.Load();
 
