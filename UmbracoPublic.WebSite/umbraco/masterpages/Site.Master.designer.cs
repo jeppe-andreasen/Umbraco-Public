@@ -76,6 +76,15 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolderDefault;
         
         /// <summary>
+        /// GridModulePlaceholder1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LinqIt.UmbracoCustomFieldTypes.GridModulePlaceholder GridModulePlaceholder1;
+        
+        /// <summary>
         /// litInitializationScript control.
         /// </summary>
         /// <remarks>

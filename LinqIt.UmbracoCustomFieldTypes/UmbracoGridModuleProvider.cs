@@ -89,7 +89,7 @@ namespace LinqIt.UmbracoCustomFieldTypes
         {
             var document = new Document(Convert.ToInt32(_referenceId));
             if (document.Template == 0)
-                throw new ApplicationException("Please assign a layout template to the document");
+                return new GridLayout(0);
 
             var template = new template(document.Template);
             return GridModuleService.GetPageGridLayout(template.MasterPageFile);
@@ -102,7 +102,8 @@ namespace LinqIt.UmbracoCustomFieldTypes
                 return Cache.Get("GridData", CacheScope.Request, () =>
                 {
                     var node = CmsService.Instance.GetItem<Entity>(new Id(_referenceId));
-                    var data = node["grid"];
+                    var fieldName = HttpContext.Current.Request.QueryString["fieldName"] ?? "grid";
+                    var data = node[fieldName];
                     return GridPlaceholderData.Parse(data, GetItem);
                 });
             }

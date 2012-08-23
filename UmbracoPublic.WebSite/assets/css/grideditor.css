@@ -77,11 +77,15 @@ html[xmlns] .clearfix {
     padding:5px;
 }
 
+.module-column .inner-box 
+{
+    overflow:auto;
+    min-height:290px;
+}
 
 
 
-
-#treeview-container { overflow:auto; white-space:nowrap; min-height:200px; padding:5px 5px 85px 5px; }
+#treeview-container { overflow:auto; white-space:nowrap; min-height:120px; padding:5px 5px 85px 5px; }
 #colspan-container { position:absolute; width:15%; left:0;bottom:0px; }
 #colspan-container .inner-box { height:40px; }
 

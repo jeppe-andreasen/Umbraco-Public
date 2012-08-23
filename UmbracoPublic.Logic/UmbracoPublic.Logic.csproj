@@ -113,6 +113,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Providers\CategorizationProvider.cs" />
+    <Compile Include="Providers\SiteRootLayoutProvider.cs" />
     <Compile Include="Providers\SubjectProvider.cs" />
     <Compile Include="Providers\ThemeProvider.cs" />
     <Compile Include="Providers\UmbracoTreeNodeProvider.cs" />

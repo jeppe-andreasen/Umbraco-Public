@@ -25,7 +25,8 @@ namespace LinqIt.UmbracoCustomFieldTypes
                 var grideditor = new LinqItGridEditor();
                 grideditor.GridItemProvider = typeof (UmbracoTreeModuleProvider).GetShortAssemblyName();
                 grideditor.ItemId = itemId.ToString();
-                grideditor.Value = page["grid"];
+                var fieldName = Request.QueryString["fieldName"] ?? "grid";
+                grideditor.Value = page[fieldName];
                 grideditor.Frame = Request.QueryString["frame"];
                 grideditor.HiddenId = Request.QueryString["hiddenId"];
                 plhContent.Controls.Add(grideditor);

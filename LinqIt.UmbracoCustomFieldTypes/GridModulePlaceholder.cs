@@ -31,6 +31,9 @@ namespace LinqIt.UmbracoCustomFieldTypes
         [Bindable(true), Category("Configuration"), DefaultValue(""), Description(""), Localizable(false)]
         public virtual string Key { get { return (string)ViewState["Key"] ?? string.Empty; } set { ViewState["Key"] = value; } }
 
+        [Bindable(true), Category("Configuration"), DefaultValue(""), Description(""), Localizable(false)]
+        public virtual string ItemPath { get { return (string)ViewState["ItemPath"] ?? string.Empty; } set { ViewState["ItemPath"] = value; } }
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -44,7 +47,14 @@ namespace LinqIt.UmbracoCustomFieldTypes
 
             var placeholder = new BootstrapGridModulePlaceholder();
             placeholder.Provider = typeof(UmbracoTreeModuleProvider).GetShortAssemblyName();
-            placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>().Id.ToString();
+
+            if (!string.IsNullOrEmpty(ItemPath))
+            {
+                var itemPath = ItemPath.StartsWith("§") ? CmsService.Instance.GetSystemPath(ItemPath.TrimStart('§')) : ItemPath;
+                placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>(itemPath).Id.ToString();
+            }
+            else
+                placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>().Id.ToString();
             placeholder.Key = Key;
             Controls.Add(placeholder);
 
