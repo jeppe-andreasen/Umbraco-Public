@@ -40,6 +40,7 @@
     <Reference Include="interfaces">
       <HintPath>..\Repository\Umbraco\interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="LinqIt.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="LinqIt.Cms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Repository\LinqIt\LinqIt.Cms.dll</HintPath>
@@ -91,6 +92,7 @@
     <Compile Include="Entities\GridModule.cs" />
     <Compile Include="Entities\HeroModule.cs" />
     <Compile Include="Entities\IFrameModule.cs" />
+    <Compile Include="Entities\ImageGalleryModule.cs" />
     <Compile Include="Entities\LinkListModule.cs" />
     <Compile Include="Entities\MenuItem.cs" />
     <Compile Include="Entities\MultiBoxModule.cs" />

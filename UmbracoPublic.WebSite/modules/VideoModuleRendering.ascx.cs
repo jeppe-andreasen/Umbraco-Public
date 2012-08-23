@@ -17,7 +17,7 @@ namespace UmbracoPublic.WebSite.modules
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterInitScript("videomodule");
+            ModuleScripts.RegisterInitScript("videomodule");
         }
 
         protected override void RenderModule(VideoModule module, LinqIt.Utils.Web.HtmlWriter writer)

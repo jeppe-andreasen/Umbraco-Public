@@ -18,6 +18,7 @@ using LinqIt.UmbracoServices.Data.DataIterators;
 using LinqIt.Utils;
 using LinqIt.Utils.Extensions;
 using umbraco.BusinessLogic;
+using umbraco.cms.businesslogic.media;
 using umbraco.cms.businesslogic.web;
 using umbraco.interfaces;
 using umbraco.NodeFactory;
@@ -485,7 +486,11 @@ namespace LinqIt.UmbracoServices
 
         public override Cms.Data.Image GetImage(Cms.Data.Id imageId)
         {
-            throw new NotImplementedException();
+            if (imageId.IsNull)
+                return new Image();
+
+            var media = new Media(imageId.IntValue);
+            return new Image(imageId, (string)media.getProperty("umbracoFile").Value, string.Empty);
         }
 
         protected override string GetInternalLink(object item)
@@ -516,7 +521,9 @@ namespace LinqIt.UmbracoServices
         protected override string GetIconUrl(Entity entity)
         {
             var docType = ((UmbracoItem) entity.WrappedItem).DocumentType;
-            return "/umbraco/images/umbraco/" + docType.IconUrl.Replace(".sprTree", "");
+            if (docType.IconUrl.Contains(".sprTree"))
+                return docType.IconUrl;
+            return "/umbraco/images/umbraco/" + docType.IconUrl;
         }
 
         private static UmbracoDataContext GetDbContext()

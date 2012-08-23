@@ -19,6 +19,9 @@ namespace LinqIt.UmbracoCustomFieldTypes
         {
             using (CmsContext.Editing)
             {
+                if (item == null)
+                    return new Node[0];
+
                 var id = new Id(item.Id);
                 var entity = CmsService.Instance.GetItem<Entity>(id);
                 return entity.GetChildren<Entity>().Select(GetNode);
@@ -47,7 +50,12 @@ namespace LinqIt.UmbracoCustomFieldTypes
             }
         }
 
-        protected static Node GetNode(Entity entity)
+        protected virtual bool IsSelectable(Entity entity)
+        {
+            return true;
+        }
+
+        protected Node GetNode(Entity entity)
         {
             if (entity == null)
                 return null;
@@ -55,7 +63,7 @@ namespace LinqIt.UmbracoCustomFieldTypes
             var result = new Node();
             result.HelpText = entity.DisplayName;
             result.Icon = entity.Icon;
-            result.Selectable = true;
+            result.Selectable = IsSelectable(entity);
             result.Id = entity.Id.ToString();
             result.Text = entity.DisplayName;
             return result;

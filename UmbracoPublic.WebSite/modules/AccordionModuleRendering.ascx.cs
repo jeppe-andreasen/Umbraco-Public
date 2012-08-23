@@ -21,7 +21,7 @@ namespace UmbracoPublic.WebSite.modules
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterInitScript("accordion");
+            ModuleScripts.RegisterInitScript("accordion");
         }
 
         protected override void CreateChildControls()

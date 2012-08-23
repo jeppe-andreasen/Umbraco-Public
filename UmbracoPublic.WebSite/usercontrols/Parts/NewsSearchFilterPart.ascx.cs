@@ -21,8 +21,7 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterScriptInit("searchfilter");
-
+            ModuleScripts.RegisterInitScript("searchfilter");
             if (!IsPostBack)
             {
                 txtQuery.Text = Request.QueryString["query"];

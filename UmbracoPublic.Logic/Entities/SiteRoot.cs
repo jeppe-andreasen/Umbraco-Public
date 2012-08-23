@@ -18,5 +18,10 @@ namespace UmbracoPublic.Logic.Entities
                 return theme;
             }
         }
+
+        public Image DefaultBackgroundImage
+        {
+            get { return GetValue<Image>("defaultBackgroundImage"); }
+        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
 using LinqIt.Search;
 using LinqIt.Utils.Web;
@@ -31,13 +33,19 @@ namespace UmbracoPublic.WebSite.modules
             filter.TemplateName = "NewsPage";
             filter.CategorizationIds = Module.CategorizationIds;
             _result = DataService.Instance.PerformSearch(filter);
-            pager.Initialize(_result.TotalResults);
+            pager.Visible = Module.ShowPager;
+            if (pager.Visible)
+            {
+                if (Module.MaxItemsShown.HasValue)
+                    pager.ItemsPerPage = Module.MaxItemsShown.Value;
+                pager.Initialize(_result.TotalResults);
+            }
+            
         }
 
         protected override void OnPreRender(EventArgs e)
         {
             litOutput.Text = HtmlWriter.Generate(w => RenderOutput(Module, w));
-            pager.Visible = !Module.DisablePaging;
             base.OnPreRender(e);
         }
 
@@ -60,7 +68,12 @@ namespace UmbracoPublic.WebSite.modules
             if (renderHr)
                 writer.RenderFullTag(HtmlTextWriterTag.Hr, "");
 
-            Snippets.RenderNewsResults(writer, _result, pager);
+            IEnumerable<SearchRecord> records = _result.Records.OrderByDescending(r => r.GetDate("date"));
+            if (pager.Visible)
+                records = records.Skip(pager.Skip).Take(pager.Take);
+            else if (Module.MaxItemsShown.HasValue)
+                records = records.Take(Module.MaxItemsShown.Value);
+            Snippets.RenderNewsResults(writer, records.ToArray());
 
             writer.RenderEndTag();
         }

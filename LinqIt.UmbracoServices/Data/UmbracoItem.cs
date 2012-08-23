@@ -33,10 +33,18 @@ namespace LinqIt.UmbracoServices.Data
             }
             else if (CmsContext.Current.StoreType == CmsStoreType.Working && id != 0)
             {
-                var document = new Document(id);
-                if (document.IsTrashed)
+                try
+                {
+                    var document = new Document(id);
+                    if (document.IsTrashed)
+                        return null;
+                    return document.Id == id ? new UmbracoDocument(document) : null;
+                }
+                catch (ArgumentException)
+                {
                     return null;
-                return document.Id == id ? new UmbracoDocument(document) : null;
+                }
+                
             }
             return null;
         }

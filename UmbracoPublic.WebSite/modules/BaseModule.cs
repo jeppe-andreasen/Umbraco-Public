@@ -5,6 +5,7 @@ using System.Web;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Components;
+using LinqIt.Utils.Extensions;
 using LinqIt.Utils.Web;
 using UmbracoPublic.Logic.Utilities;
 
@@ -18,11 +19,6 @@ namespace UmbracoPublic.WebSite.modules
         }
         
         private T _module;
-
-        protected void RegisterInitScript(string componentName)
-        {
-            ModuleScripts.Instance.RegisterInitializationScripts(this, "application." + componentName + ".init();");
-        }
 
         public void InitializeModule(string id, int? columnSpan)
         {

@@ -157,7 +157,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
 
             public override void Process(CrawlService service)
             {
-                service.RemoveRecord(Url);
+                //service.RemoveRecord(Url);
             }
         }
     }

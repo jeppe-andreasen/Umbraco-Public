@@ -22,7 +22,12 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
         protected void Page_Load(object sender, EventArgs e)
         {
             var page = CmsService.Instance.GetItem<Entity>();
-            RegisterComponentInit("navigation", "search", "button", "background");
+
+            ModuleScripts.RegisterInitScript("navigation");
+            ModuleScripts.RegisterInitScript("search");
+            ModuleScripts.RegisterInitScript("button");
+            ModuleScripts.RegisterInitScript("background");
+            
             litDynamicMetaTags.Text = RenderMetaTags(page);
 
             var theme = Theme.Current;
@@ -30,12 +35,16 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
             {
                 litThemeCss.Text = theme.Stylesheets.ToSeparatedString("", "<link href=\"/{0}\" rel=\"stylesheet\">");
             }
+
+            var siteRoot = CmsService.Instance.GetItem<SiteRoot>(CmsService.Instance.SitePath);
+            var logo = siteRoot.GetValue<Image>("logo");
+            litBrand.Text = logo.Exists ? HtmlWriter.Generate(w => w.RenderImageTag(logo.Url, page.EntityName, null)) : page.EntityName;
+
             var backgroundImage = page.GetValue<Image>("backgroundImage");
+            if (!backgroundImage.Exists)
+                backgroundImage = siteRoot.DefaultBackgroundImage;
             if (backgroundImage.Exists)
                 form1.Attributes.Add("data-bgimage", backgroundImage.Url);
-
-            var logo = page.GetValue<Image>("logo");
-            litBrand.Text = logo.Exists ? HtmlWriter.Generate(w => w.RenderImageTag(logo.Url, page.EntityName, null)) : page.EntityName;
         }
 
         private static string RenderMetaTags(Entity page)
@@ -88,12 +97,6 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
         {
             base.CreateChildControls();
             litInitializationScript.Text = ModuleScripts.Instance.GetInitializationScript();
-        }
-
-        private void RegisterComponentInit(params string[] components)
-        {
-            var scripts = components.Select(c => "application." + c + ".init();").ToArray();
-            ModuleScripts.Instance.RegisterInitializationScript(this.Page, scripts);
         }
     }
 }

@@ -10,6 +10,7 @@ namespace UmbracoPublic.Logic.Entities
     public class CategorizationFolder : Entity
     {
         private CategorizationType[] _types;
+        private Dictionary<Id, Categorization> _categorizations;
 
         public static CategorizationFolder Get()
         {
@@ -35,6 +36,13 @@ namespace UmbracoPublic.Logic.Entities
         internal IEnumerable<CategorizationType> GetTypes(LinqIt.Cms.Data.Id[] id)
         {
             return Types.Where(t => t.Items.Where(i => id.Contains(i.Id)).Any());
+        }
+
+        public Categorization GetCategorization(LinqIt.Cms.Data.Id id)
+        {
+            if (_categorizations == null)
+                _categorizations = Types.SelectMany(t => t.Items).ToDictionary(i => i.Id);
+            return _categorizations.ContainsKey(id) ? _categorizations[id] : null;
         }
     }
 

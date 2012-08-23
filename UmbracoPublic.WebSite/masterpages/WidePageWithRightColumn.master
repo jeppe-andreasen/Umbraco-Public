@@ -6,30 +6,32 @@
     <uc1:SubNavigationBar ID="SubNavigationBar2" runat="server" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
-    <div class="container">
-    <div class="row">
-        <div class="span12">
+    <div class="sectionA">
+        <div class="container">
             <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
         </div>
     </div>
-    <div class="row">
-        <div class="span9">
-            <asp:ContentPlaceHolder ID="plhBeforeMain" runat="server"></asp:ContentPlaceHolder>
-            <part:GeneralContentPart ID="generalContent" runat="server" />
-            <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
-            <asp:ContentPlaceHolder ID="plhAfterMain" runat="server"></asp:ContentPlaceHolder>
-        </div>
-        <div class="span3">
-            <asp:ContentPlaceHolder ID="plhBeforeRight" runat="server" />
-            <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
-            <asp:ContentPlaceHolder ID="plhAfterRight" runat="server" />
+    <div class="sectionB">
+        <div class="container">
+            <div class="row">
+                <div class="span9">
+                    <asp:ContentPlaceHolder ID="plhBeforeMain" runat="server"></asp:ContentPlaceHolder>
+                    <part:GeneralContentPart ID="generalContent" runat="server" />
+                    <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+                    <asp:ContentPlaceHolder ID="plhAfterMain" runat="server"></asp:ContentPlaceHolder>
+                </div>
+                <div class="span3">
+                    <asp:ContentPlaceHolder ID="plhBeforeRight" runat="server" />
+                    <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
+                    <asp:ContentPlaceHolder ID="plhAfterRight" runat="server" />
             
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="span12">
+    <div class="sectionC">
+        <div class="container">
             <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
         </div>
-    </div>
     </div>
 </asp:Content>

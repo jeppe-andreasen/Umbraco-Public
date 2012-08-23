@@ -57,7 +57,9 @@
       <HintPath>..\Repository\LinqIt\LinqIt.Utils.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -80,14 +82,22 @@
     <Compile Include="GridLibraryFolderProvider.cs" />
     <Compile Include="GridModulePlaceholder.cs" />
     <Compile Include="GridModuleService.cs" />
+    <Compile Include="ImageGalleryProvider.cs" />
     <Compile Include="LayoutGrid.cs" />
     <Compile Include="MacroRichTextEditor.cs" />
     <Compile Include="ModuleTreeNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UmbracoGridModuleProvider.cs" />
+    <Compile Include="UmbracoImageTreeProvider.cs" />
+    <Compile Include="UmbracoMediaTreeProvider.cs" />
     <Compile Include="UmbracoNode.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\LinqIt.UmbracoServices\LinqIt.UmbracoServices.csproj">
+      <Project>{BFD16E8B-0DD3-466A-8271-F943AA8354B0}</Project>
+      <Name>LinqIt.UmbracoServices</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

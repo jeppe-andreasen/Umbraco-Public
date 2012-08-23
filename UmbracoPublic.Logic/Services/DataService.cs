@@ -120,20 +120,19 @@ namespace UmbracoPublic.Logic.Services
                     if (filter.CategorizationIds.Length == 1)
                         query.SubQueries.Add(new WildCardQuery("categorizations", filter.CategorizationIds[0].ToString()));
                     else
-                        query.SubQueries.Add(BooleanQuery.And(filter.CategorizationIds.Select(id => new WildCardQuery("categorizations", id.ToString())).ToArray()));
-                    //{
-                    //    var categorizationFolder = CategorizationFolder.Get();
-                    //    var types = categorizationFolder.GetTypes(filter.CategorizationIds);
-                    //    var typeQueries = new List<Query>();
-                    //    foreach (var typeIds in types.Select(type => filter.CategorizationIds.Where(type.HasItem).ToArray()))
-                    //    {
-                    //        if (typeIds.Length == 1)
-                    //            typeQueries.Add(new WildCardQuery("categorizations", typeIds[0].ToString()));
-                    //        else
-                    //            typeQueries.Add(BooleanQuery.Or(typeIds.Select(id => new WildCardQuery("categorizations", id.ToString())).ToArray()));
-                    //    }
-                    //    query.SubQueries.Add(BooleanQuery.And(typeQueries.ToArray()));
-                    //}
+                    {
+                        var categorizationFolder = CategorizationFolder.Get();
+                        var types = categorizationFolder.GetTypes(filter.CategorizationIds);
+                        var typeQueries = new List<Query>();
+                        foreach (var typeIds in types.Select(type => filter.CategorizationIds.Where(type.HasItem).ToArray()))
+                        {
+                            if (typeIds.Length == 1)
+                                typeQueries.Add(new WildCardQuery("categorizations", typeIds[0].ToString()));
+                            else
+                                typeQueries.Add(BooleanQuery.Or(typeIds.Select(id => new WildCardQuery("categorizations", id.ToString())).ToArray()));
+                        }
+                        query.SubQueries.Add(BooleanQuery.And(typeQueries.ToArray()));
+                    }
                 }
                     
                 return service.Search(query, 0, int.MaxValue);

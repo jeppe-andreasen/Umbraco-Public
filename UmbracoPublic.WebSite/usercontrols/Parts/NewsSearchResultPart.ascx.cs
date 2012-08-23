@@ -28,7 +28,11 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
 
         protected override void OnPreRender(EventArgs e)
         {
-            litOutput.Text = HtmlWriter.Generate(w => Snippets.RenderNewsResults(w, _result, pager));
+            IEnumerable<SearchRecord> records = _result.Records.OrderByDescending(r => r.GetDate("date"));
+            if (pager.Visible)
+                records = records.Skip(pager.Skip).Take(pager.Take);
+            litOutput.Text = HtmlWriter.Generate(w => Snippets.RenderNewsResults(w, records.ToArray()));
+
             base.OnPreRender(e);
         }
 

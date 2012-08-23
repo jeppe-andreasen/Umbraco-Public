@@ -23,14 +23,27 @@ namespace UmbracoPublic.Logic.Entities
             get { return GetValue<int?>("itemsPerPage") ?? 10; }
         }
 
-        public bool DisablePaging
-        {
-            get { return GetValue<bool>("disablePaging"); }
-        }
-
         public Id[] CategorizationIds
         {
              get { return GetValue<IdList>("categorizations").ToArray(); }   
+        }
+
+        public int? MaxItemsShown
+        {
+            get { return GetValue<int?>("maxItemsShown"); }
+        }
+
+        public bool ShowPager
+        {
+            get
+            {
+                return GetValue<bool>("showPager");
+            }
+        }
+
+        public string NewsPageLinkText
+        {
+            get { return GetValue<string>("newsPageLinkText"); }
         }
     }
 }

@@ -32,7 +32,7 @@ namespace UmbracoPublic.WebSite.usercontrols.EditorWrappers
                 label.Text = type.EntityName;
                 this.Controls.Add(label);
                 this.Controls.Add(new LiteralControl("<br>"));
-                if (type.AllowMultipleSelections)
+                if (type.AllowMultipleSelections || string.Compare(AllowMultipleOnAll,"true", true) == 0)
                 {
                     var multilist = (MultiListWrapper)LoadControl("~/usercontrols/MultiListWrapper.ascx");
                     multilist.Provider = Provider;
@@ -63,6 +63,9 @@ namespace UmbracoPublic.WebSite.usercontrols.EditorWrappers
 
         [DataEditorSetting("FieldName")]
         public string FieldName { get; set; }
+
+        [DataEditorSetting("AllowMultipleOnAll")]
+        public string AllowMultipleOnAll { get; set; }
 
         public object value
         {

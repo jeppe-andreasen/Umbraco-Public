@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using LinqIt.Ajax.Parsing;
 using LinqIt.Utils.Caching;
 using LinqIt.Utils.Extensions;
 
@@ -10,13 +11,13 @@ namespace UmbracoPublic.Logic.Utilities
 {
     public class ModuleScripts
     {
-        private readonly Dictionary<String, String> _initializationLines;
+        private readonly List<string> _initializationLines = new List<string>();
 
         #region Constructors
 
         private ModuleScripts()
         {
-            _initializationLines = new Dictionary<string, string>(); 
+            
         }
 
         #endregion Constructors
@@ -40,7 +41,7 @@ namespace UmbracoPublic.Logic.Utilities
 
             var builder = new StringBuilder();
             builder.AppendLine("<script type=\"text/javascript\">");
-            foreach (var script in _initializationLines.Values)
+            foreach (var script in _initializationLines)
             {
                 builder.Append(script);
                 if (!script.EndsWith(";"))
@@ -53,20 +54,17 @@ namespace UmbracoPublic.Logic.Utilities
             return builder.ToString();
         }
 
-        public void RegisterInitializationScripts(UserControl control, params string[] scripts)
+        public static void RegisterInitScript(string componentName, params JSONValue[] values)
         {
-            var key = control.GetType().BaseType.Name;
-            if (_initializationLines.ContainsKey(key))
-                return;
-            _initializationLines.Add(key, scripts.ToSeparatedString("\r\n"));
+            Instance.AddScript(componentName, values);
         }
 
-        public void RegisterInitializationScript(Page page, params string[] scripts)
+        private void AddScript(string componentName, params JSONValue[] values)
         {
-            var key = page.GetType().Name;
-            if (_initializationLines.ContainsKey(key))
-                return;
-            _initializationLines.Add(key, scripts.ToSeparatedString("\r\n"));
+            var parameters = values != null ? values.ToSeparatedString(",") : string.Empty;
+            var script = "application." + componentName + ".init(" + parameters + ");";
+            if (!_initializationLines.Contains(script))
+                _initializationLines.Add(script);
         }
     }
 }

@@ -227,6 +227,14 @@ application.background = {
 }
 
 
+/* Image Carousel */
+
+application.carousel = {
+    init: function (options) {
+        $('.carousel').carousel(options);
+    }
+}
+
 /* Search Box */
 
 application.search = {
@@ -259,20 +267,6 @@ application.accordion = {
 application.button = {
     init: function () {
         $('.nav-tabs').button();
-
-        /*
-        $('.alert').each(function () {
-
-            var span = $(this);
-            var div = $('<div class="alert"><button class="close" data-dismiss="alert">×</button><span></span></div>');
-            div.attr("class", span.attr("class"));
-            div.find("span").html(span.html());
-            span.replaceWith(div);
-        });
-
-        */
-
-
     }
 }
 
