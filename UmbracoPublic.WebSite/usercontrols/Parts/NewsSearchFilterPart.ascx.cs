@@ -10,12 +10,13 @@ using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Utils.Extensions;
 using UmbracoPublic.Logic.Entities;
+using UmbracoPublic.Logic.Parts;
 using UmbracoPublic.Logic.Services;
 using UmbracoPublic.Logic.Utilities;
 
 namespace UmbracoPublic.WebSite.usercontrols.Parts
 {
-    public partial class NewsSearchFilterPart : BasePart
+    public partial class NewsSearchFilterPart : BaseUCPart
     {
         private readonly List<DropDownList> _categorizationDropdowns = new List<DropDownList>();
 

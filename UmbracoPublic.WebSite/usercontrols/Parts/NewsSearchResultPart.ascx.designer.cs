@@ -28,6 +28,6 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UmbracoPublic.WebSite.usercontrols.Parts.Pager pager;
+        protected global::UmbracoPublic.Logic.Parts.Paging.Pager pager;
     }
 }

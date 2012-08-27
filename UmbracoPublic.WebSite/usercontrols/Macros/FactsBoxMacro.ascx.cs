@@ -19,7 +19,7 @@ namespace UmbracoPublic.WebSite.usercontrols.Macros
 
         protected override void CreateChildControls()
         {
-            HtmlContent.CreateControls(RenderOutput, plhOutput);
+            HtmlContent.CreateControls(RenderOutput, this.Controls);
             base.CreateChildControls();
         }
 

@@ -5,10 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LinqIt.Search;
+using UmbracoPublic.Logic.Parts;
 
 namespace UmbracoPublic.WebSite.usercontrols.Parts
 {
-    public partial class SiteSearchResult : BasePart
+    public partial class SiteSearchResult : BaseUCPart
     {
         protected void Page_Load(object sender, EventArgs e)
         {

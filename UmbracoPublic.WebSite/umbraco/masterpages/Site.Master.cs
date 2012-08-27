@@ -96,7 +96,7 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
         protected override void CreateChildControls()
         {
             base.CreateChildControls();
-            litInitializationScript.Text = ModuleScripts.Instance.GetInitializationScript();
+            litInitializationScript.Text = ModuleScripts.GetInitializationScript();
         }
     }
 }

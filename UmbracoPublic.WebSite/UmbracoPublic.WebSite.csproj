@@ -131,7 +131,6 @@
     <Content Include="handlers\BuildPackage.aspx" />
     <Content Include="handlers\ImageGallery\Handler.aspx" />
     <Content Include="handlers\InstallPackage.aspx" />
-    <Content Include="modules\ImageGalleryModuleRendering.ascx" />
     <Content Include="test\ImageGalleryEditorTest.aspx" />
     <Content Include="test\TestWebConfigTransform.aspx" />
     <Content Include="themes\Amelia\amelia.min.css" />
@@ -214,15 +213,6 @@
     <Content Include="handlers\MultiListEditorHandler.aspx" />
     <Content Include="handlers\MultiTreeList\Handler.aspx" />
     <Content Include="handlers\TinyMCEditorHandler.aspx" />
-    <Content Include="modules\AccordionModuleRendering.ascx" />
-    <Content Include="modules\ContactModuleRendering.ascx" />
-    <Content Include="modules\DisqusModuleRendering.ascx" />
-    <Content Include="modules\HeroModuleRendering.ascx" />
-    <Content Include="modules\IFrameModuleRendering.ascx" />
-    <Content Include="modules\LinkListModuleRendering.ascx" />
-    <Content Include="modules\MultiBoxModuleRendering.ascx" />
-    <Content Include="modules\NewsListModuleRendering.ascx" />
-    <Content Include="modules\VideoModuleRendering.ascx" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="test\CreateModule.aspx" />
@@ -503,79 +493,6 @@
     <Compile Include="masterpages\WidePageWithRightColumn.master.designer.cs">
       <DependentUpon>WidePageWithRightColumn.master</DependentUpon>
     </Compile>
-    <Compile Include="modules\AccordionModuleRendering.ascx.cs">
-      <DependentUpon>AccordionModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\AccordionModuleRendering.ascx.designer.cs">
-      <DependentUpon>AccordionModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\BaseModule.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\ContactModuleRendering.ascx.cs">
-      <DependentUpon>ContactModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\ContactModuleRendering.ascx.designer.cs">
-      <DependentUpon>ContactModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\DisqusModuleRendering.ascx.cs">
-      <DependentUpon>DisqusModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\DisqusModuleRendering.ascx.designer.cs">
-      <DependentUpon>DisqusModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\HeroModuleRendering.ascx.cs">
-      <DependentUpon>HeroModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\HeroModuleRendering.ascx.designer.cs">
-      <DependentUpon>HeroModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\IFrameModuleRendering.ascx.cs">
-      <DependentUpon>IFrameModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\IFrameModuleRendering.ascx.designer.cs">
-      <DependentUpon>IFrameModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\ImageGalleryModuleRendering.ascx.cs">
-      <DependentUpon>ImageGalleryModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\ImageGalleryModuleRendering.ascx.designer.cs">
-      <DependentUpon>ImageGalleryModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\LinkListModuleRendering.ascx.cs">
-      <DependentUpon>LinkListModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\LinkListModuleRendering.ascx.designer.cs">
-      <DependentUpon>LinkListModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\MultiBoxModuleRendering.ascx.cs">
-      <DependentUpon>MultiBoxModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\MultiBoxModuleRendering.ascx.designer.cs">
-      <DependentUpon>MultiBoxModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\NewsListModuleRendering.ascx.cs">
-      <DependentUpon>NewsListModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\NewsListModuleRendering.ascx.designer.cs">
-      <DependentUpon>NewsListModuleRendering.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modules\VideoModuleRendering.ascx.cs">
-      <DependentUpon>VideoModuleRendering.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="modules\VideoModuleRendering.ascx.designer.cs">
-      <DependentUpon>VideoModuleRendering.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test\CreateModule.aspx.cs">
       <DependentUpon>CreateModule.aspx</DependentUpon>
@@ -787,9 +704,6 @@
     </Compile>
     <Compile Include="usercontrols\NewsListMacro2.ascx.designer.cs">
       <DependentUpon>NewsListMacro2.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Parts\BasePart.cs">
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="usercontrols\Parts\GeneralContentPart.ascx.cs">
       <DependentUpon>GeneralContentPart.ascx</DependentUpon>
@@ -1150,7 +1064,9 @@
   <ItemGroup>
     <Content Include="assets\less\wells.less" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="modules\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

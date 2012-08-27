@@ -6,7 +6,7 @@ using System.Xml;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using UmbracoPublic.Interfaces;
-using UmbracoPublic.Logic.Entities.Configuration;
+using UmbracoPublic.Logic.Modules.Video;
 
 namespace UmbracoPublic.Logic.Providers
 {

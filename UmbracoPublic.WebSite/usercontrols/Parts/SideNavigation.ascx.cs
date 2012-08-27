@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UmbracoPublic.Logic.Parts;
 using UmbracoPublic.Logic.Services;
 using UmbracoPublic.Logic.Utilities;
 
 namespace UmbracoPublic.WebSite.usercontrols.Parts
 {
-    public partial class SideNavigation : BasePart
+    public partial class SideNavigation : BaseUCPart
     {
         protected void Page_Load(object sender, EventArgs e)
         {

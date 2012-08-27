@@ -8,12 +8,14 @@ using LinqIt.Cms.Data;
 using LinqIt.Search;
 using LinqIt.Utils.Web;
 using UmbracoPublic.Logic.Entities;
+using UmbracoPublic.Logic.Modules;
+using UmbracoPublic.Logic.Parts;
 using UmbracoPublic.Logic.Services;
 using UmbracoPublic.WebSite.Utilities;
 
 namespace UmbracoPublic.WebSite.usercontrols.Parts
 {
-    public partial class NewsSearchResultPart : BasePart
+    public partial class NewsSearchResultPart : BaseUCPart
     {
         private SearchResult _result;
 
@@ -35,12 +37,5 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
 
             base.OnPreRender(e);
         }
-
-        //protected override void RenderPart(LinqIt.Utils.Web.HtmlWriter writer)
-        //{
-        //    
-
-        //    Snippets.RenderNewsResults(writer, filter);
-        //}
     }
 }

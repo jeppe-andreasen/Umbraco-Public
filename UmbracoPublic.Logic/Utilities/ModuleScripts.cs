@@ -6,65 +6,23 @@ using System.Web.UI;
 using LinqIt.Ajax.Parsing;
 using LinqIt.Utils.Caching;
 using LinqIt.Utils.Extensions;
+using LinqIt.Utils.Web;
 
 namespace UmbracoPublic.Logic.Utilities
 {
-    public class ModuleScripts
+    public static class ModuleScripts
     {
-        private readonly List<string> _initializationLines = new List<string>();
-
-        #region Constructors
-
-        private ModuleScripts()
-        {
-            
-        }
-
-        #endregion Constructors
-
-        public static ModuleScripts Instance
-        {
-            get
-            {
-                return Cache.Get(typeof(ModuleScripts).FullName, CacheScope.Request, () => new ModuleScripts());
-            }
-        }
-
-        /// <summary>
-        /// Return the full init script with all script tags
-        /// </summary>
-        /// <returns></returns>
-        public String GetInitializationScript()
-        {
-            if (!_initializationLines.Any())
-                return string.Empty;
-
-            var builder = new StringBuilder();
-            builder.AppendLine("<script type=\"text/javascript\">");
-            foreach (var script in _initializationLines)
-            {
-                builder.Append(script);
-                if (!script.EndsWith(";"))
-                    builder.AppendLine(";");
-                else
-                    builder.AppendLine();
-            }
-            builder.AppendLine();
-            builder.AppendLine("</script>");
-            return builder.ToString();
-        }
-
         public static void RegisterInitScript(string componentName, params JSONValue[] values)
         {
-            Instance.AddScript(componentName, values);
+            if (values == null || !values.Any())
+                ScriptUtil.RegisterInitScript(componentName, new string[0]);
+            else
+                ScriptUtil.RegisterInitScript(componentName, values.Select(v => v.ToString()).ToArray());
         }
 
-        private void AddScript(string componentName, params JSONValue[] values)
+        public static string GetInitializationScript()
         {
-            var parameters = values != null ? values.ToSeparatedString(",") : string.Empty;
-            var script = "application." + componentName + ".init(" + parameters + ");";
-            if (!_initializationLines.Contains(script))
-                _initializationLines.Add(script);
+            return ScriptUtil.Instance.GetInitializationScript();
         }
     }
 }

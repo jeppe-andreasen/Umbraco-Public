@@ -92,7 +92,7 @@ namespace LinqIt.UmbracoCustomFieldTypes
         {
             using (CmsContext.Editing)
             {
-                return Cache.Get("GridData", CacheScope.Request, () =>
+                return Cache.Get("GridData" + _referenceId, CacheScope.Request, () =>
                 {
                     var node = CmsService.Instance.GetItem<Entity>(new Id(_referenceId));
                     var fieldName = HttpContext.Current.Request.QueryString["fieldName"] ?? "grid";

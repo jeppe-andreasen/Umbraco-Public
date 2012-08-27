@@ -20,7 +20,7 @@ namespace UmbracoPublic.Logic.Utilities
 {
     public class HtmlContent
     {
-        public static void CreateControls(Action<HtmlWriter> rendering, PlaceHolder placeholder)
+        public static void CreateControls(Action<HtmlWriter> rendering, ControlCollection controlCollection)
         {
             string html = HtmlWriter.Generate(rendering);
             if (string.IsNullOrEmpty(html))
@@ -30,13 +30,13 @@ namespace UmbracoPublic.Logic.Utilities
             foreach (var extraction in regex.Extract(html))
             {
                 if (extraction.Type == RegexExtractionType.Text)
-                    placeholder.Controls.Add(new LiteralControl(((RegexTextExtraction)extraction).Value));
+                    controlCollection.Add(new LiteralControl(((RegexTextExtraction)extraction).Value));
                 else
-                    placeholder.Controls.Add(LoadMacro(((RegexMatchExtraction)extraction).Value));
+                    controlCollection.Add(LoadMacro(((RegexMatchExtraction)extraction).Value));
             }
         }
 
-        public static void CreateModuleContent(Action<HtmlWriter> rendering, PlaceHolder placeholder, int? columnSpan)
+        public static void CreateModuleContent(Action<HtmlWriter> rendering, ControlCollection controlCollection, int? columnSpan)
         {
             string html = HtmlWriter.Generate(rendering);
             if (string.IsNullOrEmpty(html))
@@ -47,9 +47,9 @@ namespace UmbracoPublic.Logic.Utilities
             foreach (var extraction in regex.Extract(html))
             {
                 if (extraction.Type == RegexExtractionType.Text)
-                    placeholder.Controls.Add(new LiteralControl(((RegexTextExtraction)extraction).Value));
+                    controlCollection.Add(new LiteralControl(((RegexTextExtraction)extraction).Value));
                 else
-                    placeholder.Controls.Add(LoadModule(((RegexMatchExtraction)extraction).Value, columnSpan));
+                    controlCollection.Add(LoadModule(((RegexMatchExtraction)extraction).Value, columnSpan));
             }
         }
 

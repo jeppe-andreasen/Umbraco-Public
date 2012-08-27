@@ -1,2 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AccordionModuleRendering.ascx.cs" Inherits="UmbracoPublic.WebSite.modules.AccordionModuleRendering, UmbracoPublic.WebSite" %>
-<asp:PlaceHolder ID="plhOutput" runat="server"></asp:PlaceHolder>
