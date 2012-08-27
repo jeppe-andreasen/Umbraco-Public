@@ -128,7 +128,6 @@
     <Content Include="assets\images\Sprite.png" />
     <Content Include="assets\js\navigation.js" />
     <Content Include="assets\lib\JQueryUI\datetimepicker.js" />
-    <Content Include="assets\pages\frontpage.aspx" />
     <Content Include="handlers\BuildPackage.aspx" />
     <Content Include="handlers\ImageGallery\Handler.aspx" />
     <Content Include="handlers\InstallPackage.aspx" />
@@ -338,20 +337,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="assets\oim.Master.cs">
-      <DependentUpon>oim.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="assets\oim.Master.designer.cs">
-      <DependentUpon>oim.Master</DependentUpon>
-    </Compile>
-    <Compile Include="assets\pages\frontpage.aspx.cs">
-      <DependentUpon>frontpage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="assets\pages\frontpage.aspx.designer.cs">
-      <DependentUpon>frontpage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="handlers\AccordionEditorHandler.aspx.cs">
       <DependentUpon>AccordionEditorHandler.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -622,6 +607,7 @@
     </Compile>
     <Compile Include="test\ImageGalleryEditorTest.aspx.cs">
       <DependentUpon>ImageGalleryEditorTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="test\ImageGalleryEditorTest.aspx.designer.cs">
       <DependentUpon>ImageGalleryEditorTest.aspx</DependentUpon>
@@ -684,6 +670,7 @@
     </Compile>
     <Compile Include="test\TestWebConfigTransform.aspx.cs">
       <DependentUpon>TestWebConfigTransform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="test\TestWebConfigTransform.aspx.designer.cs">
       <DependentUpon>TestWebConfigTransform.aspx</DependentUpon>
@@ -1041,9 +1028,6 @@
     <Content Include="assets\html\less\wells.less" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\oim.Master" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="assets\less\accordion.less" />
   </ItemGroup>
   <ItemGroup>
@@ -1166,9 +1150,7 @@
   <ItemGroup>
     <Content Include="assets\less\wells.less" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\controles\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
