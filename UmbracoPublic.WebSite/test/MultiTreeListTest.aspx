@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <iframe id="frame" frameborder="0" height="200" width="800" scrolling="auto" src="/handlers/MultiTreeList/Handler.aspx?itemId=1248&provider=LinqIt.UmbracoCustomFieldTypes.ModuleTreeNodeProvider, LinqIt.UmbracoCustomFieldTypes&fieldname=categorizations&frame=frame&hiddenId=hiddenId"></iframe>
+        <iframe id="frame" frameborder="0" height="200" width="800" scrolling="auto" src="/handlers/MultiTreeList/Handler.aspx?itemId=1248&provider=LinqIt.UmbracoCustomFieldTypes.ModuleTreeNodeProvider, LinqIt.UmbracoCustomFieldTypes&fieldname=subjects&frame=frame&hiddenId=hiddenId"></iframe>
         <input type="text" id="hiddenId">
     </div>
     </form>

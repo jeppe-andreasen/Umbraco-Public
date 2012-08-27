@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoPublic.Interfaces", "UmbracoPublic.Interfaces\UmbracoPublic.Interfaces.csproj", "{2624EC11-AD5F-47C9-93A0-7366744F8C03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoPublic.Logic", "UmbracoPublic.Logic\UmbracoPublic.Logic.csproj", "{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}"

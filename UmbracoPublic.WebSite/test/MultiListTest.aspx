@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <iframe id="frame" frameborder="0" height="200" width="800" scrolling="auto" src="/handlers/MultiListEditorHandler.aspx?itemId=1248&provider=UmbracoPublic.Logic.Providers.CategorizationProvider,UmbracoPublic.Logic&fieldname=categorizations&frame=frame&hiddenId=hiddenId"></iframe>
+        <iframe id="frame" frameborder="0" height="200" width="800" scrolling="auto" src="/handlers/MultiListEditorHandler.aspx?itemId=1248&provider=UmbracoPublic.Logic.Providers.SubjectProvider,UmbracoPublic.Logic&fieldname=subjects&frame=frame&hiddenId=hiddenId"></iframe>
         <input type="text" id="hiddenId">
     </div>
     </form>

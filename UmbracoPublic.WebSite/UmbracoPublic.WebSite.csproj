@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -14,6 +15,15 @@
     <AssemblyName>UmbracoPublic.WebSite</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -114,8 +124,11 @@
     <Content Include="assets\css\imagegalleryeditor.css" />
     <Content Include="assets\css\jquery.alerts.css" />
     <EmbeddedResource Include="assets\css\treeview.css" />
+    <Content Include="assets\html\images\Sprite.png" />
+    <Content Include="assets\images\Sprite.png" />
     <Content Include="assets\js\navigation.js" />
     <Content Include="assets\lib\JQueryUI\datetimepicker.js" />
+    <Content Include="assets\pages\frontpage.aspx" />
     <Content Include="handlers\BuildPackage.aspx" />
     <Content Include="handlers\ImageGallery\Handler.aspx" />
     <Content Include="handlers\InstallPackage.aspx" />
@@ -228,7 +241,6 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="themes\Cyborg\StyleSheet1.css" />
     <Content Include="themes\Default\bootstrap.min.css" />
-    <Content Include="themes\OIM\bootstrap.css" />
     <Content Include="themes\OIM\images\Sprite.png" />
     <Content Include="themes\OIM\less\accordion.less" />
     <Content Include="themes\OIM\less\alerts.less" />
@@ -326,6 +338,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="assets\oim.Master.cs">
+      <DependentUpon>oim.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="assets\oim.Master.designer.cs">
+      <DependentUpon>oim.Master</DependentUpon>
+    </Compile>
+    <Compile Include="assets\pages\frontpage.aspx.cs">
+      <DependentUpon>frontpage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="assets\pages\frontpage.aspx.designer.cs">
+      <DependentUpon>frontpage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="handlers\AccordionEditorHandler.aspx.cs">
       <DependentUpon>AccordionEditorHandler.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -596,7 +622,6 @@
     </Compile>
     <Compile Include="test\ImageGalleryEditorTest.aspx.cs">
       <DependentUpon>ImageGalleryEditorTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="test\ImageGalleryEditorTest.aspx.designer.cs">
       <DependentUpon>ImageGalleryEditorTest.aspx</DependentUpon>
@@ -659,7 +684,6 @@
     </Compile>
     <Compile Include="test\TestWebConfigTransform.aspx.cs">
       <DependentUpon>TestWebConfigTransform.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="test\TestWebConfigTransform.aspx.designer.cs">
       <DependentUpon>TestWebConfigTransform.aspx</DependentUpon>
@@ -893,8 +917,265 @@
   <ItemGroup>
     <Content Include="handlers\SnapShot.ashx" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\accordion.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\alerts.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\bootstrap.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\breadcrumbs.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\button-groups.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\buttons.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\carousel.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\close.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\code.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\component-animations.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\dropdowns.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\forms.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\grid.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\hero-unit.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\labels-badges.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\layouts.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\mixins.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\modals.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\navbar.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\navs.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\pager.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\pagination.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\popovers.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\progress-bars.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\reset.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\responsive-1200px-min.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\responsive-767px-max.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\responsive-768px-979px.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\responsive-navbar.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\responsive-utilities.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\responsive.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\scaffolding.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\sections.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\sprites.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\tables.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\thumbnails.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\tooltip.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\type.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\utilities.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\variables.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\html\less\wells.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\oim.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\accordion.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\alerts.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\bootstrap.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\breadcrumbs.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\button-groups.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\buttons.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\carousel.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\close.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\code.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\component-animations.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\dropdowns.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\forms.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\grid.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\hero-unit.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\labels-badges.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\layouts.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\mixins.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\modals.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\navbar.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\navs.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\pager.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\pagination.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\popovers.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\progress-bars.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\reset.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\responsive-1200px-min.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\responsive-767px-max.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\responsive-768px-979px.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\responsive-navbar.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\responsive-utilities.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\responsive.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\scaffolding.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\sections.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\sprites.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\tables.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\thumbnails.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\tooltip.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\type.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\utilities.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\variables.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\less\wells.less" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\controles\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
