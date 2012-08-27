@@ -322,3 +322,8 @@ html[xmlns] .clearfix {
 {
     z-index:100;
 }
+
+#grid-editor .ui-draggable-dragging
+{
+    z-index:100;
+}

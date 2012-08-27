@@ -113,7 +113,6 @@ var grideditor = {
     initModule: function (module) {
         module.draggable({
             opacity: 0.7,
-            containment: 'parent',
             stop: function (event, ui) {
                 var dropContainer = grideditor.dropContainer(module);
                 grideditor.repositionModules(dropContainer, module.attr('ref'));
@@ -286,6 +285,49 @@ var grideditor = {
         parameters.y = event.pageY - dropContainer.offset().top;
         this.showDialog('Create ' + typename, parameters, this.itemCreatedCallback, 300, 150);
     },
+    dropModule: function (event, ui, dropContainer) {
+        var oldContainer = grideditor.dropContainer(ui.draggable);
+        if (oldContainer.attr("key") == dropContainer.attr("key"))
+            return;
+
+        var droppedId = ui.draggable.attr("ref");
+        if ($(this).find('[ref="' + droppedId + '"]').length > 0) {
+            jAlert("Item cannot be added twice.");
+            return;
+        }
+
+        var request = grideditor.getModuleRequest(dropContainer, 'itemDropped');
+        request.add = droppedId;
+        request.addX = event.pageX - dropContainer.offset().left;
+        request.addY = event.pageY - dropContainer.offset().top;
+
+        var mrk = $('<div class="module draggable" style="position:absolute" ref="' + droppedId + '"><h3><img alt=""><span>Yo name</span><a class="share" href="#" title="Move to Module Library">&nbsp;</a><a class="detach" href="#" title="Make a local copy">&nbsp;</a><a class="edit" href="#" title="edit">&nbsp;</a><a class="remove" href="#" title="remove">&nbsp;</a></h3><p><span class="cols"></span></p></div>');
+        var srcImg = ui.draggable.find("h3 img");
+        var dstImg = mrk.find("h3 img");
+        dstImg.attr("src", srcImg.attr("src"));
+        dstImg.next().html(srcImg.next().html());
+
+        var response = getGridEditorItems(request);
+
+        var placeholderColumns = parseInt(dropContainer.attr("cols"));
+        if (response.add.colspan > placeholderColumns) {
+            jAlert("This item is too wide to fit in this placeholder.");
+            return;
+        }
+        mrk.attr("coloptions", response.add.coloptions);
+        mrk.attr("colspan", response.add.colspan);
+        mrk.find("p span.cols").html(response.add.colspan);
+        mrk.appendTo(dropContainer);
+        grideditor.iterateModuleResponse(response, dropContainer);
+        grideditor.resizeDropContainer(dropContainer, response.rows);
+        grideditor.initModule(mrk);
+        grideditor.selectModule(mrk);
+
+        ui.draggable.remove();
+        grideditor.repositionModules(oldContainer, '');
+
+        grideditor.updateValue();
+    },
     itemCreatedCallback: function (response) {
         var dropContainer = $('[key="' + response.values.ph + '"]', "#grid-editor");
         var request = grideditor.getModuleRequest(dropContainer, 'itemDropped');
@@ -371,15 +413,16 @@ $(document).ready(function () {
         grideditor.repositionAll();
     });
     $(".dropcontainer").droppable({
-        accept: ".node,.moduleType",
+        accept: ".node,.moduleType,.module",
         activeClass: "droptarget",
         drop: function (event, ui) {
             var dropContainer = $(this);
-
             if (ui.draggable.hasClass("node"))
                 grideditor.dropNode(event, ui, dropContainer);
             else if (ui.draggable.hasClass("moduleType"))
                 grideditor.dropModuleType(event, ui, dropContainer);
+            else if (ui.draggable.hasClass("module"))
+                grideditor.dropModule(event, ui, dropContainer);
         }
     });
 });
