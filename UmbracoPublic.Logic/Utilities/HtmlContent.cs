@@ -66,13 +66,21 @@ namespace UmbracoPublic.Logic.Utilities
             parameters.Remove("macroalias");
 
             var macro = new Macro(macroAlias);
-            string filepath = "~/" + macro.Type;
-
             var page = (System.Web.UI.Page) HttpContext.Current.Handler;
-            var control = page.LoadControl(filepath);
+
+            Control control = null;
+            if (!string.IsNullOrEmpty(macro.Assembly))
+            {
+                var ctrlType = Type.GetType(macro.Type + "," + macro.Assembly);
+                control = (Control)Activator.CreateInstance(ctrlType);
+            }
+            else
+            {
+                var filepath = "~/" + macro.Type;
+                control = page.LoadControl(filepath);
+            }
 
             var type = control.GetType();
-
             var controlProperties = type.GetProperties().ToDictionary(p => p.Name.ToLower());
 
             foreach (var key in parameters.Keys)

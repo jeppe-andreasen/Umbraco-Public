@@ -82,6 +82,10 @@
     <Compile Include="Controllers\Paging\PagerAlignedPagingController.cs" />
     <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
     <Compile Include="Controllers\Paging\PagingController.cs" />
+    <Compile Include="Macros\AlertMacro.cs" />
+    <Compile Include="Macros\BlockQuoteMacro.cs" />
+    <Compile Include="Macros\FactsBoxMacro.cs" />
+    <Compile Include="Macros\ModuleMacro.cs" />
     <Compile Include="Modules\Accordion\AccordionModule.cs" />
     <Compile Include="Entities\CategorizationFolder.cs" />
     <Compile Include="Modules\Accordion\AccordionModuleRendering.cs" />

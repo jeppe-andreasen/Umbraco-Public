@@ -301,18 +301,12 @@
     <Content Include="usercontrols\EditorWrappers\ImageGalleryWrapper.ascx" />
     <Content Include="usercontrols\EditorWrappers\MultiTreeListWrapper.ascx" />
     <Content Include="usercontrols\LayoutGridWrapper.ascx" />
-    <Content Include="usercontrols\Macros\AlertMacro.ascx" />
-    <Content Include="usercontrols\Macros\BlockQuoteMacro.ascx" />
-    <Content Include="usercontrols\Macros\FactsBoxMacro.ascx" />
-    <Content Include="usercontrols\Macros\ModuleMacro.ascx" />
-    <Content Include="usercontrols\Macros\NewsListMacro.ascx" />
     <Content Include="usercontrols\MultiListWrapper.ascx" />
     <Content Include="usercontrols\NewsListMacro2.ascx" />
     <Content Include="usercontrols\Parts\GeneralContentPart.ascx" />
     <Content Include="usercontrols\Parts\NavigationBar.ascx" />
     <Content Include="usercontrols\Parts\NewsSearchResultPart.ascx" />
     <Content Include="usercontrols\Parts\NewsSearchFilterPart.ascx" />
-    <Content Include="usercontrols\Parts\Pager.ascx" />
     <Content Include="usercontrols\Parts\SideNavigation.ascx" />
     <Content Include="usercontrols\Parts\SiteSearchResult.ascx" />
     <Content Include="usercontrols\Parts\SubNavigationBar.ascx" />
@@ -656,41 +650,6 @@
     <Compile Include="usercontrols\LayoutGridWrapper.ascx.designer.cs">
       <DependentUpon>LayoutGridWrapper.ascx</DependentUpon>
     </Compile>
-    <Compile Include="usercontrols\Macros\AlertMacro.ascx.cs">
-      <DependentUpon>AlertMacro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Macros\AlertMacro.ascx.designer.cs">
-      <DependentUpon>AlertMacro.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Macros\BlockQuoteMacro.ascx.cs">
-      <DependentUpon>BlockQuoteMacro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Macros\BlockQuoteMacro.ascx.designer.cs">
-      <DependentUpon>BlockQuoteMacro.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Macros\FactsBoxMacro.ascx.cs">
-      <DependentUpon>FactsBoxMacro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Macros\FactsBoxMacro.ascx.designer.cs">
-      <DependentUpon>FactsBoxMacro.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Macros\ModuleMacro.ascx.cs">
-      <DependentUpon>ModuleMacro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Macros\ModuleMacro.ascx.designer.cs">
-      <DependentUpon>ModuleMacro.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Macros\NewsListMacro.ascx.cs">
-      <DependentUpon>NewsListMacro.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Macros\NewsListMacro.ascx.designer.cs">
-      <DependentUpon>NewsListMacro.ascx</DependentUpon>
-    </Compile>
     <Compile Include="usercontrols\MultiListWrapper.ascx.cs">
       <DependentUpon>MultiListWrapper.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -732,13 +691,6 @@
     </Compile>
     <Compile Include="usercontrols\Parts\NewsSearchFilterPart.ascx.designer.cs">
       <DependentUpon>NewsSearchFilterPart.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Parts\Pager.ascx.cs">
-      <DependentUpon>Pager.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Parts\Pager.ascx.designer.cs">
-      <DependentUpon>Pager.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\Parts\SideNavigation.ascx.cs">
       <DependentUpon>SideNavigation.ascx</DependentUpon>
