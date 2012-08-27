@@ -1,6 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UmbracoPublic.WebSite.umbraco.masterpages.Site" %>
 <%@ Register src="~/usercontrols/Parts/NavigationBar.ascx" tagname="NavigationBar" tagprefix="uc2" %>
 <%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc1" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc2" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -45,18 +46,8 @@
         <nav class="top">
 		<div class="container">
             <!--googleoff: index-->
-			<div class="section">
-				<ul class="nav nav-pills pull-right">
-					<li><a href="#">Sitemap / A-Å</a></li>
-					<li><a href="#">Presserum</a></li>
-					<li><a href="#">Publikationer</a></li>
-					<li><a href="#">Abonner</a></li>
-					<li><a href="#">Jobs</a></li>
-					<li><a href="#">Læs højt</a></li>
-					<li><a href="#">Om oim.dk</a></li>
-					<li><a href="#">Kontakt</a></li>
-				</ul>
-			</div>
+
+            <cc2:ServiceMenuPart ID="serviceMenu" runat="server"></cc2:ServiceMenuPart>
 	
 			<div class="navbar">
 				<div class="navbar-inner">

@@ -25,10 +25,10 @@ namespace UmbracoPublic.Logic.Services
         {
             var result = new List<MenuItem>();
             Page page = CmsService.Instance.GetHomeItem();
-            foreach (var child in page.GetChildren<Page>().Where(c => !c.EntityName.StartsWith("__")))
+            foreach (var child in page.GetChildren<Page>().Where(c => !c.EntityName.StartsWith("__") && !c.GetValue<bool>("hideFromMenu")))
             {
                 var item = GetMenuItem(child);
-                foreach (var subChild in child.GetChildren<Page>().Where(sc => !sc.EntityName.StartsWith("__")))
+                foreach (var subChild in child.GetChildren<Page>().Where(sc => !sc.EntityName.StartsWith("__") && !sc.GetValue<bool>("hideFromMenu")))
                 {
                     var childItem = GetMenuItem(subChild);
                     item.AddChild(childItem);

@@ -82,6 +82,7 @@
     <Compile Include="Controllers\Paging\PagerAlignedPagingController.cs" />
     <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
     <Compile Include="Controllers\Paging\PagingController.cs" />
+    <Compile Include="Entities\ServiceMenuConfiguration.cs" />
     <Compile Include="Macros\AlertMacro.cs" />
     <Compile Include="Macros\BlockQuoteMacro.cs" />
     <Compile Include="Macros\FactsBoxMacro.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Parts\BaseUCPart.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Parts\Navigation\ServiceMenuPart.cs" />
     <Compile Include="Parts\Paging\Pager.cs" />
     <Compile Include="Parts\Paging\PagerType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
