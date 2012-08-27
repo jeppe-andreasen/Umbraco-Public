@@ -1,0 +1,202 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+
+</title>
+    <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+    <script src="/assets/js/jquery.alerts.js" type="text/javascript"></script>
+    <script src="/assets/js/versus-ajax.js" type="text/javascript"></script>
+    <script src="/assets/js/grideditor.js" type="text/javascript"></script>
+    <script src="/assets/js/treeview.js" type="text/javascript"></script>
+
+    <link href="/assets/css/ui-darkness/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css" /><link href="/assets/css/jquery.alerts.css" rel="stylesheet" type="text/css" /><link href="/assets/css/grideditor.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        html,body 
+        {
+            width:100%;
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="/handlers/GridEditorHandler.aspx?itemId=1163&amp;frame=body_ctl16_gridEditorFrame&amp;hiddenId=body_ctl16_hiddenValue" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTMyNDY4MzExMmRkqvoe4adGOI+9wXk4gB1QxD1V2V2Nv5dyY++3KFa/+lU=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=r9GGySHQNDjzwfQFKBaKdxVl7Pbbyk6RPKL9pJIwI0ESjn1S82bdFY_SBOjSNqap8A9fKij24PRhjTaPrP06rZk_LwqqV4DO1t9E-RVsIoU1&amp;t=634722863201598167" type="text/javascript"></script>
+
+<link href="/WebResource.axd?d=OpuOAWPhRnBJ-FKrynEArQRCksIXOvNNHTNZam7xSpCdRNED4ypH3gc6C-8HTM-u-rvEcCHsXUMUVUKOwX6XCWgiReIOpgf7PmLAKLle423zMTdzDqP0nYanmu78tWhblcsgopu4ypKEH7LWfbrQhw2&t=634789186305504328" type="text/css" rel="stylesheet" /><script type="text/javascript" src="/WebResource.axd?d=9i0irsbRooMCxcLMFXb2Bl9TxMLcgfCwxls_8MweJUnXcbDc9lPBwLuR1jlvcx7LRh-insnheVt_cGFiRyvev2X-3xOlmIqd5lqU9SvSmnKbfZUym2_n-wfSCvoLmFdW8VJOSHgffylwT2VtxrlQ6g2&t=634789186305504328"></script>
+<script type="text/javascript">
+//<![CDATA[
+function getGridEditorItems(request)
+{
+return callMethod('LinqIt.Components.LinqItGridEditor, LinqIt.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null','GetGridEditorItems', request);
+}
+function getAllGridEditorItems(onSuccess,requests)
+{
+callMethodAsync('LinqIt.Components.LinqItGridEditor, LinqIt.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null','GetAllGridEditorItems', onSuccess,requests);
+}
+function detach(moduleId,providerName,referenceId)
+{
+return callMethod('LinqIt.Components.LinqItGridEditor, LinqIt.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null','Detach', moduleId,providerName,referenceId);
+}
+//]]>
+</script>
+<link href="/WebResource.axd?d=07nYDZMaCvCDeT34w4WCnXhpM14FM7on5qDbIKGaSElp4uBwjLm0UI086itT1X8OvHyHI2XeDVsvzSIAgAvrJ2jGkG8Bdex2tbZY0sM1Ff-5BVjDfXUhEwR-ILFX29iusRxVFGkUo_tIUIvMnRn0Gg2&t=634789186305504328" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+//<![CDATA[
+function fetchChildren(value,provider,referenceId)
+{
+return callMethod('LinqIt.Components.LinqItTreeView, LinqIt.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null','FetchChildren', value,provider,referenceId);
+}
+function fetchNode(value,providerName,referenceId,expanded)
+{
+return callMethod('LinqIt.Components.LinqItTreeView, LinqIt.Components, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null','FetchNode', value,providerName,referenceId,expanded);
+}
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=01Da_zK9U7wK2VV3NTZNEwX7MEO9ExOe5jDhzFINZa615UJb7aAvMXNLo65K3qHBhKF9uEX_3cxdMd4rbRV55R61mTVE2jHXWtkf6LrqVWWTX7yvZxHsDcsvxs2MPKLueM7Q5IQywLTmOqChZXXuhN9VPZxMry8IF84DLdiBbxDMDeYLNYR4FlzmA2yKBHXb0&amp;t=ffffffffa5d4ef3e" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax-framework på klientsiden blev ikke indlæst.');
+//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=CGZeqOmqjAsLqX1AS6c5ufPhe2QEdE5HpNoI7vSZbsBCI5bxkbD3c9D7yyP7aZ6vV8iZMC9qfi4gT2xmIckF4gjAP7QO71etGAHMk7Vzg2Z-MbMhZLaa-j_vpoK7tM_nbNj12T0zWuBTCb1ephmaX-zlwqbMZg5X4X405V7HFHM3ZWBBsWjIH2m7fIl53IwN0&amp;t=ffffffffa5d4ef3e" type="text/javascript"></script>
+    <div>
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('scriptmanager', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+        <div id="grid-editor" data-provider="LinqIt.UmbracoCustomFieldTypes.UmbracoTreeModuleProvider,  LinqIt.UmbracoCustomFieldTypes" frame="body_ctl16_gridEditorFrame" hiddenId="body_ctl16_hiddenValue" pageId="1163" class="clearfix">
+	<div class="library-column outer-box">
+		<span>Module Library</span><div class="inner-box">
+			<div id="treeview-container">
+				<ul hiddenId="ctl05_ctl00_hiddenValue" data-provider="LinqIt.UmbracoCustomFieldTypes.UmbracoTreeModuleProvider,  LinqIt.UmbracoCustomFieldTypes" data-item="1163" id="ctl05_ctl00" data-referenceId="1163" class="linqit-treeview">
+					<li><a href="#" class="toggler"><span></span></a><a ref="1068" title="Moduler" selectable="true" href="#" class="node draggable"><img src="/umbraco/images/umbraco/folder.gif" alt /><span>Moduler</span></a></li>
+				</ul><input type="hidden" name="ctl05$ctl00$hiddenValue" id="ctl05_ctl00_hiddenValue" />
+			</div>
+		</div>
+	</div><div class="grid-column outer-box">
+		<span>Grid Layout</span><div class="inner-box">
+			<div class="row clearfix">
+				<div class="span12">
+					<span class="containerlabel">Top</span><div cols="12" key="Top" class="dropcontainer cell">
+						<div ref="1223" coloptions="3,4,6,9,12" colspan="3" idx="0" class="module draggable local" style="position: absolute;left: 0px; top: 0px; width: 10px;">
+							<h3>
+								<img alt="" src="/umbraco/images/umbraco/flexibox.png" /><span>Margrethe</span><a title="share" href="#" class="share">&nbsp;</a><a title="detach" href="#" class="detach">&nbsp;</a><a title="edit" href="#" class="edit">&nbsp;</a><a title="remove" href="#" class="remove">&nbsp;</a>
+							</h3><p><span class="cols">3</span></p>
+						</div><div ref="1220" coloptions="3,4,6,9,12" colspan="3" idx="1" class="module draggable local" style="position: absolute;left: 10px; top: 0px; width: 10px;">
+							<h3>
+								<img alt="" src="/umbraco/images/umbraco/accordion.png" /><span>wefvvv</span><a title="share" href="#" class="share">&nbsp;</a><a title="detach" href="#" class="detach">&nbsp;</a><a title="edit" href="#" class="edit">&nbsp;</a><a title="remove" href="#" class="remove">&nbsp;</a>
+							</h3><p><span class="cols">3</span></p>
+						</div><div ref="1222" coloptions="3,4,6,9,12" colspan="3" idx="2" class="module draggable local" style="position: absolute;left: 20px; top: 0px; width: 10px;">
+							<h3>
+								<img alt="" src="/umbraco/images/umbraco/accordion.png" /><span>wef</span><a title="share" href="#" class="share">&nbsp;</a><a title="detach" href="#" class="detach">&nbsp;</a><a title="edit" href="#" class="edit">&nbsp;</a><a title="remove" href="#" class="remove">&nbsp;</a>
+							</h3><p><span class="cols">3</span></p>
+						</div>
+					</div>
+				</div>
+			</div><div class="row clearfix">
+				<div class="span4">
+					<span class="containerlabel">Column 1</span><div cols="4" key="Col1" class="dropcontainer cell">
+						<div ref="1217" coloptions="3,4,6,9,12" colspan="4" idx="0" class="module draggable local" style="position: absolute;left: 0px; top: 0px; width: 10px;">
+							<h3>
+								<img alt="" src="/umbraco/images/umbraco/accordion.png" /><span>Volapyk</span><a title="share" href="#" class="share">&nbsp;</a><a title="detach" href="#" class="detach">&nbsp;</a><a title="edit" href="#" class="edit">&nbsp;</a><a title="remove" href="#" class="remove">&nbsp;</a>
+							</h3><p><span class="cols">4</span></p>
+						</div>
+					</div>
+				</div><div class="span4">
+					<span class="containerlabel">Column 2</span><div cols="4" key="Col2" class="dropcontainer cell">
+						<div ref="1218" coloptions="3,4,6,9,12" colspan="4" idx="0" class="module draggable local" style="position: absolute;left: 0px; top: 0px; width: 10px;">
+							<h3>
+								<img alt="" src="/umbraco/images/umbraco/accordion.png" /><span>iuhiuh</span><a title="share" href="#" class="share">&nbsp;</a><a title="detach" href="#" class="detach">&nbsp;</a><a title="edit" href="#" class="edit">&nbsp;</a><a title="remove" href="#" class="remove">&nbsp;</a>
+							</h3><p><span class="cols">4</span></p>
+						</div>
+					</div>
+				</div><div class="span4">
+					<span class="containerlabel">Column 3</span><div cols="4" key="Col3" class="dropcontainer cell">
+						<div ref="1219" coloptions="3,4,6,9,12" colspan="4" idx="0" class="module draggable local" style="position: absolute;left: 0px; top: 0px; width: 10px;">
+							<h3>
+								<img alt="" src="/umbraco/images/umbraco/accordion.png" /><span>Laleninf</span><a title="share" href="#" class="share">&nbsp;</a><a title="detach" href="#" class="detach">&nbsp;</a><a title="edit" href="#" class="edit">&nbsp;</a><a title="remove" href="#" class="remove">&nbsp;</a>
+							</h3><p><span class="cols">4</span></p>
+						</div>
+					</div>
+				</div>
+			</div><div class="row clearfix">
+				<div class="span12">
+					<span class="containerlabel">Bottom</span><div cols="12" key="Bottom" class="dropcontainer cell">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><div class="module-column outer-box">
+		<span>Templates</span><div class="inner-box">
+			<ul>
+				<li><a href="#" tref="1205" class="moduleType"><img src="/umbraco/images/umbraco/accordion.png" alt /><span>AccordionModule</span></a></li><li><a href="#" tref="1211" class="moduleType"><img src="/umbraco/images/umbraco/linklist.png" alt /><span>LinkListModule</span></a></li><li><a href="#" tref="1064" class="moduleType"><img src="/umbraco/images/umbraco/flexibox.png" alt /><span>MultiBoxModule</span></a></li><li><a href="#" tref="1122" class="moduleType"><img src="/umbraco/images/umbraco/newspaper.png" alt /><span>NewsListModule</span></a></li>
+			</ul>
+		</div>
+	</div><div id="colspan-container" class="outer-box">
+		<span>Column span</span><div class="inner-box">
+			<div id="coloptions" class="clearfix">
+
+			</div>
+		</div>
+	</div>
+</div><div id="grid-dialog" style="display:none">
+
+</div>
+    </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+
+    var gridEditorFrame = $('#body_ctl16_gridEditorFrame', window.parent.document);
+    var gridEditorFrameWidth = 0;
+    var gridEditorFrameHeight = 0;
+        function adjustFrameHeight() {
+            var innerDoc = (gridEditorFrame.get(0).contentDocument) ? gridEditorFrame.get(0).contentDocument : gridEditorFrame.get(0).contentWindow.document;
+            gridEditorFrame.height(innerDoc.body.scrollHeight);
+            gridEditorFrameHeight = gridEditorFrame.height();
+        }
+        $(function () {
+            gridEditorFrame.load(function() {
+                adjustFrameHeight();
+                gridEditorFrameWidth = gridEditorFrame.width();
+            });
+            gridEditorFrame.parent().css('float','none');
+        });
+//]]>
+</script>
+</form>
+</body>
+</html>
