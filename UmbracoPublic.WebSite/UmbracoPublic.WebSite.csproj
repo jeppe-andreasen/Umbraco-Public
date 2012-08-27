@@ -228,6 +228,7 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="themes\Cyborg\StyleSheet1.css" />
     <Content Include="themes\Default\bootstrap.min.css" />
+    <Content Include="themes\OIM\bootstrap.css" />
     <Content Include="themes\OIM\images\Sprite.png" />
     <Content Include="themes\OIM\less\accordion.less" />
     <Content Include="themes\OIM\less\alerts.less" />
