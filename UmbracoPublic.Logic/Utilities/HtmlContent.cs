@@ -11,6 +11,7 @@ using System.Web.UI.WebControls;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Components;
+using LinqIt.Utils;
 using LinqIt.Utils.Extensions;
 using LinqIt.Utils.Web;
 using umbraco.cms.businesslogic.macro;
@@ -113,10 +114,27 @@ namespace UmbracoPublic.Logic.Utilities
 
             var id = new Id(moduleId);
             var module = CmsService.Instance.GetItem<Entity>(id);
-            var modulePath = string.Format("~/modules/{0}Rendering.ascx", module.Template.Name);
 
+            var renderingDefinition = GridModuleResolver.Instance.GetRenderingDefinition(module.Template.Name);
+            if (renderingDefinition.RenderingType == GridModuleRenderingType.Usercontrol)
+                return LoadUsercontrol(columnSpan, id, renderingDefinition);
+            else if (renderingDefinition.RenderingType == GridModuleRenderingType.Control)
+                return LoadControl(columnSpan, id, renderingDefinition);
+
+            return null;
+        }
+
+        private static Control LoadControl(int? columnSpan, Id id, GridModuleRenderingDefinition renderingDefinition)
+        {
+            var control = TypeUtility.Activate<IGridModuleRendering>(renderingDefinition.Type);
+            control.InitializeModule(id.ToString(), columnSpan);
+            return (Control)control;
+        }
+
+        private static Control LoadUsercontrol(int? columnSpan, Id id, GridModuleRenderingDefinition renderingDefinition)
+        {
+            var modulePath = renderingDefinition.Path;
             var page = (System.Web.UI.Page)HttpContext.Current.Handler;
-
             var control = (IGridModuleRendering)page.LoadControl(modulePath);
             control.InitializeModule(id.ToString(), columnSpan);
             return (Control)control;

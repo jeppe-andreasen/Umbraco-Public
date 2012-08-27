@@ -53,7 +53,7 @@ namespace UmbracoPublic.WebSite.handlers
                     writer.RenderFullTag(HtmlTextWriterTag.H4, gridItem.Text);
                     
                     var columnSpan = item.ColumnSpan;
-                    var options = provider.GetItemColumnOptions(item.Id);
+                    var options = GridModuleResolver.Instance.GetModuleColumnOptions(item.ModuleType);
                     if (cell != null && cell.ColumnSpan < columnSpan)
                     {
                         var validOptions = options.Where(o => o <= cell.ColumnSpan);
@@ -142,7 +142,7 @@ namespace UmbracoPublic.WebSite.handlers
                     {
                         if (cell.Span < newItem.ColumnSpan)
                         {
-                            newItem.ColumnSpan = provider.GetItemColumnOptions(id).Where(o => o <= cell.Span).Max();
+                            newItem.ColumnSpan = GridModuleResolver.Instance.GetModuleColumnOptions(newItem.ModuleType).Where(o => o <= cell.Span).Max();
                             message.AddValue("type", "info");
                             message.AddValue("text", string.Format(_resizedMessage, newItem.ColumnSpan));
                         }

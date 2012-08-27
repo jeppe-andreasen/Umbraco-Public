@@ -18,13 +18,6 @@ namespace LinqIt.UmbracoCustomFieldTypes
         {
         }
 
-        public override int[] GetItemColumnOptions(string itemId)
-        {
-            var relativePath = GetRenderingPath(itemId);
-            return GridModuleService.GetModuleColumnOptions(relativePath);
-        }
-
-
         public override GridItem GetItem(string id)
         {
             using (CmsContext.Editing)
@@ -73,7 +66,7 @@ namespace LinqIt.UmbracoCustomFieldTypes
             if (entity == null)
                 return null;
 
-            var result = new GridItem();
+            var result = new GridItem(entity.Template.Name);
             result.HelpText = entity.DisplayName;
             result.Icon = entity.Icon;
             //result.LocalPath = entity.Path.Substring(GetRootPath().Length);
@@ -113,15 +106,6 @@ namespace LinqIt.UmbracoCustomFieldTypes
         {
             var gridData = GetPlaceholderData();
             return gridData.ContainsKey(key.ToLower()) ? gridData[key.ToLower()] : null;
-        }
-
-        public override string GetRenderingPath(string itemId)
-        {
-            using (CmsContext.Editing)
-            {
-                var item = CmsService.Instance.GetItem<Entity>(new Id(Convert.ToInt32(itemId)));
-                return "~/modules/" + item.Template.Name + "Rendering.ascx";    
-            }
         }
 
         public override IEnumerable<ModuleTemplate> GetModuleTemplates()
