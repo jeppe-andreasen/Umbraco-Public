@@ -307,6 +307,7 @@ var grideditor = {
         dstImg.attr("src", srcImg.attr("src"));
         dstImg.next().html(srcImg.next().html());
 
+
         var response = getGridEditorItems(request);
 
         var placeholderColumns = parseInt(dropContainer.attr("cols"));
