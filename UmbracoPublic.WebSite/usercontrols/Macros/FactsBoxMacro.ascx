@@ -1,1 +1,0 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FactsBoxMacro.ascx.cs" Inherits="UmbracoPublic.WebSite.usercontrols.Macros.FactsBoxMacro" %>
