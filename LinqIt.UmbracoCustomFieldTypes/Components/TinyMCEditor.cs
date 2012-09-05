@@ -203,6 +203,7 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
         {
             var result = new List<string>();
             result.Add("linqitlink");
+            result.Add("linqitimage");
             if (_displayMacroPlugin)
                 result.Add("linqitmacro");
             result.Add("autolink");
@@ -289,7 +290,7 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             result.Add("linqitlink");
             result.Add("unlink");
             result.Add("anchor");
-            result.Add("image");
+            result.Add("linqitimage");
             //result.Add("cleanup");
             result.Add("help");
             result.Add("code");

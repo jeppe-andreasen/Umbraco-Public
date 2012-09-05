@@ -100,6 +100,8 @@
     <Compile Include="ModuleTreeNodeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\GoBasicContentTreeProvider.cs" />
+    <Compile Include="Providers\GoBasicImageEditorProvider.cs" />
+    <Compile Include="Providers\GoBasicImageTreeProvider.cs" />
     <Compile Include="Providers\GoBasicImplementationProvider.cs" />
     <Compile Include="Providers\GoBasicLinkEditorProvider.cs" />
     <Compile Include="Providers\GoBasicMailingListProvider.cs" />

@@ -33,7 +33,7 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
             var theme = Theme.Current;
             if (theme != null)
             {
-                litThemeCss.Text = theme.Stylesheets.ToSeparatedString("", "<link href=\"/{0}\" rel=\"stylesheet\">");
+                litThemeCss.Text = theme.Stylesheets.ToSeparatedString("", "<link href=\"{0}\" rel=\"stylesheet\">");
             }
 
             var siteRoot = CmsService.Instance.GetItem<SiteRoot>(CmsService.Instance.SitePath);

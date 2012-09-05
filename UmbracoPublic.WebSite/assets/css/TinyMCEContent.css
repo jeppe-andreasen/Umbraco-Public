@@ -6,3 +6,8 @@
     border:1px dotted orange;
     padding:5px;
 }
+
+img 
+{
+    max-width : 100%;
+}

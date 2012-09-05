@@ -38,7 +38,7 @@ namespace UmbracoPublic.Logic.Entities
 
         private static string MakeRelative(string path, string applicationPath)
         {
-            return "/" + path.Substring(applicationPath.Length).Replace(@"\", "/");
+            return "/" + path.Substring(applicationPath.Length).Replace(@"\", "/").TrimStart('/');
         }
         
 

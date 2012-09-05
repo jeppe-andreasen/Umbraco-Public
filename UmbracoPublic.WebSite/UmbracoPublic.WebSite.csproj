@@ -171,6 +171,13 @@
     <Content Include="assets\lib\tiny_mce\plugins\bbcode\editor_plugin_src.js" />
     <Content Include="assets\lib\tiny_mce\plugins\contextmenu\editor_plugin.js" />
     <Content Include="assets\lib\tiny_mce\plugins\contextmenu\editor_plugin_src.js" />
+    <Content Include="assets\lib\tiny_mce\plugins\linqitimage\dialog.aspx" />
+    <Content Include="assets\lib\tiny_mce\plugins\linqitimage\editor_plugin.js" />
+    <Content Include="assets\lib\tiny_mce\plugins\linqitimage\editor_plugin_src.js" />
+    <Content Include="assets\lib\tiny_mce\plugins\linqitimage\img\linqitimage.png" />
+    <Content Include="assets\lib\tiny_mce\plugins\linqitimage\js\dialog.js" />
+    <Content Include="assets\lib\tiny_mce\plugins\linqitimage\langs\en.js" />
+    <Content Include="assets\lib\tiny_mce\plugins\linqitimage\langs\en_dlg.js" />
     <Content Include="assets\lib\tiny_mce\plugins\linqitmacro\dialog.aspx" />
     <Content Include="assets\lib\tiny_mce\plugins\linqitmacro\editor_plugin.js" />
     <Content Include="assets\lib\tiny_mce\plugins\linqitmacro\editor_plugin_src.js" />
@@ -611,6 +618,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="assets\lib\tiny_mce\plugins\linqitimage\dialog.aspx.cs">
+      <DependentUpon>dialog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="assets\lib\tiny_mce\plugins\linqitimage\dialog.aspx.designer.cs">
+      <DependentUpon>dialog.aspx</DependentUpon>
+    </Compile>
     <Compile Include="assets\lib\tiny_mce\plugins\linqitmacro\dialog.aspx.cs">
       <DependentUpon>dialog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
