@@ -88,6 +88,7 @@
 .nav-tabs,
 .nav-pills {
   .clearfix();
+  text-transform:uppercase;
 }
 .nav-tabs > li,
 .nav-pills > li {
@@ -138,6 +139,7 @@
 // -----
 
 // Links rendered as pills
+
 .nav-pills > li > a {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -145,6 +147,30 @@
   margin-bottom: 2px;
   //.border-radius(5px);
   font-size:0.6875em;
+}
+
+//Service
+.navbar .navbar-inner .nav-pills > li > a{
+  font-size:0.6875em;
+  font-weight: 300;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.navbar .navbar-inner .nav-pills > li{
+  height:auto;
+
+}
+
+.navbar .navbar-inner .nav-pills{
+  margin-bottom:20px;
+}
+
+ul.nav-pills {
+	position: relative;
+	z-index:100;
 }
 
 // Active state

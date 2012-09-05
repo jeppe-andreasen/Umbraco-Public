@@ -8,24 +8,19 @@
 // Core
 .btn {
   display: inline-block;
-  
-  padding: 4px 10px 4px;
+  padding: 16px 16px;
   margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   *line-height: 20px;
-  color: @grayDark;
+  color: @black;
   text-align: center;
-  text-shadow: 0 1px 1px rgba(255,255,255,.75);
   vertical-align: middle;
   cursor: pointer;
-  .buttonBackground(@btnBackground, @btnBackgroundHighlight);
-  border: 1px solid @btnBorder;
+  background:@orange;
+  border: 0;
   *border: 0; // Remove the border to prevent IE7's black border on input:focus
-  border-bottom-color: darken(@btnBorder, 10%);
-  .border-radius(4px);
   .ie7-restore-left-whitespace(); // Give IE7 some love
-  .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05)");
   .ie7-inline-block();
 }
 
@@ -33,8 +28,8 @@
 .btn:hover {
   color: @grayDark;
   text-decoration: none;
-  background-color: darken(@white, 10%);
-  *background-color: darken(@white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
+  background-color: @orange;
+  *background-color: @orange; /* Buttons in IE7 don't get borders, so darken on hover */
   background-position: 0 -15px;
 
   // transition is only when going to hover, otherwise the background
@@ -117,8 +112,8 @@
 .btn-info:hover,
 .btn-inverse,
 .btn-inverse:hover {
-  color: @white;
-  text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+  color: @black;
+  font-weight:bold;
 }
 // Provide *some* extra contrast for those who can get it
 .btn-primary.active,
@@ -138,7 +133,8 @@
   border-color: rgba(0,0,0,.1) rgba(0,0,0,.1) rgba(0,0,0,.25);
 }
 .btn-primary {
-  .buttonBackground(@btnPrimaryBackground, @btnPrimaryBackgroundHighlight);
+  #translucent > .background(#f7941d, 0.8);
+  
 }
 // Warning appears are orange
 .btn-warning {

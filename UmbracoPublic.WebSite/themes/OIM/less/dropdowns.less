@@ -10,6 +10,7 @@
 .dropdown-toggle {
   // The caret makes the toggle a bit too tall in IE7
   *margin-bottom: -3px;
+  display:none !important;
 }
 .dropdown-toggle:active,
 .open .dropdown-toggle {
@@ -20,24 +21,25 @@
 // --------------------
 .caret {
   display: inline-block;
-  width: 0;
-  height: 0;
+  width: 12px;
+  height: 8px;
   vertical-align: top;
-  border-top:   4px solid @black;
-  border-right: 4px solid transparent;
-  border-left:  4px solid transparent;
+  //border-top:   4px solid @black;
+  background:url(/themes/oim/images/Sprite.png) -21px -25px;
+  //border-right: 4px solid transparent;
+  //border-left:  4px solid transparent;
   content: "";
-  .opacity(30);
+  //.opacity(30);
 }
 
 // Place the caret
 .dropdown .caret {
   margin-top: 8px;
-  margin-left: 2px;
+  //margin-left: 2px;
 }
 .dropdown:hover .caret,
 .open .caret {
-  .opacity(100);
+  //.opacity(100);
 }
 
 // The dropdown menu (ul)
@@ -54,15 +56,15 @@
   margin: 1px 0 0; // override default ul
   list-style: none;
   background-color: @dropdownBackground;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0,0,0,.2);
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
-  .border-radius(5px);
-  .box-shadow(0 5px 10px rgba(0,0,0,.2));
-  -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
-          background-clip: padding-box;
+ // border: 1px solid #ccc;
+  //border: 1px solid rgba(0,0,0,.2);
+  //*border-right-width: 2px;
+  //*border-bottom-width: 2px;
+  //.border-radius(5px);
+  //.box-shadow(0 5px 10px rgba(0,0,0,.2));
+  //-webkit-background-clip: padding-box;
+  //   -moz-background-clip: padding;
+  //       background-clip: padding-box;
 
   // Aligns the dropdown menu to right
   &.pull-right {

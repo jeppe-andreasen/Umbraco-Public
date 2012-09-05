@@ -1,0 +1,44 @@
+.list-unit{
+	margin-bottom:18px;
+	ul{
+		margin:0;
+		.clearfix();
+		li{
+			list-style:none;
+			margin:0 0 @baseLineHeight;
+			background:url('../img/unit-dot.png') repeat-x top left;
+			padding-top:11px;
+			> a{
+				background:none;
+				&:hover{
+					i{
+						background-image: url("@{iconGreenSpritePath}");
+					}
+				}
+			}
+			.span12 &{
+			 	width: 30%;
+			 	float:left;
+			 	margin-left:5%;
+			 	&:nth-child(3n+1){
+			 		margin-left:0;
+			 		clear:left;
+			 	}
+			}
+			.label{
+				color:inherit;
+				background-color:none;
+				.border-radius(0px);
+				display:block;
+				font-weight:normal;
+				margin:0 0 @baseLineHeight/2;
+				padding:0;
+				text-shadow:none;
+			}
+			h3+.label, p{
+				margin-bottom:@baseLineHeight*2;
+				margin-top:5px;
+			}
+		}
+	}
+}

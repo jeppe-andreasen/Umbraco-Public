@@ -1,0 +1,108 @@
+.news-list{
+	h2{
+		font-size:1.875em;
+		margin-bottom:16px;
+		padding:0 15px;
+	}
+	h3{
+		margin-bottom:10px;
+	}
+	div{
+		float: left;
+		margin-left:10px;
+		&:first-child{
+			margin-left:0;
+		}
+	}
+	img{
+		margin-top:6px;
+	}
+	ul{
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	li{
+		clear:both;
+		padding:10px 15px 20px;
+		&:hover{
+			background:#ffffff;
+		}
+		a{
+			color:@black;
+		}
+	}
+	.label{
+		#translucent > .background (#000000, 0.1);
+		.border-radius(0);
+		margin-right:5px;
+		color:#000000;
+		text-shadow: none;
+		font-size:0.6875em;
+		text-transform: uppercase;
+		padding:5px;
+		&:hover{
+			color:000000;
+			#translucent > .background (#000000, 0.5);
+		}
+	}
+	.date{
+		margin-right:5px;
+		color:#000000;
+		font-size:0.6875em;
+		text-transform: uppercase;
+		padding:5px 0;
+		font-weight:bold;
+	}
+	p{
+		margin-top:10px;
+	}
+	.pagination{
+		padding:0 15px;
+		float: right;
+		ul{
+			border:0;
+			.border-radius(0);
+			.box-shadow(0 0 0 rgba(0, 0, 0, 0.0));
+			float: right;
+		}
+		li{
+			padding:0;
+		}
+		a{
+			border:0;
+			min-width:30px;
+			min-height:30px;
+			.border-radius(0);
+			.box-sizing(border-box);
+			padding:12px 0;
+			text-align: center;
+			margin-right: 5px;
+			#translucent > .background (#000000, 0.8);
+			background-repeat: none;
+			&:hover{
+				#translucent > .background (#000000, 1);
+			}
+			color:#ffffff;
+		}
+		
+		li:first-child a{
+			background-image:url(/themes/oim/images/Sprite.png);
+			background-position: -582px -14px;
+			border:0;
+			.border-radius(0);
+			span{
+				display: none;
+			}
+		}
+		li:last-child a{
+			background-image:url(/themes/oim/images/Sprite.png);
+			background-position: -524px -14px;
+			border:0;
+			.border-radius(0);
+			span{
+				display: none;
+			}
+		}
+	}
+}

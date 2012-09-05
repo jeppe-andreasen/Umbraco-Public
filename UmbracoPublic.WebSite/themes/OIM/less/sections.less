@@ -1,15 +1,35 @@
 ﻿/*top*/
 .top{
 	.clearfix;
-	#translucent > .background(#000,0.5);
+	#translucent > .background(#000,0.4);
 }
 .sectionB{
-	background:#effaf9;
+	background:#eefaf9;	
 }
 .sectionC{
-	background:#effaf9;
+	background:#dae1e1;
 }
-footer 
-{
+footer{
     background:#586261;
+    height:190px;
+    overflow: hidden;
+}
+
+footer .container{
+	height:100%;
+	.row{
+		height:100%;
+	}
+}
+
+//Moduls
+
+.module{
+	margin-top:60px;
+	.box-sizing(border-box);
+	footer &{
+		height:100%;
+		position: relative;
+		margin-top:0;
+	}
 }

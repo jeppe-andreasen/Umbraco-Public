@@ -1,7 +1,28 @@
 // Scaffolding
 // Basic and global styles for generating a grid system, structural layout, and page templates
 // -------------------------------------------------------------------------------------------
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -190px; /* the bottom margin is the negative value of the footer's height */
+}
+footer, .push {
+  height: 190px; /* .push must be the same height as .footer */
+}
 
+/*
+
+Sticky Footer by Ryan Fait
+http://ryanfait.com/
+
+*/
 
 // Body reset
 // ----------
@@ -12,8 +33,9 @@ body {
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @textColor;
-  background-color: @bodyBackground;
+  //background-color: @bodyBackground;
   border-top:5px @blue solid;
+  #gradient > .vertical(#ffffff, #00c0af);
 }
 
 

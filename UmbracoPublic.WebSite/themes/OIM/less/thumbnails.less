@@ -4,44 +4,87 @@
 
 // Make wrapper ul behave like the grid
 .thumbnails {
-  margin-left: -@gridGutterWidth;
-  list-style: none;
-  .clearfix();
+	margin-left: -@gridGutterWidth;
+	list-style: none;
+	.clearfix();
+	footer &{
+		margin-bottom:0;
+		position:absolute;
+		bottom:0;
+	}
+	
 }
 // Fluid rows have no left margin
 .row-fluid .thumbnails {
-  margin-left: 0;
+	margin-left: 0;
 }
 
 // Float li to make thumbnails appear in a row
 .thumbnails > li {
-  float: left; // Explicity set the float since we don't require .span* classes
-  margin-bottom: @baseLineHeight;
-  margin-left: @gridGutterWidth;
+	float: left; // Explicity set the float since we don't require .span* classes
+	margin-bottom: @baseLineHeight;
+	margin-left: @gridGutterWidth;
+	padding:0 15px;
+	.box-sizing(border-box);
+	footer &{
+		margin-bottom:0;
+	}
 }
 
 // The actual thumbnail (can be `a` or `div`)
 .thumbnail {
-  display: block;
-  padding: 4px;
-  line-height: 1;
-  border: 1px solid #ddd;
-  .border-radius(4px);
-  .box-shadow(0 1px 1px rgba(0,0,0,.075));
+	display: block;
+	line-height: 1;
+	//border: 1px solid #ddd;
+	//.border-radius(4px);
+	//.box-shadow(0 1px 1px rgba(0,0,0,.075));
 }
 // Add a hover state for linked versions only
 a.thumbnail:hover {
-  border-color: @linkColor;
-  .box-shadow(0 1px 4px rgba(0,105,214,.25));
+	//border-color: @linkColor;
+	//.box-shadow(0 1px 4px rgba(0,105,214,.25));
 }
 
 // Images and captions
 .thumbnail > img {
-  display: block;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+	display: block;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
 }
 .thumbnail .caption {
-  padding: 9px;
+	padding: 9px;
+}
+
+.thumbnails{
+	.span6 .col-text{
+		.content-columns(2, 15px);
+	}
+	h1{
+		margin-bottom: 0;
+		font-size: 60px;
+		line-height: 1;
+		color: black;
+	}
+	h2{
+		font-size:1.875em;
+		margin-bottom:16px;
+		footer &{
+			color:#ffffff;
+			font-size: 1.125em;
+		}
+	}
+	p{
+		margin-top:0px;
+		margin-bottom:10px;
+		footer &{
+			color:#ffffff;
+			a{
+				color:#ffffff;
+				text-decoration:underline;
+			}
+		}
+	}
+
+
 }

@@ -5,20 +5,39 @@
 // Parent container
 .accordion {
   margin-bottom: @baseLineHeight;
+  #translucent > .background(#000000, 0.1);
 }
 
 // Group == heading + body
 .accordion-group {
-  margin-bottom: 2px;
-  border: 1px solid #e5e5e5;
-  .border-radius(4px);
+  //margin-bottom: 2px;
+  border-top: 1px solid #ffffff;
+  //.border-radius(4px);
+  &:first-child{
+    border:none;
+  }
 }
 .accordion-heading {
   border-bottom: 0;
+  background-image: url(/themes/oim/images/open-close.png);
+  background-position: 98% -599px;
+  background-repeat: no-repeat;
 }
+
+.open{
+   background-position: 98% 14px;
+}
+
 .accordion-heading .accordion-toggle {
   display: block;
   padding: 8px 15px;
+  color:#004d46;
+  font-size:0.75em;
+  font-weight:bold;
+  &:hover{
+    background:#ffffff;
+    text-decoration: none;
+  }
 }
 
 // General toggle styles
@@ -29,5 +48,9 @@
 // Inner needs the styles because you can't animate properly with any styles on the element
 .accordion-inner {
   padding: 9px 15px;
-  border-top: 1px solid #e5e5e5;
+  //border-top: 1px solid #e5e5e5;
+  h3{
+    font-size:0.75em;
+    margin:0 0 0.6em 0;
+  }
 }
