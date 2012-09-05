@@ -40,15 +40,6 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// serviceMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::UmbracoPublic.Logic.Parts.Navigation.ServiceMenuPart serviceMenu;
-        
-        /// <summary>
         /// litBrand control.
         /// </summary>
         /// <remarks>
@@ -58,13 +49,22 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         protected global::System.Web.UI.WebControls.Literal litBrand;
         
         /// <summary>
-        /// NavigationBar1 control.
+        /// serviceMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UmbracoPublic.WebSite.usercontrols.Parts.NavigationBar NavigationBar1;
+        protected global::UmbracoPublic.Logic.Parts.Navigation.ServiceMenuPart serviceMenu;
+        
+        /// <summary>
+        /// primaryNavigation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UmbracoPublic.Logic.Parts.Navigation.PrimaryNavigationPart primaryNavigation;
         
         /// <summary>
         /// cphTop control.

@@ -7,6 +7,7 @@ using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Search;
 using LinqIt.Utils.Caching;
+using UmbracoPublic.Interfaces;
 using UmbracoPublic.Logic.Entities;
 
 namespace UmbracoPublic.Logic.Services
@@ -146,5 +147,19 @@ namespace UmbracoPublic.Logic.Services
             var folder = CmsService.Instance.GetItem<Entity>(folderPath);
             return folder.GetChildren<Entity>().ToDictionary(item => item.Id, item => item.EntityName);
         }
+
+        private static IMailProvider GetMailProvider()
+        {
+            var mailConfiguration = CmsService.Instance.GetConfigurationItem<MailConfiguration>("Mail");
+            return mailConfiguration.MailProvider;
+        }
+
+        internal void SubscribeToNewsletter(string emailAddress, string newsListId)
+        {
+            var mailProvider = GetMailProvider();
+            mailProvider.SubscribeToList(newsListId, emailAddress, new NameValueCollection());
+        }
+
+        
     }
 }

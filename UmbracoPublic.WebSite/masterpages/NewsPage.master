@@ -2,6 +2,7 @@
 <%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
 <%@ Register src="../usercontrols/Parts/SideNavigation.ascx" tagname="SideNavigation" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+    <div class="sectionB">
     <div class="container">
         <div class="row">
             <div class="span3">
@@ -16,12 +17,12 @@
                         <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
                     </div>
                     <div class="span3"> 
-                        <umbraco:Macro Alias="NewsListMacro" runat="server"></umbraco:Macro>
                         <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
                     </div>
                 </div>
                 <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
             </div>
         </div>
+    </div>
     </div>
 </asp:Content>

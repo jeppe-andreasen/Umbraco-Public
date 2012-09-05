@@ -7,6 +7,7 @@ using System.Threading;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Search;
+using LinqIt.Utils;
 using LinqIt.Utils.Extensions;
 using UmbracoPublic.Logic.Entities;
 using umbraco.cms.businesslogic.web;
@@ -20,12 +21,14 @@ namespace UmbracoPublic.Logic.BackgroundWork
 
         internal static void QueueDocumentAdd(Page page)
         {
+            Logging.Log(LogType.Info, "Adding SearchTask:AddDocument, " + page.Path);
             _queue.Enqueue(new AddDocumentTask(page));
             RunThread();
         }
 
         internal static void QueueDocumentDelete(Page page)
         {
+            Logging.Log(LogType.Info, "Adding SearchTask:RemoveDocument, " + page.Path);
             _queue.Enqueue(new RemoveDocumentTask(page));
             RunThread();
         }
@@ -41,7 +44,6 @@ namespace UmbracoPublic.Logic.BackgroundWork
 
         private static void Execute()
         {
-            Console.WriteLine("Starting Thread Execution");
             SearchTask task;
             _queue.TryDequeue(out task);
 
@@ -49,12 +51,13 @@ namespace UmbracoPublic.Logic.BackgroundWork
                 return;
             using (var service = new CrawlService("site"))
             {
+                Logging.Log(LogType.Info, "CrawlService opened");
                 while (task != null)
                 {
                     task.Process(service);
-                    Console.WriteLine("Document Indexed " + task.Name);
                     _queue.TryDequeue(out task);
                 }
+                Logging.Log(LogType.Info, "CrawlService closed");
             }
             _backgroundThread = null;
         }

@@ -57,6 +57,9 @@ namespace LinqIt.UmbracoServices.Data
     partial void InsertumbracoNode(umbracoNode instance);
     partial void UpdateumbracoNode(umbracoNode instance);
     partial void DeleteumbracoNode(umbracoNode instance);
+    partial void InsertumbracoDomain(umbracoDomain instance);
+    partial void UpdateumbracoDomain(umbracoDomain instance);
+    partial void DeleteumbracoDomain(umbracoDomain instance);
     #endregion
 		
 		public UmbracoDataContext() : 
@@ -158,6 +161,14 @@ namespace LinqIt.UmbracoServices.Data
 			get
 			{
 				return this.GetTable<umbracoNode>();
+			}
+		}
+		
+		public System.Data.Linq.Table<umbracoDomain> umbracoDomains
+		{
+			get
+			{
+				return this.GetTable<umbracoDomain>();
 			}
 		}
 	}
@@ -2120,6 +2131,8 @@ namespace LinqIt.UmbracoServices.Data
 		
 		private EntitySet<umbracoNode> _umbracoNodes;
 		
+		private EntitySet<umbracoDomain> _umbracoDomains;
+		
 		private EntityRef<umbracoNode> _umbracoNode1;
 		
     #region Extensibility Method Definitions
@@ -2156,6 +2169,7 @@ namespace LinqIt.UmbracoServices.Data
 			this._cmsPropertyDatas = new EntitySet<cmsPropertyData>(new Action<cmsPropertyData>(this.attach_cmsPropertyDatas), new Action<cmsPropertyData>(this.detach_cmsPropertyDatas));
 			this._cmsContentTypes = new EntitySet<cmsContentType>(new Action<cmsContentType>(this.attach_cmsContentTypes), new Action<cmsContentType>(this.detach_cmsContentTypes));
 			this._umbracoNodes = new EntitySet<umbracoNode>(new Action<umbracoNode>(this.attach_umbracoNodes), new Action<umbracoNode>(this.detach_umbracoNodes));
+			this._umbracoDomains = new EntitySet<umbracoDomain>(new Action<umbracoDomain>(this.attach_umbracoDomains), new Action<umbracoDomain>(this.detach_umbracoDomains));
 			this._umbracoNode1 = default(EntityRef<umbracoNode>);
 			OnCreated();
 		}
@@ -2436,6 +2450,19 @@ namespace LinqIt.UmbracoServices.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_umbracoDomain", Storage="_umbracoDomains", ThisKey="id", OtherKey="domainRootStructureID")]
+		public EntitySet<umbracoDomain> umbracoDomains
+		{
+			get
+			{
+				return this._umbracoDomains;
+			}
+			set
+			{
+				this._umbracoDomains.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_umbracoNode", Storage="_umbracoNode1", ThisKey="parentID", OtherKey="id", IsForeignKey=true)]
 		public umbracoNode umbracoNode1
 		{
@@ -2536,6 +2563,193 @@ namespace LinqIt.UmbracoServices.Data
 		{
 			this.SendPropertyChanging();
 			entity.umbracoNode1 = null;
+		}
+		
+		private void attach_umbracoDomains(umbracoDomain entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = this;
+		}
+		
+		private void detach_umbracoDomains(umbracoDomain entity)
+		{
+			this.SendPropertyChanging();
+			entity.umbracoNode = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.umbracoDomains")]
+	public partial class umbracoDomain : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Nullable<int> _domainDefaultLanguage;
+		
+		private System.Nullable<int> _domainRootStructureID;
+		
+		private string _domainName;
+		
+		private EntityRef<umbracoNode> _umbracoNode;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OndomainDefaultLanguageChanging(System.Nullable<int> value);
+    partial void OndomainDefaultLanguageChanged();
+    partial void OndomainRootStructureIDChanging(System.Nullable<int> value);
+    partial void OndomainRootStructureIDChanged();
+    partial void OndomainNameChanging(string value);
+    partial void OndomainNameChanged();
+    #endregion
+		
+		public umbracoDomain()
+		{
+			this._umbracoNode = default(EntityRef<umbracoNode>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_domainDefaultLanguage", DbType="Int")]
+		public System.Nullable<int> domainDefaultLanguage
+		{
+			get
+			{
+				return this._domainDefaultLanguage;
+			}
+			set
+			{
+				if ((this._domainDefaultLanguage != value))
+				{
+					this.OndomainDefaultLanguageChanging(value);
+					this.SendPropertyChanging();
+					this._domainDefaultLanguage = value;
+					this.SendPropertyChanged("domainDefaultLanguage");
+					this.OndomainDefaultLanguageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_domainRootStructureID", DbType="Int")]
+		public System.Nullable<int> domainRootStructureID
+		{
+			get
+			{
+				return this._domainRootStructureID;
+			}
+			set
+			{
+				if ((this._domainRootStructureID != value))
+				{
+					if (this._umbracoNode.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OndomainRootStructureIDChanging(value);
+					this.SendPropertyChanging();
+					this._domainRootStructureID = value;
+					this.SendPropertyChanged("domainRootStructureID");
+					this.OndomainRootStructureIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_domainName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string domainName
+		{
+			get
+			{
+				return this._domainName;
+			}
+			set
+			{
+				if ((this._domainName != value))
+				{
+					this.OndomainNameChanging(value);
+					this.SendPropertyChanging();
+					this._domainName = value;
+					this.SendPropertyChanged("domainName");
+					this.OndomainNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="umbracoNode_umbracoDomain", Storage="_umbracoNode", ThisKey="domainRootStructureID", OtherKey="id", IsForeignKey=true)]
+		public umbracoNode umbracoNode
+		{
+			get
+			{
+				return this._umbracoNode.Entity;
+			}
+			set
+			{
+				umbracoNode previousValue = this._umbracoNode.Entity;
+				if (((previousValue != value) 
+							|| (this._umbracoNode.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._umbracoNode.Entity = null;
+						previousValue.umbracoDomains.Remove(this);
+					}
+					this._umbracoNode.Entity = value;
+					if ((value != null))
+					{
+						value.umbracoDomains.Add(this);
+						this._domainRootStructureID = value.id;
+					}
+					else
+					{
+						this._domainRootStructureID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("umbracoNode");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

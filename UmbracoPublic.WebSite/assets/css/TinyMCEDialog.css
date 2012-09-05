@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.propertyItem 
+{
+    margin-bottom:10px;
+}
+.propertyItemheader
+{
+    margin-bottom:3px;
+}
+.propertyItemContent
+{
+}
+.propertyItemContent input[type=text], .propertyItemContent select
+{
+    width:465px;
+}
+

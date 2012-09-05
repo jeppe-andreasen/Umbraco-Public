@@ -6,12 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using LinqIt.Ajax.Parsing;
 using LinqIt.Utils.Extensions;
+using umbraco.cms.businesslogic.web;
 
 namespace LinqIt.UmbracoCustomFieldTypes.Components
 {
     public class TinyMCEditor : Control, INamingContainer
     {
         private TextBox _textbox;
+        private bool _displayMacroPlugin = true;
 
         protected override void OnInit(EventArgs e)
         {
@@ -54,27 +56,43 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             options.AddValue("mode", "exact");
             if (Width.HasValue)
                 options.AddValue("width", Width.Value.Value.ToString());
+            else
+                options.AddValue("width", 800);
             options.AddValue("elements", _textbox.ClientID);
             options.AddValue("theme", "advanced");
             options.AddValue("plugins", GetPlugins());
+
+            var styleOptions = GetStyleOptions();
+            if (!string.IsNullOrEmpty(styleOptions))
+                options.AddValue("theme_advanced_styles", styleOptions);
             options.AddValue("theme_advanced_buttons1", GetButtons1());
             options.AddValue("theme_advanced_buttons2", GetButtons2());
             options.AddValue("theme_advanced_buttons3", GetButtons3());
-            //options.AddValue("theme_advanced_buttons4", GetButtons4());
             options.AddValue("theme_advanced_toolbar_location", "top");
             options.AddValue("theme_advanced_toolbar_align", "left");
             options.AddValue("theme_advanced_statusbar_location", "bottom");
-            //options.AddValue("theme_advanced_resizing", true);
             options.AddValue("template_external_list_url", "lists/template_list.js");
             options.AddValue("external_link_list_url", "lists/link_list.js");
             options.AddValue("external_image_list_url", "lists/image_list.js");
             options.AddValue("media_external_list_url", "lists/media_list.js");
-            //options.AddValue("style_formats", JSONArray.Parse("[{title : 'Bold text', inline : 'b'},{title : 'Red text', inline : 'span', styles : {color : '#ff0000'}},{title : 'Red header', block : 'h1', styles : {color : '#ff0000'}},{title : 'Example 1', inline : 'span', classes : 'example1'},{title : 'Example 2', inline : 'span', classes : 'example2'},{title : 'Table styles'},{title : 'Table row 1', selector : 'tr', classes : 'tablerow1'}]"));
-            options.AddValue("template_replace_values", JSONObject.Parse("{ username : \"Some User\", staffid : \"991234\" }"));
 
+            if (StyleSheets != null && StyleSheets.Any())
+                options.AddValue("content_css", StyleSheets.ToSeparatedString(","));
+            
+            options.AddValue("verify_html", false);
+            options.AddValue("valid_elements", "*[*]");
+            //options.AddValue("valid_elements", GetValidElements());
+            options.AddValue("invalid_elements", GetInvalidElements());
+
+
+
+
+            //options.AddValue("template_replace_values", JSONObject.Parse("{ username : \"Some User\", staffid : \"991234\" }"));
+
+            var setup = new JSONDelegate("ed");
             if (!string.IsNullOrEmpty(HiddenId))
             {
-                var setup = new JSONDelegate("ed");
+                
                 setup.Lines.Add("ed.onInit.add(function(ed, evt) {");
                 setup.Lines.Add("initializeEditorValue(ed, doc, '" + HiddenId + "');");
                 setup.Lines.Add("var dom = ed.dom;");
@@ -83,8 +101,27 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
                 setup.Lines.Add("updateEditorValue(ed, doc,'" + HiddenId + "');");
                 setup.Lines.Add("});");
                 setup.Lines.Add("});");
-                options.AddValue("setup", setup);
             }
+
+            setup.Lines.Add("ed.onNodeChange.addToTop(function(ed, cm, n) {");
+            setup.Lines.Add("var macroElement = ed.dom.getParent(ed.selection.getStart(), 'div.umbMacroHolder');");
+            setup.Lines.Add("if (macroElement) {");
+            setup.Lines.Add("ed.selection.select(macroElement);");
+            setup.Lines.Add("var currentSelection = ed.selection.getStart();");
+            setup.Lines.Add("if (tinymce.isIE) {");
+            setup.Lines.Add("if (!ed.dom.hasClass(currentSelection, 'umbMacroHolder')) {");
+            setup.Lines.Add("while (!ed.dom.hasClass(currentSelection, 'umbMacroHolder') && currentSelection.parentNode) {");
+            setup.Lines.Add("currentSelection = currentSelection.parentNode;");
+            setup.Lines.Add("}");
+            setup.Lines.Add("ed.selection.select(currentSelection);");
+            setup.Lines.Add("}");
+            setup.Lines.Add("}");
+            setup.Lines.Add("cm.setActive('umbracomacro', ed.dom.hasClass(currentSelection, 'umbMacroHolder') || ed.dom.hasClass(macroElement, 'umbMacroHolder'));");
+            setup.Lines.Add("}");
+            setup.Lines.Add("});");
+            
+            options.AddValue("setup", setup);
+
             var script = new StringBuilder();
             script.AppendLine("tinyMCE.init(" + options.ToString() + ");");
 
@@ -93,13 +130,81 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
 
             Page.ClientScript.RegisterStartupScript(Page.GetType(), "tinyMCEditor" + _textbox.ClientID, script.ToString(), true);
 
-
             base.OnPreRender(e);
         }
 
-        private static string GetPlugins()
+        private static string GetInvalidElements()
+        {
+            var elements = new List<string>();
+            elements.Add("font");
+            elements.Add("pre");
+            return elements.ToSeparatedString(",");
+        }
+
+        private static string GetValidElements()
+        {
+            var elements = new List<string>();
+            elements.Add("+a[id|style|rel|rev|charset|hreflang|dir|lang|tabindex|accesskey|type|name|href|target|title|class|onfocus|onblur|onclick|ondblclick|onmousedown|onmouseup|onmouseover|onmousemove|onmouseout|onkeypress|onkeydown|onkeyup]");
+            elements.Add("-strong/-b[class|style]");
+            elements.Add("-em/-i[class|style]");
+            elements.Add("-strike[class|style]");
+            elements.Add("-u[class|style]");
+            elements.Add("#p[id|style|dir|class|align]");
+            elements.Add("-ol[class|style]");
+            elements.Add("-ul[class|style]");
+            elements.Add("-li[class|style]");
+            elements.Add("br");
+            elements.Add("img[id|dir|lang|longdesc|usemap|style|class|src|onmouseover|onmouseout|border|alt=|title|hspace|vspace|width|height|align|umbracoorgwidth|umbracoorgheight|onresize|onresizestart|onresizeend|rel]");
+            elements.Add("-sub[style|class]");
+            elements.Add("-sup[style|class]");
+            elements.Add("-blockquote[dir|style]");
+            elements.Add("-table[border=0|cellspacing|cellpadding|width|height|class|align|summary|style|dir|id|lang|bgcolor|background|bordercolor]");
+            elements.Add("-tr[id|lang|dir|class|rowspan|width|height|align|valign|style|bgcolor|background|bordercolor]");
+            elements.Add("tbody[id|class]");
+            elements.Add("thead[id|class]");
+            elements.Add("tfoot[id|class]");
+            elements.Add("-td[id|lang|dir|class|colspan|rowspan|width|height|align|valign|style|bgcolor|background|bordercolor|scope]");
+            elements.Add("-th[id|lang|dir|class|colspan|rowspan|width|height|align|valign|style|scope]");
+            elements.Add("caption[id|lang|dir|class|style]");
+            elements.Add("-div[id|dir|class|align|style]");
+            elements.Add("-span[class|align|style]");
+            elements.Add("-pre[class|align|style]");
+            elements.Add("address[class|align|style]");
+            elements.Add("-h1[id|dir|class|align]");
+            elements.Add("-h2[id|dir|class|align]");
+            elements.Add("-h3[id|dir|class|align]");
+            elements.Add("-h4[id|dir|class|align]");
+            elements.Add("-h5[id|dir|class|align]");
+            elements.Add("-h6[id|style|dir|class|align]");
+            elements.Add("hr[class|style]");
+            elements.Add("dd[id|class|title|style|dir|lang]");
+            elements.Add("dl[id|class|title|style|dir|lang]");
+            elements.Add("dt[id|class|title|style|dir|lang]");
+            elements.Add("object[classid|width|height|codebase|*]");
+            elements.Add("param[name|value|_value]");
+            elements.Add("embed[type|width|height|src|*]");
+            elements.Add("map[name]");
+            elements.Add("area[shape|coords|href|alt|target]");
+            elements.Add("bdo");
+            elements.Add("button");
+            elements.Add("iframe[*]");
+            return elements.ToSeparatedString(",");
+        }
+
+        private string GetStyleOptions()
+        {
+            var stylesheet = !string.IsNullOrEmpty(StyleDefinitionSheet) ? umbraco.cms.businesslogic.web.StyleSheet.GetByName(StyleDefinitionSheet) : null;
+            if (stylesheet == null || !stylesheet.Properties.Any())
+                return null;
+            return stylesheet.Properties.ToSeparatedString(";", p => string.Format("{0}={1}", p.Text, p.Alias.TrimStart('.')));
+        }
+
+        private string GetPlugins()
         {
             var result = new List<string>();
+            result.Add("linqitlink");
+            if (_displayMacroPlugin)
+                result.Add("linqitmacro");
             result.Add("autolink");
             result.Add("lists");
             result.Add("pagebreak");
@@ -109,7 +214,6 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             result.Add("save");
             result.Add("advhr");
             result.Add("advimage");
-            result.Add("advlink");
             result.Add("emotions");
             result.Add("iespell");
             result.Add("inlinepopups");
@@ -148,8 +252,10 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             result.Add("justifyfull");
             result.Add("styleselect");
             result.Add("formatselect");
-            result.Add("fontselect");
-            result.Add("fontsizeselect");
+            result.Add("removeformat");
+            result.Add("fullscreen");
+            //result.Add("fontselect");
+            //result.Add("fontsizeselect");
             return result;
         }
 
@@ -158,7 +264,7 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             return GetButtons1List().ToSeparatedString(",");
         }
 
-        private static IEnumerable<string> GetButtons2List()
+        private IEnumerable<string> GetButtons2List()
         {
             var result = new List<string>();
             result.Add("cut");
@@ -172,32 +278,34 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             result.Add("|");
             result.Add("bullist");
             result.Add("numlist");
-            result.Add("|");
-            result.Add("outdent");
-            result.Add("indent");
-            result.Add("blockquote");
+            //result.Add("|");
+            //result.Add("outdent");
+            //result.Add("indent");
+            //result.Add("blockquote");
             result.Add("|");
             result.Add("undo");
             result.Add("redo");
             result.Add("|");
-            result.Add("link");
+            result.Add("linqitlink");
             result.Add("unlink");
             result.Add("anchor");
             result.Add("image");
-            result.Add("cleanup");
+            //result.Add("cleanup");
             result.Add("help");
             result.Add("code");
-            result.Add("|");
-            result.Add("insertdate");
-            result.Add("inserttime");
-            result.Add("preview");
-            result.Add("|");
-            result.Add("forecolor");
-            result.Add("backcolor");
+            if (_displayMacroPlugin)
+                result.Add("linqitmacro");
+            //result.Add("|");
+            //result.Add("insertdate");
+            //result.Add("inserttime");
+            //result.Add("preview");
+            //result.Add("|");
+            //result.Add("forecolor");
+            //result.Add("backcolor");
             return result;
         }
 
-        private static string GetButtons2()
+        private string GetButtons2()
         {
             return GetButtons2List().ToSeparatedString(",");
         }
@@ -208,24 +316,24 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             result.Add("tablecontrols");
             result.Add("|");
             result.Add("hr");
-            result.Add("removeformat");
-            result.Add("visualaid");
-            result.Add("|");
-            result.Add("sub");
-            result.Add("sup");
-            result.Add("|");
-            result.Add("charmap");
-            result.Add("emotions");
-            result.Add("iespell");
-            result.Add("media");
-            result.Add("advhr");
-            result.Add("|");
-            result.Add("print");
-            result.Add("|");
-            result.Add("ltr");
-            result.Add("rtl");
-            result.Add("|");
-            result.Add("fullscreen");
+            
+            //result.Add("visualaid");
+            //result.Add("|");
+            //result.Add("sub");
+            //result.Add("sup");
+            //result.Add("|");
+            //result.Add("charmap");
+            //result.Add("emotions");
+            //result.Add("iespell");
+            //result.Add("media");
+            //result.Add("advhr");
+            //result.Add("|");
+            //result.Add("print");
+            //result.Add("|");
+            //result.Add("ltr");
+            //result.Add("rtl");
+            //result.Add("|");
+           
             return result;
             
         }
@@ -279,6 +387,16 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
                 EnsureChildControls();
                 _textbox.Text = value;
             }
+        }
+
+        public string StyleDefinitionSheet { get; set; }
+
+        public string[] StyleSheets { get; set; }
+
+        public bool DisplayMacroPlugin
+        {
+            get { return _displayMacroPlugin; }
+            set { _displayMacroPlugin = value; }
         }
     }
 }

@@ -38,6 +38,7 @@
 		}		
 		
 		function invokeSaveHandlers() {
+            
 			for (var i=0;i<saveHandlers.length;i++) {
 				eval(saveHandlers[i]);
 			}
@@ -55,5 +56,13 @@
         jQuery(document).ready(function () {
             UmbClientMgr.appActions().bindSaveShortCut();
         });
+        
+
+        // Hack to close window when the form is in popup mode
+        if (UmbClientMgr.mainWindow().UmbSpeechBubble == undefined)
+        {
+            UmbClientMgr.mainWindow().UmbSpeechBubble = {};
+            UmbClientMgr.mainWindow().UmbSpeechBubble.ShowMessage = function(){window.close();};
+        }
     </script>
 </asp:Content>

@@ -71,7 +71,7 @@ namespace UmbracoPublic.Logic.Entities
     
     public class Categorization : Entity
     {
-        public string MailingListId { get { return GetValue<string>("mailingListId"); } }
+        public string MailingListId { get { return GetValue<string>("mailingList"); } }
         public string MailingListName { get { return GetValue<string>("mailingListName"); } }
         public bool IsHidden { get { return GetValue<bool>("hidden"); } }
         public bool IsHiddenFromNewslistFilter

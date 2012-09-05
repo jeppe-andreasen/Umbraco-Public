@@ -12,14 +12,17 @@ using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Cms.Data.DataInstallers;
 using LinqIt.Cms.Data.DataIterators;
+using LinqIt.Parsing.Html;
 using LinqIt.UmbracoServices.Data;
 using LinqIt.UmbracoServices.Data.DataInstallers;
 using LinqIt.UmbracoServices.Data.DataIterators;
 using LinqIt.Utils;
 using LinqIt.Utils.Extensions;
 using umbraco.BusinessLogic;
+using umbraco.cms.businesslogic.cache;
 using umbraco.cms.businesslogic.media;
 using umbraco.cms.businesslogic.web;
+using umbraco.DataLayer;
 using umbraco.interfaces;
 using umbraco.NodeFactory;
 
@@ -30,6 +33,11 @@ namespace LinqIt.UmbracoServices
         public const int SiteLevel = 4;
         public const int CompanyLevel = 3;
         public const int ContentLevel = 2;
+
+        private static Dictionary<string, Domain> GetDomains()
+        {
+            return GetDbContext().umbracoDomains.Select(d => new umbraco.cms.businesslogic.web.Domain(d.id)).ToDictionary(d => d.Name.ToLower());
+        }
 
         protected override T GetFieldValue<T>(Cms.Data.Entity entity, string fieldName)
         {
@@ -99,8 +107,6 @@ namespace LinqIt.UmbracoServices
             return default(T);
         }
 
-
-
         public override Uri CurrentUrl
         {
             get { return HttpContext.Current.Request.Url; }
@@ -115,9 +121,22 @@ namespace LinqIt.UmbracoServices
         {
             get
             {
+                if (!string.IsNullOrEmpty(CmsContext.Current.SitePath))
+                    return CmsContext.Current.SitePath;
+                else if (!string.IsNullOrEmpty(CmsContext.Current.Path))
+                    return "/" + CmsContext.Current.Path.Split('/').Take(SiteLevel).ToSeparatedString("/");
+
                 var current = (UmbracoItem)GetItem();
                 if (current == null)
+                {
+                    var homePath = GetHomePathFromUrl();
+                    if (!string.IsNullOrEmpty(homePath))
+                    {
+                        var parts = homePath.Split('/');
+                        return "/" + parts.Take(parts.Length - 1).ToSeparatedString("/");
+                    }
                     return null;
+                }
                 var nodeId = Convert.ToInt32(current.IdPath.Split(',')[2]);
                 return UmbracoItem.Get(nodeId).Path;
             }
@@ -129,7 +148,7 @@ namespace LinqIt.UmbracoServices
             {
                 var current = (UmbracoItem)GetItem();
                 if (current == null)
-                    return null;
+                    return GetHomePathFromUrl();
                 var nodeId = Convert.ToInt32(current.Path.Split(',')[3]);
                 return UmbracoItem.Get(nodeId).Path;
             }
@@ -158,6 +177,11 @@ namespace LinqIt.UmbracoServices
         protected override object GetItem(string itemPath)
         {
             return UmbracoItem.Get(itemPath);
+        }
+
+        protected override object SelectSingleItem(string query)
+        {
+            return UmbracoItem.FindFirst(query);
         }
 
         protected override object GetItem()
@@ -204,7 +228,7 @@ namespace LinqIt.UmbracoServices
 
         public override string GetSystemPath(string systemLinkKey)
         {
-            return GetSystemPath(systemLinkKey, SitePath);
+            return GetSystemPath(systemLinkKey, GetHomePathFromUrl());
         }
 
         public override List<Cms.Data.Id> GetSelectedMenuIds()
@@ -249,8 +273,6 @@ namespace LinqIt.UmbracoServices
         {
             throw new NotImplementedException();
         }
-
-        
 
         protected override string GetHostName(Cms.Data.Page page)
         {
@@ -322,11 +344,6 @@ namespace LinqIt.UmbracoServices
             throw new NotImplementedException();
         }
 
-        public override void Log(string message, Cms.Logging.LogType logType)
-        {
-            throw new NotImplementedException();
-        }
-
         protected override Cms.Data.Link ParseLink(string value)
         {
             int id;
@@ -343,6 +360,24 @@ namespace LinqIt.UmbracoServices
             var result = new LinkList();
             if (string.IsNullOrEmpty(value))
                 return result;
+
+            if (value.StartsWith("<a"))
+            {
+                var htmlDoc = new HtmlDocument(value);
+                foreach (var linkTag in htmlDoc.FindTagsByName("a"))
+                {
+                    var link = new Link();
+                    link.AlternateText = linkTag.Attributes["title"];
+                    link.LinkType = (LinkType)Enum.Parse(typeof (LinkType), linkTag.Attributes["type"], true);
+                    link.Href = linkTag.Attributes["href"];
+                    link.Title = linkTag.InnerText;
+                    link.Target = linkTag.Attributes["target"];
+                    result.Add(link);
+                }
+                return result;
+            }
+
+
             XDocument doc;
             try
             {
@@ -498,10 +533,27 @@ namespace LinqIt.UmbracoServices
             throw new NotImplementedException();
         }
 
+        private string GetHomePathFromUrl()
+        {
+            var domains = GetDomains();
+            string host = HttpContext.Current.Request.Url.Host.ToLower();
+            if (domains.ContainsKey(host))
+            {
+                var domain = domains[host];
+                var item = UmbracoItem.Get(domain.RootNodeId);
+                return item.Path;
+            }
+            return null;
+        }
+
         protected override object GetConfigurationObject(string objectName, string relativePath)
         {
             if (string.IsNullOrEmpty(relativePath))
-                return null;
+            {
+                relativePath = GetHomePathFromUrl();
+                if (string.IsNullOrEmpty(relativePath))
+                    return null;
+            }
             for (var i = SiteLevel; i >= ContentLevel; i--)
             {
                 var siteRootPath = PathUtil.Take(relativePath, i);
@@ -584,6 +636,8 @@ namespace LinqIt.UmbracoServices
         public override Page GetHomeItem()
         {
             var item = (UmbracoItem)GetItem();
+            if (item == null)
+                return null;
             var homeId = Convert.ToInt32(item.IdPath.Split(',')[3]);
             return GetItem<Page>(new Id(homeId));
         }

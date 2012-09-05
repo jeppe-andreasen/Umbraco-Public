@@ -12,28 +12,7 @@ namespace LinqIt.UmbracoCustomFieldTypes
 {
     public class MacroRichTextEditor : Control, INamingContainer, IMacroGuiRendering
     {
-        private HtmlGenericControl _iframe;
-        private HiddenField _hiddenField;
-
-        protected override void CreateChildControls()
-        {
-            
-            _hiddenField = new HiddenField();
-            _hiddenField.ID = "hiddenField";
-            Controls.Add(_hiddenField);
-            
-            _iframe = new HtmlGenericControl("iframe");
-            _iframe.Attributes.Add("id", "editor-frame");
-            _iframe.Attributes.Add("src", "/handlers/TinyMCEditorHandler.aspx?hiddenId=" + _hiddenField.ClientID);
-            _iframe.Attributes.Add("style", "width:720px;");
-            _iframe.Attributes.Add("height", "210");
-            _iframe.Attributes.Add("frameBorder", "0");
-            _iframe.ID = "iframe";
-            Controls.Add(_iframe);
-
-            base.CreateChildControls();
-        }
-
+        private TinyMCEditor _editor;
 
         public bool ShowCaption
         {
@@ -45,13 +24,66 @@ namespace LinqIt.UmbracoCustomFieldTypes
             get
             {
                 EnsureChildControls();
-                return System.Web.HttpUtility.UrlEncode(_hiddenField.Value);
+                return _editor.Value;
             }
             set
             {
                 EnsureChildControls();
-                _hiddenField.Value = System.Web.HttpUtility.UrlDecode(value);
+                _editor.Value = value;
             }
         }
+
+        protected override void CreateChildControls()
+        {
+            _editor = new TinyMCEditor();
+            _editor.ID = "tinyEditor";
+            _editor.DisplayMacroPlugin = false;
+            Controls.Add(_editor);
+
+            base.CreateChildControls();
+        }
+
+        //private HtmlGenericControl _iframe;
+        //private HiddenField _hiddenField;
+
+        //protected override void CreateChildControls()
+        //{
+            
+        //    _hiddenField = new HiddenField();
+        //    _hiddenField.ID = "hiddenField";
+        //    Controls.Add(_hiddenField);
+            
+        //    _iframe = new HtmlGenericControl("iframe");
+        //    _iframe.Attributes.Add("id", "editor-frame");
+        //    _iframe.Attributes.Add("src", "/handlers/TinyMCEditorHandler.aspx?hiddenId=" + _hiddenField.ClientID);
+        //    _iframe.Attributes.Add("style", "width:720px;");
+        //    _iframe.Attributes.Add("height", "210");
+        //    _iframe.Attributes.Add("frameBorder", "0");
+        //    _iframe.ID = "iframe";
+        //    Controls.Add(_iframe);
+
+        //    base.CreateChildControls();
+        //}
+
+
+        //public bool ShowCaption
+        //{
+        //    get { return true; }
+        //}
+
+        //public string Value
+        //{
+        //    get
+        //    {
+        //        EnsureChildControls();
+        //        return System.Web.HttpUtility.UrlEncode(_hiddenField.Value);
+        //    }
+        //    set
+        //    {
+        //        EnsureChildControls();
+        //        _hiddenField.Value = System.Web.HttpUtility.UrlDecode(value);
+        //    }
+        //}
+        
     }
 }

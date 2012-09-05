@@ -22,7 +22,7 @@ namespace UmbracoPublic.WebSite.test
         private static void GenerateOutput(HtmlWriter writer, SearchService service)
         {
             writer.RenderBeginTag(HtmlTextWriterTag.Ul);
-            foreach (var record in service.GetAllRecords())
+            foreach (var record in service.GetAllRecords().OrderBy(r => r.Id))
             {
                 var id = record.Id;
                 writer.RenderBeginTag(HtmlTextWriterTag.Li);

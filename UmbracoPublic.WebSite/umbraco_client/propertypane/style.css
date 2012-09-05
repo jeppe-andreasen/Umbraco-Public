@@ -55,7 +55,7 @@
 		}
 		
 		.propertypane div.propertyItem .propertyItemContent{
-		  float: left;
+		  /*float: left;*/
 		  padding-bottom: 5px;
 		  clear: right;
 		}

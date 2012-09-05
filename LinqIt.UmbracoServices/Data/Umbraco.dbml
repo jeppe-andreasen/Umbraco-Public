@@ -108,7 +108,17 @@
       <Association Name="umbracoNode_cmsPropertyData" Member="cmsPropertyDatas" ThisKey="id" OtherKey="contentNodeId" Type="cmsPropertyData" />
       <Association Name="umbracoNode_cmsContentType" Member="cmsContentTypes" ThisKey="id" OtherKey="nodeId" Type="cmsContentType" />
       <Association Name="umbracoNode_umbracoNode" Member="umbracoNodes" ThisKey="id" OtherKey="parentID" Type="umbracoNode" />
+      <Association Name="umbracoNode_umbracoDomain" Member="umbracoDomains" ThisKey="id" OtherKey="domainRootStructureID" Type="umbracoDomain" />
       <Association Name="umbracoNode_umbracoNode" Member="umbracoNode1" ThisKey="parentID" OtherKey="id" Type="umbracoNode" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.umbracoDomains" Member="umbracoDomains">
+    <Type Name="umbracoDomain">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="domainDefaultLanguage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="domainRootStructureID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="domainName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="umbracoNode_umbracoDomain" Member="umbracoNode" ThisKey="domainRootStructureID" OtherKey="id" Type="umbracoNode" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

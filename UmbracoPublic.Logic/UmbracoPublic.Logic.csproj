@@ -82,6 +82,7 @@
     <Compile Include="Controllers\Paging\PagerAlignedPagingController.cs" />
     <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
     <Compile Include="Controllers\Paging\PagingController.cs" />
+    <Compile Include="Entities\MailConfiguration.cs" />
     <Compile Include="Entities\ServiceMenuConfiguration.cs" />
     <Compile Include="Macros\AlertMacro.cs" />
     <Compile Include="Macros\BlockQuoteMacro.cs" />
@@ -97,6 +98,8 @@
     <Compile Include="Modules\ImageGallery\ImageGalleryModuleRendering.cs" />
     <Compile Include="Modules\LinkList\LinkListModuleRendering.cs" />
     <Compile Include="Modules\MultiBox\MultiBoxModuleRendering.cs" />
+    <Compile Include="Modules\NewsListSubscription\NewsListSubscriptionModule.cs" />
+    <Compile Include="Modules\NewsListSubscription\NewsListSubscriptionModuleRendering.cs" />
     <Compile Include="Modules\NewsList\NewsListModuleRendering.cs" />
     <Compile Include="Modules\Snippets.cs" />
     <Compile Include="Modules\Video\VideoModuleRendering.cs" />
@@ -127,6 +130,7 @@
     <Compile Include="Parts\BaseUCPart.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Parts\Navigation\PrimaryNavigationPart.cs" />
     <Compile Include="Parts\Navigation\ServiceMenuPart.cs" />
     <Compile Include="Parts\Paging\Pager.cs" />
     <Compile Include="Parts\Paging\PagerType.cs" />
@@ -137,6 +141,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Providers\CategorizationProvider.cs" />
+    <Compile Include="Providers\MailProviders\MailChimpConfiguration.cs" />
+    <Compile Include="Providers\MailProviders\MailChimpProviderV1_3.cs" />
     <Compile Include="Providers\SiteRootLayoutProvider.cs" />
     <Compile Include="Providers\SubjectProvider.cs" />
     <Compile Include="Providers\ThemeProvider.cs" />

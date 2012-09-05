@@ -24,16 +24,21 @@ namespace UmbracoPublic.Logic.Entities
             if (Directory.Exists(cssFolder))
             {
                 Stylesheets = Directory.GetFiles(cssFolder, "*.css").Select(p => MakeRelative(p, applicationFolder)).ToList();
+                
             }
             else
             {
                 Stylesheets = Directory.GetFiles(themeFolder, "*.css").Select(p => MakeRelative(p, applicationFolder)).ToList();
             }
+            TinyMCEStylesheets = Stylesheets.Where(s => s.Contains("tinymce")).ToList();
+            TinyMCEStylesheets.Insert(0, "/assets/css/TinyMCEContent.css");
+            foreach (var tiny in TinyMCEStylesheets)
+                Stylesheets.Remove(tiny);
         }
 
         private static string MakeRelative(string path, string applicationPath)
         {
-            return path.Substring(applicationPath.Length).Replace(@"\", "/");
+            return "/" + path.Substring(applicationPath.Length).Replace(@"\", "/");
         }
         
 
@@ -46,6 +51,11 @@ namespace UmbracoPublic.Logic.Entities
         public List<string> Stylesheets { get; private set; }
 
         public List<string> Javascripts { get; private set; }
+
+        public List<string> TinyMCEStylesheets
+        {
+            get; private set;
+        }
 
         public static Theme Current
         {
@@ -76,5 +86,7 @@ namespace UmbracoPublic.Logic.Entities
                 }
             }
         }
+
+        
     }
 }

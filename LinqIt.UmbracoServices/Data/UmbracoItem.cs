@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using LinqIt.Cms;
 using LinqIt.Utils.Extensions;
 using umbraco.cms.businesslogic.web;
@@ -57,19 +58,89 @@ namespace LinqIt.UmbracoServices.Data
                 return UmbracoNode.FromPath(path);            
         }
 
+        internal static UmbracoItem FindFirst(string query)
+        {
+            var parts = query.TrimStart('/').Split('/');
+            if (parts.Length < 2)
+                return null;
+
+            var rootItems = new List<UmbracoItem>();
+            if (CmsContext.Current.StoreType == CmsStoreType.Working)
+                rootItems.AddRange(Document.GetRootDocuments().Select(d => new UmbracoDocument(d)));
+            else
+                rootItems.AddRange(new Node(-1).ChildrenAsList.Select(n => new UmbracoNode((Node)n)));
+
+            foreach (var item in rootItems)
+            {
+                var result = FindFirst(item, parts, 1);
+                if (result != null)
+                    return result;
+            }
+            return null;
+        }
+
+        private static UmbracoItem FindFirst(UmbracoItem item, string[] parts, int index)
+        {
+            // Handle '//' query
+            if (parts[index ] == "" && index < parts.Length-1)
+            {
+                var tmp = FindFirst(item, parts, index + 1);
+                if (tmp != null)
+                    return tmp;
+            }
+            var isMatch = IsMatch(parts[index], item);
+            if (isMatch && index == parts.Length - 1)
+                return item;
+
+            if (parts[index] != "" && !isMatch)
+                return null;
+
+            return index < parts.Length-1 ? item.Children.Select(child => FindFirst(child, parts, index + 1)).FirstOrDefault(tmp => tmp != null) : null;
+        }
+
+        private static bool IsMatch(string query, UmbracoItem item)
+        {
+            if (query.StartsWith("*"))
+            {
+                if (query == "*")
+                    return true;
+
+                var templateMatch = Regex.Match(query, "{(?<template>[^}]+)}");
+                if (templateMatch.Success && item.DocumentType.Alias != templateMatch.Groups["template"].Value)
+                    return false;
+
+                var fieldMatches = Regex.Matches(query, @"\[(?<key>[^=]+)='(?<value>[^']+)']");
+                foreach (Match fieldMatch in fieldMatches)
+                {
+                    if (item[fieldMatch.Groups["key"].Value] != fieldMatch.Groups["value"].Value)
+                        return false;
+                }
+                return true;
+            }
+            return item.Name == query;
+        }
+
+
         internal static UmbracoItem Current
         {
             get
             {
-                if (CmsContext.Current.StoreType == CmsStoreType.Working)
+                try
                 {
-                    var document = new Document(Node.GetCurrent().Id);
-                    return new UmbracoDocument(document);
+                    if (CmsContext.Current.StoreType == CmsStoreType.Working)
+                    {
+                        var document = new Document(Node.GetCurrent().Id);
+                        return new UmbracoDocument(document);
+                    }
+                    else
+                    {
+                        var node = umbraco.NodeFactory.Node.GetCurrent();
+                        return node != null ? new UmbracoNode(node) : null;
+                    }
                 }
-                else
+                catch(NullReferenceException)
                 {
-                    var node = umbraco.NodeFactory.Node.GetCurrent();
-                    return node != null ? new UmbracoNode(node) : null;
+                    return null;
                 }
             }
         }
@@ -172,7 +243,11 @@ namespace LinqIt.UmbracoServices.Data
 
         public override string Url
         {
-            get { return _node.NiceUrl; }
+            get
+            {
+                
+                return _node.NiceUrl;
+            }
         }
     }
 
@@ -253,7 +328,19 @@ namespace LinqIt.UmbracoServices.Data
 
         public override string Url
         {
-            get { return string.Empty; }
+            get 
+            { 
+                try
+                {
+                    var node = new Node(_document.Id);
+                    return node.NiceUrl;
+                }
+                catch
+                {
+                    return string.Empty;
+                }
+                
+            }
         }
     }
 }

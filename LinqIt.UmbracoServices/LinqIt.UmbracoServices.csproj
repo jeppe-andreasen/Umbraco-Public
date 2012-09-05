@@ -44,6 +44,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Repository\LinqIt\LinqIt.Cms.dll</HintPath>
     </Reference>
+    <Reference Include="LinqIt.Parsing">
+      <HintPath>..\Repository\LinqIt\LinqIt.Parsing.dll</HintPath>
+    </Reference>
     <Reference Include="LinqIt.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Repository\LinqIt\LinqIt.Utils.dll</HintPath>
@@ -61,6 +64,7 @@
     <Reference Include="umbraco">
       <HintPath>..\Repository\Umbraco\umbraco.dll</HintPath>
     </Reference>
+    <Reference Include="umbraco.DataLayer, Version=1.0.4497.23944, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataInstallers\ChildStructureUpdater.cs" />
@@ -91,6 +95,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Queries\QueryResolver.cs" />
     <Compile Include="UmbracoCmsService.cs" />
   </ItemGroup>
   <ItemGroup>

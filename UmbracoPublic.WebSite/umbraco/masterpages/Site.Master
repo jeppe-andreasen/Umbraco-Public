@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="UmbracoPublic.WebSite.umbraco.masterpages.Site" %>
-<%@ Register src="~/usercontrols/Parts/NavigationBar.ascx" tagname="NavigationBar" tagprefix="uc2" %>
 <%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc1" %>
 <%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc2" %>
 <!DOCTYPE html>
@@ -44,36 +43,26 @@
   <body>
 		<form id="form1" runat="server">
         <nav class="top">
-		<div class="container">
-            <!--googleoff: index-->
-
-            <cc2:ServiceMenuPart ID="serviceMenu" runat="server"></cc2:ServiceMenuPart>
-	
-			<div class="navbar">
-				<div class="navbar-inner">
-					<div class="container">
-						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
-						<a class="brand" href="/"><asp:Literal ID="litBrand" runat="server"></asp:Literal>
-						<div class="nav-collapse">
-							<uc2:NavigationBar ID="NavigationBar1" runat="server" />
-							<div class="navbar-search pull-right" action="Søg">
-							    <input type="text" class="search-query span2" placeholder="Søg">
+            <div class="container">
+                <!--googleoff: index-->
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+                            <a class="brand" href="/"><asp:Literal ID="litBrand" runat="server"></asp:Literal></a>
+                            <cc2:ServiceMenuPart ID="serviceMenu" runat="server"></cc2:ServiceMenuPart>
+						    <div class="nav-collapse">
+							    <cc2:PrimaryNavigationPart ID="primaryNavigation" runat="server"></cc2:PrimaryNavigationPart>
+							    <div class="navbar-search pull-right" action="Søg">
+							        <input type="text" class="search-query span2" placeholder="Søg">
+						        </div>
 						    </div>
-
-						</div><!-- /.nav-collapse -->
-					</div>
-				</div><!-- /navbar-inner -->
-		    </div><!-- /navbar -->
-            
-            <asp:ContentPlaceHolder ID="cphTop" runat="server"></asp:ContentPlaceHolder>
-            
-            <!--googleon: index-->
-
-        </div>
+					    </div>
+				    </div>
+		        </div>
+                <asp:ContentPlaceHolder ID="cphTop" runat="server"></asp:ContentPlaceHolder>
+                <!--googleon: index-->
+            </div>
         </nav>
         <asp:ContentPlaceHolder ID="ContentPlaceHolderDefault" runat="server">
         </asp:ContentPlaceHolder>
