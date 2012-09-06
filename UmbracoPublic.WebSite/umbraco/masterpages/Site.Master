@@ -5,7 +5,7 @@
 <html lang="en">
 	<head>
 	<meta charset="utf-8">
-	<title>Økonomi- og Indenrigsministeriet</title>
+	<title><asp:Literal ID="litTitle" runat="server"></asp:Literal></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
     <asp:Literal ID="litDynamicMetaTags" runat="server"></asp:Literal> 
