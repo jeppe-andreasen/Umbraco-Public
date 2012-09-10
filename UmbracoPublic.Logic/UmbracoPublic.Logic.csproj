@@ -82,11 +82,13 @@
     <Compile Include="Controllers\Paging\PagerAlignedPagingController.cs" />
     <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
     <Compile Include="Controllers\Paging\PagingController.cs" />
+    <Compile Include="Entities\CookieState.cs" />
     <Compile Include="Entities\MailConfiguration.cs" />
     <Compile Include="Entities\NewsListPage.cs" />
     <Compile Include="Entities\ServiceMenuConfiguration.cs" />
     <Compile Include="Macros\AlertMacro.cs" />
     <Compile Include="Macros\BlockQuoteMacro.cs" />
+    <Compile Include="Macros\CookieAcceptanceMacro.cs" />
     <Compile Include="Macros\FactsBoxMacro.cs" />
     <Compile Include="Macros\ModuleMacro.cs" />
     <Compile Include="Modules\Accordion\AccordionModule.cs" />

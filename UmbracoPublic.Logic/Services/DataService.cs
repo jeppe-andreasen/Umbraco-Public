@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
+using System.Web;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Search;
@@ -14,6 +15,8 @@ namespace UmbracoPublic.Logic.Services
 {
     public class DataService
     {
+        private CookieState? _cookieState;
+
         public static DataService Instance
         {
             get
@@ -160,6 +163,37 @@ namespace UmbracoPublic.Logic.Services
             mailProvider.SubscribeToList(newsListId, emailAddress, new NameValueCollection());
         }
 
-        
+
+
+        public CookieState GetCookieState()
+        {
+            if (!_cookieState.HasValue)
+            {
+                var cookie = HttpContext.Current.Request.Cookies.Get("GoBasic_CookieState");
+                if (cookie == null)
+                    _cookieState = CookieState.Unknown;
+                else
+                {
+                    _cookieState = cookie.Value == "Accepted" ? CookieState.Accepted : CookieState.NotAccepted;
+                }
+            }
+            return _cookieState.Value;
+        }
+
+        internal void SetCookieState(CookieState state)
+        {
+            var cookie = HttpContext.Current.Request.Cookies.Get("GoBasic_CookieState");
+            if (cookie == null)
+            {
+                cookie = new HttpCookie("GoBasic_CookieState", state.ToString());
+                cookie.Expires = DateTime.Today.AddYears(1);
+            }
+            else
+            {
+                cookie.Value = state.ToString();
+            }
+            HttpContext.Current.Response.Cookies.Add(cookie);
+            _cookieState = state;
+        }
     }
 }
