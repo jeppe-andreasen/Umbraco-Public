@@ -4602,6 +4602,12 @@ a.badge:hover {
   font-size: 0.75em;
   text-align: center;
 }
+.contact-list h3 {
+  margin-bottom: 20px;
+}
+.contact-list .thumbnails > li {
+  padding-left: 0;
+}
 .pull-right {
   float: right;
 }
