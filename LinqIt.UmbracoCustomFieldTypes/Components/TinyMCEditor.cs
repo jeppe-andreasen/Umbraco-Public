@@ -59,6 +59,7 @@ namespace LinqIt.UmbracoCustomFieldTypes.Components
             else
                 options.AddValue("width", 800);
             options.AddValue("elements", _textbox.ClientID);
+            options.AddValue("convert_urls", false);
             options.AddValue("theme", "advanced");
             options.AddValue("plugins", GetPlugins());
 

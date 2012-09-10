@@ -25,5 +25,10 @@ namespace UmbracoPublic.Logic.Entities
                 return new IdList(value).Select(id => CmsService.Instance.GetItem<Entity>(id)).Where(e => e != null).Select(e => e.EntityName).ToArray();
             }
         }
+
+        public File LinkedDocument
+        {
+            get { return GetValue<File>("linkedDocument"); }
+        }
     }
 }

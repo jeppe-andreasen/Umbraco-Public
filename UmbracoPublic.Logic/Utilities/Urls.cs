@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using LinqIt.Cms;
+using LinqIt.Cms.Data;
 using LinqIt.Utils.Extensions;
 using LinqIt.Utils.Web;
 
@@ -38,6 +39,12 @@ namespace UmbracoPublic.Logic.Utilities
                 result += "?" + collection.ToUrlParameterList();
             
             return result;
+        }
+
+        internal static string GetMainNewsListUrl()
+        {
+            var path = CmsService.Instance.GetSystemPath("MainNewsPage");
+            return CmsService.Instance.GetItem<Page>(path).Url;
         }
     }
 }

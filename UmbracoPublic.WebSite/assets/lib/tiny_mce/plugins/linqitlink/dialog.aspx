@@ -22,7 +22,12 @@
             var value = $(tinyMCEPopup.editor.selection.getNode()).clone().wrap('<p>').parent().html();
             if (!$(value).is('a'))
                 value = '<a type="internal">' + tinyMCEPopup.editor.selection.getContent({ format: 'text' }) + "</a>";
-
+            else 
+            {
+                var $v = $(value);
+                $v.html($v.text());
+                value = $v.clone().wrap('<p>').parent().html();
+            }
 
             linqit.linkeditor.setValue($e, value);
             linqit.linkeditor.showInput($e);

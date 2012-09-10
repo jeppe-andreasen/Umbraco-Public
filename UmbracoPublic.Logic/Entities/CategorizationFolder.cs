@@ -44,6 +44,13 @@ namespace UmbracoPublic.Logic.Entities
                 _categorizations = Types.SelectMany(t => t.Items).ToDictionary(i => i.Id);
             return _categorizations.ContainsKey(id) ? _categorizations[id] : null;
         }
+
+        public bool HasCategorization(Id categorizationId)
+        {
+            return GetCategorization(categorizationId) != null;
+        }
+
+        
     }
 
     public class CategorizationType : Entity

@@ -23,6 +23,8 @@ namespace UmbracoPublic.Logic.Modules.NewsList
         {
             base.OnInit(e);
 
+            Controls.Add(new LiteralControl("<div class=\"news-list\">"));
+
             _output = new Literal();
             Controls.Add(_output);
 
@@ -30,6 +32,7 @@ namespace UmbracoPublic.Logic.Modules.NewsList
             _pager.ItemsPerPage = Module.ItemsPerPage;
             Controls.Add(_pager);
             
+            Controls.Add(new LiteralControl("</div>"));
         }
 
         protected override void OnLoad(EventArgs e)
@@ -73,13 +76,10 @@ namespace UmbracoPublic.Logic.Modules.NewsList
 
         protected void RenderOutput(NewsListModule item, HtmlWriter writer)
         {
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "news-list");
-
             var renderHr = false;
             if (!string.IsNullOrEmpty(item.Headline))
             {
-                writer.RenderFullTag(HtmlTextWriterTag.H1, item.Headline);
-                writer.WriteBreak();
+                writer.RenderFullTag(HtmlTextWriterTag.H2, item.Headline);
                 renderHr = true;
             }
             if (!item.Intro.IsEmpty)
@@ -96,8 +96,6 @@ namespace UmbracoPublic.Logic.Modules.NewsList
             else if (Module.MaxItemsShown.HasValue)
                 records = records.Take(Module.MaxItemsShown.Value);
             Snippets.RenderNewsResults(writer, records.ToArray());
-
-            writer.RenderEndTag();
         }
     }
 }

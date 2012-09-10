@@ -19,10 +19,10 @@ namespace UmbracoPublic.Logic.BackgroundWork
         private static readonly ConcurrentQueue<SearchTask> _queue = new ConcurrentQueue<SearchTask>();
         private static Thread _backgroundThread;
 
-        internal static void QueueDocumentAdd(Page page)
+        internal static void QueueDocumentAdd(Page page, string thumbnail)
         {
             Logging.Log(LogType.Info, "Adding SearchTask:AddDocument, " + page.Path);
-            _queue.Enqueue(new AddDocumentTask(page));
+            _queue.Enqueue(new AddDocumentTask(page, thumbnail));
             RunThread();
         }
 
@@ -79,7 +79,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
 
         public class AddDocumentTask : SearchTask
         {
-            public AddDocumentTask(Page page) : base(page)
+            public AddDocumentTask(Page page, string thumbnail) : base(page)
             {
                 NoIndex = page.GetValue<bool>("noIndex");
                 if (NoIndex) 
@@ -107,6 +107,8 @@ namespace UmbracoPublic.Logic.BackgroundWork
                     if (!html.IsEmpty)
                         Summary = html.GetExtract(150, true).ToString();
                 }
+
+                Thumbnail = thumbnail;
             }
 
             public bool NoIndex { get; private set; }
@@ -120,6 +122,9 @@ namespace UmbracoPublic.Logic.BackgroundWork
             public string[] Categorizations { get; private set; }
 
             public string Summary { get; private set; }
+
+            public string Thumbnail { get; private set; }
+
 
             public override void Process(CrawlService service)
             {
@@ -139,6 +144,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
                             record.SetString("categorizations", Categorizations != null && Categorizations.Any() ? Categorizations.ToSeparatedString(",").ToLower() : string.Empty);
                             record.SetString("summary", Summary);
                             record.SetDate("date", Date);
+                            record.SetString("thumbnail", Thumbnail);
                             service.AddRecord(record);
                         }
                     }

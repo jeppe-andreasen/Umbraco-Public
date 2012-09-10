@@ -590,6 +590,7 @@
     <Content Include="umbraco\images\umbraco\superman.png" />
     <Content Include="umbraco\plugins\tinymce3\insertMacro.aspx" />
     <Content Include="umbraco_client\propertypane\style.css" />
+    <Content Include="masterpages\PublicationPage.master" />
     <None Include="umbraco_client\ui\jquery.js.old" />
     <None Include="umbraco_client\ui\jqueryui.js.old" />
     <Content Include="umbraco_client\ui\jquery.js" />
@@ -776,6 +777,13 @@
     </Compile>
     <Compile Include="masterpages\OneColumnWidePage.master.designer.cs">
       <DependentUpon>OneColumnWidePage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\PublicationPage.master.cs">
+      <DependentUpon>PublicationPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\PublicationPage.master.designer.cs">
+      <DependentUpon>PublicationPage.master</DependentUpon>
     </Compile>
     <Compile Include="masterpages\ThreeColumnWidePage.master.cs">
       <DependentUpon>ThreeColumnWidePage.master</DependentUpon>

@@ -22,5 +22,10 @@ namespace UmbracoPublic.Logic.Entities
         {
             get { return GetValue<Html>("body"); }
         }
+
+        public Image Thumbnail
+        {
+            get { return GetValue<Image>("thumbnail"); }
+        }
     }
 }

@@ -28,7 +28,9 @@ namespace UmbracoPublic.Logic.Events
             var page = CmsService.Instance.GetItem<Page>(new Id(sender.Id));
             if (!page.Template.Path.StartsWith("/WebPage"))
                 return;
-            SearchBackgroundCrawler.QueueDocumentAdd(page);
+
+            var thumbnail = page.GetValue<Image>("thumbnail");
+            SearchBackgroundCrawler.QueueDocumentAdd(page, thumbnail.Exists? thumbnail.Url : string.Empty);
         }
     }
 }
