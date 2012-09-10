@@ -417,6 +417,7 @@
     <Content Include="assets\lib\tiny_mce\utils\form_utils.js" />
     <Content Include="assets\lib\tiny_mce\utils\mctabs.js" />
     <Content Include="assets\lib\tiny_mce\utils\validate.js" />
+    <Content Include="Global.asax" />
     <Content Include="handlers\BuildPackage.aspx" />
     <Content Include="handlers\ImageGallery\Handler.aspx" />
     <Content Include="handlers\InstallPackage.aspx" />
@@ -632,6 +633,9 @@
     </Compile>
     <Compile Include="assets\lib\tiny_mce\plugins\linqitmacro\dialog.aspx.designer.cs">
       <DependentUpon>dialog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="handlers\AccordionEditorHandler.aspx.cs">
       <DependentUpon>AccordionEditorHandler.aspx</DependentUpon>
