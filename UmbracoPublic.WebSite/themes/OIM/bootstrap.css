@@ -504,15 +504,17 @@ dt,
 dd {
   line-height: 1.2em;
   width: 100%;
+  padding: 0 15px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 dt {
   font-weight: bold;
   line-height: 50px;
   display: block;
   width: 100%;
-}
-dd {
-  margin-left: 0.6em;
 }
 .dl-horizontal dt {
   float: left;
@@ -4440,6 +4442,12 @@ a.badge:hover {
 }
 .news-list div:first-child {
   margin-left: 0;
+}
+.news-list div:first-child img {
+  max-width: 100px;
+}
+.span6 .news-list div + div {
+  width: 440px;
 }
 .news-list img {
   margin-top: 6px;
