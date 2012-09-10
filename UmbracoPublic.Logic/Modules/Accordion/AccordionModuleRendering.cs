@@ -10,7 +10,7 @@ namespace UmbracoPublic.Logic.Modules.Accordion
 {
     public class AccordionModuleRendering : BaseModuleRendering<AccordionModule>
     {
-        protected override void OnRegisterScripts()
+        protected override void RegisterScripts()
         {
             ModuleScripts.RegisterInitScript("accordion");
         }

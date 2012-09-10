@@ -11,46 +11,60 @@ namespace UmbracoPublic.Logic.Macros
 {
     public class CookieAcceptanceMacro : Control
     {
-        private RadioButton _rbAccepted;
-        private RadioButton _rbNotAccepted;
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            ViewStateMode = ViewStateMode.Enabled;
+            EnsureChildControls();
+        }
 
         protected override void CreateChildControls()
         {
-            base.CreateChildControls();
+            Controls.Clear();
 
-            AddLiteral("<fieldset>");
-            AddLiteral("<legend>Cookies</legend>");
-            AddLiteral("<label>Accepter brugen af cookies på dette website</label>");
-            var cookieState = DataService.Instance.GetCookieState();
-            _rbAccepted = new RadioButton();
-            _rbAccepted.ID = "rbAccepted";
-            _rbAccepted.GroupName = "CookieState";
-            _rbAccepted.Checked = cookieState == CookieState.Accepted;
-            _rbAccepted.Text = "Jeg accepterer";
-            Controls.Add(_rbAccepted);
-
-            _rbNotAccepted = new RadioButton();
-            _rbNotAccepted.ID = "rbNotAccepted";
-            _rbNotAccepted.GroupName = "CookieState";
-            _rbNotAccepted.Checked = cookieState == CookieState.NotAccepted;
-            _rbNotAccepted.Text = "Jeg accepterer ikke";
-            Controls.Add(_rbNotAccepted);
+            var cookiesAccepted = DataService.Instance.GetCookieState() == CookieState.Accepted;
+            AddLiteral(!cookiesAccepted ? "<div class=\"alert alert-block\">" : "<div class=\"alert alert-block alert-info\">");
+            AddLiteral("<button type=\"button\" class=\"close\" data-dismiss=\"alert\">×</button>");
+            AddLiteral("<h4>Accept af cookies fra " + this.Page.Request.Url.Host  + "</h4>");
+            if (cookiesAccepted)
+                AddLiteral("Vi har gemt cookies på din computer, da du tidligere har accepteret dem på " + Page.Request.Url.Host);
 
             var btnSubmit = new Button();
-            btnSubmit.CssClass = "btn btn-submit";
-            btnSubmit.Click += OnSubmit;
+            btnSubmit.ID = "btnSubmit";
+            
 
-            AddLiteral("</fieldset>");
+            if (cookiesAccepted)
+            {
+                btnSubmit.Click += OnDeleteClicked;
+                btnSubmit.Text += "Slet cookies.";
+                btnSubmit.CssClass = "btn btn-danger";
+            }
+            else
+            {
+                btnSubmit.Click += OnAcceptClicked;
+                btnSubmit.Text = "Accepter cookies.";
+                btnSubmit.CssClass = "btn btn-success";
+            }
+           
+            Controls.Add(btnSubmit);
+
+            AddLiteral("</div>");
+
+            
         }
 
-        void OnSubmit(object sender, EventArgs e)
+        void OnAcceptClicked(object sender, EventArgs e)
         {
             EnsureChildControls();
-
-            if (_rbAccepted.Checked)
-                DataService.Instance.SetCookieState(CookieState.Accepted);
-            else
-                DataService.Instance.SetCookieState(CookieState.NotAccepted);
+            DataService.Instance.AcceptCookies();
+            CreateChildControls();
+        }
+        
+        void OnDeleteClicked(object sender, EventArgs e)
+        {
+            EnsureChildControls();
+            DataService.Instance.DeleteCookies();
+            CreateChildControls();
         }
 
         private void AddLiteral(string content)

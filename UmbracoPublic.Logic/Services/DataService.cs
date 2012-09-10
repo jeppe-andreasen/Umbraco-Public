@@ -169,9 +169,9 @@ namespace UmbracoPublic.Logic.Services
         {
             if (!_cookieState.HasValue)
             {
-                var cookie = HttpContext.Current.Request.Cookies.Get("GoBasic_CookieState");
+                var cookie = HttpContext.Current.Request.Cookies.Get(HttpContext.Current.Request.Url.Host + "_CookieState");
                 if (cookie == null)
-                    _cookieState = CookieState.Unknown;
+                    _cookieState = CookieState.NotAccepted;
                 else
                 {
                     _cookieState = cookie.Value == "Accepted" ? CookieState.Accepted : CookieState.NotAccepted;
@@ -180,20 +180,28 @@ namespace UmbracoPublic.Logic.Services
             return _cookieState.Value;
         }
 
-        internal void SetCookieState(CookieState state)
+        internal void AcceptCookies()
         {
-            var cookie = HttpContext.Current.Request.Cookies.Get("GoBasic_CookieState");
-            if (cookie == null)
-            {
-                cookie = new HttpCookie("GoBasic_CookieState", state.ToString());
-                cookie.Expires = DateTime.Today.AddYears(1);
-            }
-            else
-            {
-                cookie.Value = state.ToString();
-            }
+            var cookie = new HttpCookie(HttpContext.Current.Request.Url.Host + "_CookieState", "Accepted");
+            cookie.Expires = DateTime.Today.AddYears(1);
             HttpContext.Current.Response.Cookies.Add(cookie);
-            _cookieState = state;
+            _cookieState = CookieState.Accepted;
+        }
+
+        internal void DeleteCookies()
+        {
+            var protectedCookies = new[] { "ASP.NET_SessionId", "UMB_UPDCHK", "UMB_UCONTEXT" };
+            var cookies = HttpContext.Current.Request.Cookies.AllKeys.Except(protectedCookies).ToArray();
+            foreach (var cookie in cookies)
+                DeleteCookie(cookie);
+            _cookieState = CookieState.NotAccepted;
+        }
+
+        private static void DeleteCookie(string name)
+        {
+            var cookie = new HttpCookie(name);
+            cookie.Expires = DateTime.Today.AddDays(-1);
+            HttpContext.Current.Response.Cookies.Add(cookie);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace UmbracoPublic.Logic.Modules.ImageGallery
 {
     public class ImageGalleryModuleRendering : BaseModuleRendering<ImageGalleryModule>
     {
-        protected override void OnRegisterScripts()
+        protected override void RegisterScripts()
         {
             var options = new JSONObject();
             options.AddValue("interval", 5000);

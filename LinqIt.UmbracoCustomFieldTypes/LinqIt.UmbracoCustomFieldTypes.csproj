@@ -52,6 +52,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Repository\LinqIt\LinqIt.Components.dll</HintPath>
     </Reference>
+    <Reference Include="LinqIt.Parsing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Parsing.dll</HintPath>
+    </Reference>
     <Reference Include="LinqIt.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Repository\LinqIt\LinqIt.Utils.dll</HintPath>
@@ -112,6 +116,7 @@
     <Compile Include="UmbracoImageTreeProvider.cs" />
     <Compile Include="UmbracoMediaTreeProvider.cs" />
     <Compile Include="UmbracoNode.cs" />
+    <Compile Include="Utilities\UmbracoRichTextHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LinqIt.UmbracoServices\LinqIt.UmbracoServices.csproj">
@@ -126,6 +131,9 @@
       <Project>{D2108BD9-C1A7-41D5-91A3-34F61CC615FB}</Project>
       <Name>UmbracoPublic.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

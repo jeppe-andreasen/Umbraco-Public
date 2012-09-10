@@ -94,11 +94,16 @@
     <Compile Include="Modules\Accordion\AccordionModule.cs" />
     <Compile Include="Entities\CategorizationFolder.cs" />
     <Compile Include="Modules\Accordion\AccordionModuleRendering.cs" />
+    <Compile Include="Modules\ContactList\ContactListModule.cs" />
+    <Compile Include="Modules\ContactList\ContactListModuleRendering.cs" />
     <Compile Include="Modules\Contact\ContactModuleRendering.cs" />
     <Compile Include="Modules\Disqus\DisqusModuleRendering.cs" />
+    <Compile Include="Modules\GoogleAnalytics\GoogleAnalyticsModule.cs" />
+    <Compile Include="Modules\GoogleAnalytics\GoogleAnalyticsModuleRendering.cs" />
     <Compile Include="Modules\Hero\HeroModuleRendering.cs" />
     <Compile Include="Modules\IFrame\IFrameModuleRendering.cs" />
     <Compile Include="Modules\ImageGallery\ImageGalleryModuleRendering.cs" />
+    <Compile Include="Modules\IRequiresCookies.cs" />
     <Compile Include="Modules\LinkList\LinkListModuleRendering.cs" />
     <Compile Include="Modules\MultiBox\MultiBoxModuleRendering.cs" />
     <Compile Include="Modules\NewsListSubscription\NewsListSubscriptionModule.cs" />
@@ -135,6 +140,7 @@
     </Compile>
     <Compile Include="Parts\Navigation\PrimaryNavigationPart.cs" />
     <Compile Include="Parts\Navigation\ServiceMenuPart.cs" />
+    <Compile Include="Parts\Navigation\SideNavigationPart.cs" />
     <Compile Include="Parts\Paging\Pager.cs" />
     <Compile Include="Parts\Paging\PagerType.cs" />
     <Compile Include="Parts\Search\NewsSearchResultPart.cs" />
@@ -162,6 +168,7 @@
     <Compile Include="Utilities\ModuleHelper.cs" />
     <Compile Include="Utilities\ModuleScripts.cs" />
     <Compile Include="Utilities\QueryStringKey.cs" />
+    <Compile Include="Utilities\SystemKey.cs" />
     <Compile Include="Utilities\Urls.cs" />
   </ItemGroup>
   <ItemGroup>

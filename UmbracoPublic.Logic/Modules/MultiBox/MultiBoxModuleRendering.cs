@@ -33,15 +33,12 @@ namespace UmbracoPublic.Logic.Modules.MultiBox
                 writer.RenderEndTag(); // h2
             }
             writer.RenderParagraph(Module.Intro.AsHtml);
-            writer.RenderBeginTag(HtmlTextWriterTag.Ul, "thumbnails");
-            writer.RenderBeginTag(HtmlTextWriterTag.Li, "span" + ColumnSpan);
+            
             writer.RenderBeginTag(HtmlTextWriterTag.Div, "thumbnail");
             if (Module.Image.Exists)
                 writer.RenderImageTag(Module.Image.Url, Module.Headline, null);
             writer.RenderRichText(Module.Body, HtmlTextWriterTag.Div, "caption");
             writer.RenderEndTag(); // div.thumbnail
-            writer.RenderEndTag(); // li.spanX
-            writer.RenderEndTag(); // ul.thumbnails
         }
     }
 }

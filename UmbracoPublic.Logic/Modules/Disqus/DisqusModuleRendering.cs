@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
 using LinqIt.Ajax.Parsing;
 using LinqIt.Cms;
+using LinqIt.Cms.Data;
 using UmbracoPublic.Logic.Utilities;
 
 namespace UmbracoPublic.Logic.Modules.Disqus
 {
-    public class DisqusModuleRendering : BaseModuleRendering<DisqusModule>
+    public class DisqusModuleRendering : BaseModuleRendering<DisqusModule>, IRequiresCookies
     {
-        protected override void OnRegisterScripts()
+        protected override void RegisterScripts()
         {
-            var configuration = CmsService.Instance.GetConfigurationItem<DisqusConfiguration>("DisqusConfiguration");
+            var configuration = GetRequiredConfig<DisqusConfiguration>("Disqus");
             ModuleScripts.RegisterInitScript("disqus", new JSONBoolean(configuration.DeveloperMode), new JSONString(configuration.SiteName));
         }
 

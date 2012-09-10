@@ -8,6 +8,7 @@ using LinqIt.Cms.Data;
 using LinqIt.Search;
 using LinqIt.Utils.Web;
 using UmbracoPublic.Logic.Entities;
+using UmbracoPublic.Logic.Modules.Contact;
 using UmbracoPublic.Logic.Utilities;
 
 namespace UmbracoPublic.Logic.Modules
@@ -73,6 +74,45 @@ namespace UmbracoPublic.Logic.Modules
                     continue;
 
                 writer.RenderLinkTag(newsListUrl + "?categorizations=" + categorizationId, allCategorizations.GetCategorization(categorizationId).DisplayName, "label");
+            }
+        }
+
+        public static void RenderContact(HtmlWriter writer, ContactModule module, bool showHeader)
+        {
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "thumbnail contact");
+            if (showHeader)
+                writer.RenderFullTag(HtmlTextWriterTag.H3, "Kontakt");
+            writer.AddAttribute(HtmlTextWriterAttribute.Src, module.Image.Url);
+            writer.AddAttribute(HtmlTextWriterAttribute.Alt, module.FullName);
+            writer.RenderImageTag(module.Image.Url, module.FullName, null);
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "caption");
+            writer.RenderBeginTag(HtmlTextWriterTag.H5);
+            writer.Write(module.FullName);
+            writer.RenderEndTag(); // h5
+            writer.RenderBeginTag(HtmlTextWriterTag.P);
+            WriteContactInfo(writer, module.Title);
+            WriteContactInfo(writer, module.Area);
+            if (!string.IsNullOrEmpty(module.Email))
+            {
+                writer.AddAttribute(HtmlTextWriterAttribute.Title, "Email : " + module.Email);
+                writer.RenderLinkTag("mailto:" + module.Email, "Email : " + module.Email);
+                writer.WriteBreak();
+            }
+            WriteContactInfo(writer, module.Phone, "Tlf.");
+            WriteContactInfo(writer, module.Mobile, "Mobil");
+            writer.RenderEndTag(); // p
+            writer.RenderEndTag(); // div.caption
+            writer.RenderEndTag(); // div.thumbnail.contact
+        }
+
+        private static void WriteContactInfo(LinqIt.Utils.Web.HtmlWriter writer, string info, string prefix = "")
+        {
+            if (!string.IsNullOrEmpty(info))
+            {
+                if (!string.IsNullOrEmpty(prefix))
+                    writer.Write(prefix + " ");
+                writer.Write(info);
+                writer.WriteBreak();
             }
         }
     }

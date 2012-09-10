@@ -19,7 +19,7 @@ namespace UmbracoPublic.Logic.Macros
 
         private void RenderOutput(HtmlWriter writer)
         {
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "well");
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "well facts");
             if (!string.IsNullOrEmpty(Headline))
                 writer.RenderFullTag(HtmlTextWriterTag.H3, Headline);
             var html = new Html(System.Web.HttpUtility.UrlDecode(Content));

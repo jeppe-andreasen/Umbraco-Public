@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -41,10 +42,22 @@ namespace UmbracoPublic.Logic.Utilities
             return result;
         }
 
+        public static string GetSystemUrl(SystemKey key)
+        {
+            var path = CmsService.Instance.GetSystemPath(key.ToString());
+            if (string.IsNullOrEmpty(path))
+                throw new ConfigurationErrorsException("System key not specified: " + key);
+            return CmsService.Instance.GetItem<Page>(path).Url;
+        }
+
         internal static string GetMainNewsListUrl()
         {
-            var path = CmsService.Instance.GetSystemPath("MainNewsPage");
-            return CmsService.Instance.GetItem<Page>(path).Url;
+            return GetSystemUrl(SystemKey.MainNewsPage);
+        }
+
+        internal static string GetCookieAcceptancePageUrl()
+        {
+            return GetSystemUrl(SystemKey.CookieAcceptancePage);
         }
     }
 }

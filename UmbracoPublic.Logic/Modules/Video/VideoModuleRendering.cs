@@ -12,7 +12,7 @@ namespace UmbracoPublic.Logic.Modules.Video
 {
     public class VideoModuleRendering : BaseModuleRendering<VideoModule>
     {
-        protected override void OnRegisterScripts()
+        protected override void RegisterScripts()
         {
             ModuleScripts.RegisterInitScript("videomodule");
         }

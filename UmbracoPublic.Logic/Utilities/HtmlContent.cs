@@ -71,8 +71,15 @@ namespace UmbracoPublic.Logic.Utilities
             Control control = null;
             if (!string.IsNullOrEmpty(macro.Assembly))
             {
-                var ctrlType = Type.GetType(macro.Type + "," + macro.Assembly);
-                control = (Control)Activator.CreateInstance(ctrlType);
+                try
+                {
+                    var ctrlType = Type.GetType(macro.Type + "," + macro.Assembly);
+                    control = (Control)Activator.CreateInstance(ctrlType);
+                }
+                catch(Exception exc)
+                {
+                    return new LiteralControl("Unable to create macro: " + macro.Type + "," + macro.Assembly);
+                }
             }
             else
             {
