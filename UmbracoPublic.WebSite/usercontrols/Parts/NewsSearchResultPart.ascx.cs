@@ -33,9 +33,15 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
             IEnumerable<SearchRecord> records = _result.Records.OrderByDescending(r => r.GetDate("date"));
             if (pager.Visible)
                 records = records.Skip(pager.Skip).Take(pager.Take);
-            litOutput.Text = HtmlWriter.Generate(w => Snippets.RenderNewsResults(w, records.ToArray()));
+            litOutput.Text = HtmlWriter.Generate(w => GenerateOutput(w, records));
 
             base.OnPreRender(e);
+        }
+
+        private static void GenerateOutput(HtmlWriter writer, IEnumerable<SearchRecord> records)
+        {
+
+            Snippets.RenderNewsResults(writer, records.ToArray());
         }
     }
 }

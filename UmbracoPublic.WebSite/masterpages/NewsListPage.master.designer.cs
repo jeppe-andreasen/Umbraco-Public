@@ -13,21 +13,21 @@ namespace UmbracoPublic.WebSite.masterpages {
     public partial class NewsListPage {
         
         /// <summary>
-        /// searchResultPart control.
+        /// newsSearchResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UmbracoPublic.WebSite.usercontrols.Parts.NewsSearchResultPart searchResultPart;
+        protected global::UmbracoPublic.Logic.Parts.Search.NewsSearchResultPart newsSearchResult;
         
         /// <summary>
-        /// searchFilterPart control.
+        /// searchFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UmbracoPublic.WebSite.usercontrols.Parts.NewsSearchFilterPart searchFilterPart;
+        protected global::UmbracoPublic.WebSite.usercontrols.Parts.NewsSearchFilterPart searchFilter;
     }
 }

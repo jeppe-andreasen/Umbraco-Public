@@ -1,11 +1,18 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/WidePageWithRightColumn.master" AutoEventWireup="true" CodeBehind="NewsListPage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.NewsListPage, UmbracoPublic.WebSite" %>
 <%@ Register src="~/usercontrols/Parts/NewsSearchFilterPart.ascx" tagname="NewsSearchFilterPart" tagprefix="part" %>
-<%@ Register src="~/usercontrols/Parts/NewsSearchResultPart.ascx" tagname="NewsSearchResultPart" tagprefix="part" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Search" tagprefix="cc1" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Search" tagprefix="cc1" %>
 <asp:Content ID="cntAfterMain" ContentPlaceHolderID="plhAfterMain" runat="server">
+    
     <hr>
-    <part:NewsSearchResultPart ID="searchResultPart" runat="server" />
+    <div class="span6">
+        <cc1:NewsSearchResultPart ID="newsSearchResult" runat="server"></cc1:NewsSearchResultPart>
+
+    </div>
+    <div class="span3">&nbsp;</div>
+
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="plhBeforeRight" runat="server">
-    <part:NewsSearchFilterPart ID="searchFilterPart" runat="server" />
+    <part:NewsSearchFilterPart ID="searchFilter" runat="server" />
 </asp:Content>
 
