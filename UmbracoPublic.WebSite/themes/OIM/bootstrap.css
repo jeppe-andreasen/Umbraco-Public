@@ -4556,6 +4556,28 @@ a.badge:hover {
 .news-list .pagination li:last-child a span {
   display: none;
 }
+.key-numbers {
+  *zoom: 1;
+  border-bottom: 1px solid #acb5b4;
+  background: url(images/key-top.png) center 0 no-repeat;
+  padding-top: 30px;
+  color: #000000;
+}
+.key-numbers:before,
+.key-numbers:after {
+  display: table;
+  content: "";
+}
+.key-numbers:after {
+  clear: both;
+}
+.key-numbers .fit div {
+  line-height: 1em;
+}
+.key-numbers dd {
+  font-size: 0.75em;
+  text-align: center;
+}
 .pull-right {
   float: right;
 }
