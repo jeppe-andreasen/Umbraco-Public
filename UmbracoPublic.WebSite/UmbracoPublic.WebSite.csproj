@@ -523,6 +523,8 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="themes\Cyborg\StyleSheet1.css" />
     <Content Include="themes\Default\bootstrap.min.css" />
+    <Content Include="themes\OIM\bootstrap.css" />
+    <Content Include="themes\OIM\IE\IE.css" />
     <Content Include="themes\OIM\images\Sprite.png" />
     <Content Include="themes\OIM\less\accordion.less" />
     <Content Include="themes\OIM\less\alerts.less" />
@@ -594,6 +596,8 @@
     <Content Include="masterpages\PublicationPage.master" />
     <None Include="umbraco_client\ui\jquery.js.old" />
     <None Include="umbraco_client\ui\jqueryui.js.old" />
+    <Content Include="umbraco_client\ui\jqueryui1_8.js" />
+    <Content Include="umbraco_client\ui\jquery1_7.js" />
     <Content Include="umbraco_client\ui\jquery.js" />
     <Content Include="umbraco_client\ui\jqueryui.js" />
     <Content Include="usercontrols\AccordionWrapper.ascx" />

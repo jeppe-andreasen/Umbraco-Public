@@ -79,9 +79,13 @@ namespace UmbracoPublic.Logic.Services
                 tmp = tmp.ParentPage;
             }
 
-            var result = new List<MenuItem>();
-            AddChildren(result, menuIds, parent);
-            return result;
+            
+            var topMenuItem = GetMenuItem(parent);
+            var children = new List<MenuItem>();
+            AddChildren(children, menuIds, parent);
+            foreach (var child in children)
+                topMenuItem.AddChild(child);
+            return new []{ topMenuItem};
         }
 
         private static void AddChildren(ICollection<MenuItem> collection, ICollection<Id> menuIds, Entity parent)

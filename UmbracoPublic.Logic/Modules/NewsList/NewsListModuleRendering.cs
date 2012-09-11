@@ -76,19 +76,14 @@ namespace UmbracoPublic.Logic.Modules.NewsList
 
         protected void RenderOutput(NewsListModule item, HtmlWriter writer)
         {
-            var renderHr = false;
             if (!string.IsNullOrEmpty(item.Headline))
             {
                 writer.RenderFullTag(HtmlTextWriterTag.H2, item.Headline);
-                renderHr = true;
             }
             if (!item.Intro.IsEmpty)
             {
                 writer.RenderParagraph(item.Intro.AsHtml);
-                renderHr = true;
             }
-            if (renderHr)
-                writer.RenderFullTag(HtmlTextWriterTag.Hr, "");
 
             IEnumerable<SearchRecord> records = _result.Records.OrderByDescending(r => r.GetDate("date"));
             if (_pager.Visible)

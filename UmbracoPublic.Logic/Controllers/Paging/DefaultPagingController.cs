@@ -14,17 +14,17 @@ namespace UmbracoPublic.Logic.Controllers.Paging
             writer.RenderBeginTag(HtmlTextWriterTag.Ul);
 
             if (pageNumber > 1)
-                RenderPageLink(writer, pageNumber - 1, "Prev", "prev", false);
+                RenderPageLink(writer, pageNumber - 1, "Prev", "prev", true);
             else
-                RenderPageLink(writer, null, "Prev", "prev disabled", false);
+                RenderPageLink(writer, null, "Prev", "prev disabled", true);
 
             for (var i = firstPage; i <= lastPage; i++)
-                RenderPageLink(writer, i == pageNumber ? (int?)null : i, i.ToString(), i == pageNumber ? "page disabled" : "page", false);
+                RenderPageLink(writer, i == pageNumber ? (int?)null : i, i.ToString(), i == pageNumber ? "page disabled" : "page", true);
 
             if (pageNumber < pages)
-                RenderPageLink(writer, pageNumber + 1, "Next", "next", false);
+                RenderPageLink(writer, pageNumber + 1, "Next", "next", true);
             else
-                RenderPageLink(writer, null, "Next", "next disabled", false);
+                RenderPageLink(writer, null, "Next", "next disabled", true);
 
             writer.RenderEndTag(); // ul
             writer.RenderEndTag(); // div.pagination

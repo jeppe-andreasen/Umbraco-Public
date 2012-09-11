@@ -24,7 +24,7 @@ namespace UmbracoPublic.WebSite.handlers
             context.Response.ContentType = "application/zip";
 
             var name = string.IsNullOrEmpty(context.Request.QueryString["name"]) ? "Package" : context.Request.QueryString["name"];
-            context.Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileNameWithoutExtension(name) + ".zip");
+            context.Response.AddHeader("Content-Disposition", "attachment; filename=" + Path.GetFileNameWithoutExtension(name).Replace(" ", "") + ".zip");
 
             var preferences = PackagePreferences.Load();
 

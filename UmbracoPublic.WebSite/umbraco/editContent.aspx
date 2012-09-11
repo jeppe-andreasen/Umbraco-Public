@@ -5,8 +5,8 @@
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="body" runat="server">
     <umb:JsInclude ID="JsInclude1" runat="server" FilePath="js/umbracoCheckKeys.js" PathNameAlias="UmbracoRoot" />
-    <umb:JsInclude ID="JsInclude2" runat="server" FilePath="ui/jquery.js" PathNameAlias="UmbracoClient" Priority="0" />
-    <umb:JsInclude ID="JsInclude3" runat="server" FilePath="ui/jqueryui.js" PathNameAlias="UmbracoClient" Priority="1" />
+    <umb:JsInclude ID="JsInclude2" runat="server" FilePath="ui/jquery1_7.js" PathNameAlias="UmbracoClient" Priority="0" />
+    <umb:JsInclude ID="JsInclude3" runat="server" FilePath="ui/jqueryui1_8.js" PathNameAlias="UmbracoClient" Priority="1" />
     <table style="height: 38px; width: 371px; border: none 0px;" cellspacing="0" cellpadding="0"
         id="__controls">
         <tr valign="top">

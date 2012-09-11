@@ -24,7 +24,6 @@
 		    float:left;
 		}
 	</style>
-	<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 	<!--[if lt IE 9]>
@@ -43,6 +42,7 @@
   <body>
 		<form id="form1" runat="server">
         <nav class="top">
+            <cc1:GridModulePlaceholder ID="plhHead" runat="server" Key="Head" ItemPath="§SiteRoot"></cc1:GridModulePlaceholder>
             <div class="container">
                 <!--googleoff: index-->
                 <div class="navbar">

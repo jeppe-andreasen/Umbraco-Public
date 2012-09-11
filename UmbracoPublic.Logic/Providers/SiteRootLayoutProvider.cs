@@ -11,6 +11,7 @@ namespace UmbracoPublic.Logic.Providers
         public GridLayout GetGridLayout()
         {
             var result = new GridLayout(12);
+            result.AddRow().AddCell(12, "Head", "Head", GridLayoutCellType.Placeholder);
             result.AddRow().AddCell(12, "Footer", "Footer", GridLayoutCellType.Placeholder);
             return result;
         }
