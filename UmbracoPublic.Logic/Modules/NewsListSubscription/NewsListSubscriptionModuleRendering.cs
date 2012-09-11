@@ -60,5 +60,10 @@ namespace UmbracoPublic.Logic.Modules.NewsListSubscription
                     DataService.Instance.SubscribeToNewsletter(_txtEmailAddress.Text, item.Value);
             }
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Nyhedsliste tilmelding"; }
+        }
     }
 }

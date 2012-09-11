@@ -12,5 +12,10 @@ namespace UmbracoPublic.Logic.Modules.Contact
         {
             Snippets.RenderContact(writer, module, true);
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Kontaktoplysning"; }
+        }
     }
 }

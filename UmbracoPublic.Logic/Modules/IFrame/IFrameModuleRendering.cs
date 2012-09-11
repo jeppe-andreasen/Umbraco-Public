@@ -38,5 +38,10 @@ namespace UmbracoPublic.Logic.Modules.IFrame
         {
             return new[] { 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Iframe boks"; }
+        }
     }
 }

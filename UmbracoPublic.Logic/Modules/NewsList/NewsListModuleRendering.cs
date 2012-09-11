@@ -92,5 +92,10 @@ namespace UmbracoPublic.Logic.Modules.NewsList
                 records = records.Take(Module.MaxItemsShown.Value);
             Snippets.RenderNewsResults(writer, records.ToArray());
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Nyhedsliste"; }
+        }
     }
 }

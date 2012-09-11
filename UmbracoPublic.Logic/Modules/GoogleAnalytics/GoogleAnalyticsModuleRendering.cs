@@ -17,6 +17,11 @@ namespace UmbracoPublic.Logic.Modules.GoogleAnalytics
 
             ModuleScripts.RegisterInitScript("googleanalytics", new JSONString(Module.ApiKey));
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Google statistik"; }
+        }
     }
 }
 

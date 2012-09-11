@@ -80,5 +80,10 @@ namespace UmbracoPublic.Logic.Modules.Accordion
             return new int[] { 3, 4, 6, 9, 12 };
         }
 
+
+        public override string ModuleDescription
+        {
+            get { return "Dette modul muliggør forskellige sektioner som kan klappes sammen"; }
+        }
     }
 }

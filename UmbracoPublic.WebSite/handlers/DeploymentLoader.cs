@@ -28,6 +28,8 @@ namespace UmbracoPublic.WebSite.handlers
         /// 
         public override void Render(ref XmlTree Tree)
         {
+            Tree.Clear();
+
             // Create tree node to allow sending a newsletter
             var sendNewsletter = XmlTreeNode.Create(this);
             sendNewsletter.Text = "Create Deployment Package";

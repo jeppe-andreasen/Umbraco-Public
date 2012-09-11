@@ -20,5 +20,10 @@ namespace UmbracoPublic.Logic.Modules.LinkList
             }
             writer.RenderEndTag();
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Liste med links"; }
+        }
     }
 }

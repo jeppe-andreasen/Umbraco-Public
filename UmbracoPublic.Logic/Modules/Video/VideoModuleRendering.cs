@@ -25,5 +25,10 @@ namespace UmbracoPublic.Logic.Modules.Video
             videoProvider.RenderVideoModule(writer, module.VideoId);
             writer.RenderEndTag();
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Video boks"; }
+        }
     }
 }

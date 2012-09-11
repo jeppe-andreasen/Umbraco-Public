@@ -19,5 +19,10 @@ namespace UmbracoPublic.Logic.Modules.Hero
 
             writer.RenderEndTag(); // div.hero-unit
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Fokus boks"; }
+        }
     }
 }

@@ -121,13 +121,16 @@ namespace UmbracoPublic.Logic.Modules
             writer.AddAttribute(HtmlTextWriterAttribute.Type, "button");
             writer.AddAttribute("data-dismiss", "alert");
             writer.RenderFullTag(HtmlTextWriterTag.Button, "×", "close");
-            writer.RenderFullTag(HtmlTextWriterTag.Strong, "Info!");
-            writer.Write("This module requires cookies, and will not be rendered.");
+            writer.RenderFullTag(HtmlTextWriterTag.Strong, "Bemærk! ");
+            writer.Write("Dette indhold kræver cookies for at blive vist korrekt.");
             try
             {
+                
                 var cookieInfoUrl = Urls.GetCookieAcceptancePageUrl();    
                 if (!string.IsNullOrEmpty(cookieInfoUrl))
-                    writer.RenderLinkTag(cookieInfoUrl, "Læs mere om cookies på " + Page.Request.Url.Host);
+                {
+                    writer.RenderLinkTag(cookieInfoUrl, "Læs mere om cookies");
+                }
             }
             catch(ConfigurationErrorsException)
             {
@@ -143,5 +146,7 @@ namespace UmbracoPublic.Logic.Modules
                 throw new ConfigurationErrorsException("The " + configurationName + " configuration is missing");
             return result;
         }
+
+        public abstract string ModuleDescription { get; }
     }
 }

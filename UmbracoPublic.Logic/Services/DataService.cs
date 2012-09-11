@@ -79,34 +79,34 @@ namespace UmbracoPublic.Logic.Services
                 tmp = tmp.ParentPage;
             }
 
-            
-            var topMenuItem = GetMenuItem(parent);
-            var children = new List<MenuItem>();
-            AddChildren(children, menuIds, parent);
-            foreach (var child in children)
-                topMenuItem.AddChild(child);
+            var topMenuItem = GetMenuItemRecursive(parent, menuIds);
             return new []{ topMenuItem};
         }
 
-        private static void AddChildren(ICollection<MenuItem> collection, ICollection<Id> menuIds, Entity parent)
+        private static MenuItem GetMenuItemRecursive(Page page, ICollection<Id> menuIds)
         {
-            foreach (var child in parent.GetChildren<Page>())
+            var result = GetMenuItem(page);
+            if (result == null)
+                return null;
+            
+            result.Selected = page.Id == menuIds.Last();
+            var children = page.GetChildren<Page>().Where(c => !c.GetValue<bool>("hideFromMenu")).ToArray();
+            if (children.Any())
             {
-                var menuItem = GetMenuItem(child);
-                if (menuItem == null)
-                    continue;
-
-                collection.Add(menuItem);
-
-                if (menuIds.Contains(child.Id))
+                if (menuIds.Contains(page.Id))
                 {
-                    menuItem.Active = true;
-                    var childCollection = new List<MenuItem>();
-                    AddChildren(childCollection, menuIds, child);
-                    foreach (var childMenuItem in childCollection)
-                        menuItem.AddChild(childMenuItem);
+                    result.Expanded = true;
+                    foreach (var child in children)
+                    {
+                        var childItem = GetMenuItemRecursive(child, menuIds);
+                        if (childItem != null)
+                            result.AddChild(childItem);
+                    }
                 }
+                else
+                    result.Collapsed = true;
             }
+            return result;
         }
 
         public SearchResult PerformSearch(SearchFilter filter)

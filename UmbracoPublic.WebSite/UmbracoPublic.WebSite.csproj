@@ -523,7 +523,8 @@
     <Content Include="test\WebForm1.aspx" />
     <Content Include="themes\Cyborg\StyleSheet1.css" />
     <Content Include="themes\Default\bootstrap.min.css" />
-    <Content Include="themes\OIM\bootstrap.css" />
+    <Content Include="themes\OIM\css\bootstrap.css" />
+    <Content Include="themes\OIM\css\responsive.css" />
     <Content Include="themes\OIM\IE\IE.css" />
     <Content Include="themes\OIM\images\Sprite.png" />
     <Content Include="themes\OIM\less\accordion.less" />
@@ -567,7 +568,6 @@
     <Content Include="themes\OIM\less\utilities.less" />
     <Content Include="themes\OIM\less\variables.less" />
     <Content Include="themes\OIM\less\wells.less" />
-    <Content Include="themes\OIM\responsive.css" />
     <Content Include="themes\OIM\tinymce.css" />
     <Content Include="themes\Readable\Readable.css" />
     <Content Include="themes\Superhero\style.css" />
@@ -610,7 +610,6 @@
     <Content Include="usercontrols\Parts\GeneralContentPart.ascx" />
     <Content Include="usercontrols\Parts\NewsSearchResultPart.ascx" />
     <Content Include="usercontrols\Parts\NewsSearchFilterPart.ascx" />
-    <Content Include="usercontrols\Parts\SideNavigation.ascx" />
     <Content Include="usercontrols\Parts\SiteSearchResult.ascx" />
     <Content Include="usercontrols\Parts\SubNavigationBar.ascx" />
     <Content Include="Web.config">
@@ -1032,13 +1031,6 @@
     </Compile>
     <Compile Include="usercontrols\Parts\NewsSearchFilterPart.ascx.designer.cs">
       <DependentUpon>NewsSearchFilterPart.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Parts\SideNavigation.ascx.cs">
-      <DependentUpon>SideNavigation.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Parts\SideNavigation.ascx.designer.cs">
-      <DependentUpon>SideNavigation.ascx</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\Parts\SiteSearchResult.ascx.cs">
       <DependentUpon>SiteSearchResult.ascx</DependentUpon>

@@ -40,5 +40,10 @@ namespace UmbracoPublic.Logic.Modules.MultiBox
             writer.RenderRichText(Module.Body, HtmlTextWriterTag.Div, "caption");
             writer.RenderEndTag(); // div.thumbnail
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Indholdsboks"; }
+        }
     }
 }

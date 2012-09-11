@@ -1,12 +1,12 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.master" AutoEventWireup="true" CodeBehind="NewsPage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.NewsPage, UmbracoPublic.WebSite" %>
 <%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
-<%@ Register src="../usercontrols/Parts/SideNavigation.ascx" tagname="SideNavigation" tagprefix="uc1" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
     <div class="sectionB">
     <div class="container">
         <div class="row">
             <div class="span3">
-                <uc1:SideNavigation ID="sideNavigation" runat="server" />
+                <cc1:SideNavigationPart ID="sideNavigation" runat="server"></cc1:SideNavigationPart>
                 <!-- After Side Navigation -->
             </div>
             <div class="span9">

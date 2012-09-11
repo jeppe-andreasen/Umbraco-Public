@@ -65,5 +65,10 @@ namespace UmbracoPublic.Logic.Modules.ImageGallery
             writer.RenderFullTag(HtmlTextWriterTag.A, "&rsaquo;", "right carousel-control");
             writer.RenderEndTag(); // div.carousel
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Billedgalleri"; }
+        }
     }
 }

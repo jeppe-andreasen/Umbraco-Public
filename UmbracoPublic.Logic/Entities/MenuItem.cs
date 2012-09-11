@@ -7,7 +7,7 @@ namespace UmbracoPublic.Logic.Entities
 {
     public class MenuItem
     {
-        private List<MenuItem> _children = new List<MenuItem>();
+        private readonly List<MenuItem> _children = new List<MenuItem>();
 
         public string DisplayName { get; set; }
 
@@ -22,6 +22,10 @@ namespace UmbracoPublic.Logic.Entities
 
         public bool HasChildren { get { return _children.Count > 0; } }
 
-        public bool Active { get; set; }
+        public bool Selected { get; set; }
+
+        public bool Expanded { get; set; }
+
+        public bool Collapsed { get; set; }
     }
 }

@@ -24,5 +24,10 @@ namespace UmbracoPublic.Logic.Modules.ContactList
             writer.RenderEndTag(); // ul.thumbnails
             writer.RenderEndTag(); // div.contact-list
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Liste med kontakter"; }
+        }
     }
 }

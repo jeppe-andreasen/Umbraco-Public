@@ -30,10 +30,14 @@ namespace UmbracoPublic.Logic.Parts.Navigation
             writer.GoogleOn();
         }
 
-        private void RenderMenuItem(LinqIt.Utils.Web.HtmlWriter writer, Entities.MenuItem menuItem)
+        private static void RenderMenuItem(LinqIt.Utils.Web.HtmlWriter writer, Entities.MenuItem menuItem)
         {
-            if (menuItem.Active)
-                writer.AddClass("active");
+            if (menuItem.Selected)
+                writer.AddClass("selected");
+            if (menuItem.Expanded)
+                writer.AddClass("expanded");
+            if (menuItem.Collapsed)
+                writer.AddClass("collapsed");
 
             writer.RenderBeginTag(HtmlTextWriterTag.Li);
             writer.AddAttribute(HtmlTextWriterAttribute.Href, menuItem.Url);

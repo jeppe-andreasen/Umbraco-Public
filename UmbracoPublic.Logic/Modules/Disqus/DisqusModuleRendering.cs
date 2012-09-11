@@ -25,5 +25,10 @@ namespace UmbracoPublic.Logic.Modules.Disqus
             writer.AddAttribute(HtmlTextWriterAttribute.Id, "disqus_thread");
             writer.RenderFullTag(HtmlTextWriterTag.Div, "");
         }
+
+        public override string ModuleDescription
+        {
+            get { return "Kommentarboks"; }
+        }
     }
 }
