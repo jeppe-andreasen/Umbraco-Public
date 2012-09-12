@@ -4636,7 +4636,8 @@ a.badge:hover {
 .news-list .news-items {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 15px 0;
+  border-bottom: #dce3e2 1px solid;
 }
 .news-list .news-items li {
   *zoom: 1;
@@ -4674,6 +4675,9 @@ a.badge:hover {
 }
 .news-list .news-items p {
   margin-top: 10px;
+}
+.news-list .pagination {
+  margin-top: -1px;
 }
 .label {
   background: #c4caca;
