@@ -262,6 +262,12 @@ application.accordion = {
     }
 };
 
+application.bigtext = {
+    init:function (element){
+        $(element).bigtext();
+    }
+};
+
 /* Button */
 
 application.button = {

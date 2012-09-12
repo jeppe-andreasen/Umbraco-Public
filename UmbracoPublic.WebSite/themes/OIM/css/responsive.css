@@ -187,6 +187,7 @@
 @media (min-width: 768px) and (max-width: 979px) {
   .row {
     margin-left: -20px;
+    padding-bottom: 30px;
     *zoom: 1;
   }
   .row:before,
@@ -398,6 +399,7 @@
 @media (min-width: 1200px) {
   .row {
     margin-left: -30px;
+    padding-bottom: 30px;
     *zoom: 1;
   }
   .row:before,
@@ -679,7 +681,7 @@
   }
   .nav-collapse .nav > li > a:hover,
   .nav-collapse .dropdown-menu a:hover {
-    background-color: #566261;
+    background-color: #1e1e1e;
   }
   .nav-collapse.in .btn-group {
     margin-top: 5px;
@@ -715,8 +717,8 @@
     float: none;
     padding: 0.6em 15px;
     margin: 0.6em 0;
-    border-top: 1px solid #566261;
-    border-bottom: 1px solid #566261;
+    border-top: 1px solid #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
     -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
     box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
