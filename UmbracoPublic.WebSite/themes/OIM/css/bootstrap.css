@@ -4650,6 +4650,9 @@ a.badge:hover {
 .span6 .news-list .news-items li div + div {
   width: 440px;
 }
+.span9 .news-list .news-items li div + div {
+  width: 710px;
+}
 .news-list .news-items p {
   margin-top: 10px;
 }
@@ -4747,6 +4750,9 @@ a.badge:hover {
 .search-result {
   list-style: none;
   padding: 15px;
+}
+.search-word {
+  color: #f7941d;
 }
 .pull-right {
   float: right;
