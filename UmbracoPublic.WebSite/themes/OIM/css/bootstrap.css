@@ -2010,6 +2010,9 @@ table .span24 {
   background: url(../images/Sprite.png) -21px -25px;
   content: "";
 }
+.caret span {
+  margin-left: -10000em;
+}
 .dropdown .caret {
   margin-top: 8px;
 }
@@ -2749,11 +2752,17 @@ footer .module {
   display: block;
   color: #ffffff;
 }
-.nav > li:hover {
+.nav > li:hover,
+.nav > li.selected {
   background-color: rgba(0, 0, 0, 0.4);
 }
-.well .nav > li:hover {
+.well .nav > li:hover,
+.well .nav > li.selected {
   background: none;
+}
+.nav > li:hover a,
+.nav > li.selected a {
+  color: #004d46;
 }
 .nav > li > a:hover {
   text-decoration: none;
@@ -3158,6 +3167,9 @@ ul.nav-pills {
   position: absolute;
   bottom: 7px;
 }
+.navbar .brand span {
+  margin: -1000em;
+}
 .navbar .navbar-text {
   margin-bottom: 0;
   line-height: 40px;
@@ -3383,11 +3395,12 @@ ul.nav-pills {
   color: #ffffff;
   text-decoration: none;
 }
+.navbar .nav .active {
+  background-color: rgba(0, 0, 0, 0.4);
+}
 .navbar .nav .active > a,
 .navbar .nav .active > a:hover {
-  color: #ffffff;
-  text-decoration: none;
-  background-color: #1e1e1e;
+  color: #00c0af;
 }
 .navbar .divider-vertical {
   height: 40px;
@@ -3602,10 +3615,10 @@ ul.nav-pills {
 }
 .pagination a:hover,
 .pagination .active a {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 .pagination .active a {
-  color: #e2f6f5;
+  color: #1e1e1e;
   cursor: default;
 }
 .pagination .disabled span,
@@ -3662,13 +3675,19 @@ ul.nav-pills {
   box-sizing: border-box;
   padding: 12px 0;
   text-align: center;
-  margin-right: 5px;
+  margin-right: 1px;
   background-color: rgba(0, 0, 0, 0.8);
   background-repeat: none;
   color: #ffffff;
 }
 * .pagination a:hover {
   background-color: #000000;
+}
+.active * .pagination a:hover {
+  background: #ffffff;
+}
+* .pagination .active a:hover {
+  background: #fff;
 }
 * .pagination li:first-child a {
   background-image: url(../images/Sprite.png);
@@ -4729,8 +4748,9 @@ a.badge:hover {
 .key-numbers:after {
   clear: both;
 }
-.key-numbers .fit div {
+.key-numbers .fit span {
   line-height: 1em;
+  display: block;
 }
 .key-numbers dd {
   font-size: 0.75em;
