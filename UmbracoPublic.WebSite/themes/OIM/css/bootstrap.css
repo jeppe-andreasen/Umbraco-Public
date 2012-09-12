@@ -1980,7 +1980,7 @@ table .span24 {
   margin-top: 1px;
   line-height: 12px;
   vertical-align: text-top;
-  background-image: url("images/Sprite.png");
+  background-image: url("../images/Sprite.png");
   background-position: 30px 30px;
   background-repeat: no-repeat;
 }
@@ -2007,7 +2007,7 @@ table .span24 {
   width: 12px;
   height: 8px;
   vertical-align: top;
-  background: url(images/Sprite.png) -21px -25px;
+  background: url(../images/Sprite.png) -21px -25px;
   content: "";
 }
 .dropdown .caret {
@@ -2734,7 +2734,7 @@ footer .module {
   line-height: 1.5em;
   list-style-type: none;
   padding-left: 8px;
-  background: url("images/list-image.png") 0 8px no-repeat;
+  background: url("../images/list-image.png") 0 8px no-repeat;
   margin-bottom: 5px;
 }
 .nav {
@@ -2794,7 +2794,7 @@ footer .module {
 }
 .nav-list li li a {
   background: #f3f4f4;
-  background-image: url(images/menu-arrow.png);
+  background-image: url(../images/menu-arrow.png);
   background-position: right 26px;
   background-repeat: no-repeat;
   padding-right: 22px;
@@ -2821,7 +2821,7 @@ footer .module {
   font-weight: normal;
   padding: 8px 15px 8px 36px;
   background-color: :#ffffff;
-  background-image: url(images/small-menu.png);
+  background-image: url(../images/small-menu.png);
   background-position: 18px 13px;
   background-repeat: no-repeat;
   border-top: 0;
@@ -3259,7 +3259,7 @@ ul.nav-pills {
   float: left;
   background: #111211;
   background: rgba(17, 18, 17, 0.3);
-  background-image: url(images/search.png);
+  background-image: url(../images/search.png);
   background-position: center center;
   background-repeat: no-repeat;
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -4308,7 +4308,7 @@ a.badge:hover {
 }
 .accordion-heading {
   border-bottom: 0;
-  background-image: url(images/open-close.png);
+  background-image: url(../images/open-close.png);
   background-position: 98% -599px;
   background-repeat: no-repeat;
 }
@@ -4506,7 +4506,7 @@ a.badge:hover {
 }
 .linklist li .arrow {
   width: 6px;
-  background: url(images/Sprite.png) -139px -19px no-repeat;
+  background: url(../images/Sprite.png) -139px -19px no-repeat;
   float: right;
   line-height: 1em;
   height: 14px;
@@ -4605,7 +4605,7 @@ a.badge:hover {
   background-color: #000000;
 }
 .news-list .pagination li:first-child a {
-  background-image: url(images/Sprite.png);
+  background-image: url(../images/Sprite.png);
   background-position: -582px -14px;
   border: 0;
   -webkit-border-radius: 0;
@@ -4616,7 +4616,7 @@ a.badge:hover {
   display: none;
 }
 .news-list .pagination li:last-child a {
-  background-image: url(images/Sprite.png);
+  background-image: url(../images/Sprite.png);
   background-position: -524px -14px;
   border: 0;
   -webkit-border-radius: 0;
@@ -4687,7 +4687,7 @@ a.badge:hover {
 .key-numbers {
   *zoom: 1;
   border-bottom: 1px solid #acb5b4;
-  background: url(images/key-top.png) center 15px no-repeat;
+  background: url(../images/key-top.png) center 15px no-repeat;
   padding: 45px 15px 15px;
   color: #000000;
 }
