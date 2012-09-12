@@ -2808,16 +2808,24 @@ footer .module {
   background-color: #c4caca;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.nav-list li li.active a {
+.nav-list li li.selected a {
   background-color: #ffffff;
+}
+.nav-list li li.expanded a {
   background-position: right -1055px;
 }
-.nav-list li li.active a:hover {
+.nav-list li li.active a,
+.nav-list li li.expanded a {
+  background-color: #ffffff;
+}
+.nav-list li li.active a:hover,
+.nav-list li li.expanded a:hover {
   text-decoration: none;
   background-color: #c4caca;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.nav-list li li.active li a {
+.nav-list li li.active li a,
+.nav-list li li.expanded li a {
   font-weight: normal;
   padding: 8px 15px 8px 36px;
   background-color: :#ffffff;
@@ -2826,18 +2834,26 @@ footer .module {
   background-repeat: no-repeat;
   border-top: 0;
 }
-.nav-list li li.active li.active a {
+.nav-list li li.active li.selected a,
+.nav-list li li.expanded li.selected a {
+  background-color: #c4caca;
+}
+.nav-list li li.active li.expanded a,
+.nav-list li li.expanded li.expanded a {
   background-position: 18px -504px;
 }
-.nav-list li li.active li.active li a {
+.nav-list li li.active li.expanded li a,
+.nav-list li li.expanded li.expanded li a {
   padding-left: 57px;
   background-position: 39px 13px;
   font-size: 0.6875em;
 }
-.nav-list li li.active li.active li.active a {
+.nav-list li li.active li.expanded li.expanded a,
+.nav-list li li.expanded li.expanded li.expanded a {
   background-position: 39px -504px;
 }
-.nav-list li li.active li.active li.active li a {
+.nav-list li li.active li.expanded li.expanded li a,
+.nav-list li li.expanded li.expanded li.expanded li a {
   padding-left: 67px;
   background-image: none;
 }
