@@ -71,25 +71,24 @@
 	//margin-left:  -15px;
 	//margin-right: -15px;
 	//text-shadow: 0 1px 0 rgba(255,255,255,.5);
-	color:#007369;
+	color:#004d46;
 	font-size:1.125em;
 }
 .nav-list a {
-	padding: 20px 15px;
+	padding: 15px;
 	display: block;
 }
 
 .nav-list  li  li{
 	a{
-		background:#f3f4f4;
+		background:#e3e4e4;
 		background-image: url(../images/menu-arrow.png);
 		background-position: right 26px;
 		background-repeat: no-repeat;
 		padding-right:22px;
-		color:#000;
 		font-weight:bold;
 		font-size:0.75em;
-		border-top:1px solid #e2e4e4;
+		border-top:1px solid #ffffff;
 		&:hover{
 			text-decoration: none;
 			background-color:#c4caca;
@@ -126,13 +125,14 @@
 				border-top:0;
 			}
 			&.selected{
-				a{
-					background-color:#c4caca;
+				> a{
+					font-weight:bold;
 				}
 			}
 			&.expanded{
-				a{
+				> a{
 					background-position: 18px -504px;
+          font-weight:bold;
 				}
 				li{
 					a{
@@ -147,7 +147,7 @@
 						li{
 							a{
 								padding-left: 67px;
-								background-image: none;
+								background-position: 58px 13px;
 							}
 						}
 					}

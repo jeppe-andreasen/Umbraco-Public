@@ -2791,23 +2791,22 @@ footer .module {
 }
 .nav-list > li > a,
 .nav-list .nav-header {
-  color: #007369;
+  color: #004d46;
   font-size: 1.125em;
 }
 .nav-list a {
-  padding: 20px 15px;
+  padding: 15px;
   display: block;
 }
 .nav-list li li a {
-  background: #f3f4f4;
+  background: #e3e4e4;
   background-image: url(../images/menu-arrow.png);
   background-position: right 26px;
   background-repeat: no-repeat;
   padding-right: 22px;
-  color: #000;
   font-weight: bold;
   font-size: 0.75em;
-  border-top: 1px solid #e2e4e4;
+  border-top: 1px solid #ffffff;
 }
 .nav-list li li a:hover {
   text-decoration: none;
@@ -2840,13 +2839,14 @@ footer .module {
   background-repeat: no-repeat;
   border-top: 0;
 }
-.nav-list li li.active li.selected a,
-.nav-list li li.expanded li.selected a {
-  background-color: #c4caca;
+.nav-list li li.active li.selected > a,
+.nav-list li li.expanded li.selected > a {
+  font-weight: bold;
 }
-.nav-list li li.active li.expanded a,
-.nav-list li li.expanded li.expanded a {
+.nav-list li li.active li.expanded > a,
+.nav-list li li.expanded li.expanded > a {
   background-position: 18px -504px;
+  font-weight: bold;
 }
 .nav-list li li.active li.expanded li a,
 .nav-list li li.expanded li.expanded li a {
@@ -2861,7 +2861,7 @@ footer .module {
 .nav-list li li.active li.expanded li.expanded li a,
 .nav-list li li.expanded li.expanded li.expanded li a {
   padding-left: 67px;
-  background-image: none;
+  background-position: 58px 13px;
 }
 .nav-list > .active > a,
 .nav-list > .active > a:hover {
