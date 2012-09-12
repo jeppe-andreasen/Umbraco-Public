@@ -26,10 +26,10 @@
 }
 .pagination a:hover,
 .pagination .active a {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 .pagination .active a {
-  color: @grayLight;
+  color: @textColor;
   cursor: default;
 }
 .pagination .disabled span,
@@ -54,3 +54,59 @@
 .pagination-right {
   text-align: right;
 }
+
+
+* .pagination{
+    padding:0 15px;
+    float: right;
+    ul{
+      border:0;
+      .border-radius(0);
+      .box-shadow(0 0 0 rgba(0, 0, 0, 0.0));
+      float: right;
+    }
+    li{
+      padding:0;
+    }
+    a{
+      border:0;
+      min-width:30px;
+      min-height:30px;
+      .border-radius(0);
+      .box-sizing(border-box);
+      padding:12px 0;
+      text-align: center;
+      margin-right: 1px;
+      #translucent > .background (#000000, 0.8);
+      background-repeat: none;
+      &:hover{
+        #translucent > .background (#000000, 1);
+        .active &{
+          background:#ffffff;
+        }
+      }
+      color:#ffffff;
+    }
+    .active a:hover{
+      background:#fff;
+    }
+    
+    li:first-child a{
+      background-image:url(../images/Sprite.png);
+      background-position: -582px -14px;
+      border:0;
+      .border-radius(0);
+      span{
+        display: none;
+      }
+    }
+    li:last-child a{
+      background-image:url(../images/Sprite.png);
+      background-position: -524px -14px;
+      border:0;
+      .border-radius(0);
+      span{
+        display: none;
+      }
+    }
+  }

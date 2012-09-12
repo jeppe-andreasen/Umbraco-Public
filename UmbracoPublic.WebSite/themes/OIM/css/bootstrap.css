@@ -2752,17 +2752,11 @@ footer .module {
   display: block;
   color: #ffffff;
 }
-.nav > li:hover,
-.nav > li.selected {
+.nav > li:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
-.well .nav > li:hover,
-.well .nav > li.selected {
+.well .nav > li:hover {
   background: none;
-}
-.nav > li:hover a,
-.nav > li.selected a {
-  color: #004d46;
 }
 .nav > li > a:hover {
   text-decoration: none;

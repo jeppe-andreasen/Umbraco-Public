@@ -12,6 +12,7 @@ UmbracoPublic.WebSite/assets/img/
 UmbracoPublic.WebSite/log-file.txt
 UmbracoPublic.WebSite/log.txt
 UmbracoPublic.WebSite/media/
+UmbracoPublic.WebSite/img
 UmbracoPublic.WebSite/*.html
 UmbracoPublic.suo
 bin/

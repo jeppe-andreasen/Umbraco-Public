@@ -11,7 +11,13 @@
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {
-  padding-right: @gridGutterWidth;
-  padding-left: @gridGutterWidth;
+  //padding-right: @gridGutterWidth;
+  //padding-left: @gridGutterWidth;
+  max-width:@gridRowWidth;
+  margin:0 auto;
   .clearfix();
+}
+
+div{
+	box-sizing:border-box;
 }

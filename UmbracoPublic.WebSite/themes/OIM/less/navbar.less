@@ -18,7 +18,8 @@
 .navbar-inner {
 	min-height: @navbarHeight;
 	padding-left:  15px;
-	padding-right: 15px;
+	position:relative;
+	//padding-right: 15px;
 	//#gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
 	//.border-radius(4px);
 	//.box-shadow(~"0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1)");
@@ -56,8 +57,11 @@
 		font-weight: 200;
 		line-height: 1;
 		color: @navbarBrandColor;
-	position:absolute;
-	bottom:7px;
+		position:absolute;
+		bottom:7px;
+		span{
+			margin:-1000em;
+		}
 	}
 	// Plain text in topbar
 	.navbar-text {
@@ -127,11 +131,8 @@
 		//IE8 fallback
 		background:#111211;
 		background: @navbarSearchBackground;
-		//background-image:url(/themes/oim/images/search.png);
-		background-position: 93% 11px;
-		background-repeat: no-repeat;
 		border: 1px solid @navbarSearchBorder;
-		.box-shadow(~"inset 3px 2px 5px 0px rgba(17, 18, 17, 0.4)");
+		.box-shadow(~"inset 3px 2px 5px 0px rgba(17, 18, 17, 0.3)");
 		.transition(none);
 		.box-sizing(border-box);
 		.placeholder(@navbarSearchPlaceholderColor);
@@ -156,10 +157,11 @@
 		margin:0;
 		#font > .sans-serif(12px, bold, 1);
 		color: @white;
+		float: left;
 		//IE8 fallback
 		background:#111211;
 		background: @navbarSearchBackground;
-		background-image:url(/themes/oim/images/search.png);
+		background-image:url(../images/search.png);
 		background-position: center center;
 		background-repeat: no-repeat;
 		border: 1px solid @navbarSearchBorder;
@@ -278,12 +280,16 @@
 	text-decoration: none;
 }
 
+
+
 // Active nav items
+.navbar .nav .active{
+	#translucent > .background(#000,0.4);
+}
+
 .navbar .nav .active > a,
 .navbar .nav .active > a:hover {
-	color: @navbarLinkColorActive;
-	text-decoration: none;
-	background-color: @navbarLinkBackgroundActive;
+	color: @green;
 }
 
 // Dividers (basically a vertical hr)
@@ -410,5 +416,7 @@
 //Public classes
 .nav-container{
 	.clearfix;
+	background-color:#000000;
+	.opacity(50);
 	#translucent > .background(#000,0.5);
 }

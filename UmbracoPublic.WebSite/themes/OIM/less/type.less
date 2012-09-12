@@ -38,19 +38,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 h1 {
-  font-size: 1.875em;
+  font-size: 2.875em;
   letter-spacing:-1.5px;
-  //line-height: 1em;
+  line-height: 1em;
   small {
     font-size: 1.125em;
   }
 }
 h2 {
   font-size: 1.125em;
-  line-height: 1em;
+  line-height:1.35em;
   letter-spacing:-1.5px;
   small {
     font-size: 18px;
+  }
+  &.intro{
+    margin:30px 0;
   }
 }
 h3 {
@@ -122,17 +125,24 @@ ol.unstyled {
 // Description Lists
 dl {
   margin-bottom: @baseLineHeight;
+  float: left;
+  width:33%;
 }
 dt,
 dd {
   line-height: @baseLineHeight;
+  width:100%;
+  padding:0 15px;
+  .box-sizing(border-box);
 }
 dt {
   font-weight: bold;
-  line-height: @baseLineHeight - 1; // fix jank Helvetica Neue font bug
+  line-height: 50px; // fix jank Helvetica Neue font bug
+  display:block;
+  width:100%;
 }
 dd {
-  margin-left: @baseLineHeight / 2;
+  //margin-left: @baseLineHeight / 2;
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
