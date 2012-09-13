@@ -22,6 +22,15 @@ namespace UmbracoPublic.WebSite.masterpages {
         protected global::UmbracoPublic.WebSite.usercontrols.Parts.SubNavigationBar SubNavigationBar2;
         
         /// <summary>
+        /// sectionA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sectionA;
+        
+        /// <summary>
         /// plhTop control.
         /// </summary>
         /// <remarks>

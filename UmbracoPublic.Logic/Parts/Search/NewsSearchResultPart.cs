@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LinqIt.Cms;
@@ -12,6 +13,7 @@ using UmbracoPublic.Logic.Entities;
 using UmbracoPublic.Logic.Modules;
 using UmbracoPublic.Logic.Parts.Paging;
 using UmbracoPublic.Logic.Services;
+using UmbracoPublic.Logic.Utilities;
 
 namespace UmbracoPublic.Logic.Parts.Search
 {
@@ -47,6 +49,15 @@ namespace UmbracoPublic.Logic.Parts.Search
             try
             {
                 var filter = SearchFilter.FromUrl();
+                if (!filter.From.HasValue && !filter.To.HasValue)
+                {
+                    DateTime? from;
+                    DateTime? to;
+                    Urls.GetNewsListDates(out from, out to);
+                    filter.From = from;
+                    filter.To = to;
+                }
+
                 filter.TemplateName = "NewsPage";
                 filter.CategorizationIds =  _page.CategorizationIds;
                 _result = DataService.Instance.PerformSearch(filter);

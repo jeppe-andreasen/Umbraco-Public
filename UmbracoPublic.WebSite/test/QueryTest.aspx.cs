@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -27,6 +28,29 @@ namespace UmbracoPublic.WebSite.test
                     litOutput.Text = "Not found";
             }
             catch(Exception exc)
+            {
+                litOutput.Text = exc.ToString();
+            }
+        }
+
+        protected void OnQueryMultipleClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var entities = CmsService.Instance.SelectItems<Entity>(txtQuery.Text);
+                if (!entities.Any())
+                    litOutput.Text = "No results";
+                else
+                {
+                    StringBuilder builder = new StringBuilder();
+                    foreach (var entity in entities)
+                    {
+                        builder.AppendLine(entity.Path + "<br />");
+                    }
+                    litOutput.Text = builder.ToString();
+                }
+            }
+            catch (Exception exc)
             {
                 litOutput.Text = exc.ToString();
             }

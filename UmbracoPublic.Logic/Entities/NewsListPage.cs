@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LinqIt.Cms.Data;
+using umbraco.cms.businesslogic.web;
 
 namespace UmbracoPublic.Logic.Entities
 {
@@ -15,6 +16,11 @@ namespace UmbracoPublic.Logic.Entities
         public int MaxItemsShown
         {
             get { return 10; }
+        }
+
+        public override Id TemplateId
+        {
+            get { return new Id(DocumentType.GetByAlias("NewsListPage").Id); }
         }
     }
 }

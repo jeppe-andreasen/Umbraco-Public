@@ -19,10 +19,10 @@ namespace UmbracoPublic.Logic.BackgroundWork
         private static readonly ConcurrentQueue<SearchTask> _queue = new ConcurrentQueue<SearchTask>();
         private static Thread _backgroundThread;
 
-        internal static void QueueDocumentAdd(Page page, string thumbnail)
+        internal static void QueueDocumentAdd(string site, Page page, string thumbnail)
         {
             Logging.Log(LogType.Info, "Adding SearchTask:AddDocument, " + page.Path);
-            _queue.Enqueue(new AddDocumentTask(page, thumbnail));
+            _queue.Enqueue(new AddDocumentTask(site, page, thumbnail));
             RunThread();
         }
 
@@ -79,8 +79,9 @@ namespace UmbracoPublic.Logic.BackgroundWork
 
         public class AddDocumentTask : SearchTask
         {
-            public AddDocumentTask(Page page, string thumbnail) : base(page)
+            public AddDocumentTask(string site, Page page, string thumbnail) : base(page)
             {
+                Site = site;
                 NoIndex = page.GetValue<bool>("noIndex");
                 if (NoIndex) 
                     return;
@@ -111,6 +112,8 @@ namespace UmbracoPublic.Logic.BackgroundWork
                 Thumbnail = thumbnail;
             }
 
+            public string Site { get; private set; }
+
             public bool NoIndex { get; private set; }
 
             public string Title { get; private set; }
@@ -139,6 +142,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
                         var record = service.GetRecordFromUrl(Url, "text", Title);
                         if (record != null)
                         {
+                            record.SetString("site", Site);
                             record.SetString("title", Title);
                             record.SetString("template", TemplateName);
                             record.SetString("categorizations", Categorizations != null && Categorizations.Any() ? Categorizations.ToSeparatedString(",").ToLower() : string.Empty);
@@ -166,7 +170,7 @@ namespace UmbracoPublic.Logic.BackgroundWork
 
             public override void Process(CrawlService service)
             {
-                //service.RemoveRecord(Url);
+                service.RemoveRecord(Url);
             }
         }
     }

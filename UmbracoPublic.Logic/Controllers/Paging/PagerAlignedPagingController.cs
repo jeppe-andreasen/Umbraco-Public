@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LinqIt.Utils.Web;
 
 namespace UmbracoPublic.Logic.Controllers.Paging
 {
     public class PagerAlignedPagingController : PagingController
     {
-        public override void Render(LinqIt.Utils.Web.HtmlWriter writer, int pageNumber, int firstPage, int lastPage, int pages, bool showEnds)
+        public override void Render(HtmlWriter writer, int pageNumber, int firstPage, int lastPage, int pages, bool showEnds, bool renderOuterTag)
         {
             throw new NotImplementedException();
         }

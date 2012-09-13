@@ -17,3 +17,5 @@
     }
 </script>
 <button onclick="changeDocumentType(); return false;" class="topBarButton"><img src="images/aboutNew.png" alt="about" /><span>Change Document Type</span></button>
+<asp:Button ID="btnRebuildSearchIndex" runat="server" OnClick="OnRebuildSearchIndexClicked" Text="Rebuild Search Index" CssClass="topBarButton">
+</asp:Button>

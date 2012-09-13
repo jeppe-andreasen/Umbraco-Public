@@ -10,6 +10,8 @@ using LinqIt.Cms.Data;
 using LinqIt.Components.Utilities;
 using umbraco.cms.businesslogic;
 using umbraco.cms.businesslogic.web;
+using UmbracoPublic.Logic.Entities;
+using UmbracoPublic.Logic.Services;
 
 namespace UmbracoPublic.WebSite.umbracoextensions
 {
@@ -31,5 +33,12 @@ namespace UmbracoPublic.WebSite.umbracoextensions
                 CmsService.Instance.ChangeTemplate(entity, template);
             }
         }
+
+        protected void OnRebuildSearchIndexClicked(object sender, EventArgs e)
+        {
+            DataService.Instance.RebuildSearchIndex();    
+        }
+
+        
     }
 }

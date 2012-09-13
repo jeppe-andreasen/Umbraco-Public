@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using LinqIt.Utils.Web;
 
 namespace UmbracoPublic.Logic.Controllers.Paging
 {
     public class DefaultPagingController : PagingController
     {
-        public override void Render(LinqIt.Utils.Web.HtmlWriter writer, int pageNumber, int firstPage, int lastPage, int pages, bool showEnds)
+        public override void Render(HtmlWriter writer, int pageNumber, int firstPage, int lastPage, int pages, bool showEnds, bool renderOuterTag)
         {
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "pagination");
+            if (renderOuterTag)
+                writer.RenderBeginTag(HtmlTextWriterTag.Div, "pagination");
             writer.RenderBeginTag(HtmlTextWriterTag.Ul);
 
             if (pageNumber > 1)
@@ -27,7 +29,8 @@ namespace UmbracoPublic.Logic.Controllers.Paging
                 RenderPageLink(writer, null, "Next", "next disabled", true);
 
             writer.RenderEndTag(); // ul
-            writer.RenderEndTag(); // div.pagination
+            if (renderOuterTag)
+                writer.RenderEndTag(); // div.pagination
         }
     }
 }

@@ -339,4 +339,26 @@ application.googleanalytics = {
 }
 
 
+/***** News List *****/
+application.newslist = {
+    init: function () {
+        $("body").on('click', '.news-list .pagination a', function (e) {
+            e.preventDefault();
 
+            var $a = $(this);
+            if ($a.hasClass("disabled"))
+                return;
+
+            var page = $a.attr("data-page");
+            if (page == undefined)
+                return;
+
+            var $list = $a.closest('.news-list');
+            var filter = $list.attr("data-filter");
+            var itemsPerPage = $list.attr("data-ipp");
+            var ajaxResult = getNewsListPage(parseInt(page), filter, parseInt(itemsPerPage));
+            $list.find('ul.results').html(ajaxResult.results);
+            $list.find('.pagination').html(ajaxResult.pager);
+        });
+    }
+}

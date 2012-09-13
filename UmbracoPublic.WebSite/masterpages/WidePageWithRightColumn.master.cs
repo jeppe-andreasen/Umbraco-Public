@@ -13,5 +13,11 @@ namespace UmbracoPublic.WebSite.masterpages
         {
 
         }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+            sectionA.Visible = !plhTop.IsEmpty;
+        }
     }
 }

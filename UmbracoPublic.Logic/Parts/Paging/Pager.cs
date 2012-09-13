@@ -43,6 +43,11 @@ namespace UmbracoPublic.Logic.Parts.Paging
 
         protected override void RenderPart(HtmlWriter writer)
         {
+            GenerateOutput(writer);
+        }
+
+        public void GenerateOutput(HtmlWriter writer, bool renderOuterTag = true)
+        {
             var helper = new PagerHelper(_totalCount, MaxPagesShown, ItemsPerPage, PageNumber);
             if (helper.Pages <= 1)
                 return;
@@ -66,10 +71,10 @@ namespace UmbracoPublic.Logic.Parts.Paging
                     break;
             }
 
-            controller.Render(writer, PageNumber, helper.FirstPage, helper.LastPage, helper.Pages, ShowEnds);
+            controller.Render(writer, PageNumber, helper.FirstPage, helper.LastPage, helper.Pages, ShowEnds, renderOuterTag);
         }
 
-        public int PageNumber { get; private set; }
+        public int PageNumber { get; set; }
 
         public int ItemsPerPage { get; set; }
 

@@ -40,7 +40,10 @@
     <Reference Include="interfaces">
       <HintPath>..\Repository\Umbraco\interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="LinqIt.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="LinqIt.Ajax, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Repository\LinqIt\LinqIt.Ajax.dll</HintPath>
+    </Reference>
     <Reference Include="LinqIt.Cms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Repository\LinqIt\LinqIt.Cms.dll</HintPath>
@@ -167,6 +170,7 @@
     <Compile Include="Utilities\HtmlWriterExtensions.cs" />
     <Compile Include="Utilities\ModuleHelper.cs" />
     <Compile Include="Utilities\ModuleScripts.cs" />
+    <Compile Include="Utilities\Paths.cs" />
     <Compile Include="Utilities\QueryStringKey.cs" />
     <Compile Include="Utilities\SystemKey.cs" />
     <Compile Include="Utilities\Urls.cs" />

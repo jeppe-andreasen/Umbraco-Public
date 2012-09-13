@@ -14,8 +14,10 @@
                 <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
                 <div class="row">
                     <div class="span6">
-                        <asp:Literal ID="litContent" runat="server"></asp:Literal>
-                        <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+                        <div class="content">
+                            <asp:Literal ID="litContent" runat="server"></asp:Literal>
+                            <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+                        </div>
                     </div>
                     <div class="span3"> 
                         <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>

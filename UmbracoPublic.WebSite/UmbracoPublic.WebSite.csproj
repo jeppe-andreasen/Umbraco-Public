@@ -422,6 +422,7 @@
     <Content Include="handlers\ImageGallery\Handler.aspx" />
     <Content Include="handlers\InstallPackage.aspx" />
     <Content Include="handlers\MacroEditor.aspx" />
+    <Content Include="test\FixNewsPaths.aspx" />
     <Content Include="test\ImageGalleryEditorTest.aspx" />
     <Content Include="test\MailChimpTest.aspx" />
     <Content Include="test\QueryTest.aspx" />
@@ -526,6 +527,11 @@
     <Content Include="themes\OIM\css\bootstrap.css" />
     <Content Include="themes\OIM\css\responsive.css" />
     <Content Include="themes\OIM\IE\IE.css" />
+    <Content Include="themes\OIM\images\key-top.png" />
+    <Content Include="themes\OIM\images\menu-arrow.png" />
+    <Content Include="themes\OIM\images\open-close.png" />
+    <Content Include="themes\OIM\images\search.png" />
+    <Content Include="themes\OIM\images\small-menu.png" />
     <Content Include="themes\OIM\images\Sprite.png" />
     <Content Include="themes\OIM\less\accordion.less" />
     <Content Include="themes\OIM\less\alerts.less" />
@@ -827,6 +833,13 @@
     </Compile>
     <Compile Include="test\CreateModule.aspx.designer.cs">
       <DependentUpon>CreateModule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test\FixNewsPaths.aspx.cs">
+      <DependentUpon>FixNewsPaths.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\FixNewsPaths.aspx.designer.cs">
+      <DependentUpon>FixNewsPaths.aspx</DependentUpon>
     </Compile>
     <Compile Include="test\FrameTest.aspx.cs">
       <DependentUpon>FrameTest.aspx</DependentUpon>

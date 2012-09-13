@@ -58,6 +58,29 @@ namespace LinqIt.UmbracoServices.Data
                 return UmbracoNode.FromPath(path);            
         }
 
+        internal static IEnumerable<UmbracoItem> FindAll(string query)
+        {
+            var parts = query.TrimStart('/').Split('/');
+            if (parts.Length < 2)
+                return null;
+
+            var rootItems = new List<UmbracoItem>();
+            if (CmsContext.Current.StoreType == CmsStoreType.Working)
+                rootItems.AddRange(Document.GetRootDocuments().Select(d => new UmbracoDocument(d)));
+            else
+                rootItems.AddRange(new Node(-1).ChildrenAsList.Select(n => new UmbracoNode((Node)n)));
+
+
+            var result = new List<UmbracoItem>();
+            foreach (var item in rootItems)
+            {
+                FindAll(item, parts, 1, result);
+            }
+            return result;
+        }
+
+        
+
         internal static UmbracoItem FindFirst(string query)
         {
             var parts = query.TrimStart('/').Split('/');
@@ -77,6 +100,33 @@ namespace LinqIt.UmbracoServices.Data
                     return result;
             }
             return null;
+        }
+
+        private static void FindAll(UmbracoItem item, string[] parts, int index, List<UmbracoItem> result)
+        {
+            // Handle '//' query
+            if (parts[index] == "" && index < parts.Length - 1)
+            {
+                FindAll(item, parts, index + 1, result);
+                foreach (var child in item.Children)
+                {
+                    FindAll(child, parts, index, result);
+                }
+            }
+            var isMatch = IsMatch(parts[index], item);
+            if (isMatch && index == parts.Length - 1)
+                result.Add(item);
+
+            if (parts[index] != "" && !isMatch)
+                return;
+
+            if (index < parts.Length-1)
+            {
+                foreach (var child in item.Children)
+                {
+                    FindAll(child, parts, index + 1, result);
+                }
+            }
         }
 
         private static UmbracoItem FindFirst(UmbracoItem item, string[] parts, int index)
@@ -172,6 +222,8 @@ namespace LinqIt.UmbracoServices.Data
         internal abstract DocumentType DocumentType { get; }
 
         public abstract string Url { get; }
+
+        
     }
 
     public class UmbracoNode : UmbracoItem
@@ -267,7 +319,13 @@ namespace LinqIt.UmbracoServices.Data
                 if (fieldname == null)
                     return null;
                 var property = _document.getProperty(fieldname);
-                return property != null? Convert.ToString(property.Value) : null;
+                if (property == null || property.Value == null)
+                    return null;
+                
+                if (property.Value.GetType() == typeof(DateTime))
+                    return ((DateTime)property.Value).ToString("yyyy-MM-ddTHH:mm:ss");
+
+                return Convert.ToString(property.Value);
             }
         }
 

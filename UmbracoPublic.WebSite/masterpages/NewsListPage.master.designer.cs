@@ -13,6 +13,42 @@ namespace UmbracoPublic.WebSite.masterpages {
     public partial class NewsListPage {
         
         /// <summary>
+        /// sectionA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sectionA;
+        
+        /// <summary>
+        /// plhTop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LinqIt.UmbracoCustomFieldTypes.GridModulePlaceholder plhTop;
+        
+        /// <summary>
+        /// generalContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UmbracoPublic.WebSite.usercontrols.Parts.GeneralContentPart generalContent;
+        
+        /// <summary>
+        /// plhMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LinqIt.UmbracoCustomFieldTypes.GridModulePlaceholder plhMain;
+        
+        /// <summary>
         /// newsSearchResult control.
         /// </summary>
         /// <remarks>
@@ -29,5 +65,23 @@ namespace UmbracoPublic.WebSite.masterpages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::UmbracoPublic.WebSite.usercontrols.Parts.NewsSearchFilterPart searchFilter;
+        
+        /// <summary>
+        /// plhRight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LinqIt.UmbracoCustomFieldTypes.GridModulePlaceholder plhRight;
+        
+        /// <summary>
+        /// plhBottom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LinqIt.UmbracoCustomFieldTypes.GridModulePlaceholder plhBottom;
     }
 }

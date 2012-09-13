@@ -6,7 +6,7 @@
     <uc1:SubNavigationBar ID="SubNavigationBar2" runat="server" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
-    <div class="sectionA">
+    <div id="sectionA" class="sectionA" runat="server">
         <div class="container">
             <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
         </div>

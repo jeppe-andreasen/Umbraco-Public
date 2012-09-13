@@ -26,5 +26,11 @@ namespace UmbracoPublic.WebSite.masterpages
             result.AddRow().AddCell(12, "Bottom", "Bottom", GridLayoutCellType.Placeholder);
             return result;    
         }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+            sectionA.Visible = !plhTop.IsEmpty;
+        }
     }
 }

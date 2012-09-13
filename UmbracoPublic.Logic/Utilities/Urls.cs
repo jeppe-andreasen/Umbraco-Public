@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
@@ -58,6 +59,32 @@ namespace UmbracoPublic.Logic.Utilities
         internal static string GetCookieAcceptancePageUrl()
         {
             return GetSystemUrl(SystemKey.CookieAcceptancePage);
+        }
+
+        public static string MonthArray { get { return "jan|feb|mar|apr|maj|jun|jul|aug|sep|okt|nov|dec"; } }
+
+        internal static void GetNewsListDates(out DateTime? from, out DateTime? to)
+        {
+            var localPath = HttpContext.Current.Request.Url.LocalPath;
+            var yearRegex = new Regex(@"/(?<year>\d{4})(?:\.aspx)$", RegexOptions.IgnoreCase);
+            var yearMatch = yearRegex.Match(localPath);
+            if (yearMatch.Success)
+            {
+                from = new DateTime(Convert.ToInt32(yearMatch.Groups["year"].Value), 1, 1);
+                to = from.Value.AddYears(1).AddDays(-1);
+                return;
+            }
+
+            var monthRegex = new Regex(@"/(?<year>\d{4})/(?<month>" + MonthArray + @")(?:\.aspx)?$");
+            var monthMatch = monthRegex.Match(localPath);
+            if (monthMatch.Success)
+            {
+                from = new DateTime(Convert.ToInt32(monthMatch.Groups["year"].Value), MonthArray.Split('|').ToList().IndexOf(monthMatch.Groups["month"].Value.ToLower()) + 1, 1);
+                to = from.Value.AddMonths(1).AddDays(-1);
+                return;
+            }
+            from = null;
+            to = null;
         }
     }
 }

@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UmbracoPublic.WebSite.umbracoextensions {
+namespace UmbracoPublic.WebSite.test {
     
     
-    public partial class ChangeTemplateButton {
+    public partial class FixNewsPaths {
         
         /// <summary>
-        /// btnRebuildSearchIndex control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRebuildSearchIndex;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
+        /// litOutput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litOutput;
     }
 }

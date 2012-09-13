@@ -8,7 +8,6 @@
     <script src="/assets/js/jquery.alerts.js" type="text/javascript"></script>
     <script src="/assets/js/versus-ajax.js" type="text/javascript"></script>
     <script src="/assets/js/grideditor.js" type="text/javascript"></script>
-    <script src="/assets/js/treeview.js" type="text/javascript"></script>
 
     <link href="/assets/css/ui-darkness/jquery-ui-1.8.20.custom.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/jquery.alerts.css" rel="stylesheet" type="text/css">

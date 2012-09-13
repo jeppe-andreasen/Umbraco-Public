@@ -158,10 +158,10 @@ namespace LinqIt.UmbracoServices
         {
             var documentType = new DocumentType(templateId.IntValue);
             var author = User.GetUser(0);
-            var document = Document.MakeNew(name, documentType, author, ((Node) parent).Id);
+            var document = Document.MakeNew(name, documentType, author, ((UmbracoItem) parent).Id);
             document.Publish(author);
             umbraco.library.UpdateDocumentCache(document.Id);
-            return new Node(document.Id);
+            return UmbracoItem.Get(document.Id);
         }
 
         public override Cms.Data.Template CreateTemplate(string name, string path)
@@ -179,10 +179,7 @@ namespace LinqIt.UmbracoServices
             return UmbracoItem.Get(itemPath);
         }
 
-        protected override object SelectSingleItem(string query)
-        {
-            return UmbracoItem.FindFirst(query);
-        }
+        
 
         protected override object GetItem()
         {
@@ -194,9 +191,14 @@ namespace LinqIt.UmbracoServices
             return ((UmbracoItem) item).Children;
         }
 
+        protected override object SelectSingleItem(string query)
+        {
+            return UmbracoItem.FindFirst(query);
+        }
+
         protected override IEnumerable<object> SelectItems(string query)
         {
-            throw new NotImplementedException();
+            return UmbracoItem.FindAll(query);
         }
 
         public override Cms.Data.Device CurrentDevice

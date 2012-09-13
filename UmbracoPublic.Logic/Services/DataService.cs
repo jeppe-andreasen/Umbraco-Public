@@ -8,7 +8,9 @@ using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Search;
 using LinqIt.Utils.Caching;
+using LinqIt.Utils.Extensions;
 using UmbracoPublic.Interfaces;
+using UmbracoPublic.Logic.BackgroundWork;
 using UmbracoPublic.Logic.Entities;
 
 namespace UmbracoPublic.Logic.Services
@@ -113,7 +115,11 @@ namespace UmbracoPublic.Logic.Services
         {
             using (var service = new SearchService("site"))
             {
+                var site = CmsService.Instance.SitePath.Split('/').Last();
+
                 var query = new QueryList();
+                query.SubQueries.Add(new TermQuery("site", site));
+
                 if (!string.IsNullOrEmpty(filter.TemplateName))
                     query.SubQueries.Add(new TermQuery("template", filter.TemplateName));
                 if (!string.IsNullOrEmpty(filter.Query))
@@ -167,8 +173,6 @@ namespace UmbracoPublic.Logic.Services
             mailProvider.SubscribeToList(newsListId, emailAddress, new NameValueCollection());
         }
 
-
-
         public CookieState GetCookieState()
         {
             if (!_cookieState.HasValue)
@@ -206,6 +210,31 @@ namespace UmbracoPublic.Logic.Services
             var cookie = new HttpCookie(name);
             cookie.Expires = DateTime.Today.AddDays(-1);
             HttpContext.Current.Response.Cookies.Add(cookie);
+        }
+    
+        public void RebuildSearchIndex()
+        {
+            using (var service = new CrawlService("site"))
+            {
+                service.ClearDatabase();
+            }
+            Queue<Page> pages = new Queue<Page>();
+            using (CmsContext.Published)
+            {
+                var siteRoots = CmsService.Instance.SelectItems<SiteRoot>("/Content/*/*{SiteRoot}");
+                pages.EnqueueRange(siteRoots.SelectMany(r => r.GetChildren<Page>()));
+                while (pages.Count > 0)
+                {
+                    var page = pages.Dequeue();
+                    if (page.Template.Path.StartsWith("/WebPage"))
+                    {
+                        var site = CmsService.Instance.GetSitePath(page.Path).Split('/').Last();
+                        var thumbnail = page.GetValue<Image>("thumbnail");
+                        SearchBackgroundCrawler.QueueDocumentAdd(site, page, thumbnail.Exists ? thumbnail.Url : string.Empty);
+                    }
+                    pages.EnqueueRange(page.GetChildren<Page>());
+                }
+            }
         }
     }
 }

@@ -52,11 +52,13 @@ namespace LinqIt.UmbracoCustomFieldTypes
             using (var context = CmsContext.Editing)
             {
                 var currentItem = CmsService.Instance.GetItem<Entity>(new Id(HttpContext.Current.Request.QueryString["id"]));
-                context.Path = currentItem.Path;
-
-                _control.Value = ConvertFromEditor(base.Data.Value != null ? base.Data.Value.ToString() : string.Empty);
-                _control.StyleDefinitionSheet = StyleDefinitionSheet;
-                _control.StyleSheets = Theme.Current.TinyMCEStylesheets.ToArray();
+                if (currentItem != null)
+                {
+                    context.Path = currentItem.Path;
+                    _control.Value = ConvertFromEditor(base.Data.Value != null ? base.Data.Value.ToString() : string.Empty);
+                    _control.StyleDefinitionSheet = StyleDefinitionSheet;
+                    _control.StyleSheets = Theme.Current.TinyMCEStylesheets.ToArray();
+                }
             }
         }
 

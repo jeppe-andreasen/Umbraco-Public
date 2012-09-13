@@ -15,15 +15,21 @@ namespace UmbracoPublic.Logic.Modules
 {
     public class Snippets
     {
-        public static void RenderNewsResults(HtmlWriter writer, SearchRecord[] records)
+        public static void RenderNewsResults(HtmlWriter writer, SearchRecord[] records, bool renderUl = true)
         {
             var categorizationLookup = CategorizationFolder.Get();
             var newsListUrl = Urls.GetMainNewsListUrl();
 
             var visibleCategorizations = CategorizationFolder.Get().Types.Where(t => !t.IsHidden).SelectMany(t => t.Items).Where(i => !i.IsHidden).ToDictionary(i => i.Id);
-            writer.RenderBeginTag(HtmlTextWriterTag.Ul);
+
+            if (renderUl)
+                writer.RenderBeginTag(HtmlTextWriterTag.Ul, "results");
             foreach (var record in records)
             {
+                var date = record.GetDate("date");
+                if (date == null)
+                    continue;
+
                 writer.RenderBeginTag(HtmlTextWriterTag.Li, "clearfix");
 
                 if (!string.IsNullOrEmpty(record.GetString("thumbnail")))
@@ -58,7 +64,8 @@ namespace UmbracoPublic.Logic.Modules
                 writer.RenderEndTag(); // div
                 writer.RenderEndTag(); // li.clearfix
             }
-            writer.RenderEndTag();
+            if (renderUl)
+                writer.RenderEndTag();
         }
 
         public static void RenderCategorizations(HtmlWriter writer, IEnumerable<Id> categorizations, CategorizationFolder allCategorizations = null, string newsListUrl = null)

@@ -17,6 +17,8 @@ namespace LinqIt.UmbracoCustomFieldTypes
     [ParseChildren(true)]
     public class GridModulePlaceholder : Control, INamingContainer
     {
+        private BootstrapGridModulePlaceholder _placeholder;
+
         public GridModulePlaceholder()
         {
         }
@@ -45,18 +47,18 @@ namespace LinqIt.UmbracoCustomFieldTypes
                 Controls.AddAt(0, header);
             }
 
-            var placeholder = new BootstrapGridModulePlaceholder();
-            placeholder.Provider = typeof(UmbracoTreeModuleProvider).GetShortAssemblyName();
+            _placeholder = new BootstrapGridModulePlaceholder();
+            _placeholder.Provider = typeof(UmbracoTreeModuleProvider).GetShortAssemblyName();
 
             if (!string.IsNullOrEmpty(ItemPath))
             {
                 var itemPath = ItemPath.StartsWith("§") ? CmsService.Instance.GetSystemPath(ItemPath.TrimStart('§')) : ItemPath;
-                placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>(itemPath).Id.ToString();
+                _placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>(itemPath).Id.ToString();
             }
             else
-                placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>().Id.ToString();
-            placeholder.Key = Key;
-            Controls.Add(placeholder);
+                _placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>().Id.ToString();
+            _placeholder.Key = Key;
+            Controls.Add(_placeholder);
 
             if (FooterTemplate != null)
             {
@@ -66,14 +68,12 @@ namespace LinqIt.UmbracoCustomFieldTypes
             }
         }
 
-        protected override void CreateChildControls()
+
+        public bool IsEmpty
         {
-            base.CreateChildControls();
-
-            
-
-            
+            get { return _placeholder.Controls.Count == 0; }
         }
+        
     }
 
     [ToolboxItem(false)]

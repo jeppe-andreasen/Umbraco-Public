@@ -1,18 +1,35 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/masterpages/WidePageWithRightColumn.master" AutoEventWireup="true" CodeBehind="NewsListPage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.NewsListPage, UmbracoPublic.WebSite" %>
+﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="NewsListPage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.NewsListPage, UmbracoPublic.WebSite" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Search" tagprefix="cc1" %>
+<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
 <%@ Register src="~/usercontrols/Parts/NewsSearchFilterPart.ascx" tagname="NewsSearchFilterPart" tagprefix="part" %>
-<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Search" tagprefix="cc1" %>
-<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Search" tagprefix="cc1" %>
-<asp:Content ID="cntAfterMain" ContentPlaceHolderID="plhAfterMain" runat="server">
-    
-    <hr>
-    <div class="span6">
-        <cc1:NewsSearchResultPart ID="newsSearchResult" runat="server"></cc1:NewsSearchResultPart>
-
+<%@ Register src="~/usercontrols/Parts/GeneralContentPart.ascx" tagname="GeneralContentPart" tagprefix="part" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+    <div id="sectionA" class="sectionA" runat="server">
+        <div class="container">
+            <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
+        </div>
     </div>
-    <div class="span3">&nbsp;</div>
-
+    <div class="sectionB">
+        <div class="container">
+            <div class="row">
+                <div class="span9">
+                    <part:GeneralContentPart ID="generalContent" runat="server" />
+                    <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+                    <div class="span6">
+                        <cc1:NewsSearchResultPart ID="newsSearchResult" runat="server"></cc1:NewsSearchResultPart>
+                    </div>
+                    <div class="span3">&nbsp;</div>
+                </div>
+                <div class="span3">
+                    <part:NewsSearchFilterPart ID="searchFilter" runat="server" />
+                    <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sectionC">
+        <div class="container">
+            <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
+        </div>
+    </div>
 </asp:Content>
-<asp:Content ID="Content1" ContentPlaceHolderID="plhBeforeRight" runat="server">
-    <part:NewsSearchFilterPart ID="searchFilter" runat="server" />
-</asp:Content>
-

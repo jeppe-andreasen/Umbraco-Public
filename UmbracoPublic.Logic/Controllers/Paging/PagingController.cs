@@ -10,7 +10,7 @@ namespace UmbracoPublic.Logic.Controllers.Paging
 {
     public abstract class PagingController
     {
-        public abstract void Render(LinqIt.Utils.Web.HtmlWriter writer, int pageNumber, int firstPage, int lastPage, int pages, bool showEnds);
+        public abstract void Render(HtmlWriter writer, int pageNumber, int firstPage, int lastPage, int pages, bool showEnds, bool renderOuterTag);
 
         protected void RenderPageLink(HtmlWriter writer, int? pageLink, string text, string cssClass, bool addSpan)
         {
@@ -19,6 +19,7 @@ namespace UmbracoPublic.Logic.Controllers.Paging
             if (pageLink.HasValue)
             {
                 writer.AddAttribute(HtmlTextWriterAttribute.Title, text);
+                writer.AddAttribute("data-page", pageLink.Value.ToString());
                 writer.RenderBeginLink(Urls.ReplaceUrlParameter(QueryStringKey.PageNumber, pageLink.Value.ToString()));
             }
             else

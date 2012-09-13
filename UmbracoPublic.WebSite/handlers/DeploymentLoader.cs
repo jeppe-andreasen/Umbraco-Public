@@ -28,23 +28,21 @@ namespace UmbracoPublic.WebSite.handlers
         /// 
         public override void Render(ref XmlTree Tree)
         {
-            Tree.Clear();
-
             // Create tree node to allow sending a newsletter
-            var sendNewsletter = XmlTreeNode.Create(this);
-            sendNewsletter.Text = "Create Deployment Package";
-            sendNewsletter.Icon = "docPic.gif";
-            sendNewsletter.Action = "javascript:openCreateDeploymentPackage()";
+            var createDeploymentPackage = XmlTreeNode.Create(this);
+            createDeploymentPackage.Text = "Create Deployment Package";
+            createDeploymentPackage.Icon = "docPic.gif";
+            createDeploymentPackage.Action = "javascript:openCreateDeploymentPackage()";
             // Add the node to the tree
-            Tree.Add(sendNewsletter);
+            Tree.Add(createDeploymentPackage);
 
             // Create tree node to allow viewing previously sent newsletters
-            var previousNewsletters = XmlTreeNode.Create(this);
-            previousNewsletters.Text = "Install Deployment Package";
-            previousNewsletters.Icon = "docPic.gif";
-            previousNewsletters.Action = "javascript:openInstallDeploymentPackage()";
+            var installDeploymentPackage = XmlTreeNode.Create(this);
+            installDeploymentPackage.Text = "Install Deployment Package";
+            installDeploymentPackage.Icon = "docPic.gif";
+            installDeploymentPackage.Action = "javascript:openInstallDeploymentPackage()";
             // Add the node to the tree
-            Tree.Add(previousNewsletters);
+            Tree.Add(installDeploymentPackage);
         }
 
         public override void RenderJS(ref StringBuilder Javascript)
