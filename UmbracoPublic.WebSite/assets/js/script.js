@@ -238,11 +238,11 @@ application.carousel = {
 /* Search Box */
 
 application.search = {
-    init: function () {
+    init: function (url) {
         $('.search-query').bind('keypress', function (e) {
             if (e.keyCode == 13) {
                 e.preventDefault();
-                window.location.href = "/test/SearchResult.aspx?query=" + $(this).val();
+                window.location.href = url + "?query=" + $(this).val();
             }
         });
     }

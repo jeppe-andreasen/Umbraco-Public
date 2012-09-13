@@ -8,6 +8,7 @@ namespace UmbracoPublic.Logic.Utilities
     public enum SystemKey
     {
         CookieAcceptancePage,
-        MainNewsPage
+        MainNewsPage,
+        SiteSearchResultPage
     }
 }

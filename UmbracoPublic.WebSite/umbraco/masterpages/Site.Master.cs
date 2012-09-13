@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LinqIt.Ajax.Parsing;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Utils.Collections;
@@ -24,7 +25,7 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
             var page = CmsService.Instance.GetItem<Entity>();
 
             ModuleScripts.RegisterInitScript("navigation");
-            ModuleScripts.RegisterInitScript("search");
+            ModuleScripts.RegisterInitScript("search", new JSONString(Urls.GetSystemUrl(SystemKey.SiteSearchResultPage)));
             ModuleScripts.RegisterInitScript("button");
             ModuleScripts.RegisterInitScript("background");
             

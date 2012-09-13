@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="SiteSearchResultPage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.SiteSearchResultPage, UmbracoPublic.WebSite" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Search" tagprefix="cc1" %>
+<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
+<%@ Register src="~/usercontrols/Parts/NewsSearchFilterPart.ascx" tagname="NewsSearchFilterPart" tagprefix="part" %>
+<%@ Register src="~/usercontrols/Parts/GeneralContentPart.ascx" tagname="GeneralContentPart" tagprefix="part" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+    <div id="sectionA" class="sectionA" runat="server">
+        <div class="container">
+            <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
+        </div>
+    </div>
+    <div class="sectionB">
+        <div class="container">
+            <div class="row">
+                <div class="span9">
+                    <asp:Literal ID="litOutput" runat="server"></asp:Literal>
+                    <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+                    <div class="span6">
+                        <cc1:SiteSearchResultPart ID="siteSearchResult" runat="server"></cc1:SiteSearchResultPart>
+                    </div>
+                    <div class="span3">&nbsp;</div>
+                </div>
+                <div class="span3">
+                    <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sectionC">
+        <div class="container">
+            <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
+        </div>
+    </div>
+</asp:Content>

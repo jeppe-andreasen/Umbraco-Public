@@ -600,6 +600,7 @@
     <Content Include="umbraco\plugins\tinymce3\insertMacro.aspx" />
     <Content Include="umbraco_client\propertypane\style.css" />
     <Content Include="masterpages\PublicationPage.master" />
+    <Content Include="masterpages\SiteSearchResultPage.master" />
     <None Include="umbraco_client\ui\jquery.js.old" />
     <None Include="umbraco_client\ui\jqueryui.js.old" />
     <Content Include="umbraco_client\ui\jqueryui1_8.js" />
@@ -797,6 +798,13 @@
     </Compile>
     <Compile Include="masterpages\PublicationPage.master.designer.cs">
       <DependentUpon>PublicationPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="masterpages\SiteSearchResultPage.master.cs">
+      <DependentUpon>SiteSearchResultPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masterpages\SiteSearchResultPage.master.designer.cs">
+      <DependentUpon>SiteSearchResultPage.master</DependentUpon>
     </Compile>
     <Compile Include="masterpages\ThreeColumnWidePage.master.cs">
       <DependentUpon>ThreeColumnWidePage.master</DependentUpon>
