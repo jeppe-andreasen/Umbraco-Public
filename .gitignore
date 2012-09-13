@@ -10,7 +10,8 @@ UmbracoPublic.WebSite/Web.Debug.config
 UmbracoPublic.WebSite/Web.Release.config
 UmbracoPublic.WebSite/assets/img/
 UmbracoPublic.WebSite/log-file.txt
-UmbracoPublic.WebSite/log.txt
+UmbracoPublic.WebSite/log.txt*
+
 UmbracoPublic.WebSite/media/
 UmbracoPublic.WebSite/img
 UmbracoPublic.WebSite/*.html
