@@ -7,7 +7,7 @@ using LinqIt.Utils.Web;
 
 namespace UmbracoPublic.Logic.Modules.IFrame
 {
-    public class IFrameModuleRendering : BaseModuleRendering<IFrameModule>
+    public class IFrameModuleRendering : BaseModuleRendering<IFrameModule>, IRequiresCookies
     {
         protected override void RenderModule(IFrameModule item, LinqIt.Utils.Web.HtmlWriter writer)
         {
