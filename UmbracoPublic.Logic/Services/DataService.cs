@@ -49,7 +49,7 @@ namespace UmbracoPublic.Logic.Services
             var homeParts = CmsService.Instance.GetHomeItem().Path.Split('/');
             var page = CmsService.Instance.GetItem<Page>();
             var pageParts = page.Path.Split('/');
-            if (pageParts.Length - homeParts.Length < 2)
+            if (pageParts.Length - homeParts.Length < 1)
                 return new MenuItem[0];
 
             return page.GetChildren<Page>().Where(c => !c.EntityName.StartsWith("__")).Select(GetMenuItem).ToList();

@@ -339,6 +339,26 @@ application.googleanalytics = {
 }
 
 
+/***** Google Maps *****/
+
+application.googlemaps = {
+    init: function (clientId, lat, lng, zoom, showMarker) {
+        var mapElement = $("#" + clientId);
+        mapElement.height(mapElement.width() * 0.5625);
+        var mapOptions = {
+            center: new google.maps.LatLng(lat, lng),
+            zoom: zoom,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(mapElement[0], mapOptions);
+        if (showMarker) {
+            var marker = new google.maps.Marker({ map: map, draggable: false });
+            marker.setPosition(map.getCenter());
+        }
+    }
+}
+
+
 /***** News List *****/
 application.newslist = {
     init: function () {

@@ -90,6 +90,7 @@
     <Compile Include="Components\TinyMCEditor.cs" />
     <Compile Include="DropDownListEditor.cs" />
     <Compile Include="EntityTreeNodeProvider.cs" />
+    <Compile Include="GoogleMapEditor.cs" />
     <Compile Include="GridEditorHandler.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
