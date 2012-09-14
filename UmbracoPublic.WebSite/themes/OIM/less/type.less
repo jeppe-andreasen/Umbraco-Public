@@ -7,88 +7,88 @@
 // ---------
 
 p {
-  margin: 0 0 @baseLineHeight / 2;
-  small {
-    font-size: @baseFontSize - 2;
-    color: @grayLight;
-  }
-  font-size:0.75em;
-  line-height:1.55em;
+	margin: 0 0 @baseLineHeight / 2;
+	small {
+	font-size: @baseFontSize - 2;
+	color: @grayLight;
+	}
+	font-size:0.75em;
+	line-height:1.55em;
 }
 .lead {
-  margin-bottom: @baseLineHeight;
-  font-size: 20px;
-  font-weight: 200;
-  line-height: @baseLineHeight * 1.5;
+	margin-bottom: @baseLineHeight;
+	font-size: 20px;
+	font-weight: 200;
+	line-height: @baseLineHeight * 1.5;
 }
 
 // HEADINGS
 // --------
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-family: @headingsFontFamily;
-  font-weight: @headingsFontWeight;
-  color: @headingsColor;
-  text-rendering: optimizelegibility; // Fix the character spacing for headings
-  
-  small {
-    font-weight: normal;
-    color: @grayLight;
-  }
+	margin: 0;
+	font-family: @headingsFontFamily;
+	font-weight: @headingsFontWeight;
+	color: @headingsColor;
+	text-rendering: optimizelegibility; // Fix the character spacing for headings
+	
+	small {
+	font-weight: normal;
+	color: @grayLight;
+	}
 }
 h1 {
-  font-size: 2.875em;
-  letter-spacing:-1.5px;
-  line-height: 1em;
-  small {
-    font-size: 1.125em;
-  }
+	font-size: 2.875em;
+	letter-spacing:-1.5px;
+	line-height: 1em;
+	small {
+	font-size: 1.125em;
+	}
 }
 h2 {
-  font-size: 1.125em;
-  line-height:1.35em;
-  letter-spacing:-1.5px;
-  small {
-    font-size: 18px;
-  }
-  &.intro{
-    margin:30px 0;
-  }
+	font-size: 1.125em;
+	line-height:1.35em;
+	letter-spacing:-1.5px;
+	small {
+	font-size: 18px;
+	}
+	&.intro{
+	margin:30px 0;
+	}
 }
 h3 {
-  font-size: 1em;
-  line-height: 1.2em;
-  small {
-    font-size: 14px;
-  }
+	font-size: 1em;
+	line-height: 1.2em;
+	small {
+	font-size: 14px;
+	}
 }
 h4, h5, h6 {
-  line-height: @baseLineHeight;
+	line-height: @baseLineHeight;
 }
 h4 {
-  font-size: 14px;
-  small {
-    font-size: 12px;
-  }
+	font-size: 14px;
+	small {
+	font-size: 12px;
+	}
 }
 h5 {
-  font-size: 12px;
+	font-size: 12px;
 }
 h6 {
-  font-size: 11px;
-  color: @grayLight;
-  text-transform: uppercase;
+	font-size: 11px;
+	color: @grayLight;
+	text-transform: uppercase;
 }
 
 // Page header
 .page-header {
-  padding-bottom: @baseLineHeight - 1;
-  margin: @baseLineHeight 0;
-  border-bottom: 1px solid @grayLighter;
+	padding-bottom: @baseLineHeight - 1;
+	margin: @baseLineHeight 0;
+	border-bottom: 1px solid @grayLighter;
 }
 .page-header h1 {
-  line-height: 1;
+	line-height: 1;
 }
 
 
@@ -98,64 +98,64 @@ h6 {
 
 // Unordered and Ordered lists
 ul, ol {
-  padding: 0;
-  margin: 0 0 @baseLineHeight / 2 25px;
+	padding: 0;
+	margin: 0 0 @baseLineHeight / 2 25px;
 }
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 ul {
-  list-style: disc;
+	list-style: disc;
 }
 ol {
-  list-style: decimal;
+	list-style: decimal;
 }
 li {
-  line-height: @baseLineHeight;
+	line-height: @baseLineHeight;
 }
 ul.unstyled,
 ol.unstyled {
-  margin-left: 0;
-  list-style: none;
+	margin-left: 0;
+	list-style: none;
 }
 
 // Description Lists
 dl {
-  margin-bottom: @baseLineHeight;
-  float: left;
-  width:33%;
+	margin-bottom: @baseLineHeight;
+	float: left;
+	width:33%;
 }
 dt,
 dd {
-  line-height: @baseLineHeight;
-  width:100%;
-  padding:0 15px;
-  .box-sizing(border-box);
+	line-height: @baseLineHeight;
+	width:100%;
+	padding:0 15px;
+	.box-sizing(border-box);
 }
 dt {
-  font-weight: bold;
-  line-height: 50px; // fix jank Helvetica Neue font bug
-  display:block;
-  width:100%;
+	font-weight: bold;
+	line-height: 50px; // fix jank Helvetica Neue font bug
+	display:block;
+	width:100%;
 }
 dd {
-  //margin-left: @baseLineHeight / 2;
+	//margin-left: @baseLineHeight / 2;
 }
 // Horizontal layout (like forms)
 .dl-horizontal {
-  dt {
-    float: left;
-    width: 120px;
-    clear: left;
-    text-align: right;
-    .text-overflow();
-  }
-  dd {
-    margin-left: 130px;
-  }
+	dt {
+	float: left;
+	width: 120px;
+	clear: left;
+	text-align: right;
+	.text-overflow();
+	}
+	dd {
+	margin-left: 130px;
+	}
 }
 
 // MISC
@@ -163,63 +163,79 @@ dd {
 
 // Horizontal rules
 hr {
-  margin: @baseLineHeight 0;
-  border: 0;
-  border-top: 1px solid @hrBorder;
-  border-bottom: 1px solid @white;
+	margin: @baseLineHeight 0;
+	border: 0;
+	border-top: 1px solid @hrBorder;
+	border-bottom: 1px solid @white;
 }
 
 // Emphasis
 strong {
-  font-weight: bold;
+	font-weight: bold;
 }
 em {
-  font-style: italic;
+	font-style: italic;
 }
 .muted {
-  color: @grayLight;
+	color: @grayLight;
 }
 
 // Abbreviations and acronyms
 abbr[title] {
-  cursor: help;
-  border-bottom: 1px dotted @grayLight;
+	cursor: help;
+	border-bottom: 1px dotted @grayLight;
 }
 abbr.initialism {
-  font-size: 90%;
-  text-transform: uppercase;
+	font-size: 90%;
+	text-transform: uppercase;
 }
 
 // Blockquotes
 blockquote {
-  padding: 0 0 0 15px;
-  margin: 0 0 @baseLineHeight;
-  border-left: 5px solid @grayLighter;
-  p {
-    margin-bottom: 0;
-    #font > .shorthand(16px,300,@baseLineHeight * 1.25);
-  }
-  small {
-    display: block;
-    line-height: @baseLineHeight;
-    color: @grayLight;
-    &:before {
-      content: '\2014 \00A0';
-    }
-  }
+	padding: 0 0 0 57px;
+	margin: 0 0 @baseLineHeight;
+	display: inline-block;
+	//border-left: 5px solid @grayLighter;
+	&:before{
+			content:"";
+			display: inline-block;
+			width: 57px;
+			height: 57px;
+			background-image:url("/Themes/OIM/images/sprite.png");
+			background-position:-743px -10px;
+			float: left;
+			margin-left:-57px;
+		}
+	p {
+		margin-bottom: 0;
+		#font > .shorthand(16px,300,@baseLineHeight * 1.25);
+		display: inline;
+		font-weight: bold;
+			
+	}
+	small {
+	display: block;
+	line-height: @baseLineHeight;
+	color: @green;
+	font-weight: normal;
+	font-size:0.6875em;
+	&:before {
+		content: '\2014 \00A0';
+	}
+	}
 
-  // Float right with text-align: right
-  &.pull-right {
-    float: right;
-    padding-right: 15px;
-    padding-left: 0;
-    border-right: 5px solid @grayLighter;
-    border-left: 0;
-    p,
-    small {
-      text-align: right;
-    }
-  }
+	// Float right with text-align: right
+	&.pull-right {
+	float: right;
+	padding-right: 15px;
+	padding-left: 0;
+	border-right: 5px solid @grayLighter;
+	border-left: 0;
+	p,
+	small {
+		text-align: right;
+	}
+	}
 }
 
 // Quotes
@@ -227,21 +243,21 @@ q:before,
 q:after,
 blockquote:before,
 blockquote:after {
-  content: "";
+	content: "";
 }
 
 // Addresses
 address {
-  display: block;
-  margin-bottom: @baseLineHeight;
-  font-style: normal;
-  line-height: @baseLineHeight;
+	display: block;
+	margin-bottom: @baseLineHeight;
+	font-style: normal;
+	line-height: @baseLineHeight;
 }
 
 // Misc
 small {
-  font-size: 100%;
+	font-size: 100%;
 }
 cite {
-  font-style: normal;
+	font-style: normal;
 }
