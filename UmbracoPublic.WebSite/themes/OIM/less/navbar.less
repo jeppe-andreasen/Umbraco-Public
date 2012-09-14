@@ -11,14 +11,21 @@
 	*z-index: 2;
 	overflow: visible;
 	margin-bottom: 0;
-
+	background-color:#e1e4e3;
+	nav &{
+		background-color:transparent;
+	}
 }
 
 // Gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
+
 .navbar-inner {
-	min-height: @navbarHeight;
+	min-height:50px;
 	padding-left:  15px;
-	position:relative;
+	nav &{
+		position:relative;
+		min-height: @navbarHeight;
+	}
 	//padding-right: 15px;
 	//#gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
 	//.border-radius(4px);
@@ -219,7 +226,16 @@
 // NAVIGATION
 // ----------
 
+
 .navbar .nav {
+  position: relative;
+  left: 0;
+  display: block;
+  float: left;
+  margin: 0 10px 0 0;
+}
+
+nav .navbar .nav {
 	position: relative;
 	left: 0;
 	display: block;
@@ -227,6 +243,7 @@
 	margin: 0 0 0 244px;
 	clear: right;
 }
+
 .navbar .nav.pull-right {
 	float: right; // redeclare due to specificity
 }
@@ -236,10 +253,11 @@
 	float: left;
 	margin-right: 8px;
 	height:50px;
-
+	.box-sizing(border-box);
 	&:first-child {
 		margin-right:0px;
 	}
+
 }
 
 // Links
@@ -247,16 +265,20 @@
 		float: none;
 		// Vertically center the text given @navbarHeight
 		@elementHeight: 20px;
-		padding: ( (((@navbarHeight - @elementHeight) ) / 2 - 1) )10px( (((@navbarHeight - @elementHeight) ) / 2 + 1));
+		padding:11px 10px 9px;
+		color:#004d46;
 		line-height: 19px;
-		color: @navbarLinkColor;
 		text-decoration: none;
-		font-size: 1.125em;
-		font-weight: 600;
+		font-size:0.875em;
 		margin-top:5px;
-
 		&.dropdown-toggle {
 			padding-left:0px;
+		}
+		nav &{
+			padding: ( (((@navbarHeight - @elementHeight) ) / 2 - 1) )10px( (((@navbarHeight - @elementHeight) ) / 2 + 1));
+			color: @navbarLinkColor;
+			font-size: 1.125em;
+			font-weight: 600;
 		}
 	}
 // Buttons
@@ -277,15 +299,21 @@
 // Hover
 .navbar .nav > li > a:hover {
 	background-color: @navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
-	color: @navbarLinkColorHover;
+	color:#00C0AF;
 	text-decoration: none;
+	& nav{
+		color: @navbarLinkColorHover;
+	}
 }
 
 
 
 // Active nav items
 .navbar .nav .active{
-	#translucent > .background(#000,0.4);
+	background:#2d2e2d;
+	nav &{
+		#translucent > .background(#000,0.4);
+	}
 }
 
 .navbar .nav .active > a,
