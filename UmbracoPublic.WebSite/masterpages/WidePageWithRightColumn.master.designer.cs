@@ -13,13 +13,22 @@ namespace UmbracoPublic.WebSite.masterpages {
     public partial class WidePageWithRightColumn {
         
         /// <summary>
-        /// SubNavigationBar2 control.
+        /// breadCrumb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UmbracoPublic.WebSite.usercontrols.Parts.SubNavigationBar SubNavigationBar2;
+        protected global::UmbracoPublic.Logic.Parts.Navigation.BreadCrumbPart breadCrumb;
+        
+        /// <summary>
+        /// subNavigation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UmbracoPublic.Logic.Parts.Navigation.SubNavigationPart subNavigation;
         
         /// <summary>
         /// sectionA control.

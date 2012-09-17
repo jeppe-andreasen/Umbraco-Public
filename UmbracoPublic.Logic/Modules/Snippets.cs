@@ -23,7 +23,7 @@ namespace UmbracoPublic.Logic.Modules
             var visibleCategorizations = CategorizationFolder.Get().Types.Where(t => !t.IsHidden).SelectMany(t => t.Items).Where(i => !i.IsHidden).ToDictionary(i => i.Id);
 
             if (renderUl)
-                writer.RenderBeginTag(HtmlTextWriterTag.Ul, "results");
+                writer.RenderBeginTag(HtmlTextWriterTag.Ul, "news-items");
             foreach (var record in records)
             {
                 var date = record.GetDate("date");

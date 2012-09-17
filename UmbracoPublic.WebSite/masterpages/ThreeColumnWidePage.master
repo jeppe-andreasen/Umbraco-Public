@@ -1,33 +1,32 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="ThreeColumnWidePage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.ThreeColumnWidePage, UmbracoPublic.WebSite" %>
-<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
-<%@ Register src="../usercontrols/Parts/SubNavigationBar.ascx" tagname="SubNavigationBar" tagprefix="uc1" %>
-<asp:Content ID="cntTop" runat="server" ContentPlaceHolderID="cphTop">
-    <uc1:SubNavigationBar ID="SubNavigationBar2" runat="server" />
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc" %>
+<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc" %>
+<asp:Content ID="cntNavSection" runat="server" ContentPlaceHolderID="plhNavSection">
+    <cc:BreadCrumbPart ID="breadCrumb" runat="server"></cc:BreadCrumbPart>
+    <cc:SubNavigationPart ID="subNavigation" runat="server"></cc:SubNavigationPart>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
-    <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top">
+    <cc:GridModulePlaceholder ID="plhTop" runat="server" Key="Top">
         <HeaderTemplate><div class="sectionA"><div class="container"></HeaderTemplate>
         <FooterTemplate></div></div></FooterTemplate>
-    </cc2:GridModulePlaceholder>
+    </cc:GridModulePlaceholder>
     <div class="sectionB">
         <div class="container">
             <div class="row">
                 <div class="span4">
-                    <cc2:GridModulePlaceholder ID="plhCol1" runat="server" Key="Col1"></cc2:GridModulePlaceholder>
+                    <cc:GridModulePlaceholder ID="plhCol1" runat="server" Key="Col1"></cc:GridModulePlaceholder>
                 </div>
                 <div class="span4"> 
-                    <cc2:GridModulePlaceholder ID="plhCol2" runat="server" Key="Col2"></cc2:GridModulePlaceholder>
+                    <cc:GridModulePlaceholder ID="plhCol2" runat="server" Key="Col2"></cc:GridModulePlaceholder>
                 </div>
                 <div class="span4">
-                    <cc2:GridModulePlaceholder ID="plhCol3" runat="server" Key="Col3"></cc2:GridModulePlaceholder>
+                    <cc:GridModulePlaceholder ID="plhCol3" runat="server" Key="Col3"></cc:GridModulePlaceholder>
                 </div>
             </div>
         </div>
     </div>
-    <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom">
+    <cc:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom">
         <HeaderTemplate><div class="sectionC"><div class="container"></HeaderTemplate>
         <FooterTemplate></div></div></FooterTemplate>
-    </cc2:GridModulePlaceholder>
-        
-    
+    </cc:GridModulePlaceholder>
 </asp:Content>

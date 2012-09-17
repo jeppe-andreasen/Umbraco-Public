@@ -618,7 +618,6 @@
     <Content Include="usercontrols\Parts\NewsSearchResultPart.ascx" />
     <Content Include="usercontrols\Parts\NewsSearchFilterPart.ascx" />
     <Content Include="usercontrols\Parts\SiteSearchResult.ascx" />
-    <Content Include="usercontrols\Parts\SubNavigationBar.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1059,13 +1058,6 @@
     </Compile>
     <Compile Include="usercontrols\Parts\SiteSearchResult.ascx.designer.cs">
       <DependentUpon>SiteSearchResult.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="usercontrols\Parts\SubNavigationBar.ascx.cs">
-      <DependentUpon>SubNavigationBar.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="usercontrols\Parts\SubNavigationBar.ascx.designer.cs">
-      <DependentUpon>SubNavigationBar.ascx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\PageLayouts.cs" />
     <Compile Include="Utilities\Snippets.cs" />

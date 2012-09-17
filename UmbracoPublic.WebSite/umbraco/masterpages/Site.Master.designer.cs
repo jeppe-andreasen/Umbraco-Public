@@ -49,6 +49,15 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// wrapper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl wrapper;
+        
+        /// <summary>
         /// plhHead control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,24 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder cphTop;
+        
+        /// <summary>
+        /// sectionNav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sectionNav;
+        
+        /// <summary>
+        /// plhNavSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder plhNavSection;
         
         /// <summary>
         /// ContentPlaceHolderDefault control.

@@ -45,7 +45,7 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
             if (!backgroundImage.Exists)
                 backgroundImage = siteRoot.DefaultBackgroundImage;
             if (backgroundImage.Exists)
-                form1.Attributes.Add("data-bgimage", backgroundImage.Url);
+                wrapper.Attributes.Add("data-bgimage", backgroundImage.Url);
         }
 
         private static string RenderMetaTags(Entity page)
@@ -98,6 +98,27 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
         {
             base.CreateChildControls();
             litInitializationScript.Text = ModuleScripts.GetInitializationScript();
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+            var visibleContent = plhNavSection.Controls.Cast<Control>().Where(IsVisible).ToList();
+            sectionNav.Visible = visibleContent.Any();
+        }
+
+        private static bool IsVisible(Control control)
+        {
+            if (!control.Visible)
+                return false;
+
+            if (control is LiteralControl)
+            {
+                var lit = (LiteralControl) control;
+                if (string.IsNullOrWhiteSpace(lit.Text))
+                    return false;
+            }
+            return true;
         }
     }
 }

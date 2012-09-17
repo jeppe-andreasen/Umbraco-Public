@@ -1,28 +1,31 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="GeneralPage.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.GeneralPage, UmbracoPublic.WebSite" %>
-<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
-<%@ Register src="~/usercontrols/Parts/GeneralContentPart.ascx" tagname="GeneralContentPart" tagprefix="uc2" %>
-<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc1" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc" %>
+<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc" %>
+<%@ Register src="~/usercontrols/Parts/GeneralContentPart.ascx" tagname="GeneralContentPart" tagprefix="uc" %>
+<asp:Content ID="cntNavSection" runat="server" ContentPlaceHolderID="plhNavSection">
+    <cc:BreadCrumbPart ID="breadCrumb" runat="server"></cc:BreadCrumbPart>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
     <div class="sectionB">
     <div class="container">
     <div class="row">
         <div class="span3">
-            <cc1:SideNavigationPart ID="sideNavigation" runat="server"></cc1:SideNavigationPart>
+            <cc:SideNavigationPart ID="sideNavigation" runat="server"></cc:SideNavigationPart>
         </div>
         <div class="span9">
-            <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
+            <cc:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc:GridModulePlaceholder>
             <div class="row">
                 <div class="span6">
                     <div class="content">
-                        <uc2:GeneralContentPart ID="generalContent" runat="server" />
-                        <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
+                        <uc:GeneralContentPart ID="generalContent" runat="server" />
+                        <cc:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc:GridModulePlaceholder>
                     </div>
                 </div>
                 <div class="span3"> 
-                    <cc2:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc2:GridModulePlaceholder>
+                    <cc:GridModulePlaceholder ID="plhRight" runat="server" Key="Right"></cc:GridModulePlaceholder>
                 </div>
             </div>
-            <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
+            <cc:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc:GridModulePlaceholder>
         </div>
     </div>
     </div>
