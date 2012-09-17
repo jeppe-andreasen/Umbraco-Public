@@ -2720,19 +2720,15 @@ input[type="submit"].btn.btn-mini {
 .sectionNav:after {
   clear: both;
 }
-<<<<<<< HEAD
-=======
 .sectionNav .navbar {
   margin-top: 30px;
 }
->>>>>>> breadcrumb
 .sectionA {
   padding: 60px 0;
 }
 .sectionB {
   background: #eefaf9;
   margin-top: 0;
-<<<<<<< HEAD
   padding: 60px 0;
 }
 .sectionNav + .sectionB {
@@ -2741,8 +2737,6 @@ input[type="submit"].btn.btn-mini {
 }
 .sectionA + .sectionB {
   margin-top: 0;
-=======
->>>>>>> breadcrumb
   padding: 60px 0;
 }
 .sectionC {
@@ -3647,11 +3641,7 @@ nav .navbar .nav .active {
 }
 .breadcrumb {
   padding: 7px 14px;
-<<<<<<< HEAD
-  margin: 0px 0 1.2em;
-=======
   margin: 0px;
->>>>>>> breadcrumb
   list-style: none;
   font-size: 0.6875em;
 }
