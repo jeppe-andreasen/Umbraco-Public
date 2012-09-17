@@ -2708,11 +2708,26 @@ input[type="submit"].btn.btn-mini {
 .top:after {
   clear: both;
 }
+.sectionNav {
+  *zoom: 1;
+}
+.sectionNav:before,
+.sectionNav:after {
+  display: table;
+  content: "";
+}
+.sectionNav:after {
+  clear: both;
+}
+.sectionNav .navbar {
+  margin-top: 30px;
+}
 .sectionA {
   padding: 60px 0;
 }
 .sectionB {
   background: #eefaf9;
+  margin-top: 0;
   padding: 60px 0;
 }
 .sectionC {
@@ -3617,7 +3632,7 @@ nav .navbar .nav .active {
 }
 .breadcrumb {
   padding: 7px 14px;
-  margin: -60px 0 1.2em;
+  margin: 0px;
   list-style: none;
   font-size: 0.6875em;
 }
