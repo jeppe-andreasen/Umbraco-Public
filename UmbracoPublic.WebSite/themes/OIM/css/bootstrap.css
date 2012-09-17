@@ -145,6 +145,16 @@ body {
   margin: 0 auto -190px;
   /* the bottom margin is the negative value of the footer's height */
 
+  background-color: #99e6df;
+  background-image: -moz-linear-gradient(top, #ffffff, #00c0af);
+  background-image: -ms-linear-gradient(top, #ffffff, #00c0af);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#00c0af));
+  background-image: -webkit-linear-gradient(top, #ffffff, #00c0af);
+  background-image: -o-linear-gradient(top, #ffffff, #00c0af);
+  background-image: linear-gradient(top, #ffffff, #00c0af);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00c0af', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 footer,
 .push {
@@ -162,22 +172,13 @@ http://ryanfait.com/
 
 */
 body {
+  min-height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
   font-size: 1em;
   line-height: 1.2em;
   color: #1e1e1e;
-  border-top: 5px #0070b9 solid;
-  background-color: #99e6df;
-  background-image: -moz-linear-gradient(top, #ffffff, #00c0af);
-  background-image: -ms-linear-gradient(top, #ffffff, #00c0af);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#00c0af));
-  background-image: -webkit-linear-gradient(top, #ffffff, #00c0af);
-  background-image: -o-linear-gradient(top, #ffffff, #00c0af);
-  background-image: linear-gradient(top, #ffffff, #00c0af);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00c0af', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border-top: 5px #00c0af solid;
 }
 a {
   color: #004d46;
@@ -2708,11 +2709,31 @@ input[type="submit"].btn.btn-mini {
 .top:after {
   clear: both;
 }
+.sectionNav {
+  *zoom: 1;
+}
+.sectionNav:before,
+.sectionNav:after {
+  display: table;
+  content: "";
+}
+.sectionNav:after {
+  clear: both;
+}
 .sectionA {
   padding: 60px 0;
 }
 .sectionB {
   background: #eefaf9;
+  margin-top: 0;
+  padding: 60px 0;
+}
+.sectionNav + .sectionB {
+  margin-top: -96px;
+  padding: 156px 0 60px;
+}
+.sectionA + .sectionB {
+  margin-top: 0;
   padding: 60px 0;
 }
 .sectionC {
@@ -3617,7 +3638,7 @@ nav .navbar .nav .active {
 }
 .breadcrumb {
   padding: 7px 14px;
-  margin: -60px 0 1.2em;
+  margin: 0px 0 1.2em;
   list-style: none;
   font-size: 0.6875em;
 }
@@ -4697,6 +4718,9 @@ a.badge:hover {
   margin: 0;
   padding: 0 0 15px 0;
   border-bottom: #dce3e2 1px solid;
+}
+.sectionC .news-list .news-items {
+  border-color: #c2cbca;
 }
 .news-list .news-items li {
   *zoom: 1;

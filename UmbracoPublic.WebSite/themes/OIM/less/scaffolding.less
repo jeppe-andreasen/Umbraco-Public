@@ -12,6 +12,8 @@ html, body {
   height: auto !important;
   height: 100%;
   margin: 0 auto -190px; /* the bottom margin is the negative value of the footer's height */
+  #gradient > .vertical(#ffffff, #00c0af);
+  .reset-filter();
 }
 footer, .push {
   height: 190px; /* .push must be the same height as .footer */
@@ -32,15 +34,13 @@ http://ryanfait.com/
 // ----------
 
 body {
+  min-height:100%;
   margin: 0;
   font-family: @baseFontFamily;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @textColor;
-  //background-color: @bodyBackground;
-  border-top:5px @blue solid;
-   #gradient > .vertical(#ffffff, #00c0af);
-   .reset-filter();
+  border-top:5px @green solid;
 }
 
 

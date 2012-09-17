@@ -3,11 +3,24 @@
 	.clearfix;
 	#translucent > .background(#000,0.4);
 }
+.sectionNav{
+	.clearfix();
+}
 .sectionA{
 	padding:60px 0;
 }
 .sectionB{
 	background:#eefaf9;	
+	margin-top:0;
+	padding:60px 0;
+}
+
+.sectionNav + .sectionB{
+	margin-top:-96px;
+	padding:156px 0 60px;
+}
+.sectionA + .sectionB{
+	margin-top:0;
 	padding:60px 0;
 }
 .sectionC{
