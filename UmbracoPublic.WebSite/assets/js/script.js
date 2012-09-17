@@ -211,17 +211,35 @@ application.navigation = {
             $leftcontainer.css('-webkit-transform', 'translate3d(0, 0, 0)');
         }
     }
+
 }
 
+
+application.subnavigation = {
+    init: function(){
+        if ($('.sectionNav').length){
+            var section =  $('.sectionNav')
+            var sectionHeight = section.outerHeight();
+            section.next('div').css({'padding-top':sectionHeight+60+'px','margin-top':sectionHeight*-1+'px'});
+        }
+    }
+}
 
 
 /* Background Image */
 
 application.background = {
     init: function () {
+<<<<<<< HEAD
         $(":[data-bgimage]").each(function () {
             $(this).attr("style", "background:url('" + $(this).attr("data-bgimage") + "') no-repeat top center");
         });
+=======
+        var form = $("form");
+        if (form.data("bgimage") !== "") {
+            form.attr("style", "background:url('" + form.data("bgimage") + "') no-repeat top center");
+        }
+>>>>>>> breadcrumb
     }
 }
 
