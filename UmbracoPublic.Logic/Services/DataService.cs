@@ -52,7 +52,18 @@ namespace UmbracoPublic.Logic.Services
             if (pageParts.Length - homeParts.Length < 1)
                 return new MenuItem[0];
 
-            return page.GetChildren<Page>().Where(c => !c.EntityName.StartsWith("__")).Select(GetMenuItem).ToList();
+            var selectedIds = CmsService.Instance.GetSelectedMenuIds();
+            var result = new List<MenuItem>();
+            foreach (var child in page.GetChildren<Page>().Where(c => !c.GetValue<bool>("hideFromMenu") && !c.EntityName.StartsWith("__")))
+            {
+                var menuItem = GetMenuItem(child);
+                if (child.Id == selectedIds.Last())
+                    menuItem.Selected = true;
+                else if (selectedIds.Contains(child.Id))
+                    menuItem.Expanded = true;
+                result.Add(menuItem);
+            }
+            return result;
         }
 
         private static MenuItem GetMenuItem(Page page)
@@ -90,12 +101,16 @@ namespace UmbracoPublic.Logic.Services
             var menuIds = CmsService.Instance.GetSelectedMenuIds();
             var home = CmsService.Instance.GetHomeItem();
             var current = CmsService.Instance.GetItem<Page>();
-            List<MenuItem> result = new List<MenuItem>();
+            var result = new List<MenuItem>();
             while (current.Id != home.Id)
             {
-                result.Insert(0, GetMenuItem(current));
+                var menuItem = GetMenuItem(current);
+                if (current.Id == menuIds.Last())
+                    menuItem.Selected = true;
+                result.Insert(0, menuItem);
                 current = current.GetParent<Page>();
             }
+            result.Insert(0, GetMenuItem(home));
             return result;
         }
 

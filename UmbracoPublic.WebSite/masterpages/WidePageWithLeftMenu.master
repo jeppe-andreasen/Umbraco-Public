@@ -1,17 +1,20 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/Site.Master" AutoEventWireup="true" CodeBehind="WidePageWithLeftMenu.master.cs" Inherits="UmbracoPublic.WebSite.masterpages.WidePageWithLeftMenu, UmbracoPublic.WebSite" %>
-<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc2" %>
-<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc1" %>
+<%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc" %>
+<%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc" %>
+<asp:Content ID="cntNavSection" runat="server" ContentPlaceHolderID="plhNavSection">
+    <cc:BreadCrumbPart ID="breadCrumb" runat="server"></cc:BreadCrumbPart>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
     <div class="container">
         <div class="row">
             <div class="span3">
-                <cc1:SideNavigationPart ID="sideNavigation" runat="server"></cc1:SideNavigationPart>
+                <cc:SideNavigationPart ID="sideNavigation" runat="server"></cc:SideNavigationPart>
                 <!-- After Side Navigation -->
             </div>
             <div class="span9">
-                <cc2:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc2:GridModulePlaceholder>
-                <cc2:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc2:GridModulePlaceholder>
-                <cc2:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc2:GridModulePlaceholder>
+                <cc:GridModulePlaceholder ID="plhTop" runat="server" Key="Top"></cc:GridModulePlaceholder>
+                <cc:GridModulePlaceholder ID="plhMain" runat="server" Key="Main"></cc:GridModulePlaceholder>
+                <cc:GridModulePlaceholder ID="plhBottom" runat="server" Key="Bottom"></cc:GridModulePlaceholder>
             </div>
         </div>
     </div>

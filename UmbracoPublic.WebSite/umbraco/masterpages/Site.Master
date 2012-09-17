@@ -42,9 +42,10 @@
 </head>
   <body>
 		<form id="form1" runat="server">
-        <nav class="top">
-            <cc1:GridModulePlaceholder ID="plhHead" runat="server" Key="Head" ItemPath="§SiteRoot"></cc1:GridModulePlaceholder>
-            <div class="container">
+        <div class="wrapper" id="wrapper" runat="server">
+            <nav class="top">
+                <cc1:GridModulePlaceholder ID="plhHead" runat="server" Key="Head" ItemPath="§SiteRoot"></cc1:GridModulePlaceholder>
+                <div class="container">
                 <!--googleoff: index-->
                 <div class="navbar">
                     <div class="navbar-inner">
@@ -65,11 +66,16 @@
                 <asp:ContentPlaceHolder ID="cphTop" runat="server"></asp:ContentPlaceHolder>
                 <!--googleon: index-->
             </div>
-        </nav>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolderDefault" runat="server">
-        </asp:ContentPlaceHolder>
-         <!--googleoff: index-->
-        
+            </nav>
+            <div class="sectionNav" id="sectionNav" runat="server">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="plhNavSection" runat="server"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolderDefault" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!--googleoff: index-->
 		<footer>
             <div class="container">
 	            <cc1:GridModulePlaceholder ID="GridModulePlaceholder1" runat="server" Key="Footer" ItemPath="§SiteRoot"></cc1:GridModulePlaceholder>

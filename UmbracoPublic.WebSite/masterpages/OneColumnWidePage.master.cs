@@ -19,5 +19,11 @@ namespace UmbracoPublic.WebSite.masterpages
         {
             return PageLayouts.WidePage1Column;
         }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            base.OnPreRender(e);
+
+        }
     }
 }

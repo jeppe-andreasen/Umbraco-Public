@@ -219,10 +219,9 @@ application.navigation = {
 
 application.background = {
     init: function () {
-        var form = $("form");
-        if (form.data("bgimage") != "") {
-            form.attr("style", "background:url('" + form.data("bgimage") + "') no-repeat top center");
-        }
+        $(":[data-bgimage]").each(function () {
+            $(this).attr("style", "background:url('" + $(this).attr("data-bgimage") + "') no-repeat top center");
+        });
     }
 }
 
