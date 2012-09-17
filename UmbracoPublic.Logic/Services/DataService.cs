@@ -85,6 +85,20 @@ namespace UmbracoPublic.Logic.Services
             return new []{ topMenuItem};
         }
 
+        public IEnumerable<MenuItem> GetBreadCrumbItems()
+        {
+            var menuIds = CmsService.Instance.GetSelectedMenuIds();
+            var home = CmsService.Instance.GetHomeItem();
+            var current = CmsService.Instance.GetItem<Page>();
+            List<MenuItem> result = new List<MenuItem>();
+            while (current.Id != home.Id)
+            {
+                result.Insert(0, GetMenuItem(current));
+                current = current.GetParent<Page>();
+            }
+            return result;
+        }
+
         private static MenuItem GetMenuItemRecursive(Page page, ICollection<Id> menuIds)
         {
             var result = GetMenuItem(page);

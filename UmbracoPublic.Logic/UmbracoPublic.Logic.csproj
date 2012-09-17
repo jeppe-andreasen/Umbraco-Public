@@ -144,6 +144,7 @@
     <Compile Include="Parts\BaseUCPart.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Parts\Navigation\BreadCrumbPart.cs" />
     <Compile Include="Parts\Navigation\PrimaryNavigationPart.cs" />
     <Compile Include="Parts\Navigation\ServiceMenuPart.cs" />
     <Compile Include="Parts\Navigation\SideNavigationPart.cs" />

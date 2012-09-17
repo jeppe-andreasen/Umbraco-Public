@@ -117,7 +117,7 @@ namespace UmbracoPublic.Logic.Modules
 
         protected virtual void RenderCookieInfo(HtmlWriter writer)
         {
-            writer.RenderBeginTag(HtmlTextWriterTag.Div, "alert");
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "alert no-cookies");
             writer.AddAttribute(HtmlTextWriterAttribute.Type, "button");
             writer.AddAttribute("data-dismiss", "alert");
             writer.RenderFullTag(HtmlTextWriterTag.Button, "×", "close");

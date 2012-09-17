@@ -377,7 +377,7 @@ application.newslist = {
             var filter = $list.attr("data-filter");
             var itemsPerPage = $list.attr("data-ipp");
             var ajaxResult = getNewsListPage(parseInt(page), filter, parseInt(itemsPerPage));
-            $list.find('ul.results').html(ajaxResult.results);
+            $list.find('ul.news-items').html(ajaxResult.results);
             $list.find('.pagination').html(ajaxResult.pager);
         });
     }
