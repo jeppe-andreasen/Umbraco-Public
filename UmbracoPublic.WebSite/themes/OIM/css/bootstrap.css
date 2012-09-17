@@ -2845,7 +2845,7 @@ nav .nav > li:hover {
 .nav-list li li a {
   background: #e3e4e4;
   background-image: url(../images/menu-arrow.png);
-  background-position: right 26px;
+  background-position: right 21px;
   background-repeat: no-repeat;
   padding-right: 22px;
   font-weight: bold;
@@ -2861,7 +2861,7 @@ nav .nav > li:hover {
   background-color: #ffffff;
 }
 .nav-list li li.expanded a {
-  background-position: right -1059px;
+  background-position: right -1060px;
 }
 .nav-list li li.active a,
 .nav-list li li.expanded a {
@@ -2895,7 +2895,7 @@ nav .nav > li:hover {
 .nav-list li li.active li.expanded li a,
 .nav-list li li.expanded li.expanded li a {
   padding-left: 57px;
-  background-position: 39px 13px;
+  background-position: 39px 12px;
   font-size: 0.6875em;
 }
 .nav-list li li.active li.expanded li.expanded a,
