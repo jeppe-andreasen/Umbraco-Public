@@ -25,8 +25,10 @@ namespace UmbracoPublic.Logic.Modules.Forms
         {
             var upload = new FileUpload();
             upload.ID = "ui" + Id;
-
+            upload.CssClass = spec.SpanClass;
+            spec.AddControl(new LiteralControl("<div class=\"fileinputs\">"));
             spec.AddControl(GetLabel(upload));
+            spec.AddControl(new LiteralControl("</div>"));
             spec.AddControl(upload);
             if (Mandatory)
                 spec.AddValidator(GetRequiredFieldValidator(upload));

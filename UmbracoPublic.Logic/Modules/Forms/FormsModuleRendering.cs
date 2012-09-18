@@ -39,7 +39,7 @@ namespace UmbracoPublic.Logic.Modules.Forms
             var validationGroup = "vg" + Module.Id;
             foreach (var field in Module.Fields)
             {
-                var spec = new FieldSpecification(validationGroup);
+                var spec = new FieldSpecification(validationGroup, this.ColumnSpan.Value);
                 Controls.Add(new LiteralControl("<div class=\"control-group\">"));
                 field.PopulateSpecification(spec, this.Page.IsPostBack);
 

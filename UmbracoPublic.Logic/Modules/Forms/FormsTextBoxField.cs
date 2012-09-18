@@ -32,6 +32,7 @@ namespace UmbracoPublic.Logic.Modules.Forms
         {
             var textBox = new TextBox();
             textBox.ID = "ui" + Id;
+            textBox.CssClass = spec.SpanClass;
             if (MultiLine)
                 textBox.TextMode = TextBoxMode.MultiLine;
             if (MaxLength.HasValue)

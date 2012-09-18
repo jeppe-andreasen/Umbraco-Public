@@ -39,6 +39,7 @@ namespace UmbracoPublic.Logic.Modules.Forms
             var dropDownList = new DropDownList();
             dropDownList.ID = "ui" + Id;
             dropDownList.Items.Add(new ListItem(string.Empty));
+            dropDownList.CssClass = spec.SpanClass;
             foreach (var value in Values)
                 dropDownList.Items.Add(value);
 

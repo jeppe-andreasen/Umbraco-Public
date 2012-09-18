@@ -10,12 +10,19 @@ namespace UmbracoPublic.Logic.Modules.Forms
     public class FieldSpecification
     {
         private readonly string _validationGroup;
+        private readonly int _span;
         private readonly List<Control> _controls = new List<Control>();
         private readonly List<BaseValidator> _validators = new List<BaseValidator>();
 
-        public FieldSpecification(string validationGroup)
+        public FieldSpecification(string validationGroup, int span)
         {
             _validationGroup = validationGroup;
+            _span = span;
+        }
+
+        public string SpanClass
+        {
+            get { return "span" + _span; }
         }
 
         public void AddControl(Control control)

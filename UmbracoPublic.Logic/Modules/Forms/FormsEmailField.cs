@@ -32,6 +32,7 @@ namespace UmbracoPublic.Logic.Modules.Forms
             var textBox = new TextBox();
             textBox.ID = "ui" + Id;
             textBox.MaxLength = 150;
+            textBox.CssClass = spec.SpanClass;
 
             spec.AddControl(GetLabel(textBox));
             spec.AddControl(textBox);
