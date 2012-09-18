@@ -441,6 +441,9 @@ h2 small {
 h2.intro {
   margin: 30px 0;
 }
+.form h2 {
+  margin-bottom: 10px;
+}
 h3 {
   font-size: 1em;
   line-height: 1.2em;
@@ -667,7 +670,8 @@ pre code {
 form {
   margin: 0 0 1.2em;
 }
-fieldset {
+fieldset,
+.form {
   padding: 0;
   margin: 0;
   border: 0;
@@ -1102,7 +1106,8 @@ select:focus:required:invalid:focus {
   display: block;
   margin-bottom: 0.6em;
 }
-.help-inline {
+.help-inline,
+.validator {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -1110,6 +1115,16 @@ select:focus:required:invalid:focus {
   *zoom: 1;
   vertical-align: middle;
   padding-left: 5px;
+}
+.validators {
+  display: inline-block;
+  vertical-align: top;
+}
+textarea + .validators {
+  display: block;
+}
+.validator {
+  color: #af292e;
 }
 .input-prepend,
 .input-append {
@@ -2720,29 +2735,15 @@ input[type="submit"].btn.btn-mini {
 .sectionNav:after {
   clear: both;
 }
-<<<<<<< HEAD
-=======
 .sectionNav .navbar {
   margin-top: 30px;
 }
->>>>>>> breadcrumb
 .sectionA {
   padding: 60px 0;
 }
 .sectionB {
   background: #eefaf9;
   margin-top: 0;
-<<<<<<< HEAD
-  padding: 60px 0;
-}
-.sectionNav + .sectionB {
-  margin-top: -96px;
-  padding: 156px 0 60px;
-}
-.sectionA + .sectionB {
-  margin-top: 0;
-=======
->>>>>>> breadcrumb
   padding: 60px 0;
 }
 .sectionC {
@@ -3647,11 +3648,7 @@ nav .navbar .nav .active {
 }
 .breadcrumb {
   padding: 7px 14px;
-<<<<<<< HEAD
-  margin: 0px 0 1.2em;
-=======
   margin: 0px;
->>>>>>> breadcrumb
   list-style: none;
   font-size: 0.6875em;
 }
