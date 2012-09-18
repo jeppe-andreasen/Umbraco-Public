@@ -446,6 +446,9 @@ h2 small {
 h2.intro {
   margin: 30px 0;
 }
+.form h2 {
+  margin-bottom: 10px;
+}
 h3 {
   font-size: 1em;
   line-height: 1.2em;
@@ -672,14 +675,17 @@ pre code {
 form {
   margin: 0;
 }
-fieldset {
+fieldset,
+.form {
   padding: 0 0 0 15px;
   margin: 0;
   border: 0;
   font-size: 0.75em;
 }
 fieldset [class^="icon-"],
-fieldset [class*=" icon-"] {
+.form [class^="icon-"],
+fieldset [class*=" icon-"],
+.form [class*=" icon-"] {
   margin-bottom: 8px;
 }
 legend {
@@ -1112,7 +1118,8 @@ select:focus:required:invalid:focus {
   display: block;
   margin-bottom: 0.6em;
 }
-.help-inline {
+.help-inline,
+.validator {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -1121,6 +1128,16 @@ select:focus:required:invalid:focus {
   vertical-align: middle;
   padding-left: 5px;
   margin-bottom: 8px;
+}
+.validators {
+  display: inline-block;
+  vertical-align: top;
+}
+textarea + .validators {
+  display: block;
+}
+.validator {
+  color: #af292e;
 }
 .input-prepend,
 .input-append {

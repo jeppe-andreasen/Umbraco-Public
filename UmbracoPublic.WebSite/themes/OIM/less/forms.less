@@ -11,7 +11,7 @@ form {
   margin: 0;
 }
 
-fieldset {
+fieldset, .form {
   padding: 0 0 0 15px;
   margin: 0;
   border: 0;
@@ -364,7 +364,7 @@ select:focus:required:invalid {
   margin-bottom: @baseLineHeight / 2;
 }
 
-.help-inline {
+.help-inline, .validator {
   display: inline-block;
   .ie7-inline-block();
   vertical-align: middle;
@@ -372,6 +372,19 @@ select:focus:required:invalid {
   margin-bottom:8px;
 }
 
+
+.validators{
+  display: inline-block;
+  vertical-align: top;
+}
+
+textarea + .validators{
+  display: block;
+}
+
+.validator{
+  color:@red;
+}
 
 
 // INPUT GROUPS
