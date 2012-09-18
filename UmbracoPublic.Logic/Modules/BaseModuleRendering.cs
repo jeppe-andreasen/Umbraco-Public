@@ -71,6 +71,8 @@ namespace UmbracoPublic.Logic.Modules
 
         protected override void Render(System.Web.UI.HtmlTextWriter writer)
         {
+            if (!Visible)
+                return;
             var w = new HtmlWriter(writer);
             if (string.IsNullOrEmpty(_errorMessages))
             {

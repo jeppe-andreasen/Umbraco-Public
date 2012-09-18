@@ -2,7 +2,7 @@
 <%@ Register assembly="UmbracoPublic.Logic" namespace="UmbracoPublic.Logic.Parts.Navigation" tagprefix="cc" %>
 <%@ Register assembly="LinqIt.UmbracoCustomFieldTypes" namespace="LinqIt.UmbracoCustomFieldTypes" tagprefix="cc" %>
 <asp:Content ID="cntNavSection" runat="server" ContentPlaceHolderID="plhNavSection">
-    <part:BreadCrumbPart ID="breadCrumb" runat="server"></part:BreadCrumbPart>
+    <cc:BreadCrumbPart ID="breadCrumb" runat="server"></cc:BreadCrumbPart>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
     <div class="sectionB">

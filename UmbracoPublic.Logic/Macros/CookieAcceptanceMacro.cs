@@ -57,14 +57,14 @@ namespace UmbracoPublic.Logic.Macros
         {
             EnsureChildControls();
             DataService.Instance.AcceptCookies();
-            CreateChildControls();
+            Page.Response.Redirect(Page.Request.Url.PathAndQuery);
         }
         
         void OnDeleteClicked(object sender, EventArgs e)
         {
             EnsureChildControls();
             DataService.Instance.DeleteCookies();
-            CreateChildControls();
+            Page.Response.Redirect(Page.Request.Url.PathAndQuery);
         }
 
         private void AddLiteral(string content)

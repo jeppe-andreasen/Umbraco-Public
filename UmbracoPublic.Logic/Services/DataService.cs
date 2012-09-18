@@ -44,17 +44,18 @@ namespace UmbracoPublic.Logic.Services
             return result;
         }
 
-        public IEnumerable<MenuItem> GetSubMenuItems()
+        public IEnumerable<MenuItem> GetSubMenuItems(Page parentPage)
         {
             var homeParts = CmsService.Instance.GetHomeItem().Path.Split('/');
-            var page = CmsService.Instance.GetItem<Page>();
-            var pageParts = page.Path.Split('/');
+            if (parentPage == null)
+                parentPage = CmsService.Instance.GetItem<Page>();
+            var pageParts = parentPage.Path.Split('/');
             if (pageParts.Length - homeParts.Length < 1)
                 return new MenuItem[0];
 
             var selectedIds = CmsService.Instance.GetSelectedMenuIds();
             var result = new List<MenuItem>();
-            foreach (var child in page.GetChildren<Page>().Where(c => !c.GetValue<bool>("hideFromMenu") && !c.EntityName.StartsWith("__")))
+            foreach (var child in parentPage.GetChildren<Page>().Where(c => !c.GetValue<bool>("hideFromMenu") && !c.EntityName.StartsWith("__")))
             {
                 var menuItem = GetMenuItem(child);
                 if (child.Id == selectedIds.Last())

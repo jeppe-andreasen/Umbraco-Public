@@ -25,6 +25,7 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
             var page = CmsService.Instance.GetItem<Entity>();
 
             ModuleScripts.RegisterInitScript("navigation");
+            ModuleScripts.RegisterInitScript("subnavigation");
             ModuleScripts.RegisterInitScript("search", new JSONString(Urls.GetSystemUrl(SystemKey.SiteSearchResultPage)));
             ModuleScripts.RegisterInitScript("button");
             ModuleScripts.RegisterInitScript("background");
@@ -105,6 +106,8 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
             base.OnPreRender(e);
             var visibleContent = plhNavSection.Controls.Cast<Control>().Where(IsVisible).ToList();
             sectionNav.Visible = visibleContent.Any();
+
+            plhHead.Visible = !plhHead.IsEmpty;
         }
 
         private static bool IsVisible(Control control)

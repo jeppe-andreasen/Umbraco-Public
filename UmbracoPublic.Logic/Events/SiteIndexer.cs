@@ -8,6 +8,7 @@ using umbraco.cms.businesslogic;
 using UmbracoPublic.Logic.BackgroundWork;
 using umbraco.cms.businesslogic.web;
 using UmbracoPublic.Logic.Entities;
+using UmbracoPublic.Logic.Modules.Forms;
 using UmbracoPublic.Logic.Utilities;
 
 namespace UmbracoPublic.Logic.Events
@@ -75,8 +76,7 @@ namespace UmbracoPublic.Logic.Events
                                 var archivePage = CmsService.Instance.GetItem<NewsListPage>(newsArchivePart);
                                 yearPage = CmsService.Instance.CreateEntity<NewsListPage>(yearPart, archivePage);
                             }
-                            var monthPage =
-                                CmsService.Instance.GetItem<NewsListPage>(Paths.Combine(newsArchivePart, yearPart,
+                            var monthPage = CmsService.Instance.GetItem<NewsListPage>(Paths.Combine(newsArchivePart, yearPart,
                                                                                         monthPart));
                             if (monthPage == null)
                                 monthPage = CmsService.Instance.CreateEntity<NewsListPage>(monthPart, yearPage);
@@ -86,6 +86,33 @@ namespace UmbracoPublic.Logic.Events
                             page.ClientScript.RegisterStartupScript(page.GetType(), "refreshItem", "top.window.location.href = '/umbraco/umbraco.aspx?app=content&rightAction=editContent&id=" + sender.Id + "#content';", true);
                         }
                     }
+                }
+            }
+            else if (sender.ContentType.Alias == "FormsModule")
+            {
+                var folderCreated = false;
+                using (CmsContext.Editing)
+                {
+                    var module = CmsService.Instance.GetItem<FormsModule>(new Id(sender.Id));
+                    var actionsFolder =
+                        module.GetChildren<FormsActionFolder>().Where(f => f.EntityName == "Actions").FirstOrDefault();
+                    if (actionsFolder == null)
+                    {
+                        CmsService.Instance.CreateEntity<FormsActionFolder>("Actions", module);
+                        folderCreated = true;
+                    }
+                    var fieldsFolder =
+                        module.GetChildren<FormsFieldFolder>().Where(f => f.EntityName == "Fields").FirstOrDefault();
+                    if (fieldsFolder == null)
+                    {
+                        CmsService.Instance.CreateEntity<FormsFieldFolder>("Fields", module);
+                        folderCreated = true;
+                    }
+                }
+                if (folderCreated)
+                {
+                    var page = umbraco.BasePages.BasePage.Current;
+                    page.ClientScript.RegisterStartupScript(page.GetType(), "refreshItem", "top.window.location.href = '/umbraco/umbraco.aspx?app=content&rightAction=editContent&id=" + sender.Id + "#content';", true);
                 }
             }
         }

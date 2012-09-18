@@ -66,6 +66,8 @@ namespace LinqIt.UmbracoCustomFieldTypes
                 FooterTemplate.InstantiateIn(footer);
                 Controls.Add(footer);
             }
+
+            this.Visible = _placeholder.Visible;
         }
 
 

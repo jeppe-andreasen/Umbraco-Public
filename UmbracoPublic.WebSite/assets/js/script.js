@@ -233,10 +233,6 @@ application.background = {
         $(":[data-bgimage]").each(function () {
             $(this).attr("style", "background:url('" + $(this).attr("data-bgimage") + "') no-repeat top center");
         });
-        var form = $("form");
-        if (form.data("bgimage") !== "") {
-            form.attr("style", "background:url('" + form.data("bgimage") + "') no-repeat top center");
-        }
     }
 }
 
@@ -394,5 +390,32 @@ application.newslist = {
             $list.find('ul.news-items').html(ajaxResult.results);
             $list.find('.pagination').html(ajaxResult.pager);
         });
+    }
+}
+
+application.forms = {
+    init: function () {
+        $('.form').each(function () {
+            var form = $(this);
+            form.find("select").click(function () {
+                application.forms.updateValidators(form);
+            });
+            form.find("input,textarea").blur(function () {
+                application.forms.updateValidators(form);
+            });
+            form.find("input.btn").click(function () {
+                application.forms.updateValidators(form);
+            });
+        });
+    },
+    updateValidators: function (form) {
+        form.find(".control-group").removeClass("error");
+        for (var i = 0; i < Page_Validators.length; i++) {
+            var val = Page_Validators[i];
+            var ctrl = document.getElementById(val.controltovalidate);
+            if (ctrl != null && ctrl.style != null && !val.isvalid) {
+                $(ctrl).closest(".control-group").addClass("error");
+            }
+        }
     }
 }

@@ -134,6 +134,10 @@ textarea {
 * {
   margin: 0;
 }
+html,
+body {
+  height: 100%;
+}
 .wrapper {
   min-height: 100%;
   height: auto !important;
@@ -141,7 +145,6 @@ textarea {
   margin: 0 auto -190px;
   /* the bottom margin is the negative value of the footer's height */
 
-  *zoom: 1;
   background-color: #99e6df;
   background-image: -moz-linear-gradient(top, #ffffff, #00c0af);
   background-image: -ms-linear-gradient(top, #ffffff, #00c0af);
@@ -152,14 +155,6 @@ textarea {
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00c0af', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
-.wrapper:before,
-.wrapper:after {
-  display: table;
-  content: "";
-}
-.wrapper:after {
-  clear: both;
 }
 footer,
 .push {
@@ -670,17 +665,12 @@ pre code {
   overflow-y: scroll;
 }
 form {
-  margin: 0;
+  margin: 0 0 1.2em;
 }
 fieldset {
-  padding: 0 0 0 15px;
+  padding: 0;
   margin: 0;
   border: 0;
-  font-size: 0.75em;
-}
-fieldset [class^="icon-"],
-fieldset [class*=" icon-"] {
-  margin-bottom: 8px;
 }
 legend {
   display: block;
@@ -704,7 +694,7 @@ select,
 textarea {
   font-size: 1em;
   font-weight: normal;
-  line-height: 1.8em;
+  line-height: 1.2em;
 }
 input,
 button,
@@ -1000,31 +990,31 @@ input[type="checkbox"][readonly] {
 .control-group.error > label,
 .control-group.error .help-block,
 .control-group.error .help-inline {
-  color: #af292e;
+  color: #ffffff;
 }
 .control-group.error .checkbox,
 .control-group.error .radio,
 .control-group.error input,
 .control-group.error select,
 .control-group.error textarea {
-  color: #af292e;
-  border-color: #af292e;
+  color: #ffffff;
+  border-color: #ffffff;
 }
 .control-group.error .checkbox:focus,
 .control-group.error .radio:focus,
 .control-group.error input:focus,
 .control-group.error select:focus,
 .control-group.error textarea:focus {
-  border-color: #861f23;
-  -webkit-box-shadow: 0 0 6px #db6368;
-  -moz-box-shadow: 0 0 6px #db6368;
-  box-shadow: 0 0 6px #db6368;
+  border-color: #e6e6e6;
+  -webkit-box-shadow: 0 0 6px #ffffff;
+  -moz-box-shadow: 0 0 6px #ffffff;
+  box-shadow: 0 0 6px #ffffff;
 }
 .control-group.error .input-prepend .add-on,
 .control-group.error .input-append .add-on {
-  color: #af292e;
+  color: #ffffff;
   background-color: #af292e;
-  border-color: #af292e;
+  border-color: #ffffff;
 }
 .control-group.success > label,
 .control-group.success .help-block,
@@ -1120,7 +1110,6 @@ select:focus:required:invalid:focus {
   *zoom: 1;
   vertical-align: middle;
   padding-left: 5px;
-  margin-bottom: 8px;
 }
 .input-prepend,
 .input-append {
@@ -1567,7 +1556,7 @@ table .span24 {
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("/img/glyphicons-halflings.png");
+  background-image: url("../img/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -1576,7 +1565,7 @@ table .span24 {
   *margin-left: 0;
 }
 .icon-white {
-  background-image: url("/img/glyphicons-halflings-white.png");
+  background-image: url("../img/glyphicons-halflings-white.png");
 }
 .icon-glass {
   background-position: 0      0;
@@ -2731,15 +2720,19 @@ input[type="submit"].btn.btn-mini {
 .sectionNav:after {
   clear: both;
 }
+<<<<<<< HEAD
+=======
 .sectionNav .navbar {
   margin-top: 30px;
 }
+>>>>>>> breadcrumb
 .sectionA {
   padding: 60px 0;
 }
 .sectionB {
   background: #eefaf9;
   margin-top: 0;
+<<<<<<< HEAD
   padding: 60px 0;
 }
 .sectionNav + .sectionB {
@@ -2748,6 +2741,8 @@ input[type="submit"].btn.btn-mini {
 }
 .sectionA + .sectionB {
   margin-top: 0;
+=======
+>>>>>>> breadcrumb
   padding: 60px 0;
 }
 .sectionC {
@@ -3652,7 +3647,11 @@ nav .navbar .nav .active {
 }
 .breadcrumb {
   padding: 7px 14px;
+<<<<<<< HEAD
+  margin: 0px 0 1.2em;
+=======
   margin: 0px;
+>>>>>>> breadcrumb
   list-style: none;
   font-size: 0.6875em;
 }

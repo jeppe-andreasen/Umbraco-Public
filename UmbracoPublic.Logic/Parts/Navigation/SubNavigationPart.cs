@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.UI;
+using LinqIt.Cms;
 using UmbracoPublic.Logic.Entities;
 using UmbracoPublic.Logic.Services;
+using UmbracoPublic.Logic.Utilities;
 
 namespace UmbracoPublic.Logic.Parts.Navigation
 {
@@ -15,7 +17,18 @@ namespace UmbracoPublic.Logic.Parts.Navigation
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            _menuItems = DataService.Instance.GetSubMenuItems();
+
+            var isNewsListMonthPage = false;
+
+            //test if this is a month page in the news archive a hide accordingly.
+            var page = CmsService.Instance.GetItem<LinqIt.Cms.Data.Page>();
+            var newsArchivePath = Paths.GetSystemPath(SystemKey.NewsArchivePage);
+            if (page.Path.StartsWith(newsArchivePath))
+            {
+                if (page.Path.Split('/').Length == newsArchivePath.Split('/').Length + 2)
+                    isNewsListMonthPage = true;
+            }
+            _menuItems = DataService.Instance.GetSubMenuItems(isNewsListMonthPage ? page.GetParent<LinqIt.Cms.Data.Page>() : null);
             Visible = _menuItems.Any();
         }
 

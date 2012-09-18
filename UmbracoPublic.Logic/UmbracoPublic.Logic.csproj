@@ -86,6 +86,7 @@
     <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
     <Compile Include="Controllers\Paging\PagingController.cs" />
     <Compile Include="Entities\CookieState.cs" />
+    <Compile Include="Entities\GoBasicEntityTypeTable.cs" />
     <Compile Include="Entities\MailConfiguration.cs" />
     <Compile Include="Entities\NewsListPage.cs" />
     <Compile Include="Entities\ServiceMenuConfiguration.cs" />
@@ -102,6 +103,19 @@
     <Compile Include="Modules\ContactList\ContactListModuleRendering.cs" />
     <Compile Include="Modules\Contact\ContactModuleRendering.cs" />
     <Compile Include="Modules\Disqus\DisqusModuleRendering.cs" />
+    <Compile Include="Modules\Forms\FieldSpecification.cs" />
+    <Compile Include="Modules\Forms\FormsAction.cs" />
+    <Compile Include="Modules\Forms\FormsActionFolder.cs" />
+    <Compile Include="Modules\Forms\FormsCheckBoxField.cs" />
+    <Compile Include="Modules\Forms\FormsDropDownField.cs" />
+    <Compile Include="Modules\Forms\FormsEmailField.cs" />
+    <Compile Include="Modules\Forms\FormsField.cs" />
+    <Compile Include="Modules\Forms\FormsFieldFolder.cs" />
+    <Compile Include="Modules\Forms\FormsFileUploadField.cs" />
+    <Compile Include="Modules\Forms\FormsModule.cs" />
+    <Compile Include="Modules\Forms\FormsModuleRendering.cs" />
+    <Compile Include="Modules\Forms\FormsSendMailAction.cs" />
+    <Compile Include="Modules\Forms\FormsTextBoxField.cs" />
     <Compile Include="Modules\GoogleAnalytics\GoogleAnalyticsModule.cs" />
     <Compile Include="Modules\GoogleAnalytics\GoogleAnalyticsModuleRendering.cs" />
     <Compile Include="Modules\GoogleMap\GoogleMapModule.cs" />

@@ -8,17 +8,13 @@
 
 // Make all forms have space below them
 form {
-  margin: 0;
+  margin: 0 0 @baseLineHeight;
 }
 
 fieldset {
-  padding: 0 0 0 15px;
+  padding: 0;
   margin: 0;
   border: 0;
-  font-size:0.75em;
-  [class^="icon-"], [class*=" icon-"]{
-    margin-bottom:8px;
-  }
 }
 
 // Groups of fields with labels on top (legends)
@@ -46,7 +42,7 @@ input,
 button,
 select,
 textarea {
-  #font > .shorthand(@baseFontSize,normal,1.8em); // Set size, weight, line-height here
+  #font > .shorthand(@baseFontSize,normal,@baseLineHeight); // Set size, weight, line-height here
 }
 input,
 button,
@@ -302,7 +298,7 @@ input[type="checkbox"][readonly] {
 }
 // Error
 .control-group.error {
-  .formFieldState(@red, @red, @red);
+  .formFieldState(@errorText, @errorText, @errorBackground);
 }
 // Success
 .control-group.success {
@@ -369,7 +365,6 @@ select:focus:required:invalid {
   .ie7-inline-block();
   vertical-align: middle;
   padding-left: 5px;
-  margin-bottom:8px;
 }
 
 

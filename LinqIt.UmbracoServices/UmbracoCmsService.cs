@@ -424,9 +424,11 @@ namespace LinqIt.UmbracoServices
             throw new NotImplementedException();
         }
 
-        protected override string GetTemplatePath(object item)
+        protected override string GetTemplatePath(object obj)
         {
-            throw new NotImplementedException();
+            var item = (UmbracoItem)obj;
+            var template = new UmbracoTemplate(item.DocumentType);
+            return template.Path;
         }
 
         protected override object GetAnchestorOfType(object item, string templatePath)

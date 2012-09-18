@@ -9,6 +9,7 @@ namespace UmbracoPublic.Logic.Utilities
     {
         CookieAcceptancePage,
         MainNewsPage,
-        SiteSearchResultPage
+        SiteSearchResultPage,
+        NewsArchivePage
     }
 }
