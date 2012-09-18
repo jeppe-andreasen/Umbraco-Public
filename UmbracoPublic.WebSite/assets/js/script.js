@@ -393,6 +393,13 @@ application.newslist = {
     }
 }
 
+application.tooltip = {
+    init: function(){
+        $('.form-tooltip').tooltip();
+    }
+
+}
+
 application.forms = {
     init: function () {
         $('.form').each(function () {

@@ -740,7 +740,7 @@ input[type="color"],
   margin-bottom: 0px;
   font-size: 1em;
   line-height: 1.2em;
-  color: #797777;
+  color: #000000;
 }
 input,
 textarea {
@@ -1310,7 +1310,7 @@ input[type="submit"] {
   margin-left: 0;
 }
 .control-group {
-  margin-bottom: 0.6em;
+  margin-bottom: 1.2em;
 }
 legend + .control-group {
   margin-top: 1.2em;
@@ -1576,7 +1576,7 @@ table .span24 {
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
+  background-image: url("/img/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -1585,7 +1585,7 @@ table .span24 {
   *margin-left: 0;
 }
 .icon-white {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url("/img/glyphicons-halflings-white.png");
 }
 .icon-glass {
   background-position: 0      0;
