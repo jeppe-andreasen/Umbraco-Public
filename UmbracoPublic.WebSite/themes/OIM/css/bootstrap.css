@@ -715,7 +715,7 @@ textarea {
 }
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 select,
 textarea,
@@ -737,7 +737,7 @@ input[type="color"],
   display: inline-block;
   height: 1.2em;
   padding: 4px;
-  margin-bottom: 9px;
+  margin-bottom: 0px;
   font-size: 1em;
   line-height: 1.2em;
   color: #797777;
@@ -969,7 +969,6 @@ input[type="radio"][readonly],
 input[type="checkbox"][readonly] {
   background-color: transparent;
 }
-.control-group.warning > label,
 .control-group.warning .help-block,
 .control-group.warning .help-inline {
   color: #ffffff;
@@ -998,7 +997,6 @@ input[type="checkbox"][readonly] {
   background-color: #f7941d;
   border-color: #ffffff;
 }
-.control-group.error > label,
 .control-group.error .help-block,
 .control-group.error .help-inline {
   color: #af292e;
@@ -1027,7 +1025,6 @@ input[type="checkbox"][readonly] {
   background-color: #af292e;
   border-color: #af292e;
 }
-.control-group.success > label,
 .control-group.success .help-block,
 .control-group.success .help-inline {
   color: #ffffff;
@@ -1105,6 +1102,9 @@ select:focus:required:invalid:focus {
 ::-webkit-input-placeholder {
   color: #e2f6f5;
 }
+input[type="submit"] {
+  margin-top: 10px;
+}
 .help-block,
 .help-inline {
   color: #797777;
@@ -1125,11 +1125,11 @@ select:focus:required:invalid:focus {
   margin-bottom: 8px;
 }
 .validators {
-  display: inline-block;
   vertical-align: top;
-}
-textarea + .validators {
   display: block;
+}
+.validators .validator {
+  padding-left: 0px;
 }
 .validator {
   color: #af292e;

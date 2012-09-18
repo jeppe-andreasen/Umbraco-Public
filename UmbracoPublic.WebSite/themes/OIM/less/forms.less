@@ -58,7 +58,7 @@ textarea {
 // Identify controls by their labels
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 
 // Form controls
@@ -85,7 +85,7 @@ input[type="color"],
   display: inline-block;
   height: @baseLineHeight;
   padding: 4px;
-  margin-bottom: 9px;
+  margin-bottom:0px;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
   color: @gray;
@@ -349,7 +349,9 @@ select:focus:required:invalid {
 // Placeholder text gets special styles; can't be bundled together though for some reason
 .placeholder();
 
-
+input[type="submit"]{
+  margin-top:10px;
+}
 
 // HELP TEXT
 // ---------
@@ -373,12 +375,11 @@ select:focus:required:invalid {
 }
 
 .validators {
-  display: inline-block;
   vertical-align: top;
-}
-
-textarea + .validators {
   display: block;
+  .validator{
+    padding-left: 0px;
+  }
 }
 
 .validator {
