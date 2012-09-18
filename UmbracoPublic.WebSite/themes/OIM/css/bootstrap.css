@@ -4643,9 +4643,6 @@ a.badge:hover {
   color: #000000;
 }
 .linklist {
-  list-style: none;
-  margin: 0;
-  width: 100%;
   background: #ffffff;
   /* Old browsers */
 
@@ -4674,47 +4671,47 @@ a.badge:hover {
   /* IE6-8 fallback on horizontal gradient */
 
 }
-.linklist li {
+.linklist h2 {
+  padding: 20px 15px;
+}
+.linklist ul {
+  list-style: none;
+  margin: 0;
+  width: 100%;
+}
+.linklist ul li {
   background-color: rgba(255, 255, 255, 0.8);
   border-top: 1px solid #f6fcfb;
 }
-.linklist li:first-child {
-  background-color: transparent;
-  border-top: none;
-}
-.linklist li h2 {
-  padding: 20px 15px;
-  background: #f1faf9;
-}
-.linklist li a {
+.linklist ul li a {
   display: block;
   padding: 17px 15px 17px 15px;
   color: #000000;
   font-size: 0.75em;
 }
-.linklist li a:hover {
+.linklist ul li a:hover {
   background: #ffffff;
   text-decoration: none;
   color: #000000;
 }
-.linklist li .arrow {
+.linklist ul li .arrow {
   width: 6px;
   background: url(../images/Sprite.png) -139px -19px no-repeat;
   float: right;
   line-height: 1em;
   height: 14px;
 }
-.highlight .linklist {
+.highlight .linklist ul {
   background: transparent;
   background-color: #d6e1e0;
 }
-.highlight .linklist li {
+.highlight .linklist ul li {
   background-color: #d6e1e0;
 }
-.highlight .linklist li:first-child {
+.highlight .linklist ul li:first-child {
   background-color: #d6e1e0;
 }
-.highlight .linklist li h2 {
+.highlight .linklist ul li h2 {
   background-color: #d6e1e0;
 }
 .news-list h2 {
