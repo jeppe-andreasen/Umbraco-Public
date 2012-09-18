@@ -978,7 +978,6 @@ input[type="checkbox"][readonly] {
 .control-group.warning input,
 .control-group.warning select,
 .control-group.warning textarea {
-  color: #ffffff;
   border-color: #ffffff;
 }
 .control-group.warning .checkbox:focus,
@@ -1006,7 +1005,6 @@ input[type="checkbox"][readonly] {
 .control-group.error input,
 .control-group.error select,
 .control-group.error textarea {
-  color: #af292e;
   border-color: #af292e;
 }
 .control-group.error .checkbox:focus,
@@ -1034,7 +1032,6 @@ input[type="checkbox"][readonly] {
 .control-group.success input,
 .control-group.success select,
 .control-group.success textarea {
-  color: #ffffff;
   border-color: #ffffff;
 }
 .control-group.success .checkbox:focus,
