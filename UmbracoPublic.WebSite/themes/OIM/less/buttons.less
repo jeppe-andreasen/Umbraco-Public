@@ -21,7 +21,6 @@
 	cursor: pointer;
 	background:@grayDark;
 	.box-sizing(border-box);
- 
 	#translucent > .background(@black, 0.8);
 	background-image:url("/Themes/OIM/images/button-arrow.png");
 	background-position:95% -46px;
@@ -31,6 +30,9 @@
 	.ie7-restore-left-whitespace(); // Give IE7 some love
 	.ie7-inline-block();
 	min-width:240px;
+	.hero-unit &{
+		background-position: 95% -41px;
+	}
 }
 
 // Hover state
@@ -39,7 +41,7 @@
 	text-decoration: none;
 	background-color: @black;
 	*background-color: @black; /* Buttons in IE7 don't get borders, so darken on hover */
-	//background-position: 0 -15px;
+
 
 	// transition is only when going to hover, otherwise the background
 	// behind the gradient (there for IE<=9 fallback) gets mismatched

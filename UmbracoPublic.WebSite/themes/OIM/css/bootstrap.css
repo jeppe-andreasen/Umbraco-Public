@@ -2226,6 +2226,9 @@ button.close {
 .btn:first-child {
   *margin-left: 0;
 }
+.hero-unit .btn {
+  background-position: 95% -41px;
+}
 .btn:hover {
   color: #ffffff;
   text-decoration: none;
