@@ -426,3 +426,17 @@ application.forms = {
         }
     }
 }
+
+application.equalheight = {
+    init:function(item){
+        var maxHeight = 0;
+
+        $(item).each(function(){
+            var $this = $(this);
+           if ($this.height() > maxHeight) { maxHeight = $this.height(); }
+        });
+
+        $(item).height(maxHeight);
+    }
+
+}
