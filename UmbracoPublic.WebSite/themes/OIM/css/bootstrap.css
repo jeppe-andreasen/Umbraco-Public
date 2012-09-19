@@ -4654,7 +4654,7 @@ a.badge:hover {
   color: #ffffff;
 }
 .hero-unit {
-  padding: 15px 15px 60px 15px;
+  padding: 15px 15px 15px 15px;
   margin-bottom: 30px;
 }
 .hero-unit h1 {
@@ -4669,6 +4669,9 @@ a.badge:hover {
   font-weight: 200;
   line-height: 1.7999999999999998em;
   color: #000000;
+}
+.highlight .hero-unit {
+  background-color: #d7e1e0;
 }
 .linklist {
   background: #ffffff;
@@ -4729,18 +4732,16 @@ a.badge:hover {
   line-height: 1em;
   height: 14px;
 }
-.highlight .linklist ul {
+.highlight .linklist {
   background: transparent;
   background-color: #d6e1e0;
 }
-.highlight .linklist ul li {
-  background-color: #d6e1e0;
+.highlight .linklist h2 {
+  background-color: #d6e0df;
 }
-.highlight .linklist ul li:first-child {
-  background-color: #d6e1e0;
-}
-.highlight .linklist ul li h2 {
-  background-color: #d6e1e0;
+.highlight .linklist li {
+  background-color: #eef3f2;
+  border-color: #d6e0df;
 }
 .news-list h2 {
   font-size: 1.875em;
@@ -4888,6 +4889,9 @@ a.badge:hover {
 .key-numbers dd {
   font-size: 0.75em;
   text-align: center;
+}
+.highlight .key-numbers {
+  background-color: #d7e1e0;
 }
 .contact-list h3 {
   margin-bottom: 20px;
