@@ -15,7 +15,6 @@ fieldset, .form {
   padding: 0 0 0 15px;
   margin: 0;
   border: 0;
-  font-size:0.75em;
   [class^="icon-"], [class*=" icon-"]{
     margin-bottom:8px;
   }
@@ -59,6 +58,7 @@ textarea {
 label {
   display: block;
   margin-bottom: 0px;
+  font-size:0.75em;
 }
 
 // Form controls
@@ -77,6 +77,7 @@ input[type="time"],
 input[type="week"],
 input[type="number"],
 input[type="email"],
+input[type="file"],
 input[type="url"],
 input[type="search"],
 input[type="tel"],
@@ -86,7 +87,7 @@ input[type="color"],
   height: @baseLineHeight;
   padding: 4px;
   margin-bottom:0px;
-  font-size: @baseFontSize;
+  font-size:0.75em;
   line-height: @baseLineHeight;
   color: @black;
 }
@@ -150,6 +151,7 @@ input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
   width: auto; // Override of generic input selector
+  font-size:0.75em;
 }
 
 // Make uneditable textareas behave like a textarea
@@ -303,6 +305,9 @@ input[type="checkbox"][readonly] {
 // Error
 .control-group.error {
   .formFieldState(@red, @red, @red);
+  span{
+    font-size:0.75em;
+  }
 }
 // Success
 .control-group.success {
@@ -601,4 +606,21 @@ legend + .control-group {
   .form-actions {
     padding-left: 160px;
   }
+}
+
+//Poll
+
+.poll {
+  .radio{
+    color:#004d46;
+    font-weight:bold;
+  }
+  .highlight &{
+    background:#d8e1e1; 
+    padding:15px;
+  }
+}
+
+.poll .progress + p{
+  margin-bottom:10px;
 }
