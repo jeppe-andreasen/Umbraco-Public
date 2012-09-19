@@ -2323,6 +2323,9 @@ button.close {
   background-position: 95% 12px;
   background-repeat: no-repeat;
 }
+.hero-unit .btn-primary {
+  background-position: 95% 18px;
+}
 .btn-primary:hover {
   background-color: #f7941d;
 }
