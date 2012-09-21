@@ -21,3 +21,5 @@ obj/
 _ReSharper.UmbracoPublic/
 Databases/
 UmbracoPublic.5.1.ReSharper.user
+UmbracoPublic.WebSite/Themes/OIM/.sass-cache
+UmbracoPublic.WebSite/Themes/OIM/*.rb

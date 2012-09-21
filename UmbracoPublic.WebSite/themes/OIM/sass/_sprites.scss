@@ -19,18 +19,18 @@
   display: inline-block;
   width: 14px;
   height: 14px;
-  .ie7-restore-right-whitespace();
+  @include ie7-restore-right-whitespace();
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("@{iconSpriteUri}");
-  *background-image: url("@{iconSpritePath}");
+  background-image: url("${iconSpriteUri}");
+  *background-image: url("${iconSpritePath}");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 
 }
 .icon-white {
- background-image: url("@{iconWhiteSpriteUri}");
- *background-image: url("@{iconWhiteSpritePath}");
+ background-image: url("${iconWhiteSpriteUri}");
+ *background-image: url("${iconWhiteSpritePath}");
 }
 
 .icon-glass              { background-position: 0      0; }
@@ -192,7 +192,7 @@ height: 12px;
 margin-top: 1px;
 line-height: 12px;
 vertical-align: text-top;
-background-image: url("@{sprite}");
+background-image: url($sprite);
 background-position: 30px 30px;
 background-repeat: no-repeat;
 }

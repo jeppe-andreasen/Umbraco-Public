@@ -24,13 +24,13 @@
   width: 12px;
   height: 8px;
   vertical-align: top;
-  //border-top:   4px solid @black;
-  background:url("@{sprite}") -21px -25px;
+  //border-top:   4px solid $black;
+  background:url($sprite) -21px -25px;
   *background:url(../images/Sprite.png) -21px -25px;
   //border-right: 4px solid transparent;
   //border-left:  4px solid transparent;
   content: "";
-  //.opacity(30);
+  //@include opacity(30);
   span{
     margin-left:-10000em;
   }
@@ -43,7 +43,7 @@
 }
 .dropdown:hover .caret,
 .open .caret {
-  //.opacity(100);
+  //@include opacity(100);
 }
 
 // The dropdown menu (ul)
@@ -52,20 +52,20 @@
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: @zindexDropdown;
+  z-index: $zindexDropdown;
   display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: 160px;
   padding: 4px 0;
   margin: 1px 0 0; // override default ul
   list-style: none;
-  background-color: @dropdownBackground;
+  background-color: $dropdownBackground;
  // border: 1px solid #ccc;
   //border: 1px solid rgba(0,0,0,.2);
   //*border-right-width: 2px;
   //*border-bottom-width: 2px;
-  //.border-radius(5px);
-  //.box-shadow(0 5px 10px rgba(0,0,0,.2));
+  //@include border-radius(5px);
+  //@include box-shadow(0 5px 10px rgba(0,0,0,.2));
   //-webkit-background-clip: padding-box;
   //   -moz-background-clip: padding;
   //       background-clip: padding-box;
@@ -78,7 +78,7 @@
 
   // Dividers (basically an hr) within the dropdown
   .divider {
-    .nav-divider(@dropdownDividerTop, @dropdownDividerBottom);
+    @include nav-divider($dropdownDividerTop, $dropdownDividerBottom);
   }
 
   // Links within the dropdown menu
@@ -87,8 +87,8 @@
     padding: 3px 15px;
     clear: both;
     font-weight: normal;
-    line-height: @baseLineHeight;
-    color: @dropdownLinkColor;
+    line-height: $baseLineHeight;
+    color: $dropdownLinkColor;
     white-space: nowrap;
   }
 }
@@ -98,9 +98,9 @@
 .dropdown-menu li > a:hover,
 .dropdown-menu .active > a,
 .dropdown-menu .active > a:hover {
-  color: @dropdownLinkColorHover;
+  color: $dropdownLinkColorHover;
   text-decoration: none;
-  background-color: @dropdownLinkBackgroundHover;
+  background-color: $dropdownLinkBackgroundHover;
 }
 
 // Open state for the dropdown
@@ -108,7 +108,7 @@
 .open {
   // IE7's z-index only goes to the nearest positioned ancestor, which would
   // make the menu appear below buttons that appeared later on the page
-  *z-index: @zindexDropdown;
+  *z-index: $zindexDropdown;
 
   & > .dropdown-menu {
     display: block;
@@ -131,7 +131,7 @@
   // Reverse the caret
   .caret {
     border-top: 0;
-    border-bottom: 4px solid @black;
+    border-bottom: 4px solid $black;
     content: "\2191";
   }
   // Different positioning for bottom up menu
@@ -146,5 +146,5 @@
 // ---------
 .typeahead {
   margin-top: 2px; // give it some space to breathe
-  .border-radius(4px);
+  @include border-radius(4px);
 }

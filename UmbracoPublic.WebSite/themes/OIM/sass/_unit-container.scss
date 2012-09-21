@@ -1,0 +1,10 @@
+.unit-container{
+	background:url('../img/dot.png') repeat-x top left $grayLight;
+	margin-bottom:11px;
+	@include clearfix();
+	padding:21px 11px 11px;
+	&.highlight{
+		background:url('../img/dot.png') repeat-x top left $grayLighter;
+	}
+}
+

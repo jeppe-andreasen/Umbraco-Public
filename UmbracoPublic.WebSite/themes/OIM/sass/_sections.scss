@@ -1,0 +1,76 @@
+﻿
+.top{
+	@include clearfix();
+	@include translucent-background(#000,0.4);
+}
+.sectionNav{
+	@include clearfix();
+	 .navbar{
+	    margin-top:30px;
+	  }
+}
+.sectionA{
+	padding:60px 0;
+}
+
+.sectionB{
+	background:#eefaf9;	
+	margin-top:0;
+	padding:60px 0;
+}
+
+.sectionC{
+	background:#dae1e1;
+	padding:60px 0;
+}
+footer{
+    background:#586261;
+    height:190px;
+    overflow: hidden;
+}
+
+footer .container{
+	@include clearfix();
+	height:100%;
+	.row{
+		height:100%;
+		padding: 0;
+	}
+}
+
+
+//Moduls
+
+.module{
+	//background:green;
+	@include box-sizing(border-box);
+	footer &{
+		height:100%;
+		position: relative;
+		margin-top:0;
+	}
+	.highlight{
+		background-color: #d8e1e0;
+	}	
+}
+
+.content{
+	@include clearfix();
+	h1{
+		margin-bottom: 30px;
+	}
+	padding:0 15px;
+	ul{
+		margin:0;
+		padding:0;
+	}
+	li{
+		font-size:0.75em;
+		line-height:1.5em;
+		list-style-type: none;
+		padding-left:8px;
+		background: url($list-image) 0 8px no-repeat;
+		margin-bottom:5px;
+	}
+}
+

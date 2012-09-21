@@ -20,7 +20,7 @@
 		width:100%;
 		
 		li{
-			#translucent > .background(#ffffff, 0.8);
+			@include translucent-background(#ffffff, 0.8);
 			border-top:1px solid #f6fcfb;
 			//&:first-child{
 			//	background-color: transparent;
@@ -29,18 +29,18 @@
 			a{
 				display:block;
 				padding:17px 15px 17px 15px;
-				color:@black;
+				color:$black;
 				font-size:0.75em;
 
 				&:hover{
-					background:@white;
+					background:$white;
 					text-decoration:none;
-					color:@black;
+					color:$black;
 				}
 			}
 			.arrow{
 				width:6px;
-				background:url("@{sprite}") -139px -19px no-repeat;
+				background:url($sprite) -139px -19px no-repeat;
 				*background:url(../images/Sprite.png) -139px -19px no-repeat;
 				float:right;
 				line-height: 1em;

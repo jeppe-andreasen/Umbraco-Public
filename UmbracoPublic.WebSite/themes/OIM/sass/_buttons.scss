@@ -11,25 +11,25 @@
 	display: inline-block;
 	padding: 10px 25px 10px 10px;
 	margin-bottom: 0; // For input.btn
-	font-size: @baseFontSize;
+	font-size: $baseFontSize;
 	font-weight:bold;
-	line-height: @baseLineHeight;
+	line-height: $baseLineHeight;
 	*line-height: 20px;
-	color: @white;
+	color: $white;
 	text-align: left;
 	vertical-align: middle;
 	cursor: pointer;
-	background:@grayDark;
-	.box-sizing(border-box);
-	#translucent > .background(@black, 0.8);
-	background-image:url("@{button-arrow}");
+	background:$grayDark;
+	@include box-sizing(border-box);
+	@include buttonBackground($btnBackground, $btnBackgroundHighlight, $black, 0 1px 1px rgba(255,255,255,.75));
+	background-image:url($button-arrow);
 	*background-image: url("images/button-arrow.png");
 	background-position:95% -46px;
 	background-repeat:no-repeat;
 	border: 0;
 	*border: 0; // Remove the border to prevent IE7's black border on input:focus
-	.ie7-restore-left-whitespace(); // Give IE7 some love
-	.ie7-inline-block();
+	@include ie7-restore-left-whitespace(); // Give IE7 some love
+	@include ie7-inline-block();
 	min-width:240px;
 	.hero-unit &{
 		background-position: 95% -41px;
@@ -38,40 +38,40 @@
 
 // Hover state
 .btn:hover {
-	color: @white;
+	color: $white;
 	text-decoration: none;
-	background-color: @black;
-	*background-color: @black; /* Buttons in IE7 don't get borders, so darken on hover */
+	background-color: $black;
+	*background-color: $black; /* Buttons in IE7 don't get borders, so darken on hover */
 
 
 	// transition is only when going to hover, otherwise the background
 	// behind the gradient (there for IE<=9 fallback) gets mismatched
-	.transition(background-position .1s linear);
+	@include transition(background-position .1s linear);
 }
 
 // Focus state for keyboard and accessibility
 .btn:focus {
-	.tab-focus();
+	@include tab-focus();
 }
 
 // Active state
 .btn.active,
 .btn:active {
-	background-color: darken(@white, 10%);
-	background-color: darken(@white, 15%) e("\9");
+	background-color: darken($white, 10%);
+	background-color: darken($white, 15%) \9;
 	background-image: none;
 	outline: 0;
-	.box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
+	@include box-shadow(#{inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)});
 }
 
 // Disabled state
 .btn.disabled,
 .btn[disabled] {
 	cursor: default;
-	background-color: darken(@white, 10%);
+	background-color: darken($white, 10%);
 	background-image: none;
-	.opacity(65);
-	.box-shadow(none);
+	@include opacity(65);
+	@include box-shadow(none);
 }
 
 
@@ -83,7 +83,7 @@
 	padding: 19px 15px;
 	font-size:1.5em;
 	line-height: normal;
-	//.border-radius(5px);
+	//@include border-radius(5px);
 	background-position:95% -203px;
 }
 .btn-large.btn-primary{
@@ -96,8 +96,8 @@
 
 // Small
 .btn-small {
-	font-size: @baseFontSize - 2px;
-	line-height: @baseLineHeight - 2px;
+	font-size: $baseFontSize - 0.05em;
+	line-height: $baseLineHeight - 0.05em;
 	min-width:70px;
 }
 .btn-small [class^="icon-"] {
@@ -107,8 +107,8 @@
 // Mini
 .btn-mini {
 	padding: 2px 6px;
-	font-size: @baseFontSize - 2px;
-	line-height: @baseLineHeight - 4px;
+	font-size: $baseFontSize - 0.05em;
+	line-height: $baseLineHeight - 0.05em;
 }
 
 
@@ -129,7 +129,7 @@
 .btn-info:hover,
 .btn-inverse,
 .btn-inverse:hover {
-	color: @black;
+	color: $black;
 }
 // Provide *some* extra contrast for those who can get it
 .btn-primary.active,
@@ -150,8 +150,8 @@
 }
 .btn-primary {
 	background:#f5a647;
-	#translucent > .background(#f7941d, 0.8);
-	background-image:url("@{button-arrow}");
+	@include translucent-background(#f7941d, 0.8);
+	background-image:url($button-arrow);
 	*background-image: url("images/button-arrow.png");
 	background-position:95% 12px;
 	background-repeat:no-repeat;
@@ -162,28 +162,28 @@
 }
 
 .btn-primary:hover {
-	background-color:@orange;
+	background-color:$orange;
 	
 }
 // Warning appears are orange
 .btn-warning {
-	.buttonBackground(@btnWarningBackground, @btnWarningBackgroundHighlight);
+	@include buttonBackground($btnWarningBackground, $btnWarningBackgroundHighlight);
 }
 // Danger and error appear as red
 .btn-danger {
-	.buttonBackground(@btnDangerBackground, @btnDangerBackgroundHighlight);
+	@include buttonBackground($btnDangerBackground, $btnDangerBackgroundHighlight);
 }
 // Success appears as green
 .btn-success {
-	.buttonBackground(@btnSuccessBackground, @btnSuccessBackgroundHighlight);
+	@include buttonBackground($btnSuccessBackground, $btnSuccessBackgroundHighlight);
 }
 // Info appears as a neutral blue
 .btn-info {
-	.buttonBackground(@btnInfoBackground, @btnInfoBackgroundHighlight);
+	@include buttonBackground($btnInfoBackground, $btnInfoBackgroundHighlight);
 }
 // Inverse appears as dark gray
 .btn-inverse {
-	.buttonBackground(@btnInverseBackground, @btnInverseBackgroundHighlight);
+	@include buttonBackground($btnInverseBackground, $btnInverseBackgroundHighlight);
 }
 
 

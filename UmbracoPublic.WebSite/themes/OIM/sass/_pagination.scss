@@ -2,16 +2,16 @@
 // ----------
 
 .pagination {
-  height: @baseLineHeight * 2;
-  margin: @baseLineHeight 0;
+  height: $baseLineHeight * 2;
+  margin: $baseLineHeight 0;
  }
 .pagination ul {
   display: inline-block;
-  .ie7-inline-block();
+  @include ie7-inline-block();
   margin-left: 0;
   margin-bottom: 0;
-  .border-radius(3px);
-  .box-shadow(0 1px 2px rgba(0,0,0,.05));
+  @include border-radius(3px);
+  @include box-shadow(0 1px 2px rgba(0,0,0,.05));
 }
 .pagination li {
     display: inline;
@@ -19,7 +19,7 @@
 .pagination a {
   float: left;
   padding: 0 14px;
-  line-height: (@baseLineHeight * 2) - 2;
+  line-height: ($baseLineHeight * 2) - 2;
   text-decoration: none;
   border: 1px solid #ddd;
   border-left-width: 0;
@@ -29,22 +29,22 @@
   background-color: #ffffff;
 }
 .pagination .active a {
-  color: @textColor;
+  color: $textColor;
   cursor: default;
 }
 .pagination .disabled span,
 .pagination .disabled a,
 .pagination .disabled a:hover {
-  color: @grayLight;
+  color: $grayLight;
   background-color: transparent;
   cursor: default;
 }
 .pagination li:first-child a {
   border-left-width: 1px;
-  .border-radius(3px 0 0 3px);
+  @include border-radius(3px 0 0 3px);
 }
 .pagination li:last-child a {
-  .border-radius(0 3px 3px 0);
+  @include border-radius(0 3px 3px 0);
 }
 
 // Centered
@@ -61,8 +61,8 @@
     float: right;
     ul{
       border:0;
-      .border-radius(0);
-      .box-shadow(0 0 0 rgba(0, 0, 0, 0.0));
+      @include border-radius(0);
+      @include box-shadow(0 0 0 rgba(0, 0, 0, 0.0));
       float: right;
     }
     li{
@@ -72,15 +72,15 @@
       border:0;
       min-width:30px;
       min-height:30px;
-      .border-radius(0);
-      .box-sizing(border-box);
+      @include border-radius(0);
+      @include box-sizing(border-box);
       padding:12px 0;
       text-align: center;
       margin-right: 1px;
-      #translucent > .background (#000000, 0.8);
+      @include translucent-background (#000000, 0.8);
       background-repeat: none;
       &:hover{
-        #translucent > .background (#000000, 1);
+        @include translucent-background (#000000, 1);
         .active &{
           background:#ffffff;
         }
@@ -92,21 +92,21 @@
     }
     
     li:first-child a{
-      background-image:url("@{sprite}");
+      background-image:url($sprite);
       *background-image:url(../images/Sprite.png);
       background-position: -582px -14px;
       border:0;
-      .border-radius(0);
+      @include border-radius(0);
       span{
         display: none;
       }
     }
     li:last-child a{
-      background-image:url("@{sprite}");
+      background-image:url($sprite);
       *background-image:url(../images/Sprite.png);
       background-position: -524px -14px;
       border:0;
-      .border-radius(0);
+      @include border-radius(0);
       span{
         display: none;
       }

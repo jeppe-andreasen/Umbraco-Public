@@ -1,0 +1,27 @@
+
+// Fluid rows have no left margin
+.row-fluid .poll-unit{
+	margin-left: 0;
+}
+
+// The actual spot (can be `a` or `div`)
+.poll-unit{
+	display: block;
+	line-height: 1;
+	list-style: none;
+	margin-left: -$gridGutterWidth;
+	padding: 4px;
+	@include clearfix();
+	legend{
+		box-sizing:border-box;
+		border-color:#ddd;
+	}
+	.form-actions{
+		background:none;
+		margin-bottom:0;
+		padding: 17px 0px 0px;
+	}
+	form{
+		margin-bottom:0;
+	}
+}
