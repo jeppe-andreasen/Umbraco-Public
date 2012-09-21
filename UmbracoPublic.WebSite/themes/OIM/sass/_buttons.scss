@@ -21,7 +21,7 @@
 	cursor: pointer;
 	background:$grayDark;
 	@include box-sizing(border-box);
-	@include buttonBackground($btnBackground, $btnBackgroundHighlight, $black, 0 1px 1px rgba(255,255,255,.75));
+	@include translucent-background($black, 0.8);
 	background-image:url($button-arrow);
 	*background-image: url("images/button-arrow.png");
 	background-position:95% -46px;
