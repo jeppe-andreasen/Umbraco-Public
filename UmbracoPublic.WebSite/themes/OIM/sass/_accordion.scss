@@ -4,24 +4,23 @@
 
 // Parent container
 .accordion {
-  margin-bottom: @baseLineHeight;
+  margin-bottom: $baseLineHeight;
   background:#c4caca;
-  #translucent > .background(#000000, 0.1);
+  @include translucent-background(#000000, 0.1);
 }
 
 // Group == heading + body
 .accordion-group {
   //margin-bottom: 2px;
   border-top: 1px solid #ffffff;
-  //.border-radius(4px);
+  //@include border-radius(4px);
   &:first-child{
     border:none;
   }
 }
 .accordion-heading {
   border-bottom: 0;
-  background-image: url("@{open-close}");
-  *background-image: url(../images/open-close.png);
+  background-image: url($open-close);
   background-position: 98% -599px;
   background-repeat: no-repeat;
 }

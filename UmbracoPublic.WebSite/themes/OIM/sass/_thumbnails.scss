@@ -1,0 +1,133 @@
+// THUMBNAILS
+// ----------
+// Note: `.thumbnails` and `.thumbnails > li` are overriden in responsive files
+
+// Make wrapper ul behave like the grid
+.thumbnails {
+	margin-left: -$gridGutterWidth;
+	list-style: none;
+	@include clearfix();
+	
+	
+}
+// Fluid rows have no left margin
+.row-fluid .thumbnails {
+	margin-left: 0;
+}
+
+// Float li to make thumbnails appear in a row
+.thumbnails > li {
+	float: left; // Explicity set the float since we don't require .span* classes
+	margin-bottom: $baseLineHeight;
+	margin-left: $gridGutterWidth;
+	padding:0 15px;
+	@include box-sizing(border-box);
+}
+
+// The actual thumbnail (can be `a` or `div`)
+.thumbnail {
+	display: block;
+	line-height: 1;
+	padding:15px;
+	//border: 1px solid #ddd;
+	//@include border-radius(4px);
+	//@include box-shadow(0 1px 1px rgba(0,0,0,.075));
+	footer &{
+		margin-bottom:0;
+		position:absolute;
+		bottom:0;
+	}
+}
+// Add a hover state for linked versions only
+a.thumbnail:hover {
+	//border-color: $linkColor;
+	//@include box-shadow(0 1px 4px rgba(0,105,214,.25));
+}
+
+// Images and captions
+.thumbnail > img {
+	display: block;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.thumbnail .caption {
+	padding: 9px;
+}
+
+.thumbnail{
+	.span6 .col-text{
+		@include content-columns(2, 15px);
+	}
+	h1{
+		margin-bottom: 0;
+		font-size: 60px;
+		line-height: 1;
+		color: black;
+	}
+	h2{
+		//font-size:1.875em;
+		margin-bottom:16px;
+		footer &{
+			color:#ffffff;
+			font-size: 1.125em;
+		}
+	}
+	p{
+		margin-top:0px;
+		margin-bottom:10px;
+		footer &{
+			color:#ffffff;
+			a{
+				color:#ffffff;
+				text-decoration:underline;
+			}
+		}
+	}
+
+
+}
+
+//Contact thumbnails
+
+.contact{
+	padding:0;
+	position:relative;
+	min-height:125px;
+	h2{
+		margin:15px 15px 0px 15px;
+	}
+	.vcard{
+		font-size:0.75em;
+		margin:15px 0 10px 122px;
+		span{
+			display:block;
+			margin-bottom:5px;
+			line-height:1.2em;
+		}
+		.fn{
+			font-weight:bold;
+		}
+		.area:before, .email:before, .tel:before{
+			content:attr(data);
+			float: left;
+			padding-right:5px;
+		}
+	}
+	img{
+		max-width:122px;
+		position:absolute;
+		bottom:0;
+	}
+	background: rgb(219,216,213);
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZGJkOGQ1IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2I2YjFhYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+	background: -moz-linear-gradient(-45deg,  rgba(219,216,213,1) 0%, rgba(182,177,171,1) 100%);
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(219,216,213,1)), color-stop(100%,rgba(182,177,171,1))); 
+	background: -webkit-linear-gradient(-45deg,  rgba(219,216,213,1) 0%,rgba(182,177,171,1) 100%);
+	background: -o-linear-gradient(-45deg,  rgba(219,216,213,1) 0%,rgba(182,177,171,1) 100%);
+	background: -ms-linear-gradient(-45deg,  rgba(219,216,213,1) 0%,rgba(182,177,171,1) 100%);
+	background: linear-gradient(135deg,  rgba(219,216,213,1) 0%,rgba(182,177,171,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbd8d5', endColorstr='#b6b1ab',GradientType=1 );
+	@include clearfix();
+
+}

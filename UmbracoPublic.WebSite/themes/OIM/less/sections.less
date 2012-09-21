@@ -1,4 +1,4 @@
-﻿/*top*/
+﻿
 .top{
 	.clearfix();
 	#translucent > .background(#000,0.4);
@@ -69,7 +69,8 @@ footer .container{
 		line-height:1.5em;
 		list-style-type: none;
 		padding-left:8px;
-		background: url("../images/list-image.png") 0 8px no-repeat;
+		background: url("@{list-image}") 0 8px no-repeat;
+		*background: url("../images/list-image.png") 0 8px no-repeat;
 		margin-bottom:5px;
 	}
 }

@@ -1,8 +1,7 @@
 .key-numbers{
-	.clearfix;
+	@include clearfix();
 	border-bottom:1px solid #acb5b4;
-	background:url("@{key-top}") center 15px no-repeat;
-	*background:url(../images/key-top.png) center 15px no-repeat;
+	background:url($key-top) center 15px no-repeat;
 	padding:45px 15px 15px;
 	color:#000000;
 	.fit{

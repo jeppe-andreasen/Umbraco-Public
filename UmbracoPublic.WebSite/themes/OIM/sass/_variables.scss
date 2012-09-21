@@ -1,0 +1,239 @@
+// Variables.less
+// Variables to customize the look and feel of Bootstrap
+// -----------------------------------------------------
+
+
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+$black:                 #000000;
+$grayDarker:            #1e1e1e;
+$grayDark:              #2e3231; //Button
+$gray:                  #797777;
+$grayLight:             #e2f6f5;
+$grayLighter:           #f7fcfb;
+$white:                 #fff;
+
+
+
+// Accent colors
+// -------------------------
+$blue:                  #0070b9;
+$blueDark:              #005a94;
+$green:                 #00c0af;
+$red:                   #af292e;
+$yellow:                #ffc40d;
+$orange:                #f7941d;
+$pink:                  #c3325f;
+$purple:                #7a6691;
+
+
+// Scaffolding
+// -------------------------
+$bodyBackground:        $white;
+$textColor:             $grayDarker;
+
+
+// Links
+// -------------------------
+$linkColor:            	#004d46;
+$linkColorHover:        $linkColor;
+
+
+// Typography
+// -------------------------
+$sansFontFamily:        Arial, sans-serif;
+$serifFontFamily:       Georgia, "Times New Roman", serif;
+$monoFontFamily:        Menlo, Monaco, Consolas, "Courier New", monospace;
+
+$baseFontSize:          1em;
+$baseFontFamily:        $sansFontFamily;
+$baseLineHeight:        1.2em;
+$altFontFamily:         $serifFontFamily;
+
+$headingsFontFamily:    inherit; // empty to use BS default, $baseFontFamily
+$headingsFontWeight:    bold;    // instead of browser default, bold
+$headingsColor:         $black; // empty to use BS default, $textColor
+
+
+// Tables
+// -------------------------
+$tableBackground:                   transparent; // overall background-color
+$tableBackgroundAccent:             #f9f9f9; // for striping
+$tableBackgroundHover:              #f5f5f5; // for hover
+$tableBorder:                       #ddd; // table and cell border
+
+
+// Buttons
+// -------------------------
+$btnBackground:                     $orange;
+$btnBackgroundHighlight:            $orange;
+$btnBorder:                         $orange;
+
+$btnPrimaryBackground:              $linkColor;
+$btnPrimaryBackgroundHighlight:     spin($btnPrimaryBackground, 15%);
+
+$btnInfoBackground:                 #5bc0de;
+$btnInfoBackgroundHighlight:        #2f96b4;
+
+$btnSuccessBackground:              #62c462;
+$btnSuccessBackgroundHighlight:     #51a351;
+
+$btnWarningBackground:              lighten($orange, 15%);
+$btnWarningBackgroundHighlight:     $orange;
+
+$btnDangerBackground:               #ee5f5b;
+$btnDangerBackgroundHighlight:      #bd362f;
+
+$btnInverseBackground:              $gray;
+$btnInverseBackgroundHighlight:     $grayDarker;
+
+
+// Forms
+// -------------------------
+$inputBackground:               $white;
+$inputBorder:                   #ccc;
+$inputBorderRadius:             3px;
+$inputDisabledBackground:       $grayLighter;
+$formActionsBackground:         #f5f5f5;
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            $white;
+$dropdownBorder:                rgba(0,0,0,.2);
+$dropdownLinkColor:             $grayDark;
+$dropdownLinkColorHover:        $white;
+$dropdownLinkBackgroundHover:   $linkColor;
+$dropdownDividerTop:            #e5e5e5;
+$dropdownDividerBottom:         $white;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+$zindexDropdown:          1000;
+$zindexPopover:           1010;
+$zindexTooltip:           1020;
+$zindexFixedNavbar:       1030;
+$zindexModalBackdrop:     1040;
+$zindexModal:             1050;
+
+// Tooltips and popovers
+// -------------------------
+$tooltipColor:            #fff !default;
+$tooltipBackground:       #000 !default;
+$tooltipArrowWidth:       5px !default;
+$tooltipArrowColor:       $tooltipBackground !default;
+
+$popoverBackground:       #fff !default;
+$popoverArrowWidth:       10px !default;
+$popoverArrowColor:       #fff !default;
+$popoverTitleBackground:  darken($popoverBackground, 3%) !default;
+
+// Special enhancement for popovers
+$popoverArrowOuterWidth:  $popoverArrowWidth + 1 !default;
+$popoverArrowOuterColor:  rgba(0,0,0,.25) !default;
+
+
+
+
+// Sprite icons path
+// -------------------------
+$iconSpriteUri:          "/img/glyphicons-halflings.png";
+$iconSpritePath:          "/img/glyphicons-halflings.png";
+$iconWhiteSpriteUri:	"/img/glyphicons-halflings-white.png";
+$iconWhiteSpritePath:     "/img/glyphicons-halflings-white.png";
+
+
+// Input placeholder text color
+// -------------------------
+$placeholderText:         $grayLight;
+
+
+// Hr border color
+// -------------------------
+$hrBorder:                $grayLighter;
+
+
+// Navbar
+// -------------------------
+$navbarHeight:                    40px;
+$navbarBackground:                $grayDarker;
+$navbarBackgroundHighlight:       $grayDark;
+
+$navbarText:                      $white;
+$navbarLinkColor:                 $white;
+$navbarLinkColorHover:            $white;
+$navbarLinkColorActive:           $navbarLinkColorHover;
+$navbarLinkBackgroundHover:       transparent;
+$navbarLinkBackgroundActive:      $navbarBackground;
+
+$navbarSearchBackground:         	rgba(17,18,17,0.3);
+$navbarSearchBackgroundFocus:     $white;
+$navbarSearchBorder:              darken($navbarSearchBackground, 30%);
+$navbarSearchPlaceholderColor:    #ccc;
+$navbarBrandColor:                $navbarLinkColor;
+
+
+// Hero unit
+// -------------------------
+$heroUnitBackground:              $black;
+$heroUnitHeadingColor:             $black;
+$heroUnitLeadColor:                $black;
+
+
+// Form states and alerts
+// -------------------------
+$warningText:             $white  !default;
+$warningBackground:       $orange  !default;
+$warningBorder:           darken(adjust-hue($warningBackground, -10), 3%) !default;
+
+$errorText:               $white;
+$errorBackground:         $red;
+$errorBorder:             darken(adjust-hue($errorBackground, -10), 3%) !default;
+
+$successText:             $white;
+$successBackground:       $green;
+$successBorder:           darken(adjust-hue($successBackground, -10), 5%) !default;
+
+$infoText:                #3a87ad;
+$infoBackground:          #d9edf7;
+$infoBorder:              darken(adjust-hue($infoBackground, -10), 7%) !default;
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+$gridColumns:             12;
+$gridColumnWidth:         70px;
+$gridGutterWidth:         30px;
+$gridRowWidth:            ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+// Fluid grid
+// -------------------------
+$fluidGridColumnWidth:    6.382978723%;
+$fluidGridGutterWidth:    2.127659574%;
+
+
+// 64bit
+
+$sprite:			"../images/Sprite.png";
+$button-arrow:		"../images/button-arrow.png";
+$menu-arrow:		"../images/menu-arrow.png";
+$small-menu:		"../images/small-menu.png";
+$open-close:		"../images/open-close.png";
+$key-top:			"../images/key-top.png";
+$search-icon:		"../images/search.png";
+$list-image:		"../images/list-image.png";

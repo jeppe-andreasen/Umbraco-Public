@@ -8,14 +8,14 @@
 
 .nav {
 	margin-left: 0;
-	margin-bottom: @baseLineHeight;
+	margin-bottom: $baseLineHeight;
 	list-style: none;
 }
 
 // Make links block level and add color
 .nav > li > a {
 	display: block;
-	color:@navbarLinkColor;
+	color:$navbarLinkColor;
 }
 
 .nav > li:hover{
@@ -29,7 +29,7 @@
     }
   }
   nav &{
-    #translucent > .background(#000,0.4);
+    @include translucent-background(#000,0.4);
   }
 }
 
@@ -48,8 +48,8 @@
 	padding: 3px 15px;
 	font-size: 11px;
 	font-weight: bold;
-	line-height: @baseLineHeight;
-	color: @grayLight;
+	line-height: $baseLineHeight;
+	color: $grayLight;
 	text-shadow: 0 1px 0 rgba(255,255,255,.5);
 	text-transform: uppercase;
 }
@@ -90,7 +90,7 @@
 .nav-list  li  li{
 	a{
 		background:#e3e4e4;
-		background-image: url("@{menu-arrow}");
+		background-image: url($menu-arrow);
 		background-position: right 21px;
 		background-repeat: no-repeat;
 		padding-right:22px;
@@ -100,7 +100,7 @@
 		&:hover{
 			text-decoration: none;
 			background-color:#c4caca;
-			#translucent > .background(#000000,0.1);
+			@include translucent-background(#000000,0.1);
 		}
 	}
 	&.selected{
@@ -119,15 +119,15 @@
 			&:hover{
 				text-decoration: none;
 				background-color:#c4caca;
-				#translucent > .background(#000000,0.1);
+				@include translucent-background(#000000,0.1);
 			}
 		}
 		li{
 			a{
 				font-weight:normal;      
 				padding:8px 15px 8px 36px;
-				background-color: :#ffffff;
-				background-image:url("@{small-menu}");
+				background-color:#ffffff;
+				background-image:url($small-menu);
 				background-position: 18px 13px;
 				background-repeat: no-repeat;
 				border-top:0;
@@ -169,16 +169,16 @@
 
 .nav-list > .active > a,
 .nav-list > .active > a:hover {
-	color: @white;
+	color: $white;
 	text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-	background-color: @linkColor;
+	background-color: $linkColor;
 }
 .nav-list [class^="icon-"] {
 	margin-right: 2px;
 }
 // Dividers (basically an hr) within the dropdown
 .nav-list .divider {
-	.nav-divider();
+	@include nav-divider();
 }
 
 
@@ -189,7 +189,7 @@
 // Common styles
 .nav-tabs,
 .nav-pills {
-	.clearfix();
+	@include clearfix();
 	text-transform:uppercase;
 }
 .nav-tabs > li,
@@ -219,18 +219,18 @@
 .nav-tabs > li > a {
 	padding-top: 8px;
 	padding-bottom: 8px;
-	line-height: @baseLineHeight;
+	line-height: $baseLineHeight;
 	border: 1px solid transparent;
-	.border-radius(4px 4px 0 0);
+	@include border-radius(4px 4px 0 0);
 	&:hover {
-		border-color: @grayLighter @grayLighter #ddd;
+		border-color: $grayLighter $grayLighter #ddd;
 	}
 }
 // Active state, and it's :hover to override normal :hover
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
-	color: @gray;
-	background-color: @white;
+	color: $gray;
+	background-color: $white;
 	border: 1px solid #ddd;
 	border-bottom-color: transparent;
 	cursor: default;
@@ -247,7 +247,7 @@
 	padding-bottom: 8px;
 	margin-top: 2px;
 	margin-bottom: 2px;
-	//.border-radius(5px);
+	//@include border-radius(5px);
 	font-size:0.6875em;
 }
 
@@ -278,8 +278,8 @@ ul.nav-pills {
 // Active state
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
-	color: @white;
-	background-color: @linkColor;
+	color: $white;
+	background-color: $linkColor;
 }
 
 
@@ -301,13 +301,13 @@ ul.nav-pills {
 }
 .nav-tabs.nav-stacked > li > a {
 	//border: 1px solid #ddd;
-	//.border-radius(0);
+	//@include border-radius(0);
 }
 .nav-tabs.nav-stacked > li:first-child > a {
-	//.border-radius(4px 4px 0 0);
+	//@include border-radius(4px 4px 0 0);
 }
 .nav-tabs.nav-stacked > li:last-child > a {
-	//.border-radius(0 0 4px 4px);
+	//@include border-radius(0 0 4px 4px);
 }
 .nav-tabs.nav-stacked > li > a:hover {
 	//border-color: #ddd;
@@ -328,10 +328,10 @@ ul.nav-pills {
 // ---------
 
 .nav-tabs .dropdown-menu {
-	.border-radius(0 0 5px 5px); // remove the top rounded corners here since there is a hard edge above the menu
+	@include border-radius(0 0 5px 5px); // remove the top rounded corners here since there is a hard edge above the menu
 }
 .nav-pills .dropdown-menu {
-	.border-radius(4px); // make rounded corners match the pills
+	@include border-radius(4px); // make rounded corners match the pills
 }
 
 // Default dropdown links
@@ -339,28 +339,28 @@ ul.nav-pills {
 // Make carets use linkColor to start
 .nav-tabs .dropdown-toggle .caret,
 .nav-pills .dropdown-toggle .caret {
-	border-top-color: @linkColor;
-	border-bottom-color: @linkColor;
+	border-top-color: $linkColor;
+	border-bottom-color: $linkColor;
 	margin-top: 6px;
 }
 .nav-tabs .dropdown-toggle:hover .caret,
 .nav-pills .dropdown-toggle:hover .caret {
-	border-top-color: @linkColorHover;
-	border-bottom-color: @linkColorHover;
+	border-top-color: $linkColorHover;
+	border-bottom-color: $linkColorHover;
 }
 
 // Active dropdown links
 // -------------------------
 .nav-tabs .active .dropdown-toggle .caret,
 .nav-pills .active .dropdown-toggle .caret {
-	border-top-color: @grayDark;
-	border-bottom-color: @grayDark;
+	border-top-color: $grayDark;
+	border-bottom-color: $grayDark;
 }
 
 // Active:hover dropdown links
 // -------------------------
 .nav > .dropdown.active > a:hover {
-	color: @black;
+	color: $black;
 	cursor: pointer;
 }
 
@@ -369,21 +369,21 @@ ul.nav-pills {
 .nav-tabs .open .dropdown-toggle,
 .nav-pills .open .dropdown-toggle,
 .nav > li.dropdown.open.active > a:hover {
-	color: @white;
-	background-color: @grayLight;
-	border-color: @grayLight;
+	color: $white;
+	background-color: $grayLight;
+	border-color: $grayLight;
 }
 .nav li.dropdown.open .caret,
 .nav li.dropdown.open.active .caret,
 .nav li.dropdown.open a:hover .caret {
-	border-top-color: @white;
-	border-bottom-color: @white;
-	.opacity(100);
+	border-top-color: $white;
+	border-bottom-color: $white;
+	@include opacity(100);
 }
 
 // Dropdowns in stacked tabs
 .tabs-stacked .open > a:hover {
-	border-color: @grayLight;
+	border-color: $grayLight;
 }
 
 
@@ -397,7 +397,7 @@ ul.nav-pills {
 
 // Clear any floats
 .tabbable {
-	.clearfix();
+	@include clearfix();
 }
 .tab-content {
 	overflow: auto; // prevent content from running below tabs
@@ -432,7 +432,7 @@ ul.nav-pills {
 	margin-bottom: 0;
 }
 .tabs-below > .nav-tabs > li > a {
-	.border-radius(0 0 4px 4px);
+	@include border-radius(0 0 4px 4px);
 	&:hover {
 		border-bottom-color: transparent;
 		border-top-color: #ddd;
@@ -466,15 +466,15 @@ ul.nav-pills {
 }
 .tabs-left > .nav-tabs > li > a {
 	margin-right: -1px;
-	.border-radius(4px 0 0 4px);
+	@include border-radius(4px 0 0 4px);
 }
 .tabs-left > .nav-tabs > li > a:hover {
-	border-color: @grayLighter #ddd @grayLighter @grayLighter;
+	border-color: $grayLighter #ddd $grayLighter $grayLighter;
 }
 .tabs-left > .nav-tabs .active > a,
 .tabs-left > .nav-tabs .active > a:hover {
 	border-color: #ddd transparent #ddd #ddd;
-	*border-right-color: @white;
+	*border-right-color: $white;
 }
 
 // Tabs on the right
@@ -485,13 +485,13 @@ ul.nav-pills {
 }
 .tabs-right > .nav-tabs > li > a {
 	margin-left: -1px;
-	.border-radius(0 4px 4px 0);
+	@include border-radius(0 4px 4px 0);
 }
 .tabs-right > .nav-tabs > li > a:hover {
-	border-color: @grayLighter @grayLighter @grayLighter #ddd;
+	border-color: $grayLighter $grayLighter $grayLighter #ddd;
 }
 .tabs-right > .nav-tabs .active > a,
 .tabs-right > .nav-tabs .active > a:hover {
 	border-color: #ddd #ddd #ddd transparent;
-	*border-left-color: @white;
+	*border-left-color: $white;
 }
