@@ -22,5 +22,10 @@ namespace UmbracoPublic.Logic.Entities
         {
             get { return new Id(DocumentType.GetByAlias("NewsListPage").Id); }
         }
+
+        public override string TemplatePath
+        {
+            get { return "/WebPage/NewsListPage"; }
+        }
     }
 }

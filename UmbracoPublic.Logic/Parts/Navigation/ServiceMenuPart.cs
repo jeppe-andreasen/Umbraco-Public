@@ -13,10 +13,16 @@ namespace UmbracoPublic.Logic.Parts.Navigation
         protected override void RenderPart(LinqIt.Utils.Web.HtmlWriter writer)
         {
             var configuration = CmsService.Instance.GetConfigurationItem<ServiceMenuConfiguration>("Service Menu");
+            if (configuration == null)
+                return;
+
+            var items = configuration.Items;
+            if (!items.Any())
+                return;
 
             writer.RenderBeginTag(HtmlTextWriterTag.Div, "section");
             writer.RenderBeginTag(HtmlTextWriterTag.Ul, "nav nav-pills pull-right");
-            foreach (var item in configuration.Items)
+            foreach (var item in items)
             {
                 writer.RenderBeginTag(HtmlTextWriterTag.Li);
                 writer.AddAttribute(HtmlTextWriterAttribute.Href, item.Href);

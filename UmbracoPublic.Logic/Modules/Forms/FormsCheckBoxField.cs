@@ -37,6 +37,8 @@ namespace UmbracoPublic.Logic.Modules.Forms
             label.Controls.Add(checkbox);
             label.Controls.Add(new LiteralControl(Label));
             spec.AddControl(label);
+
+            spec.Get = () => checkbox.Checked;
         }
     }
 }

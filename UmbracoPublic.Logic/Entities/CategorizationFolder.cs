@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
+using umbraco.cms.businesslogic.web;
 
 namespace UmbracoPublic.Logic.Entities
 {
@@ -12,9 +11,21 @@ namespace UmbracoPublic.Logic.Entities
         private CategorizationType[] _types;
         private Dictionary<Id, Categorization> _categorizations;
 
+        public override Id TemplateId
+        {
+            get { return new Id(DocumentType.GetByAlias("CategorizationFolder").Id); }
+        }
+
+        public override string TemplatePath
+        {
+            get { return "/CategorizationFolder"; }
+        }
+
         public static CategorizationFolder Get()
         {
             var path = CmsService.Instance.GetSystemPath("CategorizationFolder");
+            if (string.IsNullOrEmpty(path))
+                return null;
             return CmsService.Instance.GetItem<CategorizationFolder>(path);
         }
 
@@ -28,17 +39,23 @@ namespace UmbracoPublic.Logic.Entities
             }
         }
 
+        public static Dictionary<Id, Categorization> GetVisibleCategorizations()
+        {
+            var categorizationLookup = Get();
+            return categorizationLookup != null ? categorizationLookup.Types.Where(t => !t.IsHidden).SelectMany(t => t.Items).Where(i => !i.IsHidden).ToDictionary(i => i.Id) : new Dictionary<Id, Categorization>();
+        }
+
         public CategorizationType[] Types
         {
             get { return _types ?? (_types = GetChildren<CategorizationType>().ToArray()); }
         }
 
-        internal IEnumerable<CategorizationType> GetTypes(LinqIt.Cms.Data.Id[] id)
+        internal IEnumerable<CategorizationType> GetTypes(Id[] id)
         {
-            return Types.Where(t => t.Items.Where(i => id.Contains(i.Id)).Any());
+            return Types.Where(t => t.Items.Any(i => id.Contains(i.Id)));
         }
 
-        public Categorization GetCategorization(LinqIt.Cms.Data.Id id)
+        public Categorization GetCategorization(Id id)
         {
             if (_categorizations == null)
                 _categorizations = Types.SelectMany(t => t.Items).ToDictionary(i => i.Id);
@@ -72,7 +89,7 @@ namespace UmbracoPublic.Logic.Entities
 
         public bool HasItem(Id id)
         {
-            return Items.Where(i => i.Id == id).Any();
+            return Items.Any(i => i.Id == id);
         }
     }
     

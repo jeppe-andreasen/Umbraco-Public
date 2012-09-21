@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using LinqIt.Components.Data;
+using UmbracoPublic.Logic.Services.Newsletters.MailChimp;
 using umbraco.cms.businesslogic.web;
-using UmbracoPublic.Logic.Providers.MailProviders;
 
 namespace UmbracoPublic.WebSite.test
 {
@@ -15,7 +15,7 @@ namespace UmbracoPublic.WebSite.test
         protected void Page_Load(object sender, EventArgs e)
         {
             var t1 = DateTime.Now;
-            var provider = new MailChimpProviderV1_3();
+            var provider = new MailChimpServiceV13();
             var t2 = DateTime.Now;
             foreach (var list in provider.GetLists())
             {

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using LinqIt.Cms;
 using LinqIt.Components;
 using LinqIt.Utils.Web;
+using UmbracoPublic.Logic.Utilities;
 using UmbracoPublic.WebSite.Utilities;
 
 namespace UmbracoPublic.WebSite.masterpages
@@ -15,7 +16,12 @@ namespace UmbracoPublic.WebSite.masterpages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            litContent.Text = HtmlWriter.Generate(GenerateOutput);
+        }
+
+        protected override void CreateChildControls()
+        {
+            base.CreateChildControls();
+            HtmlContent.CreateControls(GenerateOutput, plhContent.Controls);
         }
 
         private static void GenerateOutput(HtmlWriter writer)

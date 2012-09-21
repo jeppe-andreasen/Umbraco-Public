@@ -24,6 +24,10 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +55,9 @@
     <Reference Include="controls, Version=1.0.4498.19839, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Examine">
       <HintPath>..\Repository\Umbraco\Examine.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer">
+      <HintPath>..\Repository\ImageResizing.net\ImageResizer.dll</HintPath>
     </Reference>
     <Reference Include="interfaces, Version=1.0.4497.23945, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Ionic.Zip">
@@ -131,6 +138,7 @@
     <Content Include="assets\css\imagegalleryeditor.css" />
     <Content Include="assets\css\jquery.alerts.css" />
     <EmbeddedResource Include="assets\css\treeview.css" />
+    <Content Include="assets\css\ContentEditor.css" />
     <Content Include="assets\css\TinyMCEContent.css" />
     <Content Include="assets\css\TinyMCEDialog.css" />
     <Content Include="assets\html\images\Sprite.png" />
@@ -417,7 +425,6 @@
     <Content Include="assets\lib\tiny_mce\utils\form_utils.js" />
     <Content Include="assets\lib\tiny_mce\utils\mctabs.js" />
     <Content Include="assets\lib\tiny_mce\utils\validate.js" />
-    <Content Include="Global.asax" />
     <Content Include="handlers\BuildPackage.aspx" />
     <Content Include="handlers\ImageGallery\Handler.aspx" />
     <Content Include="handlers\InstallPackage.aspx" />
@@ -618,6 +625,7 @@
     <Content Include="usercontrols\Parts\NewsSearchResultPart.ascx" />
     <Content Include="usercontrols\Parts\NewsSearchFilterPart.ascx" />
     <Content Include="usercontrols\Parts\SiteSearchResult.ascx" />
+    <Content Include="usercontrols\Site\SiteManager.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -642,9 +650,6 @@
     </Compile>
     <Compile Include="assets\lib\tiny_mce\plugins\linqitmacro\dialog.aspx.designer.cs">
       <DependentUpon>dialog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="handlers\AccordionEditorHandler.aspx.cs">
       <DependentUpon>AccordionEditorHandler.aspx</DependentUpon>
@@ -970,7 +975,6 @@
     <Compile Include="umbraco\CustomContentControl.cs" />
     <Compile Include="umbraco\CustomContentEditor.aspx.cs">
       <DependentUpon>CustomContentEditor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="umbraco\CustomContentEditor.aspx.designer.cs">
       <DependentUpon>CustomContentEditor.aspx</DependentUpon>
@@ -1058,6 +1062,14 @@
     </Compile>
     <Compile Include="usercontrols\Parts\SiteSearchResult.ascx.designer.cs">
       <DependentUpon>SiteSearchResult.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="usercontrols\Site\ISiteComponent.cs" />
+    <Compile Include="usercontrols\Site\SiteManager.ascx.cs">
+      <DependentUpon>SiteManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usercontrols\Site\SiteManager.ascx.designer.cs">
+      <DependentUpon>SiteManager.ascx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\PageLayouts.cs" />
     <Compile Include="Utilities\Snippets.cs" />
@@ -1367,6 +1379,8 @@
     <Content Include="assets\less\wells.less" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\Mails\" />
+    <Folder Include="assets\gfx\" />
     <Folder Include="modules\" />
   </ItemGroup>
   <PropertyGroup>

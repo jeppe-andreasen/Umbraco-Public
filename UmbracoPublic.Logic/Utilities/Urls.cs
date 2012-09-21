@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Configuration;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Utils.Extensions;
-using LinqIt.Utils.Web;
 
 namespace UmbracoPublic.Logic.Utilities
 {
@@ -47,8 +44,11 @@ namespace UmbracoPublic.Logic.Utilities
         {
             var path = CmsService.Instance.GetSystemPath(key.ToString());
             if (string.IsNullOrEmpty(path))
-                throw new ConfigurationErrorsException("System key not specified: " + key);
-            return CmsService.Instance.GetItem<Page>(path).Url;
+                return null;
+            var page = CmsService.Instance.GetItem<Page>(path);
+            if (page == null)
+                return null;
+            return page.Url;
         }
 
         internal static string GetMainNewsListUrl()

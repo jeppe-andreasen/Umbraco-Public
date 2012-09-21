@@ -40,6 +40,7 @@ namespace UmbracoPublic.Logic.Modules.Forms
             foreach (var field in Module.Fields)
             {
                 var spec = new FieldSpecification(validationGroup, this.ColumnSpan.Value);
+                spec.Label = field.Label;
                 Controls.Add(new LiteralControl("<div class=\"control-group\">"));
                 field.PopulateSpecification(spec, this.Page.IsPostBack);
 
@@ -56,10 +57,11 @@ namespace UmbracoPublic.Logic.Modules.Forms
                     Controls.Add(new LiteralControl("</div>"));
                 }
                 Controls.Add(new LiteralControl("</div>"));
+                _specifications.Add(spec);
             }
 
             var submit = new Button();
-            submit.CssClass = "btn";
+            submit.CssClass = "btn btn-small";
             submit.Click += OnSubmitClicked;
             submit.Text = "Send";
             submit.ValidationGroup = validationGroup;
@@ -76,7 +78,10 @@ namespace UmbracoPublic.Logic.Modules.Forms
             Page.Validate("vg" + Module.Id);
             if (Page.IsValid)
             {
-                
+                foreach (var action in Module.Actions)
+                {
+                    action.Execute(_specifications);
+                }
             }
         }
     }

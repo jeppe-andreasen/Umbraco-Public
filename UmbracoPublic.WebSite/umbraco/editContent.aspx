@@ -2,6 +2,7 @@
 <%@ Register TagPrefix="cc1" Namespace="umbraco.uicontrols" Assembly="controls" %>
 <%@ Register TagPrefix="umb" Namespace="ClientDependency.Core.Controls" Assembly="ClientDependency.Core" %>
 <asp:Content ContentPlaceHolderID="head" runat="server">
+        <link type="text/css" rel="stylesheet" href="/assets/css/ContentEditor.css"/>
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="body" runat="server">
     <umb:JsInclude ID="JsInclude1" runat="server" FilePath="js/umbracoCheckKeys.js" PathNameAlias="UmbracoRoot" />
@@ -54,4 +55,5 @@
             UmbClientMgr.appActions().bindSaveShortCut();
         });
     </script>
+    
 </asp:Content>

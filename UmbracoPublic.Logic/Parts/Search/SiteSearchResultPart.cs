@@ -51,7 +51,7 @@ namespace UmbracoPublic.Logic.Parts.Search
             try
             {
                 var filter = SearchFilter.FromUrl();
-                
+
                 _result = DataService.Instance.PerformSearch(filter);
                 _pager.Visible = true;
                 if (_pager.Visible)
@@ -90,36 +90,29 @@ namespace UmbracoPublic.Logic.Parts.Search
             if (!page.Intro.IsEmpty)
             {
                 var query = SearchFilter.FromUrl().Query;
-                var intro = page.Intro.AsHtml.Replace("[QUERY]", string.IsNullOrEmpty(query)? "" : string.Format("<span class=\"search-word\">{0}</span>", HttpUtility.HtmlEncode(query)));
+                var intro = page.Intro.AsHtml.Replace("[QUERY]",
+                                                      string.IsNullOrEmpty(query)
+                                                          ? ""
+                                                          : string.Format("<span class=\"search-word\">{0}</span>",
+                                                                          HttpUtility.HtmlEncode(query)));
                 writer.RenderFullTag(HtmlTextWriterTag.H2, intro, "intro");
             }
-                
+
             RenderResults(writer, records.ToArray());
         }
 
         public static void RenderResults(HtmlWriter writer, SearchRecord[] records, bool renderUl = true)
         {
-            var categorizationLookup = CategorizationFolder.Get();
+            var visibleCategorizations = CategorizationFolder.GetVisibleCategorizations();
             var newsListUrl = Urls.GetMainNewsListUrl();
 
-            var visibleCategorizations = CategorizationFolder.Get().Types.Where(t => !t.IsHidden).SelectMany(t => t.Items).Where(i => !i.IsHidden).ToDictionary(i => i.Id);
-
             if (renderUl)
-                writer.RenderBeginTag(HtmlTextWriterTag.Ul, "results");
+                writer.RenderBeginTag(HtmlTextWriterTag.Ul, "news-list");
             foreach (var record in records)
             {
                 var date = record.GetDate("date");
-                
+
                 writer.RenderBeginTag(HtmlTextWriterTag.Li, "clearfix");
-
-                if (!string.IsNullOrEmpty(record.GetString("thumbnail")))
-                {
-                    writer.RenderBeginTag(HtmlTextWriterTag.Div);
-                    writer.RenderImageTag(record.GetString("thumbnail"), record.GetString("title"), null);
-                    writer.RenderEndTag(); // div
-
-                }
-
 
                 writer.RenderBeginTag(HtmlTextWriterTag.Div);
                 writer.AddAttribute(HtmlTextWriterAttribute.Href, record.GetString("url"));
@@ -127,12 +120,13 @@ namespace UmbracoPublic.Logic.Parts.Search
                 writer.RenderFullTag(HtmlTextWriterTag.H3, record.GetString("title"));
                 writer.RenderEndTag(); // a
                 if (date != null)
-                    writer.RenderFullTag(HtmlTextWriterTag.Span, "Publiseret " + record.GetDate("date").Value.ToString("dd-MM-yyyy"), "date");
+                    writer.RenderFullTag(HtmlTextWriterTag.Span,
+                                         "Publiseret " + record.GetDate("date").Value.ToString("dd-MM-yyyy"), "date");
 
                 var categorizations = new IdList(record.GetString("categorizations"));
                 if (categorizations.Any())
                 {
-                    RenderCategorizations(writer, categorizations, categorizationLookup, newsListUrl);
+                    RenderCategorizations(writer, categorizations, visibleCategorizations, newsListUrl);
                 }
                 writer.RenderBeginTag(HtmlTextWriterTag.A);
 
@@ -149,21 +143,18 @@ namespace UmbracoPublic.Logic.Parts.Search
                 writer.RenderEndTag();
         }
 
-        public static void RenderCategorizations(HtmlWriter writer, IEnumerable<Id> categorizations, CategorizationFolder allCategorizations = null, string newsListUrl = null)
+        public static void RenderCategorizations(HtmlWriter writer, IEnumerable<Id> categorizations, Dictionary<Id, Categorization> visibleCategorizations, string newsListUrl = null)
         {
             if (newsListUrl == null)
                 newsListUrl = Urls.GetMainNewsListUrl();
-            if (allCategorizations == null)
-                allCategorizations = CategorizationFolder.Get();
 
             foreach (var categorizationId in categorizations)
             {
-                if (!allCategorizations.HasCategorization(categorizationId))
+                if (!visibleCategorizations.ContainsKey(categorizationId))
                     continue;
 
-                writer.RenderLinkTag(newsListUrl + "?categorizations=" + categorizationId, allCategorizations.GetCategorization(categorizationId).DisplayName, "label");
+                writer.RenderLinkTag(newsListUrl + "?categorizations=" + categorizationId, visibleCategorizations[categorizationId].DisplayName, "label");
             }
-        }
-
+        } 
     }
 }

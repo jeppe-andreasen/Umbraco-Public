@@ -12,6 +12,10 @@
     <AssemblyName>UmbracoPublic.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -85,12 +89,27 @@
     <Compile Include="Controllers\Paging\PagerAlignedPagingController.cs" />
     <Compile Include="Controllers\Paging\PagerCenteredPagingController.cs" />
     <Compile Include="Controllers\Paging\PagingController.cs" />
+    <Compile Include="Controllers\SiteManagement\BaseSiteComponent.cs" />
+    <Compile Include="Controllers\SiteManagement\CategorizationComponent.cs" />
+    <Compile Include="Controllers\SiteManagement\HomePageComponent.cs" />
+    <Compile Include="Controllers\SiteManagement\ModuleComponent.cs" />
+    <Compile Include="Controllers\SiteManagement\NewsArchiveComponent.cs" />
+    <Compile Include="Controllers\SiteManagement\NewsletterComponent.cs" />
+    <Compile Include="Controllers\SiteManagement\SearchComponent.cs" />
+    <Compile Include="Controllers\SiteManagement\ServiceMenuComponent.cs" />
+    <Compile Include="Entities\ConfigurationFolder.cs" />
+    <Compile Include="Entities\ContentFolder.cs" />
     <Compile Include="Entities\CookieState.cs" />
+    <Compile Include="Entities\GlobalGridModuleFolder.cs" />
     <Compile Include="Entities\GoBasicEntityTypeTable.cs" />
-    <Compile Include="Entities\MailConfiguration.cs" />
+    <Compile Include="Entities\GridModuleFolder.cs" />
+    <Compile Include="Entities\NewsletterConfiguration.cs" />
     <Compile Include="Entities\NewsListPage.cs" />
     <Compile Include="Entities\ServiceMenuConfiguration.cs" />
     <Compile Include="Entities\SiteSearchResultPage.cs" />
+    <Compile Include="Entities\SystemLink.cs" />
+    <Compile Include="Entities\SystemLinkFolder.cs" />
+    <Compile Include="Exceptions\SiteComponentException.cs" />
     <Compile Include="Macros\AlertMacro.cs" />
     <Compile Include="Macros\BlockQuoteMacro.cs" />
     <Compile Include="Macros\CookieAcceptanceMacro.cs" />
@@ -165,6 +184,7 @@
     <Compile Include="Parts\Navigation\SubNavigationPart.cs" />
     <Compile Include="Parts\Paging\Pager.cs" />
     <Compile Include="Parts\Paging\PagerType.cs" />
+    <Compile Include="Parts\Search\NavigationSearchPart.cs" />
     <Compile Include="Parts\Search\NewsSearchResultPart.cs" />
     <Compile Include="Parts\Search\SiteSearchResultPart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -174,8 +194,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Providers\CategorizationProvider.cs" />
-    <Compile Include="Providers\MailProviders\MailChimpConfiguration.cs" />
-    <Compile Include="Providers\MailProviders\MailChimpProviderV1_3.cs" />
     <Compile Include="Providers\SiteRootLayoutProvider.cs" />
     <Compile Include="Providers\SubjectProvider.cs" />
     <Compile Include="Providers\ThemeProvider.cs" />
@@ -186,6 +204,8 @@
     <Compile Include="Providers\YouTubeVideo.cs" />
     <Compile Include="Providers\YouTubeVideoProvider.cs" />
     <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\Newsletters\MailChimp\MailChimpConfiguration.cs" />
+    <Compile Include="Services\Newsletters\MailChimp\MailChimpServiceV1_3.cs" />
     <Compile Include="Utilities\HtmlContent.cs" />
     <Compile Include="Utilities\HtmlWriterExtensions.cs" />
     <Compile Include="Utilities\ModuleHelper.cs" />

@@ -1,0 +1,48 @@
+﻿#siteState h3 {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+#siteState .ui-state-active, #siteState .ui-widget-content .ui-state-active {
+    background: #eee;
+    
+}
+
+#siteState .ui-state-active a, #siteState .ui-widget-content .ui-state-active a
+{
+    color: #000;
+}
+
+#siteState h3 .ui-icon {
+    float: right;
+}
+
+#siteState .ui-accordion-content {
+    border-top-width: 0;
+    background: white;
+    margin-bottom: 5px;
+}
+#siteState .ui-accordion-content-active {
+    padding: 5px;
+}
+
+#siteState h3.Ok > a {
+    background: url("/assets/gfx/ok.png") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;
+}
+
+#siteState h3.Warning > a {
+    background: url("/assets/gfx/warning.png") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;
+}
+#siteState h3.Disabled > a {
+    background: url("/assets/gfx/disabled.png") no-repeat scroll 0 0 transparent;
+    padding-left: 20px;
+}
+#siteState .component-output {
+    padding: 10px;
+}
+
+#siteState .buttons {
+    margin-top: 10px;
+}

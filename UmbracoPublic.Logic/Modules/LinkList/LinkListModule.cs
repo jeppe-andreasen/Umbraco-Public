@@ -12,5 +12,7 @@ namespace UmbracoPublic.Logic.Modules.LinkList
         {
             get { return GetValue<LinqIt.Cms.Data.LinkList>("links"); }
         }
+
+        public string Headline { get { return GetValue<string>("headline"); } }
     }
 }

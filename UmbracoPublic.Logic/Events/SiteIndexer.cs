@@ -45,14 +45,17 @@ namespace UmbracoPublic.Logic.Events
         protected static void OnDocumentPublished(Document sender, umbraco.cms.businesslogic.PublishEventArgs e)
         {
             global::umbraco.library.UpdateDocumentCache(sender.Id);
-            var page = CmsService.Instance.GetItem<Page>(new Id(sender.Id));
-            if (!page.Template.Path.StartsWith("/WebPage"))
-                return;
+            using (CmsContext.Editing)
+            {
+                var page = CmsService.Instance.GetItem<Page>(new Id(sender.Id));
+                if (!page.Template.Path.StartsWith("/WebPage"))
+                    return;
 
-            var site = CmsService.Instance.GetSitePath(page.Path).Split('/').Last();
+                var site = CmsService.Instance.GetSitePath(page.Path).Split('/').Last();
 
-            var thumbnail = page.GetValue<Image>("thumbnail");
-            SearchBackgroundCrawler.QueueDocumentAdd(site, page, thumbnail.Exists? thumbnail.Url : string.Empty);
+                var thumbnail = page.GetValue<Image>("thumbnail");
+                SearchBackgroundCrawler.QueueDocumentAdd(site, page, thumbnail.Exists ? thumbnail.Url : string.Empty);
+            }
         }
 
         private static void OnDocumentSaved(Document sender, SaveEventArgs e)
@@ -64,7 +67,9 @@ namespace UmbracoPublic.Logic.Events
                     var newspage = CmsService.Instance.GetItem<UmbracoPublic.Logic.Entities.NewsPage>(new Id(sender.Id));
                     if (newspage.Date.HasValue)
                     {
-                        var newsArchivePart = CmsService.Instance.GetSystemPath("NewsArchivePage");
+                        var newsArchivePart = CmsService.Instance.GetSystemPath("NewsArchivePage", newspage.Path);
+                        if (string.IsNullOrEmpty(newsArchivePart))
+                            return;
                         var yearPart = newspage.Date.Value.Year.ToString();
                         var monthPart = Urls.MonthArray.Split('|')[newspage.Date.Value.Month - 1];
                         var truePath = Paths.Combine(newsArchivePart, yearPart, monthPart, sender.Text);
@@ -76,8 +81,7 @@ namespace UmbracoPublic.Logic.Events
                                 var archivePage = CmsService.Instance.GetItem<NewsListPage>(newsArchivePart);
                                 yearPage = CmsService.Instance.CreateEntity<NewsListPage>(yearPart, archivePage);
                             }
-                            var monthPage = CmsService.Instance.GetItem<NewsListPage>(Paths.Combine(newsArchivePart, yearPart,
-                                                                                        monthPart));
+                            var monthPage = CmsService.Instance.GetItem<NewsListPage>(Paths.Combine(newsArchivePart, yearPart, monthPart));
                             if (monthPage == null)
                                 monthPage = CmsService.Instance.CreateEntity<NewsListPage>(monthPart, yearPage);
                             sender.Move(monthPage.Id.IntValue);
@@ -95,14 +99,14 @@ namespace UmbracoPublic.Logic.Events
                 {
                     var module = CmsService.Instance.GetItem<FormsModule>(new Id(sender.Id));
                     var actionsFolder =
-                        module.GetChildren<FormsActionFolder>().Where(f => f.EntityName == "Actions").FirstOrDefault();
+                        module.GetChildren<FormsActionFolder>().FirstOrDefault(f => f.EntityName == "Actions");
                     if (actionsFolder == null)
                     {
                         CmsService.Instance.CreateEntity<FormsActionFolder>("Actions", module);
                         folderCreated = true;
                     }
                     var fieldsFolder =
-                        module.GetChildren<FormsFieldFolder>().Where(f => f.EntityName == "Fields").FirstOrDefault();
+                        module.GetChildren<FormsFieldFolder>().FirstOrDefault(f => f.EntityName == "Fields");
                     if (fieldsFolder == null)
                     {
                         CmsService.Instance.CreateEntity<FormsFieldFolder>("Fields", module);

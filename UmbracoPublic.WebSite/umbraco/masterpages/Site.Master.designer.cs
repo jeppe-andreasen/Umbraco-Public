@@ -94,6 +94,15 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages {
         protected global::UmbracoPublic.Logic.Parts.Navigation.PrimaryNavigationPart primaryNavigation;
         
         /// <summary>
+        /// navigationSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UmbracoPublic.Logic.Parts.Search.NavigationSearchPart navigationSearch;
+        
+        /// <summary>
         /// cphTop control.
         /// </summary>
         /// <remarks>

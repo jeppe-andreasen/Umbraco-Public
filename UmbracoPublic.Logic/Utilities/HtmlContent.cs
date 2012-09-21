@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Components;
@@ -68,7 +65,7 @@ namespace UmbracoPublic.Logic.Utilities
             var macro = new Macro(macroAlias);
             var page = (System.Web.UI.Page) HttpContext.Current.Handler;
 
-            Control control = null;
+            Control control;
             if (!string.IsNullOrEmpty(macro.Assembly))
             {
                 try
@@ -76,7 +73,7 @@ namespace UmbracoPublic.Logic.Utilities
                     var ctrlType = Type.GetType(macro.Type + "," + macro.Assembly);
                     control = (Control)Activator.CreateInstance(ctrlType);
                 }
-                catch(Exception exc)
+                catch(Exception)
                 {
                     return new LiteralControl("Unable to create macro: " + macro.Type + "," + macro.Assembly);
                 }
@@ -99,19 +96,10 @@ namespace UmbracoPublic.Logic.Utilities
                 if (propertyInfo == null || !propertyInfo.CanWrite) 
                     continue;
                 var converter = TypeDescriptor.GetConverter(propertyInfo.PropertyType);
-                if (converter == null) 
-                    continue;
                 var value = converter.ConvertFrom(parameters[key]);
                 propertyInfo.SetValue(control, value, null);
             }
             return control;
-        }
-
-        private static string Capitalize(string text)
-        {
-            if (string.IsNullOrEmpty(text))
-                return text;
-            return Char.ToUpper(text[0]) + text.Substring(1);
         }
 
         private static Control LoadModule(Match match, int? columnSpan)
@@ -133,10 +121,8 @@ namespace UmbracoPublic.Logic.Utilities
             var renderingDefinition = GridModuleResolver.Instance.GetRenderingDefinition(module.Template.Name);
             if (renderingDefinition.RenderingType == GridModuleRenderingType.Usercontrol)
                 return LoadUsercontrol(columnSpan, id, renderingDefinition);
-            else if (renderingDefinition.RenderingType == GridModuleRenderingType.Control)
-                return LoadControl(columnSpan, id, renderingDefinition);
-
-            return null;
+            
+            return renderingDefinition.RenderingType == GridModuleRenderingType.Control ? LoadControl(columnSpan, id, renderingDefinition) : null;
         }
 
         private static Control LoadControl(int? columnSpan, Id id, GridModuleRenderingDefinition renderingDefinition)

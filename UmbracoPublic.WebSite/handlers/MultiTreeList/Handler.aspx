@@ -170,7 +170,6 @@
     </style>
     <script src="/assets/js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <script src="/assets/js/versus-ajax.js" type="text/javascript"></script>
-    <script src="/assets/js/treeview.js" type="text/javascript"></script>
     <script src="/assets/js/IFramedEditorFunctions.js" type="text/javascript"></script>
     <script src="/assets/js/multitreelisteditor.js" type="text/javascript"></script>
 </head>
