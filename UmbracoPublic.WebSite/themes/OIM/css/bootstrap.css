@@ -7,24 +7,24 @@
  *
  * Designed and built with all the love in the world $twitter by $mdo and $fat.
  */
-/* line 106, oim-icons/*.png */
-.oim-icons-sprite, .oim-icons-black-button-arrow, .btn.btn-primary:after, .oim-icons-button-arrow, .btn:after, .oim-icons-carousel-left, .carousel-control:after, .oim-icons-carousel-right, .carousel-control.right:after, .oim-icons-large-black-button-arrow, .btn.btn-large.btn-primary:after, .oim-icons-large-button-arrow, .btn.btn-large:after, .oim-icons-link-list, .linklist ul li .arrow, .oim-icons-quote, blockquote:before, .oim-icons-search, .navbar-search button.btn:after {
-  background: url('/themes/oim/images/oim-icons-s962de6c788.png') no-repeat;
+/* line 122, oim-icons/*.png */
+.oim-icons-sprite, .oim-icons-black-button-arrow, .btn.btn-primary:after, .oim-icons-button-arrow, .btn:after, .oim-icons-carousel-left, .carousel-control:after, .oim-icons-carousel-right, .carousel-control.right:after, .oim-icons-close, .accordion-heading.open a:after, .oim-icons-large-black-button-arrow, .btn.btn-large.btn-primary:after, .oim-icons-large-button-arrow, .btn.btn-large:after, .oim-icons-link-list, .linklist ul li .arrow, .oim-icons-open, .accordion-heading a:after, .oim-icons-quote, blockquote:before, .oim-icons-search, .navbar-search button.btn:after {
+  background: url('/themes/oim/images/oim-icons-s197c1b32ab.png') no-repeat;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-black-button-arrow, .btn.btn-primary:after {
-  background-position: -20px -433px;
+  background-position: -20px -486px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-button-arrow, .btn:after {
-  background-position: -20px -281px;
+  background-position: -20px -334px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-carousel-left, .carousel-control:after {
-  background-position: -20px -229px;
+  background-position: -20px -282px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -33,8 +33,13 @@
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.oim-icons-close, .accordion-heading.open a:after {
+  background-position: -20px -536px;
+}
+
+/* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-large-black-button-arrow, .btn.btn-large.btn-primary:after {
-  background-position: -20px -331px;
+  background-position: -20px -384px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -44,7 +49,12 @@
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-link-list, .linklist ul li .arrow {
-  background-position: -20px -383px;
+  background-position: -20px -436px;
+}
+
+/* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.oim-icons-open, .accordion-heading a:after {
+  background-position: -20px -229px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -6088,17 +6098,25 @@ a.label:hover, a.badge:hover {
 /* line 21, ../sass/_accordion.scss */
 .accordion-heading {
   border-bottom: 0;
-  background-image: url("../images/open-close.png");
-  background-position: 98% -599px;
-  background-repeat: no-repeat;
+}
+/* line 27, ../sass/_accordion.scss */
+.accordion-heading a:after {
+  content: "";
+  display: inline-block;
+  float: right;
+  width: 12px;
+  height: 13px;
+  margin-top: 3px;
 }
 
-/* line 28, ../sass/_accordion.scss */
-.open {
-  background-position: 98% 14px;
+/* line 41, ../sass/_accordion.scss */
+.accordion-heading.open a:after {
+  width: 12px;
+  height: 3px;
+  margin-top: 8px;
 }
 
-/* line 32, ../sass/_accordion.scss */
+/* line 50, ../sass/_accordion.scss */
 .accordion-heading .accordion-toggle {
   display: block;
   padding: 8px 15px;
@@ -6106,22 +6124,22 @@ a.label:hover, a.badge:hover {
   font-size: 0.75em;
   font-weight: bold;
 }
-/* line 38, ../sass/_accordion.scss */
+/* line 56, ../sass/_accordion.scss */
 .accordion-heading .accordion-toggle:hover {
-  background: #ffffff;
+  background-color: white;
   text-decoration: none;
 }
 
-/* line 45, ../sass/_accordion.scss */
+/* line 63, ../sass/_accordion.scss */
 .accordion-toggle {
   cursor: pointer;
 }
 
-/* line 50, ../sass/_accordion.scss */
+/* line 68, ../sass/_accordion.scss */
 .accordion-inner {
   padding: 9px 15px;
 }
-/* line 53, ../sass/_accordion.scss */
+/* line 71, ../sass/_accordion.scss */
 .accordion-inner h3 {
   font-size: 0.75em;
   margin: 0 0 0.6em 0;

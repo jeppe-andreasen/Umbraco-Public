@@ -20,13 +20,31 @@
 }
 .accordion-heading {
   border-bottom: 0;
-  background-image: url($open-close);
-  background-position: 98% -599px;
-  background-repeat: no-repeat;
+  //background-image: url($open-close);
+  //background-position: 98% -599px;
+  //background-repeat: no-repeat;
+  a{
+    &:after{
+      content:"";
+      display: inline-block;
+      float:right;
+      width:12px;
+      height:13px;
+      @extend .oim-icons-open;
+      margin-top:3px;
+    }
+  }
 }
 
-.open{
-   background-position: 98% 14px;
+.accordion-heading.open{
+  a{
+    &:after{
+      @extend .oim-icons-close;
+      width:12px;
+      height:3px;
+      margin-top:8px;
+    }
+  }
 }
 
 .accordion-heading .accordion-toggle {
@@ -36,7 +54,7 @@
   font-size:0.75em;
   font-weight:bold;
   &:hover{
-    background:#ffffff;
+    background-color:$white;
     text-decoration: none;
   }
 }
