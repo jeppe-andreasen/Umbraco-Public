@@ -160,7 +160,7 @@
 	}
 	button.btn{
 		height:40px;
-		padding: 7px 29px 0 9px;
+		padding: 0px 19px 0 9px;
 		margin:0;
 		@include font-sans-serif(12px, bold, 1);
 		color: $white;
@@ -170,8 +170,6 @@
 		background-color:#111211;
 		background-color: $navbarSearchBackground;
 		//background-image: url($search-icon);
-		@extend .oim-icons-search;
-		background-position: -9px 10px;
 		//background-position: center center;
 		background-repeat: no-repeat;
 		border: 1px solid $navbarSearchBorder;
@@ -183,6 +181,13 @@
         border-radius: 0px 3px 3px 0px;
 		span{
 			display:none;
+		}
+		&:after{
+			content:"";
+			display:block;
+			width:18px;
+			height:19px;
+			@extend .oim-icons-search;
 		}
 	}
 }
