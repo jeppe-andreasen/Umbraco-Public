@@ -40,11 +40,11 @@
 			}
 			.arrow{
 				width:6px;
-				background:url($sprite) -139px -19px no-repeat;
-				*background:url(../images/Sprite.png) -139px -19px no-repeat;
 				float:right;
 				line-height: 1em;
-				height:14px;
+				height:10px;
+				margin-top:5px;
+				@extend .oim-icons-link-list;				
 			}
 		}
 	}
