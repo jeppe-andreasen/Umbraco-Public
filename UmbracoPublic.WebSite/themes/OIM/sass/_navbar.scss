@@ -167,10 +167,12 @@
 		float: left;
 		min-width:1px;
 		//IE8 fallback
-		background:#111211;
-		background: $navbarSearchBackground;
-		background-image: url($search-icon);
-		background-position: center center;
+		background-color:#111211;
+		background-color: $navbarSearchBackground;
+		//background-image: url($search-icon);
+		@extend .oim-icons-search;
+		background-position: -9px 10px;
+		//background-position: center center;
 		background-repeat: no-repeat;
 		border: 1px solid $navbarSearchBorder;
 		@include box-shadow(#{inset 3px 2px 5px 0px rgba(17, 18, 17, 0.4)});

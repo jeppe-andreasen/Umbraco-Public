@@ -130,13 +130,14 @@ dl {
 	margin-bottom: $baseLineHeight;
 	float: left;
 	width:33%;
+
 }
 dt,
 dd {
 	line-height: $baseLineHeight;
 	width:100%;
 	padding:0 15px;
-	@include box-sizing("border-box");
+	@include box-sizing(border-box);
 }
 dt {
 	font-weight: bold;
@@ -204,8 +205,9 @@ blockquote {
 			display: inline-block;
 			width: 57px;
 			height: 57px;
-			background-image:url($sprite);
-			background-position:-743px -10px;
+			//background-image:url($sprite);
+			//background-position:-743px -10px;
+			@extend .oim-icons-quote;
 			float: left;
 			margin-left:-57px;
 		}
