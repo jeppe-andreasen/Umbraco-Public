@@ -159,8 +159,8 @@ namespace LinqIt.UmbracoServices
             var documentType = new DocumentType(templateId.IntValue);
             var author = User.GetUser(0);
             var document = Document.MakeNew(name, documentType, author, ((UmbracoItem) parent).Id);
-            document.Publish(author);
             umbraco.library.UpdateDocumentCache(document.Id);
+            document.Publish(author);
             return UmbracoItem.Get(document.Id);
         }
 
@@ -255,7 +255,9 @@ namespace LinqIt.UmbracoServices
 
         protected override string ConvertToString(object value)
         {
-            throw new NotImplementedException();
+            if (value == null)
+                return string.Empty;
+            return value.ToString();
         }
 
         protected override bool GetBool(Cms.Data.Entity entity, string fieldName)
@@ -343,7 +345,11 @@ namespace LinqIt.UmbracoServices
 
         protected override void SetEntityFieldValue(Cms.Data.Entity entity, string fieldName, string value)
         {
-            throw new NotImplementedException();
+            if (!(entity.WrappedItem is UmbracoDocument))
+                throw new ApplicationException("Cannot edit a " + entity.WrappedItem.GetType().Name);
+
+            var item = (UmbracoDocument) entity.WrappedItem;
+            item[fieldName] = value;
         }
 
         protected override Cms.Data.Link ParseLink(string value)
@@ -453,7 +459,7 @@ namespace LinqIt.UmbracoServices
 
         protected override void PublishItem(Cms.Data.Entity entity)
         {
-            throw new NotImplementedException();
+            ((UmbracoItem) entity.WrappedItem).Publish();
         }
 
         public override Cms.Data.UserAccount GetUser(string username)

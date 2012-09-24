@@ -19,7 +19,7 @@ namespace LinqIt.UmbracoCustomFieldTypes.Providers
 
         public override Node GetNode(string value)
         {
-            return GetRootNodes().Where(n => n.Id == value).FirstOrDefault();
+            return GetRootNodes().FirstOrDefault(n => n.Id == value);
         }
 
         public override IEnumerable<Node> GetRootNodes()
@@ -27,10 +27,11 @@ namespace LinqIt.UmbracoCustomFieldTypes.Providers
             using (CmsContext.Editing)
             {
                 var referenceItem = CmsService.Instance.GetItem<Entity>(new Id(_referenceId));
-                var mailConfiguration = CmsService.Instance.GetConfigurationItem<MailConfiguration>("Mail", referenceItem.Path);
+                var mailConfiguration = CmsService.Instance.GetConfigurationItem<NewsletterConfiguration>("Mail", referenceItem.Path);
                 if (mailConfiguration == null)
-                    throw new ConfigurationErrorsException("Mail configuration not found");
-                return mailConfiguration.MailProvider.GetLists().Select(l => new Node(){Id = l.Id, Text = l.DisplayName});
+                    return new Node[0];
+                var newsletterService = mailConfiguration.NewsletterService;
+                return newsletterService != null ? newsletterService.GetLists().Select(l => new Node(){Id = l.Id, Text = l.DisplayName}) : new Node[0];
             }
         }
     }

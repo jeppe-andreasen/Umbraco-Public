@@ -12,6 +12,11 @@ namespace UmbracoPublic.Logic.Modules.Forms
             get { return GetChildrenOfType<FormsFieldFolder>().SelectMany(f => f.Fields); }
         }
 
+        public IEnumerable<FormsAction> Actions
+        {
+            get { return GetChildrenOfType<FormsActionFolder>().SelectMany(f => f.Actions); }
+        }
+
         public string Headline { get { return GetValue<string>("headline"); } }
     }
 }

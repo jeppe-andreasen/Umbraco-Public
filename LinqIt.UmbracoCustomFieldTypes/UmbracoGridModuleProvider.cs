@@ -44,10 +44,24 @@ namespace LinqIt.UmbracoCustomFieldTypes
             using (CmsContext.Editing)
             {
                 var currentItem = CmsService.Instance.GetItem<Entity>(new Id(_referenceId));
-                var rootPath = CmsService.Instance.GetSystemPath("ModuleFolder", currentItem.Path);
-                var entity = CmsService.Instance.GetItem<Entity>(rootPath);
-                return new[] {GetGridItem(entity)};
+                var result = new List<GridItem>();
+                var currentPath = currentItem.Path;
+                AddFolder(result, "ModuleFolder", currentPath);
+                AddFolder(result, "GlobalModuleFolder", currentPath);
+                return result;
             }
+        }
+
+        private static void AddFolder(ICollection<GridItem> list, string systemKey, string currentPath)
+        {
+            var path = CmsService.Instance.GetSystemPath(systemKey, currentPath);
+            if (string.IsNullOrEmpty(path))
+                return;
+            var entity = CmsService.Instance.GetItem<Entity>(path);
+            if (entity == null)
+                return;
+
+            list.Add(GetGridItem(entity));
         }
 
         public override GridItem GetParentItem(GridItem item)

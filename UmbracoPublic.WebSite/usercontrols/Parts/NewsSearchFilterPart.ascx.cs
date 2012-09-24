@@ -59,8 +59,9 @@ namespace UmbracoPublic.WebSite.usercontrols.Parts
         protected override void CreateChildControls()
         {
             base.CreateChildControls();
-
             var categorizations = CategorizationFolder.Get();
+            if (categorizations == null)
+                return;
             var selectedCategorizations = new IdList(Request.QueryString["categorizations"]);
             foreach (var type in categorizations.Types)
             {

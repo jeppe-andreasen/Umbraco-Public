@@ -255,6 +255,11 @@ application.search = {
                 window.location.href = url + "?query=" + $(this).val();
             }
         });
+        $('.navbar-search button').click(function (e) {
+            e.preventDefault();
+            var input = $(this).closest('.navbar-search').find('.search-query');
+            window.location.href = url + "?query=" + input.val();
+        });
     }
 }
 

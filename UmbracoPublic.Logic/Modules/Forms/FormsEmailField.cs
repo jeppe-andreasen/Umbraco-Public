@@ -44,6 +44,7 @@ namespace UmbracoPublic.Logic.Modules.Forms
             regularExpressionValidator.ControlToValidate = textBox.ID;
             regularExpressionValidator.ErrorMessage = InvalidEmailErrorMessage;
             spec.AddValidator(regularExpressionValidator);
+            spec.Get = () => textBox.Text;
         }
     }
 }

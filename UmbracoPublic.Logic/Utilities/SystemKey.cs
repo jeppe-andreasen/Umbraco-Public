@@ -10,6 +10,10 @@ namespace UmbracoPublic.Logic.Utilities
         CookieAcceptancePage,
         MainNewsPage,
         SiteSearchResultPage,
-        NewsArchivePage
+        NewsArchivePage,
+        HomePage,
+        CategorizationFolder,
+        ModuleFolder,
+        GlobalModuleFolder
     }
 }

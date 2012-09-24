@@ -2,20 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using LinqIt.Ajax;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Components.Data;
-using LinqIt.Utils.Web;
 
 namespace UmbracoPublic.WebSite.handlers
 {
     public partial class MultiListEditorHandler : System.Web.UI.Page
     {
-        private NodeProvider _provider;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             AjaxUtil.RegisterPageMethods(this);
@@ -40,7 +36,7 @@ namespace UmbracoPublic.WebSite.handlers
                 var value = new IdList(item[fieldName]);
                 foreach (var id in value)
                 {
-                    var node = sourceNodes.Where(n => n.Id == id.ToString()).FirstOrDefault();
+                    var node = sourceNodes.FirstOrDefault(n => n.Id == id.ToString());
                     if (node != null)
                     {
                         sourceNodes.Remove(node);
@@ -48,9 +44,8 @@ namespace UmbracoPublic.WebSite.handlers
                     }
                 }
                 var litSource = new Literal();
-                litSource.Text = "<ul class=\"srcList listbox\">" + multiListControl.GenerateListBox(sourceNodes) + "</ul>";
+                litSource.Text = string.Format("<ul class=\"srcList listbox\">{0}</ul>", multiListControl.GenerateListBox(sourceNodes));
                 multiListControl.Initialize(litSource, destinationNodes);
-                
             }
         }
 

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using LinqIt.Utils.Extensions;
 using LinqIt.Utils.Web;
@@ -63,8 +61,6 @@ namespace UmbracoPublic.Logic.Parts.Paging
                     break;
                 case PagerType.PagerCentered:
                     controller = new PagerCenteredPagingController();
-                    break;
-                    controller = new PagerAlignedPagingController();
                     break;
                 default:
                     controller = new DefaultPagingController();

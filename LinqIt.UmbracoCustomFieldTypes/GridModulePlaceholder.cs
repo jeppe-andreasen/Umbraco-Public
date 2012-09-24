@@ -52,8 +52,15 @@ namespace LinqIt.UmbracoCustomFieldTypes
 
             if (!string.IsNullOrEmpty(ItemPath))
             {
-                var itemPath = ItemPath.StartsWith("§") ? CmsService.Instance.GetSystemPath(ItemPath.TrimStart('§')) : ItemPath;
-                _placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>(itemPath).Id.ToString();
+                string itemPath;
+                if (ItemPath == "§SiteRoot")
+                    itemPath = CmsService.Instance.SitePath;
+                else if (ItemPath.StartsWith("§"))
+                    itemPath = CmsService.Instance.GetSystemPath(ItemPath.TrimStart('§'));
+                else
+                    itemPath = ItemPath;
+                if (!string.IsNullOrEmpty(itemPath))
+                    _placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>(itemPath).Id.ToString();
             }
             else
                 _placeholder.ReferenceId = CmsService.Instance.GetItem<Entity>().Id.ToString();

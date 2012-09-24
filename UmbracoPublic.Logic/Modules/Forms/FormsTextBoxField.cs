@@ -42,6 +42,8 @@ namespace UmbracoPublic.Logic.Modules.Forms
             spec.AddControl(textBox);
             if (Mandatory)
                 spec.AddValidator(GetRequiredFieldValidator(textBox));
+
+            spec.Get = () => textBox.Text;
         }
 
         

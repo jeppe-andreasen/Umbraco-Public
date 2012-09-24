@@ -23,7 +23,7 @@ namespace UmbracoPublic.Logic.Parts.Navigation
             //test if this is a month page in the news archive a hide accordingly.
             var page = CmsService.Instance.GetItem<LinqIt.Cms.Data.Page>();
             var newsArchivePath = Paths.GetSystemPath(SystemKey.NewsArchivePage);
-            if (page.Path.StartsWith(newsArchivePath))
+            if (!string.IsNullOrEmpty(newsArchivePath) && page.Path.StartsWith(newsArchivePath))
             {
                 if (page.Path.Split('/').Length == newsArchivePath.Split('/').Length + 2)
                     isNewsListMonthPage = true;

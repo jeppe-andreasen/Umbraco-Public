@@ -10,9 +10,16 @@ namespace UmbracoPublic.Logic.Modules.Forms
 {
     public class FormsField : Entity
     {
-        private Label _label;
-
-        public string Label { get { return GetValue<string>("label"); } }
+        public string Label
+        {
+            get
+            {
+                var value = GetValue<string>("label");
+                if (string.IsNullOrEmpty(value))
+                    value = EntityName;
+                return value;
+            }
+        }
 
         public bool Mandatory { get { return GetValue<bool>("mandatory"); } }
 

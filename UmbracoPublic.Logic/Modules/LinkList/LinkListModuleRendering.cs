@@ -11,14 +11,21 @@ namespace UmbracoPublic.Logic.Modules.LinkList
     {
         protected override void RenderModule(LinkListModule item, LinqIt.Utils.Web.HtmlWriter writer)
         {
-            writer.RenderBeginTag(HtmlTextWriterTag.Ul, "linklist");
-            foreach (var link in item.Links)
+            writer.RenderBeginTag(HtmlTextWriterTag.Div, "linklist");
+            if (!string.IsNullOrEmpty(Module.Headline))
+                writer.RenderFullTag(HtmlTextWriterTag.H2, Module.Headline);
+            if (item.Links.Any())
             {
-                writer.RenderBeginTag(HtmlTextWriterTag.Li);
-                writer.RenderLink(link);
+                writer.RenderBeginTag(HtmlTextWriterTag.Ul);
+                foreach (var link in item.Links)
+                {
+                    writer.RenderBeginTag(HtmlTextWriterTag.Li);
+                    writer.RenderLink(link);
+                    writer.RenderEndTag();
+                }
                 writer.RenderEndTag();
-            }
-            writer.RenderEndTag();
+            } // ul
+            writer.RenderEndTag(); // div.linklist
         }
 
         public override string ModuleDescription

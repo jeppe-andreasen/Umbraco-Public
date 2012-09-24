@@ -32,6 +32,8 @@ namespace UmbracoPublic.Logic.Modules.Forms
             spec.AddControl(upload);
             if (Mandatory)
                 spec.AddValidator(GetRequiredFieldValidator(upload));
+
+            spec.Get = () => upload;
         }
     }
 }

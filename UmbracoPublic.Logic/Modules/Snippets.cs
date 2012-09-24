@@ -17,10 +17,9 @@ namespace UmbracoPublic.Logic.Modules
     {
         public static void RenderNewsResults(HtmlWriter writer, SearchRecord[] records, bool renderUl = true)
         {
-            var categorizationLookup = CategorizationFolder.Get();
-            var newsListUrl = Urls.GetMainNewsListUrl();
+            var visibleCategorizations = CategorizationFolder.GetVisibleCategorizations();
 
-            var visibleCategorizations = CategorizationFolder.Get().Types.Where(t => !t.IsHidden).SelectMany(t => t.Items).Where(i => !i.IsHidden).ToDictionary(i => i.Id);
+            var newsListUrl = Urls.GetMainNewsListUrl();
 
             if (renderUl)
                 writer.RenderBeginTag(HtmlTextWriterTag.Ul, "news-items");
@@ -51,7 +50,7 @@ namespace UmbracoPublic.Logic.Modules
                 var categorizations = new IdList(record.GetString("categorizations"));
                 if (categorizations.Any())
                 {
-                    RenderCategorizations(writer, categorizations, categorizationLookup, newsListUrl);
+                    RenderCategorizations(writer, categorizations, visibleCategorizations, newsListUrl);
                 }
                 writer.RenderBeginTag(HtmlTextWriterTag.A);
 
@@ -68,19 +67,17 @@ namespace UmbracoPublic.Logic.Modules
                 writer.RenderEndTag();
         }
 
-        public static void RenderCategorizations(HtmlWriter writer, IEnumerable<Id> categorizations, CategorizationFolder allCategorizations = null, string newsListUrl = null)
+        public static void RenderCategorizations(HtmlWriter writer, IEnumerable<Id> categorizations, Dictionary<Id, Categorization> visibleCategorizations, string newsListUrl = null)
         {
             if (newsListUrl == null)
                 newsListUrl = Urls.GetMainNewsListUrl();
-            if (allCategorizations == null)
-                allCategorizations = CategorizationFolder.Get();
 
             foreach (var categorizationId in categorizations)
             {
-                if (!allCategorizations.HasCategorization(categorizationId))
+                if (!visibleCategorizations.ContainsKey(categorizationId))
                     continue;
 
-                writer.RenderLinkTag(newsListUrl + "?categorizations=" + categorizationId, allCategorizations.GetCategorization(categorizationId).DisplayName, "label");
+                writer.RenderLinkTag(newsListUrl + "?categorizations=" + categorizationId, visibleCategorizations[categorizationId].DisplayName, "label");
             }
         }
 

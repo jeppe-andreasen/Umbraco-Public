@@ -12,6 +12,27 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqIt.UmbracoServices", "LinqIt.UmbracoServices\LinqIt.UmbracoServices.csproj", "{BFD16E8B-0DD3-466A-8271-F943AA8354B0}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://linqitserver1:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = UmbracoPublic.Interfaces\\UmbracoPublic.Interfaces.csproj
+		SccProjectName1 = UmbracoPublic.Interfaces
+		SccLocalPath1 = UmbracoPublic.Interfaces
+		SccProjectUniqueName2 = UmbracoPublic.Logic\\UmbracoPublic.Logic.csproj
+		SccProjectName2 = UmbracoPublic.Logic
+		SccLocalPath2 = UmbracoPublic.Logic
+		SccProjectUniqueName3 = UmbracoPublic.WebSite\\UmbracoPublic.WebSite.csproj
+		SccProjectName3 = UmbracoPublic.WebSite
+		SccLocalPath3 = UmbracoPublic.WebSite
+		SccProjectUniqueName4 = LinqIt.UmbracoCustomFieldTypes\\LinqIt.UmbracoCustomFieldTypes.csproj
+		SccProjectName4 = LinqIt.UmbracoCustomFieldTypes
+		SccLocalPath4 = LinqIt.UmbracoCustomFieldTypes
+		SccProjectUniqueName5 = LinqIt.UmbracoServices\\LinqIt.UmbracoServices.csproj
+		SccProjectName5 = LinqIt.UmbracoServices
+		SccLocalPath5 = LinqIt.UmbracoServices
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -40,5 +61,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

@@ -40,5 +40,9 @@ namespace UmbracoPublic.Logic.Modules.Forms
         public IEnumerable<Control> Controls { get { return _controls; } }
 
         public IEnumerable<BaseValidator> Validators { get { return _validators; } }
+
+        public string Label { get; set; }
+
+        public Func<object> Get { get; set; }
     }
 }

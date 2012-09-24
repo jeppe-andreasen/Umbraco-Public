@@ -6,7 +6,7 @@ using UmbracoPublic.Interfaces;
 
 namespace LinqIt.UmbracoCustomFieldTypes.Providers
 {
-    public class GoBasicMailServiceImplementationProvider : GoBasicImplementationProvider<IMailProvider>
+    public class GoBasicMailServiceImplementationProvider : GoBasicImplementationProvider<INewsletterService>
     {
     }
 }

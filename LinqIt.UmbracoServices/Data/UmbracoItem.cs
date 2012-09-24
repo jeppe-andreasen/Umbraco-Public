@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using LinqIt.Cms;
 using LinqIt.Utils.Extensions;
+using umbraco.BusinessLogic;
 using umbraco.cms.businesslogic.web;
 using umbraco.NodeFactory;
 
@@ -12,7 +14,7 @@ namespace LinqIt.UmbracoServices.Data
 {
     public abstract class UmbracoItem
     {
-        public abstract string this[string fieldname] { get; }
+        public abstract string this[string fieldname] { get; set; }
 
         public static UmbracoItem Get(object umbracoObject)
         {
@@ -137,6 +139,12 @@ namespace LinqIt.UmbracoServices.Data
                 var tmp = FindFirst(item, parts, index + 1);
                 if (tmp != null)
                     return tmp;
+                foreach (var child in item.Children)
+                {
+                    tmp = FindFirst(item, parts, index);
+                    if (tmp != null)
+                        return tmp;
+                }
             }
             var isMatch = IsMatch(parts[index], item);
             if (isMatch && index == parts.Length - 1)
@@ -156,7 +164,7 @@ namespace LinqIt.UmbracoServices.Data
                     return true;
 
                 var templateMatch = Regex.Match(query, "{(?<template>[^}]+)}");
-                if (templateMatch.Success && item.DocumentType.Alias != templateMatch.Groups["template"].Value)
+                if (templateMatch.Success && !(templateMatch.Groups["template"].Value.Split('|').Contains(item.DocumentType.Alias)))
                     return false;
 
                 var fieldMatches = Regex.Matches(query, @"\[(?<key>[^=]+)='(?<value>[^']+)']");
@@ -223,7 +231,9 @@ namespace LinqIt.UmbracoServices.Data
 
         public abstract string Url { get; }
 
-        
+
+
+        internal abstract void Publish();
     }
 
     public class UmbracoNode : UmbracoItem
@@ -242,6 +252,15 @@ namespace LinqIt.UmbracoServices.Data
                 var property = _node.GetProperty(fieldname); 
                 return property != null? property.Value : null;
             }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        internal override void Publish()
+        {
+            throw new NotImplementedException();
         }
 
         internal override IEnumerable<UmbracoItem> Children
@@ -327,11 +346,35 @@ namespace LinqIt.UmbracoServices.Data
 
                 return Convert.ToString(property.Value);
             }
+            set
+            {
+                if (fieldname == null)
+                    throw new ArgumentNullException("fieldname"); 
+                var property = _document.getProperty(fieldname);
+                if (property == null || property.Value == null)
+                    throw new ArgumentOutOfRangeException("fieldname");
+
+                if (property.Value.GetType() == typeof(DateTime))
+                {
+                    DateTime dateTime;
+                    if (DateTime.TryParseExact(value, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime))
+                        property.Value = dateTime;
+                    else
+                        property.Value = null;
+                }
+                else
+                    property.Value = value;
+            }
         }
 
         internal override IEnumerable<UmbracoItem> Children
         {
             get { return _document.Children.Select(c => new UmbracoDocument(c)); }
+        }
+
+        internal override void Publish()
+        {
+            _document.Publish(User.GetCurrent());
         }
 
         internal override UmbracoItem Parent

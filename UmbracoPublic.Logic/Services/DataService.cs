@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Web;
 using LinqIt.Cms;
 using LinqIt.Cms.Data;
 using LinqIt.Search;
+using LinqIt.Utils;
 using LinqIt.Utils.Caching;
 using LinqIt.Utils.Extensions;
 using UmbracoPublic.Interfaces;
+using UmbracoPublic.Interfaces.SiteManagement;
 using UmbracoPublic.Logic.BackgroundWork;
+using UmbracoPublic.Logic.Controllers.SiteManagement;
 using UmbracoPublic.Logic.Entities;
 
 namespace UmbracoPublic.Logic.Services
@@ -191,15 +195,15 @@ namespace UmbracoPublic.Logic.Services
             return folder.GetChildren<Entity>().ToDictionary(item => item.Id, item => item.EntityName);
         }
 
-        private static IMailProvider GetMailProvider()
+        private static INewsletterService GetNewsletterService()
         {
-            var mailConfiguration = CmsService.Instance.GetConfigurationItem<MailConfiguration>("Mail");
-            return mailConfiguration.MailProvider;
+            var mailConfiguration = CmsService.Instance.GetConfigurationItem<NewsletterConfiguration>("Newsletters");
+            return mailConfiguration.NewsletterService;
         }
 
         internal void SubscribeToNewsletter(string emailAddress, string newsListId)
         {
-            var mailProvider = GetMailProvider();
+            var mailProvider = GetNewsletterService();
             mailProvider.SubscribeToList(newsListId, emailAddress, new NameValueCollection());
         }
 
@@ -265,6 +269,14 @@ namespace UmbracoPublic.Logic.Services
                     pages.EnqueueRange(page.GetChildren<Page>());
                 }
             }
+        }
+
+        public static IEnumerable<ISiteComponent> GetSiteComponents()
+        {
+            return new ISiteComponent[] { new HomePageComponent(), new ModuleComponent(),  new ServiceMenuComponent(), new SearchComponent(), new NewsArchiveComponent(),  new NewsletterComponent(), new CategorizationComponent() };
+
+
+            //return TypeUtility.GetTypesImplementingInterface<ISiteComponent>().Select(Activator.CreateInstance).Cast<ISiteComponent>();
         }
     }
 }

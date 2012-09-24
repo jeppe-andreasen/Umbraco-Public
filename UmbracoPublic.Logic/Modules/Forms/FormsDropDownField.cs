@@ -51,6 +51,8 @@ namespace UmbracoPublic.Logic.Modules.Forms
                 validator.InitialValue = dropDownList.Items[0].Value;
                 spec.AddValidator(validator);
             }
+
+            spec.Get = () => dropDownList.SelectedValue;
         }
 
         public override Id TemplateId

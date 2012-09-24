@@ -2,7 +2,6 @@
 <%@ Register assembly="LinqIt.Components" namespace="LinqIt.Components" tagprefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="plhHead" runat="server">
     <script src="/assets/js/versus-ajax.js" type="text/javascript"></script>
-    <script src="/assets/js/treeview.js" type="text/javascript"></script>
     <script type="text/javascript">
         function createFolder() {
             var name = $('#txtFolder').val();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,9 +27,9 @@ namespace UmbracoPublic.WebSite.umbraco.masterpages
 
             ModuleScripts.RegisterInitScript("navigation");
             ModuleScripts.RegisterInitScript("subnavigation");
-            ModuleScripts.RegisterInitScript("search", new JSONString(Urls.GetSystemUrl(SystemKey.SiteSearchResultPage)));
             ModuleScripts.RegisterInitScript("button");
             ModuleScripts.RegisterInitScript("background");
+
             
             litDynamicMetaTags.Text = RenderMetaTags(page);
 
