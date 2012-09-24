@@ -19,10 +19,9 @@
 	text-align: left;
 	vertical-align: middle;
 	cursor: pointer;
-	background:$grayDark;
-	@include box-sizing(border-box);
+	white-space:nowrap;
 	@include translucent-background($black, 0.8);
-	background-image:url($button-arrow);
+	@include box-sizing(border-box);
 	*background-image: url("images/button-arrow.png");
 	background-position:95% -46px;
 	background-repeat:no-repeat;
@@ -33,6 +32,16 @@
 	min-width:240px;
 	.hero-unit &{
 		background-position: 95% -41px;
+	}
+	&:after{
+		content:"";
+		height:10px;
+		width:6px;
+		margin-top:2px;
+		margin-right:-10px;
+		display: inline-block;
+		float:right;
+		@extend .oim-icons-button-arrow;
 	}
 }
 
@@ -84,7 +93,7 @@
 	font-size:1.5em;
 	line-height: normal;
 	//@include border-radius(5px);
-	background-position:95% -203px;
+	min-width:240px;
 }
 .btn-large.btn-primary{
 	background-position:95% -100px;
@@ -98,7 +107,7 @@
 .btn-small {
 	font-size: $baseFontSize - 0.05em;
 	line-height: $baseLineHeight - 0.05em;
-	min-width:70px;
+	min-width:170px;
 }
 .btn-small [class^="icon-"] {
 	margin-top: -1px;
@@ -151,14 +160,29 @@
 .btn-primary {
 	background:#f5a647;
 	@include translucent-background(#f7941d, 0.8);
-	background-image:url($button-arrow);
+	//background-image:url($button-arrow);
 	*background-image: url("images/button-arrow.png");
 	background-position:95% 12px;
 	background-repeat:no-repeat;
 	.hero-unit &{
 		background-position: 95% 18px;
 	}
-	
+}
+
+.btn.btn-primary:after{
+	@extend .oim-icons-black-button-arrow;
+}
+
+.btn.btn-large:after{
+	height:12px;
+	width:8px;
+	margin-right:0;
+	@extend .oim-icons-large-button-arrow;
+}
+
+.btn.btn-large.btn-primary:after{
+	margin-top:5px;
+	@extend .oim-icons-large-black-button-arrow;
 }
 
 .btn-primary:hover {

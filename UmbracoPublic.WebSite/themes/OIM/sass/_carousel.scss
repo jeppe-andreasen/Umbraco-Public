@@ -25,6 +25,7 @@
   .item > img {
     display: block;
     line-height: 1;
+    width:100%;
   }
 
   .active,
@@ -68,32 +69,49 @@
 .carousel-control {
   position: absolute;
   top: 40%;
-  left: 15px;
+  left: 0px;
   width: 40px;
   height: 40px;
   margin-top: -20px;
   font-size: 60px;
   font-weight: 100;
   line-height: 30px;
-  color: $white;
   text-align: center;
-  background: $grayDarker;
-  border: 3px solid $white;
-  @include border-radius(23px);
+  background-color: $grayDarker;
+  @include translucent-background($black, 0.8);
   @include opacity(50);
+  //background-position:-7px -98px;
+  &:after{
+    content:"";
+    display:block;
+    width:8px;
+    height:12px;
+    margin:13px 0 0 15px;
+    @extend .oim-icons-carousel-left; 
+  }
+  &.right {
+    left: auto;
+    right: 0px;
+    background-color: $grayDarker;
+    &:after{
+      @extend .oim-icons-carousel-right;
+    }
+  }
 
+  .span3 &{
+    top:25%;
+  }
+  //color: $white;
+  //border: 3px solid $white;
+  //@include border-radius(23px);
+  //.oim-icons-carousel-right;
   // we can't have this transition here
   // because webkit cancels the carousel
   // animation if you trip this while
   // in the middle of another animation
   // ;_;
   // @include transition(opacity .2s linear);
-
   // Reposition the right one
-  &.right {
-    left: auto;
-    right: 15px;
-  }
 
   // Hover state
   &:hover {
@@ -111,11 +129,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 10px 15px 5px;
-  background: $grayDark;
-  background: rgba(0,0,0,.75);
+  padding: 15px 15px 5px;
+  background:#d4e0df;
 }
 .carousel-caption h4,
 .carousel-caption p {
-  color: $white;
+  color:$black;
 }

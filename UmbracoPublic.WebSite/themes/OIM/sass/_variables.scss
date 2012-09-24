@@ -237,3 +237,10 @@ $open-close:		"../images/open-close.png";
 $key-top:			"../images/key-top.png";
 $search-icon:		"../images/search.png";
 $list-image:		"../images/list-image.png";
+
+
+//COMPASS SPRITES
+$oim-icons-spacing: 40px;
+$oim-icons-position: 20px;
+@import "oim-icons/*.png";
+@include all-oim-icons-sprites; 

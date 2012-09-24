@@ -543,6 +543,7 @@
     margin-left: $gridGutterWidth * -1;
     margin-bottom:30px;
     @include clearfix();
+    margin-bottom:30px;
   }
 
   [class*="span"] {
