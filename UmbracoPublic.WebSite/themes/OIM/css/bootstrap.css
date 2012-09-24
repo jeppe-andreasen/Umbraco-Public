@@ -7,14 +7,14 @@
  *
  * Designed and built with all the love in the world $twitter by $mdo and $fat.
  */
-/* line 98, oim-icons/*.png */
-.oim-icons-sprite, .oim-icons-black-button-arrow, .btn.btn-primary:after, .oim-icons-button-arrow, .btn:after, .oim-icons-carousel-left, .carousel-control:after, .oim-icons-carousel-right, .carousel-control.right:after, .oim-icons-large-black-button-arrow, .btn.btn-large.btn-primary:after, .oim-icons-large-button-arrow, .btn.btn-large:after, .oim-icons-quote, blockquote:before, .oim-icons-search, .navbar-search button.btn:after {
-  background: url('/themes/oim/images/oim-icons-s03e03ce0fe.png') no-repeat;
+/* line 106, oim-icons/*.png */
+.oim-icons-sprite, .oim-icons-black-button-arrow, .btn.btn-primary:after, .oim-icons-button-arrow, .btn:after, .oim-icons-carousel-left, .carousel-control:after, .oim-icons-carousel-right, .carousel-control.right:after, .oim-icons-large-black-button-arrow, .btn.btn-large.btn-primary:after, .oim-icons-large-button-arrow, .btn.btn-large:after, .oim-icons-link-list, .linklist ul li .arrow, .oim-icons-quote, blockquote:before, .oim-icons-search, .navbar-search button.btn:after {
+  background: url('/themes/oim/images/oim-icons-s962de6c788.png') no-repeat;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-black-button-arrow, .btn.btn-primary:after {
-  background-position: -20px -383px;
+  background-position: -20px -433px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -40,6 +40,11 @@
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-large-button-arrow, .btn.btn-large:after {
   background-position: -20px -177px;
+}
+
+/* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.oim-icons-link-list, .linklist ul li .arrow {
+  background-position: -20px -383px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -6326,11 +6331,10 @@ a.label:hover, a.badge:hover {
 /* line 41, ../sass/_link-list.scss */
 .linklist ul li .arrow {
   width: 6px;
-  background: url("../images/Sprite.png") -139px -19px no-repeat;
-  *background: url(../images/Sprite.png) -139px -19px no-repeat;
   float: right;
   line-height: 1em;
-  height: 14px;
+  height: 10px;
+  margin-top: 5px;
 }
 /* line 51, ../sass/_link-list.scss */
 .highlight .linklist {
