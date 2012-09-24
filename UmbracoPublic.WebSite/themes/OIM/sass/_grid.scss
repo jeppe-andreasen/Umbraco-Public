@@ -18,3 +18,35 @@
 .row-fluid [class*="span"].pull-right {
   float: right;
 }
+
+
+//Responsive grid
+
+//.row {
+//	#{enumerate('.span', 1, $cols, '')} {
+//		float: left;
+//		margin-left: $gutter;
+//	}
+// 
+//	@for $i from 1 through $cols {
+//		.span#{$i} {
+//			@include cols($i);
+// 
+//			@for $j from 1 through ($i - 1) {
+//				.span#{$j} {
+//					@include sub_cols($j, $i);
+//					@for $k from 1 through ($j - 1) {
+//						.span#{$j} {
+//							@include sub_cols($j, $j);
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//
+//	> :first-child,
+//	.row > :first-child {
+//		margin-left: 0;
+//	}
+//}
