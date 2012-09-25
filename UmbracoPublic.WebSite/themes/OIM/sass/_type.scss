@@ -203,10 +203,8 @@ blockquote {
 	&:before{
 			content:"";
 			display: inline-block;
-			width: 57px;
-			height: 57px;
-			//background-image:url($sprite);
-			//background-position:-743px -10px;
+			width: 40px;
+			height: 26px;
 			@extend .oim-icons-quote;
 			float: left;
 			margin-left:-57px;

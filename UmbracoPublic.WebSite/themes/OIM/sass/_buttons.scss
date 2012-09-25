@@ -37,11 +37,21 @@
 		content:"";
 		height:10px;
 		width:6px;
-		margin-top:2px;
+		margin-top:4px;
 		margin-right:-10px;
 		display: inline-block;
 		float:right;
 		@extend .oim-icons-button-arrow;
+	}
+	p &{
+		&:after{
+			margin-top:2px;
+		}
+	}
+	.hero-unit &{
+		&:after{
+			margin-top:7px;
+		}
 	}
 }
 

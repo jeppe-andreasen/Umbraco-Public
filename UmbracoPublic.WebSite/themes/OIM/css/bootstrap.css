@@ -9,52 +9,52 @@
  */
 /* line 122, oim-icons/*.png */
 .oim-icons-sprite, .oim-icons-black-button-arrow, .btn.btn-primary:after, .oim-icons-button-arrow, .btn:after, .oim-icons-carousel-left, .carousel-control:after, .oim-icons-carousel-right, .carousel-control.right:after, .oim-icons-close, .accordion-heading.open a:after, .oim-icons-large-black-button-arrow, .btn.btn-large.btn-primary:after, .oim-icons-large-button-arrow, .btn.btn-large:after, .oim-icons-link-list, .linklist ul li .arrow, .oim-icons-open, .accordion-heading a:after, .oim-icons-quote, blockquote:before, .oim-icons-search, .navbar-search button.btn:after {
-  background: url('/themes/oim/images/oim-icons-s197c1b32ab.png') no-repeat;
+  background: url('/themes/oim/images/oim-icons-s46ea001553.png') no-repeat;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-black-button-arrow, .btn.btn-primary:after {
-  background-position: -20px -486px;
+  background-position: -20px -126px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-button-arrow, .btn:after {
-  background-position: -20px -334px;
+  background-position: -20px -94px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-carousel-left, .carousel-control:after {
-  background-position: -20px -282px;
+  background-position: -20px -82px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-carousel-right, .carousel-control.right:after {
-  background-position: -20px -125px;
+  background-position: -20px -45px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-close, .accordion-heading.open a:after {
-  background-position: -20px -536px;
+  background-position: -20px -136px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-large-black-button-arrow, .btn.btn-large.btn-primary:after {
-  background-position: -20px -384px;
+  background-position: -20px -104px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-large-button-arrow, .btn.btn-large:after {
-  background-position: -20px -177px;
+  background-position: -20px -57px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-link-list, .linklist ul li .arrow {
-  background-position: -20px -436px;
+  background-position: -20px -116px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-open, .accordion-heading a:after {
-  background-position: -20px -229px;
+  background-position: -20px -69px;
 }
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -64,7 +64,7 @@
 
 /* line 60, C:/Ruby193/lib/ruby/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .oim-icons-search, .navbar-search button.btn:after {
-  background-position: -20px -66px;
+  background-position: -20px -26px;
 }
 
 /* line 26, ../sass/_mixins.scss */
@@ -664,6 +664,7 @@ a:hover {
   margin-right: auto;
   margin-left: auto;
   *zoom: 1;
+  max-width: 1170px;
 }
 /* line 15, ../sass/_mixins.scss */
 .container:before, .container:after {
@@ -676,11 +677,14 @@ a:hover {
   clear: both;
 }
 
-/* line 13, ../sass/_layouts.scss */
+/* line 14, ../sass/_layouts.scss */
 .container-fluid {
   max-width: 1170px;
   margin: 0 auto;
   *zoom: 1;
+  box-sizing: content-box;
+  padding-right: 2.12766%;
+  padding-left: 2.12766%;
 }
 /* line 15, ../sass/_mixins.scss */
 .container-fluid:before, .container-fluid:after {
@@ -692,10 +696,135 @@ a:hover {
 .container-fluid:after {
   clear: both;
 }
-
 /* line 21, ../sass/_layouts.scss */
+.container-fluid .container-fluid {
+  padding: 0;
+}
+
+/* line 26, ../sass/_layouts.scss */
 div {
   box-sizing: border-box;
+}
+
+/* line 1, ../sass/_OIM-grid.scss */
+[class*="span"] {
+  margin-left: 2.564102564103%!important;
+}
+
+/* line 5, ../sass/_OIM-grid.scss */
+.row {
+  margin-left: -2.5641% !important;
+  margin-bottom: 2.564102564103%!important;
+}
+
+/* line 9, ../sass/_OIM-grid.scss */
+.span11 {
+  width: 89.10256410256%!important;
+}
+
+/* line 12, ../sass/_OIM-grid.scss */
+.span10 {
+  width: 80.76923076923%!important;
+}
+
+/* line 15, ../sass/_OIM-grid.scss */
+.span9 {
+  width: 72.4358974359%!important;
+}
+
+/* line 18, ../sass/_OIM-grid.scss */
+.span8 {
+  width: 66.66666666667%!important;
+}
+
+/* line 21, ../sass/_OIM-grid.scss */
+.span7 {
+  width: 55.76923076923%!important;
+}
+
+/* line 24, ../sass/_OIM-grid.scss */
+.span6 {
+  width: 47.4358974359%!important;
+}
+
+/* line 27, ../sass/_OIM-grid.scss */
+.span5 {
+  width: 39.10256410256%!important;
+}
+
+/* line 30, ../sass/_OIM-grid.scss */
+.span4 {
+  width: 30.76923076923%!important;
+}
+
+/* line 33, ../sass/_OIM-grid.scss */
+.span3 {
+  width: 22.4358974359%!important;
+}
+
+/* line 37, ../sass/_OIM-grid.scss */
+.span9 .span9 {
+  width: 97.4358974359%!important;
+}
+
+/* line 40, ../sass/_OIM-grid.scss */
+.span9 .span8 {
+  width: 86.32478632479%!important;
+}
+
+/* line 43, ../sass/_OIM-grid.scss */
+.span9 .span8 {
+  width: 86.32478632479%!important;
+}
+
+/* line 46, ../sass/_OIM-grid.scss */
+.span9 .span8 {
+  width: 75.21367521367%!important;
+}
+
+/* line 49, ../sass/_OIM-grid.scss */
+.span9 .span6 {
+  width: 64.10256410256%!important;
+}
+
+/* line 52, ../sass/_OIM-grid.scss */
+.span9 .span5 {
+  width: 52.99145299145%!important;
+}
+
+/* line 55, ../sass/_OIM-grid.scss */
+.span9 .span4 {
+  width: 41.88034188034%!important;
+}
+
+/* line 58, ../sass/_OIM-grid.scss */
+.span9 .span3 {
+  width: 30.76923076923%!important;
+}
+
+/* line 62, ../sass/_OIM-grid.scss */
+.span6 .span6 {
+  width: 97.4358974359%!important;
+}
+
+/* line 66, ../sass/_OIM-grid.scss */
+.span6 .span5 {
+  width: 80.76923076923%!important;
+}
+
+/* line 70, ../sass/_OIM-grid.scss */
+.span6 .span4 {
+  width: 64.10256410256%!important;
+}
+
+/* line 74, ../sass/_OIM-grid.scss */
+.span6 .span3 {
+  width: 47.4358974359%!important;
+}
+
+/* line 78, ../sass/_OIM-grid.scss */
+.span3 .span3 {
+  width: 97.4358974359%!important;
 }
 
 /* line 9, ../sass/_type.scss */
@@ -932,12 +1061,12 @@ blockquote {
 blockquote:before {
   content: "";
   display: inline-block;
-  width: 57px;
-  height: 57px;
+  width: 40px;
+  height: 26px;
   float: left;
   margin-left: -57px;
 }
-/* line 214, ../sass/_type.scss */
+/* line 212, ../sass/_type.scss */
 blockquote p {
   margin-bottom: 0;
   font-size: 16px;
@@ -946,7 +1075,7 @@ blockquote p {
   display: inline;
   font-weight: bold;
 }
-/* line 221, ../sass/_type.scss */
+/* line 219, ../sass/_type.scss */
 blockquote small {
   display: block;
   line-height: 1.2em;
@@ -954,11 +1083,11 @@ blockquote small {
   font-weight: normal;
   font-size: 0.6875em;
 }
-/* line 227, ../sass/_type.scss */
+/* line 225, ../sass/_type.scss */
 blockquote small:before {
   content: '\2014 \00A0';
 }
-/* line 233, ../sass/_type.scss */
+/* line 231, ../sass/_type.scss */
 blockquote.pull-right {
   float: right;
   padding-right: 15px;
@@ -966,13 +1095,13 @@ blockquote.pull-right {
   border-right: 5px solid #f7fcfb;
   border-left: 0;
 }
-/* line 240, ../sass/_type.scss */
+/* line 238, ../sass/_type.scss */
 blockquote.pull-right p,
 blockquote.pull-right small {
   text-align: right;
 }
 
-/* line 250, ../sass/_type.scss */
+/* line 248, ../sass/_type.scss */
 q:before,
 q:after,
 blockquote:before,
@@ -980,7 +1109,7 @@ blockquote:after {
   content: "";
 }
 
-/* line 255, ../sass/_type.scss */
+/* line 253, ../sass/_type.scss */
 address {
   display: block;
   margin-bottom: 1.2em;
@@ -988,12 +1117,12 @@ address {
   line-height: 1.2em;
 }
 
-/* line 263, ../sass/_type.scss */
+/* line 261, ../sass/_type.scss */
 small {
   font-size: 100%;
 }
 
-/* line 266, ../sass/_type.scss */
+/* line 264, ../sass/_type.scss */
 cite {
   font-style: normal;
 }
@@ -3204,13 +3333,21 @@ button.close {
   content: "";
   height: 10px;
   width: 6px;
-  margin-top: 2px;
+  margin-top: 4px;
   margin-right: -10px;
   display: inline-block;
   float: right;
 }
+/* line 47, ../sass/_buttons.scss */
+p .btn:after {
+  margin-top: 2px;
+}
+/* line 52, ../sass/_buttons.scss */
+.hero-unit .btn:after {
+  margin-top: 7px;
+}
 
-/* line 49, ../sass/_buttons.scss */
+/* line 59, ../sass/_buttons.scss */
 .btn:hover {
   color: white;
   text-decoration: none;
@@ -3223,14 +3360,14 @@ button.close {
   transition: background-position 0.1s linear;
 }
 
-/* line 62, ../sass/_buttons.scss */
+/* line 72, ../sass/_buttons.scss */
 .btn:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
-/* line 68, ../sass/_buttons.scss */
+/* line 78, ../sass/_buttons.scss */
 .btn.active,
 .btn:active {
   background-color: #e6e6e6;
@@ -3242,7 +3379,7 @@ button.close {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-/* line 78, ../sass/_buttons.scss */
+/* line 88, ../sass/_buttons.scss */
 .btn.disabled,
 .btn[disabled] {
   cursor: default;
@@ -3255,7 +3392,7 @@ button.close {
   box-shadow: none;
 }
 
-/* line 91, ../sass/_buttons.scss */
+/* line 101, ../sass/_buttons.scss */
 .btn-large {
   padding: 19px 15px;
   font-size: 1.5em;
@@ -3263,36 +3400,36 @@ button.close {
   min-width: 240px;
 }
 
-/* line 98, ../sass/_buttons.scss */
+/* line 108, ../sass/_buttons.scss */
 .btn-large.btn-primary {
   background-position: 95% -100px;
 }
 
-/* line 102, ../sass/_buttons.scss */
+/* line 112, ../sass/_buttons.scss */
 .btn-large [class^="icon-"] {
   margin-top: 1px;
 }
 
-/* line 107, ../sass/_buttons.scss */
+/* line 117, ../sass/_buttons.scss */
 .btn-small {
   font-size: 0.95em;
   line-height: 1.15em;
   min-width: 170px;
 }
 
-/* line 112, ../sass/_buttons.scss */
+/* line 122, ../sass/_buttons.scss */
 .btn-small [class^="icon-"] {
   margin-top: -1px;
 }
 
-/* line 117, ../sass/_buttons.scss */
+/* line 127, ../sass/_buttons.scss */
 .btn-mini {
   padding: 2px 6px;
   font-size: 0.95em;
   line-height: 1.15em;
 }
 
-/* line 140, ../sass/_buttons.scss */
+/* line 150, ../sass/_buttons.scss */
 .btn-primary,
 .btn-primary:hover,
 .btn-warning,
@@ -3308,7 +3445,7 @@ button.close {
   color: black;
 }
 
-/* line 149, ../sass/_buttons.scss */
+/* line 159, ../sass/_buttons.scss */
 .btn-primary.active,
 .btn-warning.active,
 .btn-danger.active,
@@ -3318,13 +3455,13 @@ button.close {
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* line 155, ../sass/_buttons.scss */
+/* line 165, ../sass/_buttons.scss */
 .btn {
   border-color: #ccc;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 
-/* line 160, ../sass/_buttons.scss */
+/* line 170, ../sass/_buttons.scss */
 .btn-primary {
   background: #f5a647;
   background-color: rgba(247, 148, 29, 0.8);
@@ -3332,29 +3469,29 @@ button.close {
   background-position: 95% 12px;
   background-repeat: no-repeat;
 }
-/* line 167, ../sass/_buttons.scss */
+/* line 177, ../sass/_buttons.scss */
 .hero-unit .btn-primary {
   background-position: 95% 18px;
 }
 
-/* line 176, ../sass/_buttons.scss */
+/* line 186, ../sass/_buttons.scss */
 .btn.btn-large:after {
   height: 12px;
   width: 8px;
   margin-right: 0;
 }
 
-/* line 183, ../sass/_buttons.scss */
+/* line 193, ../sass/_buttons.scss */
 .btn.btn-large.btn-primary:after {
   margin-top: 5px;
 }
 
-/* line 188, ../sass/_buttons.scss */
+/* line 198, ../sass/_buttons.scss */
 .btn-primary:hover {
   background-color: #f7941d;
 }
 
-/* line 193, ../sass/_buttons.scss */
+/* line 203, ../sass/_buttons.scss */
 .btn-warning {
   color: white;
   background-color: #f8a949;
@@ -3382,7 +3519,7 @@ button.close {
   background-color: #d97a08 \9;
 }
 
-/* line 197, ../sass/_buttons.scss */
+/* line 207, ../sass/_buttons.scss */
 .btn-danger {
   color: white;
   background-color: #da4e49;
@@ -3410,7 +3547,7 @@ button.close {
   background-color: #942a25 \9;
 }
 
-/* line 201, ../sass/_buttons.scss */
+/* line 211, ../sass/_buttons.scss */
 .btn-success {
   color: white;
   background-color: #5bb65b;
@@ -3438,7 +3575,7 @@ button.close {
   background-color: #408140 \9;
 }
 
-/* line 205, ../sass/_buttons.scss */
+/* line 215, ../sass/_buttons.scss */
 .btn-info {
   color: white;
   background-color: #49afcd;
@@ -3466,7 +3603,7 @@ button.close {
   background-color: #24748c \9;
 }
 
-/* line 209, ../sass/_buttons.scss */
+/* line 219, ../sass/_buttons.scss */
 .btn-inverse {
   color: white;
   background-color: #545353;
@@ -3494,31 +3631,31 @@ button.close {
   background-color: #040404 \9;
 }
 
-/* line 218, ../sass/_buttons.scss */
+/* line 228, ../sass/_buttons.scss */
 button.btn,
 input[type="submit"].btn {
   *padding-top: 2px;
   *padding-bottom: 2px;
 }
-/* line 221, ../sass/_buttons.scss */
+/* line 231, ../sass/_buttons.scss */
 button.btn::-moz-focus-inner,
 input[type="submit"].btn::-moz-focus-inner {
   padding: 0;
   border: 0;
 }
-/* line 229, ../sass/_buttons.scss */
+/* line 239, ../sass/_buttons.scss */
 button.btn.btn-large,
 input[type="submit"].btn.btn-large {
   *padding-top: 7px;
   *padding-bottom: 7px;
 }
-/* line 233, ../sass/_buttons.scss */
+/* line 243, ../sass/_buttons.scss */
 button.btn.btn-small,
 input[type="submit"].btn.btn-small {
   *padding-top: 3px;
   *padding-bottom: 3px;
 }
-/* line 237, ../sass/_buttons.scss */
+/* line 247, ../sass/_buttons.scss */
 button.btn.btn-mini,
 input[type="submit"].btn.btn-mini {
   *padding-top: 1px;
@@ -3875,22 +4012,22 @@ footer {
 }
 
 /* line 32, ../sass/_sections.scss */
-footer .container {
+footer .container-fluid {
   *zoom: 1;
   height: 100%;
 }
 /* line 15, ../sass/_mixins.scss */
-footer .container:before, footer .container:after {
+footer .container-fluid:before, footer .container-fluid:after {
   display: table;
   content: "";
   line-height: 0;
 }
 /* line 22, ../sass/_mixins.scss */
-footer .container:after {
+footer .container-fluid:after {
   clear: both;
 }
 /* line 35, ../sass/_sections.scss */
-footer .container .row {
+footer .container-fluid .row {
   height: 100%;
   padding: 0;
 }
@@ -4534,8 +4671,7 @@ nav .navbar-inner {
 .navbar .brand {
   float: left;
   display: block;
-  padding: 0 20px 0;
-  margin-left: -20px;
+  padding: 0;
   font-size: 20px;
   font-weight: 200;
   line-height: 1;
@@ -5775,24 +5911,25 @@ footer .thumbnail p a {
 .contact .vcard {
   font-size: 0.75em;
   margin: 15px 0 10px 122px;
+  padding-right: 15px;
 }
-/* line 103, ../sass/_thumbnails.scss */
+/* line 104, ../sass/_thumbnails.scss */
 .contact .vcard span {
   display: block;
   margin-bottom: 5px;
   line-height: 1.2em;
 }
-/* line 108, ../sass/_thumbnails.scss */
+/* line 109, ../sass/_thumbnails.scss */
 .contact .vcard .fn {
   font-weight: bold;
 }
-/* line 111, ../sass/_thumbnails.scss */
+/* line 112, ../sass/_thumbnails.scss */
 .contact .vcard .area:before, .contact .vcard .email:before, .contact .vcard .tel:before {
   content: attr(data);
   float: left;
   padding-right: 5px;
 }
-/* line 117, ../sass/_thumbnails.scss */
+/* line 118, ../sass/_thumbnails.scss */
 .contact img {
   max-width: 122px;
   position: absolute;
@@ -6523,22 +6660,11 @@ a.label:hover, a.badge:hover {
   width: 68.88888888889%;
 }
 /* line 100, ../sass/_news-list.scss */
-.publication > div .btn {
-  background: #303232;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 10px;
-}
-/* line 105, ../sass/_news-list.scss */
-.publication > div .btn:hover {
-  color: #00c0af;
-}
-/* line 109, ../sass/_news-list.scss */
 .publication > div:first-child {
   padding-right: 30px;
   width: 31.11111111111%;
 }
-/* line 112, ../sass/_news-list.scss */
+/* line 103, ../sass/_news-list.scss */
 .publication > div:first-child img {
   width: 100%;
 }

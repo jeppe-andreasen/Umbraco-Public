@@ -29,7 +29,7 @@ footer{
     overflow: hidden;
 }
 
-footer .container{
+footer .container-fluid{
 	@include clearfix();
 	height:100%;
 	.row{

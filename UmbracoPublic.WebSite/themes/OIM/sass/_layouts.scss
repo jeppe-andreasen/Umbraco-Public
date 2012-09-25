@@ -7,15 +7,20 @@
 // Container (centered, fixed-width layouts)
 .container {
   @include container-fixed();
+  max-width:1170px;
 }
 
 // Fluid layouts (left aligned, with sidebar, min- & max-width content)
 .container-fluid {
-  //padding-right: $gridGutterWidth;
-  //padding-left: $gridGutterWidth;
-  max-width:$gridRowWidth;
-  margin:0 auto;
-  @include clearfix();
+	max-width:$gridRowWidth;
+	margin:0 auto;
+	@include clearfix();
+	box-sizing:content-box;
+	padding-right: $fluidGridGutterWidth;
+	padding-left: $fluidGridGutterWidth;
+	.container-fluid{
+		padding:0;
+	}	
 }
 
 div{
